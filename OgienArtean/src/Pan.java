@@ -5,5 +5,4 @@ public class Pan {
 		String nombre;
 		String harina;
 	}
-
 }
