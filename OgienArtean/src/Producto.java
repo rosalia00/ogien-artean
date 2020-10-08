@@ -1,65 +1,39 @@
-import java.util.ArrayList;
 
 public class Producto {
 	String nombre;
 	double precio;
-	double pesoUnidad;
-	ArrayList<String> ingredientes;
-	
-	
-	
+	boolean celiaco;
 	public String getNombre() {
 		return nombre;
 	}
-
 	public double getPrecio() {
 		return precio;
 	}
-
-	public double getPesoUnidad() {
-		return pesoUnidad;
+	public boolean isCeliaco() {
+		return celiaco;
 	}
-
-	public ArrayList<String> getIngredientes() {
-		return ingredientes;
-	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-
-	public void setPesoUnidad(double pesoUnidad) {
-		this.pesoUnidad = pesoUnidad;
+	public void setCeliaco(boolean celiaco) {
+		this.celiaco = celiaco;
 	}
-
-	public void setIngredientes(ArrayList<String> ingredientes) {
-		this.ingredientes = ingredientes;
-	}
-
-	protected Producto(String nombre, double precio, double pesoUnidad, ArrayList<String> ingredientes) {
+	public Producto(String nombre, double precio, boolean celiaco) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
-		this.pesoUnidad = pesoUnidad;
-		this.ingredientes = ingredientes;
+		this.celiaco = celiaco;
 	}
 	
-	protected Producto() {
+	public Producto() {
 		super();
 		this.nombre = "";
 		this.precio = 0.0;
-		this.pesoUnidad = 0.0;
-		this.ingredientes = null;
+		this.celiaco = false;
 	}
-
-	@Override
-	public String toString() {
-		return "Producto [nombre=" + nombre + ", precio=" + precio + ", pesoUnidad=" + pesoUnidad + ", ingredientes="
-				+ ingredientes + "]";
-	}
+	
 	
 }

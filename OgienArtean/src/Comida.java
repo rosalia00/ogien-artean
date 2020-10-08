@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Comida extends Producto {
 	String tipo;
@@ -17,13 +16,12 @@ public class Comida extends Producto {
 		this.caliente = caliente;
 	}
 	
-	public Comida(String nombre, double precio, double pesoUnidad, ArrayList<String> ingredientes, String tipo,
-			boolean caliente) {
-		super(nombre, precio, pesoUnidad, ingredientes);
+	
+	public Comida(String nombre, double precio, boolean celiaco, String tipo, boolean caliente) {
+		super(nombre, precio, celiaco);
 		this.tipo = tipo;
 		this.caliente = caliente;
 	}
-	
 	public Comida() {
 		super();
 		this.tipo = "";

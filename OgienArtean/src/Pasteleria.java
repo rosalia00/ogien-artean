@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Pasteleria extends Producto {
 	String tipo;
@@ -11,8 +10,9 @@ public class Pasteleria extends Producto {
 		this.tipo = tipo;
 	}
 
-	public Pasteleria(String nombre, double precio, double pesoUnidad, ArrayList<String> ingredientes, String tipo) {
-		super(nombre, precio, pesoUnidad, ingredientes);
+	
+	public Pasteleria(String nombre, double precio, boolean celiaco, String tipo) {
+		super(nombre, precio, celiaco);
 		this.tipo = tipo;
 	}
 
