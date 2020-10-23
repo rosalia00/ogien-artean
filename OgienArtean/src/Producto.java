@@ -3,6 +3,7 @@ public class Producto {
 	String nombre;
 	double precio;
 	boolean celiaco;
+	
 	public String getNombre() {
 		return nombre;
 	}

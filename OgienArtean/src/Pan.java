@@ -3,10 +3,11 @@ import java.util.ArrayList;
 public class Pan extends Producto {
 		ArrayList<String> ingredientes;
 		boolean sal;
+		
 		public ArrayList<String> getIngredientes() {
 			return ingredientes;
 		}
-		public boolean isSal() {
+		public boolean getSal() {
 			return sal;
 		}
 		public void setIngredientes(ArrayList<String> ingredientes) {

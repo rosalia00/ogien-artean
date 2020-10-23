@@ -6,7 +6,7 @@ public class Comida extends Producto {
 	public String getTipo() {
 		return tipo;
 	}
-	public boolean isCaliente() {
+	public boolean getCaliente() {
 		return caliente;
 	}
 	public void setTipo(String tipo) {
