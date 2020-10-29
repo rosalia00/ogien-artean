@@ -35,7 +35,7 @@ public class VentanaClienteInicio extends JFrame{
 		perfil = new JButton("Perfil");
 		perfil.setBounds(0, 0, 200, 50);
 		
-		textoInicio = new JLabel("Seleccione que clase de producto desea comprar por favor:");
+		textoInicio = new JLabel("Seleccione que clase de producto desea comprar, por favor:");
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Cliente Inicio");
