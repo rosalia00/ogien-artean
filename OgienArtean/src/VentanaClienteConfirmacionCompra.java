@@ -15,11 +15,11 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 
 	public VentanaClienteConfirmacionCompra() {
 
-		carro = new JButton();
-		perfil = new JButton();
+		carro = new JButton("CARRO");
+		perfil = new JButton("PERFIL");
 		coso = new JTextPane();
-		cancelar = new JButton();
-		confirmar = new JButton();
+		cancelar = new JButton("CANCELAR");
+		confirmar = new JButton("CONFIRMAR");
 
 		arriba = new JPanel();
 		centro = new JPanel();
