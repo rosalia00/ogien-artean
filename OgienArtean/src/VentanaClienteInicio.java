@@ -20,4 +20,16 @@ public class VentanaClienteInicio extends JFrame{
 	
 	//Texto
 	JLabel textoInicio;
+	
+	public VentanaClienteInicio() {
+		
+		panaderia = new JButton("Panadería");
+		pasteleria = new JButton("Pastelería");
+		cocina = new JButton("Cocina");
+		
+		miCarro = new JButton("Mi Carro");
+		perfil = new JButton("Perfil");
+		
+		textoInicio = new JLabel("Seleccione que clase de producto desea comprar por favor:");
+	}
 }
