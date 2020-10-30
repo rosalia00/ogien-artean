@@ -30,9 +30,17 @@ public class VentanaCompra extends JFrame {
 		
 		Color blanco = new Color(255,255,255);
 
-		carro = new JButton("CARRO");
+		carro = new JButton();
+		carro.setIcon(new ImageIcon("carro.png"));
+		carro.setContentAreaFilled(false);
+		carro.setBorderPainted(false);
+		carro.setFocusPainted(false);
 		
-		perfil = new JButton("PERFIL");
+		perfil = new JButton();
+		perfil.setIcon(new ImageIcon("perfil.png"));
+		perfil.setContentAreaFilled(false);
+		perfil.setBorderPainted(false);
+		perfil.setFocusPainted(false);
 		perfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -41,8 +49,26 @@ public class VentanaCompra extends JFrame {
 			}
 		});
 
-		comprar = new JButton("COMPRAR");
-		volver = new JButton("VOLVER");
+		comprar = new JButton();
+		comprar.setIcon(new ImageIcon("comprar.png"));
+		comprar.setContentAreaFilled(false);
+		comprar.setBorderPainted(false);
+		comprar.setFocusPainted(false);
+		
+		volver = new JButton();
+		volver.setIcon(new ImageIcon("volver.png"));
+		volver.setContentAreaFilled(false);
+		volver.setBorderPainted(false);
+		volver.setFocusPainted(false);
+		volver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaClienteInicio();
+				dispose();
+				
+			}
+		});
 
 		arriba = new JPanel();
 		arriba.setOpaque(false);
