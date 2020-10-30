@@ -54,8 +54,8 @@ public class MiPerfil extends JFrame{
 		add(pedidos);
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("Cliente Inicio");
-		setSize(300, 600);
+		setTitle("Mi Perfil");
+		setSize(300, 400);
 		setLayout(new FlowLayout());
 		setVisible(true);
 	}
