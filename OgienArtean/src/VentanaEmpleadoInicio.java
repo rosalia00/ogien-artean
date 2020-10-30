@@ -1,3 +1,4 @@
+import java.awt.GridLayout;
 import javax.swing.*;
 
 public class VentanaEmpleadoInicio extends JFrame {
@@ -34,5 +35,11 @@ public class VentanaEmpleadoInicio extends JFrame {
 		add(arriba);
 		add(abajo);
 		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setTitle("Empleado Inicio");
+		setSize(600, 300);
+		setLayout(new GridLayout(2,1));
+		
+		setVisible(true);
 	}
 }
