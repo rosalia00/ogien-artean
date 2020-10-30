@@ -60,15 +60,6 @@ public class VentanaCompra extends JFrame {
 		volver.setContentAreaFilled(false);
 		volver.setBorderPainted(false);
 		volver.setFocusPainted(false);
-		volver.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaClienteInicio();
-				dispose();
-				
-			}
-		});
 
 		arriba = new JPanel();
 		arriba.setOpaque(false);
