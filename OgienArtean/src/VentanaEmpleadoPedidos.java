@@ -2,7 +2,7 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
-public class VentanaEmpleadoPedidos extends JFrame {
+public class VentanaEmpleadoPedidos extends JFrame{
 	//Botones de perfil del empleado
 	JButton horas;
 	JButton perfil;
@@ -11,8 +11,8 @@ public class VentanaEmpleadoPedidos extends JFrame {
 	JButton atras; 
 	
 	//Botones pedidos
-	JTextField pedidos;
-	JButton confirmar;
+	JLabel pedido0;
+	JButton confirmar0;
 	
 	//Paneles
 	JPanel arriba;
@@ -30,10 +30,6 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		//Boton atras
 		atras = new JButton("<--"); 
 		
-		//Botones pedidos
-		JTextField pedidos;
-		JButton confirmar;
-		
 		//Paneles
 		arriba = new JPanel();
 		centro1 = new JPanel();
@@ -46,9 +42,37 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		centro4.setLayout(new GridLayout(2,1));
 		abajo = new JPanel();
 		
+		//Añadir a paneles las horas, perfil, atras
 		arriba.add(horas);
 		arriba.add(perfil);
 		abajo.add(atras);
+
+		//Botones pedidos primera fila 
+		for (int i = 0; i <= 5; i++) {
+			pedido0 = new JLabel("PEDIDO");
+			confirmar0 = new JButton("CONFIRMAR");
+			 
+			centro1.add(pedido0);
+			centro2.add(confirmar0);
+		}
+		
+		//Botones pedidos segunda fila 
+		for (int i = 0; i <= 5; i++) {
+			pedido0 = new JLabel("PEDIDO");
+			confirmar0 = new JButton("CONFIRMAR");
+			 
+			centro3.add(pedido0);
+			centro4.add(confirmar0);
+		}
+		
+		add(arriba);
+		add(centro1);
+		add(centro2);
+		add(centro3);
+		add(centro4);
+		add(abajo);
+		
+
 	}
 	
 }
