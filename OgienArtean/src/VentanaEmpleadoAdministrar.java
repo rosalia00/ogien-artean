@@ -14,6 +14,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 	JButton horas;
 	JButton perfil;
 	
+	JPanel botones;
 	JPanel empleadoPerfil;
 	JPanel empleados;
 	
@@ -28,7 +29,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		horas = new JButton("Horas");
 		perfil = new JButton("Perfil");
 		
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 10; i++) {
 			empleadoPerfil = new JPanel();
 			empleadoPerfil.setLayout(new GridLayout(3, 1));
 			
@@ -44,14 +45,21 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 			empleadoPerfil.add(opcion);	
 			
 			empleados = new JPanel();
-			empleadoPerfil.setLayout(new FlowLayout());
+			empleados.setLayout(new GridLayout(2, 5, 10, 10));
 			empleados.add(empleadoPerfil);
 		} 
 		
-		add(horas);
-		add(perfil);
+		botones = new JPanel(new FlowLayout());
+		botones.add(horas);
+		botones.add(perfil);
+		
+		add(botones);
 		add(empleados);
 		
-		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setTitle("Administrar Empleados");
+		setSize(500, 300);
+		setLayout(new GridLayout(2, 1));
+		setVisible(true);
 	}
 }
