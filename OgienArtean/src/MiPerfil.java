@@ -34,8 +34,10 @@ public class MiPerfil extends JFrame{
 		
 		pedidos = new JPanel();
 		
+		int n = 0;
 		for (int i = 0; i < 3; i++) {
-			pedidoComun = new JButton("BD");
+			n +=1;
+			pedidoComun = new JButton("BD" + n);
 			pedidos.add(pedidoComun);
 			pedidoComun.addActionListener(new ActionListener() {
 				
