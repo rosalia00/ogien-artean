@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -25,9 +27,19 @@ public class VentanaCompra extends JFrame {
 	JPanel abajo;
 
 	public VentanaCompra() {
+		
+		Color blanco = new Color(255,255,255);
 
 		carro = new JButton("CARRO");
+		
 		perfil = new JButton("PERFIL");
+		perfil.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaPerfil();
+				dispose();
+			}
+		});
 
 		comprar = new JButton("COMPRAR");
 		volver = new JButton("VOLVER");
@@ -61,7 +73,6 @@ public class VentanaCompra extends JFrame {
 
 		for (int i = 1; i <= 5; i++) {
 			item0 = new JButton("COSO");
-			item0.setIcon(new ImageIcon("PRUEBA.png"));
 			item0.setOpaque(false);
 			item0.setContentAreaFilled(false);
 			item0.setBorderPainted(false);
@@ -88,7 +99,7 @@ public class VentanaCompra extends JFrame {
 			centro22.add(itemSpinner0);
 		}
 
-		setContentPane(new JLabel(new ImageIcon("madera2.png")));
+		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
 
 		abajo.add(volver);
 		abajo.add(comprar);
