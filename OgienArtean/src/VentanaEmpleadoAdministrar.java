@@ -13,6 +13,8 @@ public class VentanaEmpleadoAdministrar {
 	JButton horas;
 	JButton perfil;
 	
+	JPanel empleadoPerfil;
+	
 	JComboBox opcion;
 	
 	JButton aceptar;
