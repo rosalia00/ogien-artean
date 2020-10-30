@@ -5,7 +5,7 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		
-		VentanaClienteConfirmacionCompra b = new VentanaClienteConfirmacionCompra();
+		VentanaCompra c = new VentanaCompra();
 	}
 
 }
