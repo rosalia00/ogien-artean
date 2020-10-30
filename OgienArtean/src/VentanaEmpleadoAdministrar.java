@@ -46,8 +46,11 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 			empleados = new JPanel();
 			empleadoPerfil.setLayout(new FlowLayout());
 			empleados.add(empleadoPerfil);
-			
 		} 
+		
+		add(horas);
+		add(perfil);
+		add(empleados);
 		
 		
 	}
