@@ -27,15 +27,13 @@ public class VentanaCompra extends JFrame {
 	JPanel abajo;
 
 	public VentanaCompra() {
-		
-		Color blanco = new Color(255,255,255);
 
 		carro = new JButton();
 		carro.setIcon(new ImageIcon("carro.png"));
 		carro.setContentAreaFilled(false);
 		carro.setBorderPainted(false);
 		carro.setFocusPainted(false);
-		
+
 		perfil = new JButton();
 		perfil.setIcon(new ImageIcon("perfil.png"));
 		perfil.setContentAreaFilled(false);
@@ -54,12 +52,26 @@ public class VentanaCompra extends JFrame {
 		comprar.setContentAreaFilled(false);
 		comprar.setBorderPainted(false);
 		comprar.setFocusPainted(false);
-		
+		comprar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaClienteConfirmacionCompra();
+				dispose();
+			}
+		});
+
 		volver = new JButton();
 		volver.setIcon(new ImageIcon("volver.png"));
 		volver.setContentAreaFilled(false);
 		volver.setBorderPainted(false);
 		volver.setFocusPainted(false);
+		volver.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaClienteInicio();
+				dispose();
+			}
+		});
 
 		arriba = new JPanel();
 		arriba.setOpaque(false);
