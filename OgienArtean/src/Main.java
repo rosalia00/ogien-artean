@@ -5,7 +5,7 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		
-		VentanaCompra c = new VentanaCompra();
+		MiPerfil c = new MiPerfil();
 	}
 
 }
