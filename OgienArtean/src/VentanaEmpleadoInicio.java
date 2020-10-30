@@ -1,12 +1,12 @@
 import javax.swing.*;
 
 public class VentanaEmpleadoInicio extends JFrame {
-	//Botones opciones del empleado
+	//Botonees opciones de empleado
 	JButton administrar;
 	JButton pedidos;
 	JButton registro;
 	
-	//Bottones de perfil del empleado
+	//Botones de perfil del empleado
 	JButton horas;
 	JButton perfil;
 	
