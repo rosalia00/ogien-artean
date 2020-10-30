@@ -4,10 +4,10 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		
+		VentanaCompra d = new VentanaCompra();
 		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
 		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
-		VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
+		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
 	}
 	
 }
