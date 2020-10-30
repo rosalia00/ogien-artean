@@ -30,29 +30,38 @@ public class VentanaCompra extends JFrame {
 		perfil = new JButton("PERFIL");
 
 		comprar = new JButton("COMPRAR");
-		volver =  new JButton("VOLVER");
+		volver = new JButton("VOLVER");
 
 		arriba = new JPanel();
+		arriba.setOpaque(false);
 		centro0 = new JPanel();
-		centro0.setLayout(new GridLayout(1, 6, 10, 60));
+		centro0.setLayout(new GridLayout(1, 6, 5, 0));
+		centro0.setOpaque(false);
 		centro1 = new JPanel();
-		centro1.setLayout(new GridLayout(1, 6, 10, 60));
+		centro1.setLayout(new GridLayout(1, 6, 5, 0));
+		centro1.setOpaque(false);
 		centro2 = new JPanel();
-		centro2.setLayout(new GridLayout(1, 6, 10, 60));
+		centro2.setLayout(new GridLayout(1, 6, 5, 0));
+		centro2.setOpaque(false);
 
 		centro00 = new JPanel();
-		centro00.setLayout(new GridLayout(1, 6, 10, 5));
+		centro00.setLayout(new GridLayout(1, 6, 5, 0));
+		centro00.setOpaque(false);
 		centro11 = new JPanel();
-		centro11.setLayout(new GridLayout(1, 6, 10, 5));
+		centro11.setLayout(new GridLayout(1, 6, 5, 0));
+		centro11.setOpaque(false);
 		centro22 = new JPanel();
-		centro22.setLayout(new GridLayout(1, 6, 10, 5));
+		centro22.setLayout(new GridLayout(1, 6, 5, 0));
+		centro22.setOpaque(false);
 		abajo = new JPanel();
+		abajo.setOpaque(false);
 
 		arriba.add(carro);
 		arriba.add(perfil);
 
 		for (int i = 1; i <= 5; i++) {
 			item0 = new JButton("COSO");
+			item0.setIcon(new ImageIcon("PRUEBA.png"));
 			item0.setOpaque(false);
 			item0.setContentAreaFilled(false);
 			item0.setBorderPainted(false);
@@ -78,7 +87,9 @@ public class VentanaCompra extends JFrame {
 			centro11.add(itemLabel0);
 			centro22.add(itemSpinner0);
 		}
-		
+
+		setContentPane(new JLabel(new ImageIcon("madera2.png")));
+
 		abajo.add(volver);
 		abajo.add(comprar);
 
@@ -95,9 +106,10 @@ public class VentanaCompra extends JFrame {
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("COMPRA");
-		setSize(600, 300);
+		setSize(1500, 800);
 		setLayout(new GridLayout(8, 1));
 		setVisible(true);
+		setResizable(false);
 
 	}
 
