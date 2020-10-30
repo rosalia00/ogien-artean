@@ -7,7 +7,7 @@ public class Main {
 		
 		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
 		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
-		VentanaCompra c = new VentanaCompra();
+		VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
 	}
 	
 }

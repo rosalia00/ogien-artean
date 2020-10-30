@@ -33,13 +33,13 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		//Paneles
 		arriba = new JPanel();
 		centro1 = new JPanel();
-		centro1.setLayout(new GridLayout(2,1));
+		centro1.setLayout(new GridLayout(1,2));
 		centro2 = new JPanel();
-		centro2.setLayout(new GridLayout(2,1));
+		centro2.setLayout(new GridLayout(1,2));
 		centro3 = new JPanel();
-		centro3.setLayout(new GridLayout(2,1));
+		centro3.setLayout(new GridLayout(1,2));
 		centro4 = new JPanel();
-		centro4.setLayout(new GridLayout(2,1));
+		centro4.setLayout(new GridLayout(1,2));
 		abajo = new JPanel();
 		
 		//Añadir a paneles las horas, perfil, atras
