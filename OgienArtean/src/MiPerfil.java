@@ -30,6 +30,14 @@ public class MiPerfil extends JFrame{
 		for (int i = 0; i < 3; i++) {
 			pedidoComun = new JButton("BD");
 			datos.add(pedidoComun);
+			pedidoComun.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					
+				}
+			});
 		}
 	}
 }
