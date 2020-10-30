@@ -5,7 +5,9 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		
-		VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
+		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
+		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
+		VentanaCompra c = new VentanaCompra();
 	}
-
+	
 }

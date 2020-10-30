@@ -20,8 +20,8 @@ public class VentanaEmpleadoInicio extends JFrame {
 		pedidos = new JButton("Pedidos");
 		registro = new JButton("Registro");
 		
-		horas = new JButton("Horas");
-		perfil = new JButton("Perfil");
+		horas = new JButton("HORAS");
+		perfil = new JButton("PERFIL");
 		
 		arriba = new JPanel();
 		abajo = new JPanel();
