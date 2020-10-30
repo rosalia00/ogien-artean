@@ -14,4 +14,25 @@ public class VentanaEmpleadoInicio extends JFrame {
 	JPanel arriba;
 	JPanel abajo;
 	
+	public VentanaEmpleadoInicio() {
+		administrar = new JButton("Administrar");
+		pedidos = new JButton("Pedidos");
+		registro = new JButton("Registro");
+		
+		horas = new JButton("Horas");
+		perfil = new JButton("Perfil");
+		
+		arriba = new JPanel();
+		abajo = new JPanel();
+		
+		arriba.add(horas);
+		arriba.add(perfil);
+		abajo.add(administrar);
+		abajo.add(pedidos);
+		abajo.add(registro);
+		
+		add(arriba);
+		add(abajo);
+		
+	}
 }
