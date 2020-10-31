@@ -1,5 +1,7 @@
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -24,6 +26,14 @@ public class VentanaEmpleadoInicio extends JFrame {
 			administrar.setContentAreaFilled(false);
 			administrar.setBorderPainted(false);
 			administrar.setFocusPainted(false);
+			administrar.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new VentanaEmpleadoAdministrar();
+					dispose();					
+				}
+				
+			});
 			
 		//Boton pedidos
 		pedidos = new JButton();
@@ -31,6 +41,13 @@ public class VentanaEmpleadoInicio extends JFrame {
 			pedidos.setContentAreaFilled(false);
 			pedidos.setBorderPainted(false);
 			pedidos.setFocusPainted(false);
+			pedidos.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new VentanaEmpleadoPedidos();
+					dispose();
+				}
+			});
 		
 		//Boton registro
 		registro = new JButton();
@@ -38,6 +55,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 			registro.setContentAreaFilled(false);
 			registro.setBorderPainted(false);
 			registro.setFocusPainted(false);
+			
 		
 		
 		//Boton horas
