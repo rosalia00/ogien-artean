@@ -1,6 +1,8 @@
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -39,6 +41,13 @@ public class VentanaEmpleadoPedidos extends JFrame{
 			perfil.setContentAreaFilled(false);
 			perfil.setBorderPainted(false);
 			perfil.setFocusPainted(false);
+			perfil.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new VentanaPerfil();
+					dispose();
+				}
+			});
 			
 		//Boton atras
 		atras = new JButton();
@@ -46,6 +55,13 @@ public class VentanaEmpleadoPedidos extends JFrame{
 			atras.setContentAreaFilled(false);
 			atras.setBorderPainted(false);
 			atras.setFocusPainted(false);
+			atras.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new VentanaEmpleadoInicio();
+					dispose();
+				}
+			});
 			
 		//Paneles
 		//Panel Arriba
