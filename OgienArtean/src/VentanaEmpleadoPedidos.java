@@ -1,4 +1,5 @@
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.*;
 
@@ -24,11 +25,25 @@ public class VentanaEmpleadoPedidos extends JFrame{
 	
 	public VentanaEmpleadoPedidos() {
 		//Botones de perfil del empleado
-		horas = new JButton("HORAS");
-		perfil = new JButton("PERFIL");
+		//Boton horas
+		horas = new JButton();
+			horas.setIcon(new ImageIcon("horas.png"));
+			horas.setContentAreaFilled(false);
+			horas.setBorderPainted(false);
+			horas.setFocusPainted(false);
+		//Boton perfil
+		perfil = new JButton();
+			perfil.setIcon(new ImageIcon("perfil.png"));
+			perfil.setContentAreaFilled(false);
+			perfil.setBorderPainted(false);
+			perfil.setFocusPainted(false);
 		
 		//Boton atras
-		atras = new JButton("<--"); 
+		atras = new JButton();
+			atras.setIcon(new ImageIcon("volver.png"));
+			atras.setContentAreaFilled(false);
+			atras.setBorderPainted(false);
+			atras.setFocusPainted(false);
 		
 		//Paneles
 		arriba = new JPanel();
@@ -72,11 +87,14 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		add(centro4);
 		add(abajo);
 		
+		setIconImage(Toolkit.getDefaultToolkit().getImage("octocat.png"));
+		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Empleado Pedidos");
-		setSize(600,300);
+		setSize(1500,800);
 		setLayout(new GridLayout(6,1));
 		setVisible(true);
+		setResizable(false);
 
 	}
 	

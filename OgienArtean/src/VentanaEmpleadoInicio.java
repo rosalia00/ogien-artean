@@ -2,7 +2,7 @@ import java.awt.GridLayout;
 import javax.swing.*;
 
 public class VentanaEmpleadoInicio extends JFrame {
-	//Botonees opciones de empleado
+	//Botones opciones de empleado
 	JButton administrar;
 	JButton pedidos;
 	JButton registro;
