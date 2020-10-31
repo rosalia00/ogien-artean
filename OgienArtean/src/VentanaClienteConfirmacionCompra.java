@@ -24,6 +24,13 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		carro.setContentAreaFilled(false);
 		carro.setBorderPainted(false);
 		carro.setFocusPainted(false);
+		carro.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaMiCarro();
+				dispose();
+			}
+		});
 		
 		perfil = new JButton();
 		perfil.setIcon(new ImageIcon("perfil.png"));
