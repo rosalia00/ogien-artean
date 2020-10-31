@@ -1,4 +1,6 @@
 import java.awt.GridLayout;
+import java.awt.Toolkit;
+
 import javax.swing.*;
 
 public class VentanaEmpleadoInicio extends JFrame {
@@ -54,22 +56,33 @@ public class VentanaEmpleadoInicio extends JFrame {
 
 
 		arriba = new JPanel();
+		arriba.setOpaque(false);
 		abajo = new JPanel();
+		abajo.setOpaque(false);
 		
+		//Fondo
+		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
+		
+		//Añadir a los panels 
 		arriba.add(horas);
 		arriba.add(perfil);
-		abajo.add(administrar);
 		abajo.add(pedidos);
 		abajo.add(registro);
+		abajo.add(administrar);
 		
+		//Añadir a la pagina
 		add(arriba);
 		add(abajo);
 		
+		//Icono de paginas
+		setIconImage(Toolkit.getDefaultToolkit().getImage("octocat.ong"));
+		
+		//Final
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Empleado Inicio");
 		setSize(500, 300);
 		setLayout(new GridLayout(2,1));
-		
+		setResizable(false);
 		setVisible(true);
 	}
 }
