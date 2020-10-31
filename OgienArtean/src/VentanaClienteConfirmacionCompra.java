@@ -16,6 +16,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 	JPanel abajo;
 	
 	JOptionPane cancelarSeguro;
+	JOptionPane gracias;
 
 	public VentanaClienteConfirmacionCompra() {
 
@@ -68,6 +69,15 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		confirmar.setContentAreaFilled(false);
 		confirmar.setBorderPainted(false);
 		confirmar.setFocusPainted(false);
+		confirmar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gracias  = new JOptionPane();
+				gracias.setFocusable(false);
+				gracias.showMessageDialog(null, "¡Gracias por comprar en OGIEN ARTEAN!");
+				dispose();
+			}
+		});
 		
 
 		arriba = new JPanel();
