@@ -55,8 +55,11 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cancelarSeguro = new JOptionPane();
-				cancelarSeguro.showConfirmDialog(null, "¿QUIERE CANCELAR EL PEDIDO?", "CANCELAR", JOptionPane.YES_NO_OPTION);
-
+				int respuesta = cancelarSeguro.showConfirmDialog(null, "¿QUIERE CANCELAR EL PEDIDO?", "CANCELAR", JOptionPane.YES_NO_OPTION);
+				if (respuesta == cancelarSeguro.YES_OPTION) {
+					new VentanaClienteInicio();
+					dispose();
+				}
 			}
 		});
 		
