@@ -32,21 +32,76 @@ public class VentanaClienteInicio extends JFrame{
 		panaderia.setContentAreaFilled(false);
 		panaderia.setBorderPainted(false);
 		panaderia.setFocusPainted(false);
+		panaderia.setIcon(new ImageIcon("panaderia.png"));
+		panaderia.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaCompra a = new VentanaCompra();
+				dispose();
+				
+			}
+		});
 		
 		pasteleria = new JButton("Pastelería");
+		pasteleria.setContentAreaFilled(false);
+		pasteleria.setBorderPainted(false);
+		pasteleria.setFocusPainted(false);
+		pasteleria.setIcon(new ImageIcon("pasteleria.png"));
+		pasteleria.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaCompra a = new VentanaCompra();
+				dispose();
+				
+			}
+		});
+		
 		cocina = new JButton("Cocina");
+		cocina.setContentAreaFilled(false);
+		cocina.setBorderPainted(false);
+		cocina.setFocusPainted(false);
+		cocina.setIcon(new ImageIcon("cocina.png"));
+		cocina.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaCompra a = new VentanaCompra();
+				dispose();
+			}
+		});
 		
 		miCarro = new JButton();
 		miCarro.setContentAreaFilled(false);
 		miCarro.setBorderPainted(false);
 		miCarro.setFocusPainted(false);
 		miCarro.setIcon(new ImageIcon("carro.png"));
+		miCarro.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaMiCarro a = new VentanaMiCarro();
+				dispose();
+				
+			}
+		});
 		
 		perfil = new JButton();
 		perfil.setContentAreaFilled(false);
 		perfil.setBorderPainted(false);
 		perfil.setFocusPainted(false);
 		perfil.setIcon(new ImageIcon("perfil1.png"));
+		perfil.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				VentanaPerfil a = new VentanaPerfil();
+				dispose();
+				
+			}
+		});
 		
 		textoInicio = new JLabel("Seleccione que clase de producto desea comprar, por favor:");
 		
