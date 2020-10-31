@@ -53,6 +53,7 @@ public class VentanaPerfil extends JFrame{
 		add(datos);
 		add(pedidos);
 		
+		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Mi Perfil");
 		setSize(300, 400);

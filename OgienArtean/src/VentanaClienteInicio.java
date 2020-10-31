@@ -32,8 +32,17 @@ public class VentanaClienteInicio extends JFrame{
 		pasteleria = new JButton("Pastelería");
 		cocina = new JButton("Cocina");
 		
-		miCarro = new JButton("Mi Carro");
-		perfil = new JButton("Perfil");
+		miCarro = new JButton();
+		miCarro.setContentAreaFilled(false);
+		miCarro.setBorderPainted(false);
+		miCarro.setFocusPainted(false);
+		miCarro.setIcon(new ImageIcon("carro.png"));
+		
+		perfil = new JButton();
+		perfil.setContentAreaFilled(false);
+		perfil.setBorderPainted(false);
+		perfil.setFocusPainted(false);
+		perfil.setIcon(new ImageIcon("perfil1.png"));
 		
 		textoInicio = new JLabel("Seleccione que clase de producto desea comprar, por favor:");
 		
@@ -57,7 +66,7 @@ public class VentanaClienteInicio extends JFrame{
 		setTitle("Cliente Inicio");
 		setSize(600, 300);
 		setLayout(new GridLayout(3, 1, 0, 0));
-
+		
 		setVisible(true);
 		
 	}
