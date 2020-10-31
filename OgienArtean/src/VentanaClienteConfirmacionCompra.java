@@ -14,6 +14,8 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 	JPanel arriba;
 	JPanel centro;
 	JPanel abajo;
+	
+	JOptionPane cancelarSeguro;
 
 	public VentanaClienteConfirmacionCompra() {
 
@@ -45,8 +47,9 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		cancelar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				cancelarSeguro = new JOptionPane();
+				cancelarSeguro.showConfirmDialog(null, "¿QUIERE CANCELAR EL PEDIDO?", "CANCELAR", JOptionPane.YES_NO_OPTION);
+
 			}
 		});
 		
@@ -55,13 +58,6 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		confirmar.setContentAreaFilled(false);
 		confirmar.setBorderPainted(false);
 		confirmar.setFocusPainted(false);
-		confirmar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-		});
 		
 
 		arriba = new JPanel();
