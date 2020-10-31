@@ -37,6 +37,15 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		perfil.setBorderPainted(false);
 		perfil.setFocusPainted(false);
 		perfil.setIcon(new ImageIcon("perfil.png"));
+		perfil.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		
 		empleados = new JPanel();
 		empleados.setOpaque(false);
@@ -52,7 +61,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 			
 			empleadoPerfil.add(fotoEmpleado);
 			empleadoPerfil.add(nombreYApellidos);
-			empleadoPerfil.add(opcion);	
+			empleadoPerfil.add(opcion);
 			
 			empleados.setLayout(new GridLayout(2, 5));
 			empleados.add(empleadoPerfil);
