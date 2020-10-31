@@ -7,8 +7,8 @@ public class Main {
 		//VentanaCompra d = new VentanaCompra();
 		//VentanaClienteConfirmacionCompra z = new VentanaClienteConfirmacionCompra();
 		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
-		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
-		VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
+		VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
+		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
 	}
 	
 }
