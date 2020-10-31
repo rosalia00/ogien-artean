@@ -83,7 +83,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Confirmación compra");
-		setSize(1500, 800);
+		setSize(1000, 600);
 		setLayout(new GridLayout(3, 1, 0, 0));
 		setResizable(false);
 		setVisible(true);

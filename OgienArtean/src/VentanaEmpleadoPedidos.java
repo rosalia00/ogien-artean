@@ -122,7 +122,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 				
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Empleado Pedidos");
-		setSize(1500,800);
+		setSize(1000,600);
 		setLayout(new GridLayout(6,1));
 		setVisible(true);
 		setResizable(false);

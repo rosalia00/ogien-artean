@@ -146,7 +146,7 @@ public class VentanaCompra extends JFrame {
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("COMPRA");
-		setSize(1500, 800);
+		setSize(1000, 600);
 		setLayout(new GridLayout(8, 1));
 		setVisible(true);
 		setResizable(false);
