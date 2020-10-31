@@ -29,6 +29,10 @@ public class VentanaClienteInicio extends JFrame{
 	public VentanaClienteInicio() {
 		
 		panaderia = new JButton("Panadería");
+		panaderia.setContentAreaFilled(false);
+		panaderia.setBorderPainted(false);
+		panaderia.setFocusPainted(false);
+		
 		pasteleria = new JButton("Pastelería");
 		cocina = new JButton("Cocina");
 		

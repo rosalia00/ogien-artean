@@ -41,7 +41,9 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				VentanaPerfil a = new VentanaPerfil();
+				dispose();
 				
 			}
 		});
