@@ -33,7 +33,8 @@ public class VentanaEmpleadoInicio extends JFrame {
 			perfil.setContentAreaFilled(false);
 			perfil.setBorderPainted(false);
 			perfil.setFocusPainted(false);
-		
+
+
 		arriba = new JPanel();
 		abajo = new JPanel();
 		
