@@ -20,8 +20,19 @@ public class VentanaEmpleadoInicio extends JFrame {
 		pedidos = new JButton("Pedidos");
 		registro = new JButton("Registro");
 		
-		horas = new JButton("HORAS");
-		perfil = new JButton("PERFIL");
+		//Boton horas
+		horas = new JButton();
+			horas.setIcon(new ImageIcon("horas.png"));
+			horas.setContentAreaFilled(false);
+			horas.setBorderPainted(false);
+			horas.setFocusPainted(false);
+		
+		//Boton perfil
+		perfil = new JButton();
+			perfil.setIcon(new ImageIcon("perfil.png"));
+			perfil.setContentAreaFilled(false);
+			perfil.setBorderPainted(false);
+			perfil.setFocusPainted(false);
 		
 		arriba = new JPanel();
 		abajo = new JPanel();
@@ -37,7 +48,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Empleado Inicio");
-		setSize(600, 300);
+		setSize(1000, 600);
 		setLayout(new GridLayout(2,1));
 		
 		setVisible(true);

@@ -70,25 +70,25 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		
 		//Panel Centro 1
 		centro1 = new JPanel();
-		centro1.setLayout(new GridLayout(1,2));
+		centro1.setLayout(new GridLayout(1,6));
 		centro1.setOpaque(false);
 		//centro1.setMaximumSize(new Dimension(400,400));
 		
 		//Panel Centro 2
 		centro2 = new JPanel();
-		centro2.setLayout(new GridLayout(1,2));
+		centro2.setLayout(new GridLayout(1,6));
 		centro2.setOpaque(false);
 		//centro2.setMaximumSize(new Dimension(400,400));
 		
 		//Panel Centro 3
 		centro3 = new JPanel();
-		centro3.setLayout(new GridLayout(1,2));
+		centro3.setLayout(new GridLayout(1,6));
 		centro3.setOpaque(false);
 		//centro3.setMaximumSize(new Dimension(400,400));
 		
 		//Panel Centro 4
 		centro4 = new JPanel();
-		centro4.setLayout(new GridLayout(1,2));
+		centro4.setLayout(new GridLayout(1,6));
 		centro4.setOpaque(false);
 		//centro4.setMaximumSize(new Dimension(400,400));
 		
