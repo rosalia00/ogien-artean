@@ -32,20 +32,21 @@ public class VentanaEmpleadoPedidos extends JFrame{
 			horas.setContentAreaFilled(false);
 			horas.setBorderPainted(false);
 			horas.setFocusPainted(false);
+			
 		//Boton perfil
 		perfil = new JButton();
 			perfil.setIcon(new ImageIcon("perfil.png"));
 			perfil.setContentAreaFilled(false);
 			perfil.setBorderPainted(false);
 			perfil.setFocusPainted(false);
-		
+			
 		//Boton atras
 		atras = new JButton();
 			atras.setIcon(new ImageIcon("volver.png"));
 			atras.setContentAreaFilled(false);
 			atras.setBorderPainted(false);
 			atras.setFocusPainted(false);
-		
+			
 		//Paneles
 		//Panel Arriba
 		arriba = new JPanel();
