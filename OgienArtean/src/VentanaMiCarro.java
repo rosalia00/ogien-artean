@@ -24,6 +24,10 @@ public class VentanaMiCarro extends JFrame {
 		coso = new JTextPane();
 		
 		volver  = new JButton();
+		volver.setIcon(new ImageIcon("volver.png"));
+		volver.setContentAreaFilled(false);
+		volver.setBorderPainted(false);
+		volver.setFocusPainted(false);
 		
 		comprar = new JButton();
 		comprar.setIcon(new ImageIcon("comprar.png"));
@@ -39,6 +43,7 @@ public class VentanaMiCarro extends JFrame {
 		});
 		
 		abajo = new JPanel();
+		abajo.setOpaque(false);
 		
 		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
 		
