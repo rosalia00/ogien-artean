@@ -116,7 +116,7 @@ public class VentanaClienteInicio extends JFrame{
 		add(centro);
 		add(abajo);
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Cliente Inicio");

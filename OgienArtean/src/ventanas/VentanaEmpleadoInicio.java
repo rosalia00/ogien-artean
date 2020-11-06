@@ -94,7 +94,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 		add(abajo);
 		
 		//Icono de paginas
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.ong"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.ong"));
 		
 		//Final
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

@@ -79,7 +79,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		add(botones);
 		add(empleados);
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Administrar Empleados");
 		setSize(500, 300);
