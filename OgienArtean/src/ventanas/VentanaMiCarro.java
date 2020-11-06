@@ -1,4 +1,4 @@
-package ogienartean;
+package ventanas;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

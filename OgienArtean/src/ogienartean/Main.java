@@ -1,5 +1,7 @@
 package ogienartean;
 
+import ventanas.VentanaClienteInicio;
+
 public class Main {
 
 	public static void main(String[] args) {
