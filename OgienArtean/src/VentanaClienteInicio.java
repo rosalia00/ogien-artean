@@ -28,28 +28,25 @@ public class VentanaClienteInicio extends JFrame{
 	
 	public VentanaClienteInicio() {
 		
-		panaderia = new JButton("Panadería");
+		panaderia = new JButton();
 		panaderia.setContentAreaFilled(false);
 		panaderia.setBorderPainted(false);
 		panaderia.setFocusPainted(false);
-		panaderia.setIcon(new ImageIcon("panaderia.png"));
+		panaderia.setIcon(new ImageIcon("imagenes/panaderia.png"));
 		panaderia.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaCompra a = new VentanaCompra();
 				dispose();
-				
 			}
 		});
 		
-		pasteleria = new JButton("Pastelería");
+		pasteleria = new JButton();
 		pasteleria.setContentAreaFilled(false);
 		pasteleria.setBorderPainted(false);
 		pasteleria.setFocusPainted(false);
-		pasteleria.setIcon(new ImageIcon("pasteleria.png"));
+		pasteleria.setIcon(new ImageIcon("imagenes/pasteleria.png"));
 		pasteleria.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaCompra a = new VentanaCompra();
@@ -58,13 +55,12 @@ public class VentanaClienteInicio extends JFrame{
 			}
 		});
 		
-		cocina = new JButton("Cocina");
+		cocina = new JButton();
 		cocina.setContentAreaFilled(false);
 		cocina.setBorderPainted(false);
 		cocina.setFocusPainted(false);
-		cocina.setIcon(new ImageIcon("cocina.png"));
+		cocina.setIcon(new ImageIcon("imagenes/cocina.png"));
 		cocina.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaCompra a = new VentanaCompra();
@@ -76,14 +72,12 @@ public class VentanaClienteInicio extends JFrame{
 		miCarro.setContentAreaFilled(false);
 		miCarro.setBorderPainted(false);
 		miCarro.setFocusPainted(false);
-		miCarro.setIcon(new ImageIcon("carro.png"));
+		miCarro.setIcon(new ImageIcon("imagenes/carro.png"));
 		miCarro.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaMiCarro a = new VentanaMiCarro();
 				dispose();
-				
 			}
 		});
 		
@@ -91,23 +85,25 @@ public class VentanaClienteInicio extends JFrame{
 		perfil.setContentAreaFilled(false);
 		perfil.setBorderPainted(false);
 		perfil.setFocusPainted(false);
-		perfil.setIcon(new ImageIcon("perfil1.png"));
+		perfil.setIcon(new ImageIcon("imagenes/perfil1.png"));
 		perfil.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				VentanaPerfil a = new VentanaPerfil();
 				dispose();
-				
 			}
 		});
 		
 		textoInicio = new JLabel("Seleccione que clase de producto desea comprar, por favor:");
 		
 		arriba = new JPanel();
+		arriba.setOpaque(false);
 		centro = new JPanel();
+		centro.setOpaque(false);
 		abajo = new JPanel();
+		abajo.setOpaque(false);
+		
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		
 		abajo.add(panaderia);
 		abajo.add(pasteleria);
@@ -120,6 +116,8 @@ public class VentanaClienteInicio extends JFrame{
 		add(centro);
 		add(abajo);
 		
+		
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.png"));
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Cliente Inicio");

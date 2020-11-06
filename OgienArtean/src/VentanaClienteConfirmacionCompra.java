@@ -21,7 +21,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 	public VentanaClienteConfirmacionCompra() {
 
 		carro = new JButton();
-		carro.setIcon(new ImageIcon("carro.png"));
+		carro.setIcon(new ImageIcon("imagenes/carro.png"));
 		carro.setContentAreaFilled(false);
 		carro.setBorderPainted(false);
 		carro.setFocusPainted(false);
@@ -34,7 +34,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		});
 		
 		perfil = new JButton();
-		perfil.setIcon(new ImageIcon("perfil.png"));
+		perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
 		perfil.setContentAreaFilled(false);
 		perfil.setBorderPainted(false);
 		perfil.setFocusPainted(false);
@@ -48,7 +48,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		
 		coso = new JTextPane();
 		cancelar = new JButton();
-		cancelar.setIcon(new ImageIcon("cancelar.png"));
+		cancelar.setIcon(new ImageIcon("imagenes/cancelar.png"));
 		cancelar.setContentAreaFilled(false);
 		cancelar.setBorderPainted(false);
 		cancelar.setFocusPainted(false);
@@ -65,7 +65,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		});
 		
 		confirmar = new JButton();
-		confirmar.setIcon(new ImageIcon("confirmar.png"));
+		confirmar.setIcon(new ImageIcon("imagenes/confirmar.png"));
 		confirmar.setContentAreaFilled(false);
 		confirmar.setBorderPainted(false);
 		confirmar.setFocusPainted(false);
@@ -93,13 +93,13 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		abajo.add(cancelar);
 		abajo.add(confirmar);
 		
-		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
 		add(arriba);
 		add(centro);
 		add(abajo);
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage("octocat.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.png"));
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Confirmación compra");
