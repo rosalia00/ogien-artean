@@ -13,7 +13,7 @@ public class Main {
 		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
 		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
 		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
-		VentanaClienteInicio a = new VentanaClienteInicio();
+		//VentanaClienteInicio a = new VentanaClienteInicio();
 		//VentanaPerfil a = new VentanaPerfil();
 	}
 	
