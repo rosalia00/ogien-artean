@@ -16,7 +16,7 @@ public class VentanaMiCarro extends JFrame {
 	public VentanaMiCarro() {
 		
 		nombre = new JButton();
-		nombre.setIcon(new ImageIcon("carro.png"));
+		nombre.setIcon(new ImageIcon("imagenes/carro.png"));
 		nombre.setContentAreaFilled(false);
 		nombre.setBorderPainted(false);
 		nombre.setFocusPainted(false);
@@ -24,13 +24,13 @@ public class VentanaMiCarro extends JFrame {
 		coso = new JTextPane();
 		
 		volver  = new JButton();
-		volver.setIcon(new ImageIcon("volver.png"));
+		volver.setIcon(new ImageIcon("imagenes/volver.png"));
 		volver.setContentAreaFilled(false);
 		volver.setBorderPainted(false);
 		volver.setFocusPainted(false);
 		
 		comprar = new JButton();
-		comprar.setIcon(new ImageIcon("comprar.png"));
+		comprar.setIcon(new ImageIcon("imagenes/comprar.png"));
 		comprar.setContentAreaFilled(false);
 		comprar.setBorderPainted(false);
 		comprar.setFocusPainted(false);
@@ -45,7 +45,7 @@ public class VentanaMiCarro extends JFrame {
 		abajo = new JPanel();
 		abajo.setOpaque(false);
 		
-		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		
 		abajo.add(volver);
 		abajo.add(comprar);
@@ -53,7 +53,7 @@ public class VentanaMiCarro extends JFrame {
 		add(coso);
 		add(abajo);
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage("octocat.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.png"));
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("MI CARRO");

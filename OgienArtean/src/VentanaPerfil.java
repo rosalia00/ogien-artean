@@ -57,7 +57,7 @@ public class VentanaPerfil extends JFrame{
 				}
 			});
 		}
-		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		add(tituloPanel);
 		add(datos);
 		add(pedidos);

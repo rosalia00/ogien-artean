@@ -29,7 +29,7 @@ public class VentanaCompra extends JFrame {
 	public VentanaCompra() {
 
 		carro = new JButton();
-		carro.setIcon(new ImageIcon("carro.png"));
+		carro.setIcon(new ImageIcon("imagenes/carro.png"));
 		carro.setContentAreaFilled(false);
 		carro.setBorderPainted(false);
 		carro.setFocusPainted(false);
@@ -42,7 +42,7 @@ public class VentanaCompra extends JFrame {
 		});
 
 		perfil = new JButton();
-		perfil.setIcon(new ImageIcon("perfil.png"));
+		perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
 		perfil.setContentAreaFilled(false);
 		perfil.setBorderPainted(false);
 		perfil.setFocusPainted(false);
@@ -55,7 +55,7 @@ public class VentanaCompra extends JFrame {
 		});
 
 		comprar = new JButton();
-		comprar.setIcon(new ImageIcon("comprar.png"));
+		comprar.setIcon(new ImageIcon("imagenes/comprar.png"));
 		comprar.setContentAreaFilled(false);
 		comprar.setBorderPainted(false);
 		comprar.setFocusPainted(false);
@@ -68,7 +68,7 @@ public class VentanaCompra extends JFrame {
 		});
 
 		volver = new JButton();
-		volver.setIcon(new ImageIcon("volver.png"));
+		volver.setIcon(new ImageIcon("imagenes/volver.png"));
 		volver.setContentAreaFilled(false);
 		volver.setBorderPainted(false);
 		volver.setFocusPainted(false);
@@ -135,7 +135,7 @@ public class VentanaCompra extends JFrame {
 			centro22.add(itemSpinner0);
 		}
 
-		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
 		abajo.add(volver);
 		abajo.add(comprar);
@@ -149,7 +149,7 @@ public class VentanaCompra extends JFrame {
 		add(centro22);
 		add(abajo);
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("octocat.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.png"));
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("COMPRA");

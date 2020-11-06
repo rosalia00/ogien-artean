@@ -30,14 +30,14 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		//Botones de perfil del empleado
 		//Boton horas
 		horas = new JButton();
-			horas.setIcon(new ImageIcon("horas.png"));
+			horas.setIcon(new ImageIcon("imagenes/horas.png"));
 			horas.setContentAreaFilled(false);
 			horas.setBorderPainted(false);
 			horas.setFocusPainted(false);
 			
 		//Boton perfil
 		perfil = new JButton();
-			perfil.setIcon(new ImageIcon("perfil.png"));
+			perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
 			perfil.setContentAreaFilled(false);
 			perfil.setBorderPainted(false);
 			perfil.setFocusPainted(false);
@@ -51,7 +51,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 			
 		//Boton atras
 		atras = new JButton();
-			atras.setIcon(new ImageIcon("volver.png"));
+			atras.setIcon(new ImageIcon("imagenes/volver.png"));
 			atras.setContentAreaFilled(false);
 			atras.setBorderPainted(false);
 			atras.setFocusPainted(false);
@@ -123,7 +123,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		}
 		
 		//Fondo 
-		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 				
 		//Añadir paneles
 		add(arriba);
@@ -134,7 +134,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		add(abajo);
 				
 		//Icono de pagina
-		setIconImage(Toolkit.getDefaultToolkit().getImage("octocat.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.png"));
 				
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Empleado Pedidos");

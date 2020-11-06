@@ -30,13 +30,13 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		horas.setContentAreaFilled(false);
 		horas.setBorderPainted(false);
 		horas.setFocusPainted(false);
-		horas.setIcon(new ImageIcon("horas.png"));
+		horas.setIcon(new ImageIcon("imagenes/horas.png"));
 		
 		perfil = new JButton();
 		perfil.setContentAreaFilled(false);
 		perfil.setBorderPainted(false);
 		perfil.setFocusPainted(false);
-		perfil.setIcon(new ImageIcon("perfil.png"));
+		perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
 		perfil.addActionListener(new ActionListener() {
 			
 			@Override
@@ -68,7 +68,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 			empleados.setLayout(new GridLayout(2, 5));
 			empleados.add(empleadoPerfil);
 		} 
-		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		
 		botones = new JPanel(new FlowLayout());
 		botones.add(horas);
@@ -78,7 +78,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		add(botones);
 		add(empleados);
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage("octocat.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Administrar Empleados");
 		setSize(500, 300);

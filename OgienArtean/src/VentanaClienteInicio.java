@@ -51,7 +51,6 @@ public class VentanaClienteInicio extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VentanaCompra a = new VentanaCompra();
 				dispose();
-				
 			}
 		});
 		
@@ -85,7 +84,7 @@ public class VentanaClienteInicio extends JFrame{
 		perfil.setContentAreaFilled(false);
 		perfil.setBorderPainted(false);
 		perfil.setFocusPainted(false);
-		perfil.setIcon(new ImageIcon("imagenes/perfil1.png"));
+		perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
 		perfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -116,12 +115,11 @@ public class VentanaClienteInicio extends JFrame{
 		add(centro);
 		add(abajo);
 		
-		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.png"));
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Cliente Inicio");
-		setSize(600, 300);
+		setSize(1000, 600);
 		setLayout(new GridLayout(3, 1, 0, 0));
 		
 		setVisible(true);

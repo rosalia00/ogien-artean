@@ -22,7 +22,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 	public VentanaEmpleadoInicio() {
 		//Boton administrar
 		administrar = new JButton();
-			administrar.setIcon(new ImageIcon("administracion.png"));
+			administrar.setIcon(new ImageIcon("imagenes/administracion.png"));
 			administrar.setContentAreaFilled(false);
 			administrar.setBorderPainted(false);
 			administrar.setFocusPainted(false);
@@ -37,7 +37,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 			
 		//Boton pedidos
 		pedidos = new JButton();
-			pedidos.setIcon(new ImageIcon("pedidos.png"));
+			pedidos.setIcon(new ImageIcon("imagenes/pedidos.png"));
 			pedidos.setContentAreaFilled(false);
 			pedidos.setBorderPainted(false);
 			pedidos.setFocusPainted(false);
@@ -51,7 +51,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 		
 		//Boton registro
 		registro = new JButton();
-			registro.setIcon(new ImageIcon("registro.png"));
+			registro.setIcon(new ImageIcon("imagenes/registro.png"));
 			registro.setContentAreaFilled(false);
 			registro.setBorderPainted(false);
 			registro.setFocusPainted(false);
@@ -60,14 +60,14 @@ public class VentanaEmpleadoInicio extends JFrame {
 		
 		//Boton horas
 		horas = new JButton();
-			horas.setIcon(new ImageIcon("horas1.png"));
+			horas.setIcon(new ImageIcon("imagenes/horas1.png"));
 			horas.setContentAreaFilled(false);
 			horas.setBorderPainted(false);
 			horas.setFocusPainted(false);
 		
 		//Boton perfil
 		perfil = new JButton();
-			perfil.setIcon(new ImageIcon("perfil1.png"));
+			perfil.setIcon(new ImageIcon("imagenes/perfil1.png"));
 			perfil.setContentAreaFilled(false);
 			perfil.setBorderPainted(false);
 			perfil.setFocusPainted(false);
@@ -79,7 +79,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 		abajo.setOpaque(false);
 		
 		//Fondo
-		setContentPane(new JLabel(new ImageIcon("fondo3.png")));
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		
 		//Añadir a los panels 
 		arriba.add(horas);
@@ -93,7 +93,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 		add(abajo);
 		
 		//Icono de paginas
-		setIconImage(Toolkit.getDefaultToolkit().getImage("octocat.ong"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat.ong"));
 		
 		//Final
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
