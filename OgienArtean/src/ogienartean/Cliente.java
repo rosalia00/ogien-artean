@@ -1,3 +1,4 @@
+package ogienartean;
 
 public class Cliente extends Persona {
 	int tarjeta;
@@ -19,7 +20,7 @@ public class Cliente extends Persona {
 		this.entrega = entrega;
 	}
 
-	protected Cliente(String nombre, String apellido, int dni, String direccion, int telefono, int tarjeta,
+	public Cliente(String nombre, String apellido, int dni, String direccion, int telefono, int tarjeta,
 			Boolean entrega) {
 		super(nombre, apellido, dni, direccion, telefono);
 		this.tarjeta = tarjeta;

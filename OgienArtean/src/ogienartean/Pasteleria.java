@@ -1,3 +1,4 @@
+package ogienartean;
 
 public class Pasteleria extends Producto {
 	String tipo;

@@ -1,3 +1,4 @@
+package ogienartean;
 
 public class Empleado extends Persona {
 	String tipo;

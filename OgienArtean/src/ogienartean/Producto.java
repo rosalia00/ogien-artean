@@ -1,3 +1,4 @@
+package ogienartean;
 
 public class Producto {
 	String nombre;

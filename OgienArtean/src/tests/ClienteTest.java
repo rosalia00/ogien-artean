@@ -1,5 +1,7 @@
-import static org.junit.Assert.*;
+package tests;
 
+import ogienartean.Cliente;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ClienteTest {

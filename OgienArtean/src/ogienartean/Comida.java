@@ -1,3 +1,4 @@
+package ogienartean;
 
 public class Comida extends Producto {
 	String tipo;

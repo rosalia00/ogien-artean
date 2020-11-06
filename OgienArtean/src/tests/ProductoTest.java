@@ -1,6 +1,10 @@
+package tests;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import ogienartean.Producto;
 
 public class ProductoTest {
 	
