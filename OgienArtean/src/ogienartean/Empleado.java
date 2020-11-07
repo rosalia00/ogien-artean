@@ -1,42 +1,40 @@
 package ogienartean;
 
 public class Empleado extends Persona {
-	String tipo;
 	double nomina;
-
-	public String getTipo() {
-		return tipo;
-	}
+	String usuario;
+	String contraseña;
 
 	public double getNomina() {
 		return nomina;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public String getContraseña() {
+		return contraseña;
 	}
 
 	public void setNomina(double nomina) {
 		this.nomina = nomina;
 	}
 
-	public Empleado(String nombre, String apellido, int dni, String direccion, int telefono, String tipo,
-			double nomina) {
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+
+	public Empleado(String nombre, String apellido, int dni, String direccion, int telefono, double nomina,
+			String usuario, String contraseña) {
 		super(nombre, apellido, dni, direccion, telefono);
-		this.tipo = tipo;
 		this.nomina = nomina;
-	}
-
-	public Empleado() {
-		super();
-		this.tipo = "";
-		this.nomina = 0.0;
-	}
-
-	@Override
-	public String toString() {
-		return "Empleado [tipo=" + tipo + ", nomina=" + nomina + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", dni=" + dni + ", direccion=" + direccion + ", telefono=" + telefono + "]";
+		this.usuario = usuario;
+		this.contraseña = contraseña;
 	}
 
 }
