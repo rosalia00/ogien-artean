@@ -7,31 +7,44 @@ import org.junit.Test;
 import ogienartean.Empleado;
 
 public class EmpleadoTest {
-
-	@Test
-	public void testGetTipo() {
-		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, "Cajero", 1000000.0);
-		assertEquals("Cajero", e.getTipo());
-	}
 	
 	@Test
 	public void testGetNomina() {
-		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, "Cajero", 1000000.0);
+		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234");
 		assertEquals(1000000.0, e.getNomina(), 0);
 	}
-
+	
 	@Test
-	public void testSetTipo() {
-		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, "Cajero", 1000000.0);
-		e.setTipo("Limpiador");
-		assertEquals("Limpiador", e.getTipo());
+	public void testGetUsuario() {
+		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234");
+		assertEquals("peter", e.getUsuario());
+	}
+	
+	@Test
+	public void testGetContraseña() {
+		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234");
+		assertEquals("1234", e.getContraseña());
 	}
 
 	@Test
 	public void testSetNomina() {
-		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, "Cajero", 1000000.0);
+		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234");
 		e.setNomina(0.0);
 		assertEquals(0.0, e.getNomina(), 0);
+	}
+	
+	@Test
+	public void testSetUsuario() {
+		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234");
+		e.setUsuario("retep");
+		assertEquals("retep", e.getUsuario());
+	}
+	
+	@Test
+	public void testSetContraseña() {
+		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234");
+		e.setContraseña("4321");
+		assertEquals("4321", e.getContraseña());
 	}
 
 }
