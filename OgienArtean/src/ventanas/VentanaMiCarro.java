@@ -61,6 +61,7 @@ public class VentanaMiCarro extends JFrame {
 		setSize(550, 550);
 		setLayout(new GridLayout(3, 1));
 		setVisible(true);
+		setLocationRelativeTo(null);
 		setResizable(false);
 		
 	}

@@ -1,16 +1,13 @@
 package ogienartean;
 
-import ventanas.VentanaClienteConfirmacionCompra;
-import ventanas.VentanaClienteInicio;
-import ventanas.VentanaLoginEmpleado;
-import ventanas.VentanaMiCarro;
+import ventanas.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		VentanaLoginEmpleado i = new VentanaLoginEmpleado();
+		//VentanaLoginEmpleado i = new VentanaLoginEmpleado();
 		//VentanaMiCarro f = new VentanaMiCarro();
 		//VentanaCompra d = new VentanaCompra();
 		//VentanaClienteConfirmacionCompra z = new VentanaClienteConfirmacionCompra();

@@ -107,6 +107,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		setSize(1000, 600);
 		setLayout(new GridLayout(3, 1, 0, 0));
 		setResizable(false);
+		setLocationRelativeTo(null);
 		setVisible(true);
 
 	}

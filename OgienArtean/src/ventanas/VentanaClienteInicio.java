@@ -122,6 +122,7 @@ public class VentanaClienteInicio extends JFrame{
 		setTitle("Cliente Inicio");
 		setSize(1000, 600);
 		setLayout(new GridLayout(3, 1, 0, 0));
+		setLocationRelativeTo(null);
 		
 		setVisible(true);
 		

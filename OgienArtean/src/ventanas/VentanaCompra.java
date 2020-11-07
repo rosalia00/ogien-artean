@@ -157,6 +157,7 @@ public class VentanaCompra extends JFrame {
 		setSize(1000, 600);
 		setLayout(new GridLayout(8, 1));
 		setVisible(true);
+		setLocationRelativeTo(null);
 		setResizable(false);
 
 	}

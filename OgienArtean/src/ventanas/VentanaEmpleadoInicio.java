@@ -102,6 +102,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 		setSize(500, 300);
 		setLayout(new GridLayout(2,1));
 		setResizable(false);
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 }

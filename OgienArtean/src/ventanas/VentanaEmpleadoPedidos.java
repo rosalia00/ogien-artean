@@ -142,6 +142,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		setSize(1000,600);
 		setLayout(new GridLayout(6,1));
 		setVisible(true);
+		setLocationRelativeTo(null);
 		setResizable(false);
 
 	}

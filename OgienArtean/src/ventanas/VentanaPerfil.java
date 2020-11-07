@@ -67,6 +67,7 @@ public class VentanaPerfil extends JFrame{
 		setTitle("Mi Perfil");
 		setSize(300, 400);
 		setLayout(new GridLayout(3, 1));
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 }
