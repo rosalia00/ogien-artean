@@ -3,12 +3,17 @@ package ventanas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -35,6 +40,10 @@ public class VentanaLoginEmpleado extends JFrame {
 	private JLabel labelDecorativo;
 
 	private static String usuarioEscogido;
+	private String usuarioGuardado;
+	private String contraseñaGuardada;
+
+	private static VentanaEmpleadoInicio vei;
 
 	public VentanaLoginEmpleado() {
 
@@ -46,9 +55,11 @@ public class VentanaLoginEmpleado extends JFrame {
 		setLocationRelativeTo(null);
 		setBackground(Color.WHITE);
 
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+
 		panelDecorativo = new JPanel();
 		panelDecorativo.setLayout(new GridLayout(1, 1));
-		panelDecorativo.setBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0)); // TOC
+		panelDecorativo.setBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0));
 		labelDecorativo = new JLabel(new ImageIcon("imagenes/octocat.png"));
 		panelDecorativo.setBackground(Color.WHITE);
 		panelDecorativo.add(labelDecorativo);
@@ -81,6 +92,22 @@ public class VentanaLoginEmpleado extends JFrame {
 		panelBotonera = new JPanel();
 		aceptar = new JButton("Iniciar Sesión");
 		aceptar.setEnabled(false);
+
+		aceptar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (comprobar()) {
+					vei = new VentanaEmpleadoInicio();
+					dispose();
+				} else {
+					JOptionPane op = new JOptionPane();
+					op.showMessageDialog(null,
+							"Su usuario o contraseña no coinciden. Si cree que se trata de error contacte con el administrador.",
+							"ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+
 		panelBotonera.add(aceptar);
 		panelBotonera.setBackground(new Color(149, 194, 197));
 		panelDatos.add(panelBotonera);
@@ -114,7 +141,6 @@ public class VentanaLoginEmpleado extends JFrame {
 		});
 
 		setVisible(true);
-
 	}
 
 	public void changed() {
@@ -124,6 +150,36 @@ public class VentanaLoginEmpleado extends JFrame {
 		} else {
 			aceptar.setEnabled(true);
 		}
+	};
+
+	public boolean comprobar() {
+
+		try {
+			Class.forName("org.sqlite.JDBC");
+
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+			Statement stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery("Select * from EMPLEADO");
+
+			while (rs.next()) {
+
+				usuarioGuardado = rs.getString("USUARIO");
+				contraseñaGuardada = rs.getString("CONTRASEÑA");
+
+				if (usuarioGuardado.equals(usuario.getText()) && contraseñaGuardada.equals(contraseña.getText())) {
+					usuarioEscogido = usuarioGuardado;
+					return true;
+				}
+			}
+
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }
