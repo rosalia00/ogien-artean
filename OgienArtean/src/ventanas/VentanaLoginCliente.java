@@ -1,5 +1,8 @@
 package ventanas;
 
-public class VentanaLoginCliente {
+import javax.swing.JTextField;
 
+public class VentanaLoginCliente {
+	private JTextField usuario;
+	
 }
