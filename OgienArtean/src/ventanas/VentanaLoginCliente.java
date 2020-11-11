@@ -2,8 +2,12 @@ package ventanas;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 
 
@@ -85,7 +89,79 @@ public class VentanaLoginCliente extends JFrame {
 		panelContraseña.setBackground(new Color(149,194,197));
 		panelDatos.add(panelContraseña);
 		
+		//Configuración Paneles Botones
+		panelBotones = new JPanel();
+		aceptar = new JButton("Iniciar Sesión");
+		aceptar.setEnabled(false);
+		//Funcion aceptar boton aceptar
+		aceptar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (comprobar()) {
+					vio = new VentanaClienteInicio();
+					dispose();
+				} else {
+					JOptionPane op = new JOptionPane();
+					op.showMessageDialog(null,  "Su usuario o contraseña no coinciden. Si cree que se trata de error contacte con el administrador.", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				
+			}
+		});
+		
+		panelBotones.add(aceptar);
+		panelBotones.setBackground(new Color(149));
+		panelDatos.add(panelBotones);
+		
+		//Configuracion Usuario
+		usuario.getDocument().addDocumentListener(new DocumentListener() {
+			
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				changed();
+				
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				changed();
+				
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				changed();
+				
+			}
+		});
+		
+		//Configuracion contraseña
+		contraseña.getDocument().addDocumentListener(new DocumentListener() {
+			
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				changed();
+				
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				changed();
+				
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				changed();
+				
+			}
+		});
+		
+		setVisible(true);
+		
+		}
+		
 
 	}
 	
-}
+
