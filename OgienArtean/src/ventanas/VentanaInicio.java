@@ -15,7 +15,7 @@ public class VentanaInicio extends JFrame{
 	
 	public VentanaInicio() {
 		
-		cliente = new JButton("cliente");
+		cliente = new JButton();
 		cliente.setContentAreaFilled(false);
 		cliente.setBorderPainted(false);
 		cliente.setFocusPainted(false);
@@ -28,7 +28,7 @@ public class VentanaInicio extends JFrame{
 			}
 		});
 		
-		empleado = new JButton("empleado");
+		empleado = new JButton();
 		empleado.setContentAreaFilled(false);
 		empleado.setBorderPainted(false);
 		empleado.setFocusPainted(false);
