@@ -37,7 +37,7 @@ public class VentanaInicio extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaClienteInicio a = new VentanaClienteInicio();
+				VentanaLoginEmpleado a = new VentanaLoginEmpleado();
 			}
 		});
 		
