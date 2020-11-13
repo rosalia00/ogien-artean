@@ -10,11 +10,22 @@ import javax.swing.*;
 
 public class VentanaInicio extends JFrame{
 	
-	JButton Cliente;
-	JButton Empleado;
+	JButton cliente;
+	JButton empleado;
 	
 	public VentanaInicio() {
 		
+		cliente = new JButton();
+		cliente.setContentAreaFilled(false);
+		cliente.setBorderPainted(false);
+		cliente.setFocusPainted(false);
+		cliente.setIcon(new ImageIcon("imagenes/cliente.png"));
+		
+		empleado = new JButton();
+		empleado.setContentAreaFilled(false);
+		empleado.setBorderPainted(false);
+		empleado.setFocusPainted(false);
+		empleado.setIcon(new ImageIcon("imagenes/empleado.png"));
 	}
 
 }
