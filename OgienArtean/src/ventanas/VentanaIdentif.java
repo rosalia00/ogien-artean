@@ -14,11 +14,24 @@ public class VentanaIdentif extends JFrame{
 	
 	public VentanaIdentif(String d) {
 		
-		iniciarSesion = new JButton();
+		iniciarSesion = new JButton("a");
 		iniciarSesion.setContentAreaFilled(false);
 		iniciarSesion.setBorderPainted(false);
 		iniciarSesion.setFocusPainted(false);
 		iniciarSesion.setIcon(new ImageIcon("imagenes/iniciarSesion.png"));
+		iniciarSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println(d);
+				if(d == "empleado") {
+					VentanaLoginEmpleado a = new VentanaLoginEmpleado();
+				} else if(d == "cliente") {
+					VentanaClienteInicio b = new VentanaClienteInicio();
+				}
+			}
+		});
 		
 		registrarse = new JButton();
 		registrarse.setContentAreaFilled(false);

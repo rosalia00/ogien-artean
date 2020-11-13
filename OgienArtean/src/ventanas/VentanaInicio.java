@@ -15,7 +15,7 @@ public class VentanaInicio extends JFrame{
 	
 	public VentanaInicio() {
 		
-		cliente = new JButton();
+		cliente = new JButton("cliente");
 		cliente.setContentAreaFilled(false);
 		cliente.setBorderPainted(false);
 		cliente.setFocusPainted(false);
@@ -24,11 +24,11 @@ public class VentanaInicio extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaClienteInicio a = new VentanaClienteInicio();			
+				VentanaIdentif a = new VentanaIdentif("cliente");			
 			}
 		});
 		
-		empleado = new JButton();
+		empleado = new JButton("empleado");
 		empleado.setContentAreaFilled(false);
 		empleado.setBorderPainted(false);
 		empleado.setFocusPainted(false);
@@ -37,7 +37,7 @@ public class VentanaInicio extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaLoginEmpleado a = new VentanaLoginEmpleado();
+				VentanaIdentif a = new VentanaIdentif("empleado");
 			}
 		});
 		
