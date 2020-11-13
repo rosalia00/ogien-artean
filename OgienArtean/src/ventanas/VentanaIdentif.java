@@ -24,11 +24,10 @@ public class VentanaIdentif extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println(d);
 				if(d == "empleado") {
 					VentanaLoginEmpleado a = new VentanaLoginEmpleado();
 				} else if(d == "cliente") {
-					VentanaClienteInicio b = new VentanaClienteInicio();
+					VentanaLoginEmpleado b = new VentanaLoginEmpleado();
 				}
 			}
 		});
@@ -38,6 +37,14 @@ public class VentanaIdentif extends JFrame{
 		registrarse.setBorderPainted(false);
 		registrarse.setFocusPainted(false);
 		registrarse.setIcon(new ImageIcon("imagenes/registrarse.png"));
+		registrarse.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		
