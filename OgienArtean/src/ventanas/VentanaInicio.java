@@ -27,11 +27,16 @@ public class VentanaInicio extends JFrame{
 		empleado.setFocusPainted(false);
 		empleado.setIcon(new ImageIcon("imagenes/empleado.png"));
 		
+		add(cliente);
+		add(empleado);
 		
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
+		
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Inicio");
-		setSize(1000, 600);
+		setSize(500, 250);
 		setLayout(new FlowLayout());
 		setLocationRelativeTo(null);
 		
