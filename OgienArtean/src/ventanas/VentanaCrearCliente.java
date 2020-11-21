@@ -5,6 +5,9 @@ import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -152,6 +155,17 @@ public class VentanaCrearCliente extends JFrame {
 					Cliente c = new Cliente(nombreTexto.getText(), apellidoTexto.getText(), Integer.parseInt(dniTexto.getText()), 
 								direccionTexto.getText(), Integer.parseInt(telefonoTexto.getText()), Integer.parseInt(tarjetaTexto.getText()), entregaButton.isSelected(), 
 								usuarioTexto.getText(), contraseñaTexto.getText());
+
+					Class.forName("org.sqlite.JDBC");
+					
+					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+					Statement stmt = (Statement) conn.createStatement();
+					String instruccion = "INSERT INTO CLIENTE VALUES(" + c.getNombre() + "," + c.getApellido() + "," + 
+					c.getDni() + "," + c.getDireccion() + "," + c.getTelefono() + "," + c.getTarjeta() + "," + c.getEntrega() + "," + 
+					c.getUsuario() + "," + c.getContraseña() + ");";
+					
+					int rs = stmt.executeUpdate(instruccion);
+					
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
