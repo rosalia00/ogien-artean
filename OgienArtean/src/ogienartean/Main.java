@@ -7,7 +7,8 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		VentanaCrearCliente as = new VentanaCrearCliente();
+		//VentanaCrearCliente as = new VentanaCrearCliente();
+		VentanaCrearEmpleado asd = new VentanaCrearEmpleado();
 		//VentanaLoginEmpleado i = new VentanaLoginEmpleado();
 		//VentanaMiCarro f = new VentanaMiCarro();
 		//VentanaCompra d = new VentanaCompra();

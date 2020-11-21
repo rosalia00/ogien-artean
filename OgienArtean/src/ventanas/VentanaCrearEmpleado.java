@@ -143,12 +143,18 @@ public class VentanaCrearEmpleado extends JFrame {
 
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 					Statement stmt = (Statement) conn.createStatement();
-					String instruccion = "INSERT INTO EMPLEADOS VALUES(" + empleado.getNombre() + ", "
-							+ empleado.getApellido() + "," + empleado.getDni() + "," + empleado.getDireccion() + ","
-							+ empleado.getTelefono() + "," + empleado.getUsuario() + "," + empleado.getContraseña()
+					String instruccion = "INSERT INTO EMPLEADO VALUES(" + "'"+empleado.getNombre()+"'" + ", "
+							+ "'"+empleado.getApellido()+"'" + "," + empleado.getDni() + "," + "'"+empleado.getDireccion()+"'" + ","
+							+ empleado.getTelefono() + "," + empleado.getNomina() + ","+ "'"+empleado.getUsuario()+"'" + "," + "'"+empleado.getContraseña()+"'"
 							+ ");";
 					
-					int rs = stmt.executeUpdate(instruccion);
+					System.out.println(instruccion);
+					
+					stmt.executeUpdate(instruccion);
+					
+					stmt.close();
+					conn.commit();
+					conn.close();
 
 				} catch (Exception e2) {
 					// TODO: handle exception
