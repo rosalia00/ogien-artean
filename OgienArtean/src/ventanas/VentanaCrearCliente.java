@@ -10,7 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+
+import ogienartean.Cliente;
 
 public class VentanaCrearCliente extends JFrame {
 
@@ -38,7 +42,7 @@ public class VentanaCrearCliente extends JFrame {
 	private JLabel tarjetaLabel;
 	private JPanel tarjetaPanel;
 	
-	private JTextField entregaTexto;
+	private JRadioButton entregaButton;
 	private JLabel entregaLabel;
 	private JPanel entregaPanel;
 	
@@ -85,9 +89,9 @@ public class VentanaCrearCliente extends JFrame {
 		tarjetaLabel = new JLabel("TARJETA: ");
 		tarjetaPanel = new JPanel();
 
-		entregaTexto = new JTextField();
-		entregaTexto.setPreferredSize(new Dimension(250, 20));
-		entregaLabel = new JLabel("ENTREGA: ");
+		entregaButton = new JRadioButton();
+		entregaButton.setPreferredSize(new Dimension(250, 20));
+		entregaLabel = new JLabel("ENTREGA");
 		entregaPanel = new JPanel();
 		
 
@@ -123,7 +127,7 @@ public class VentanaCrearCliente extends JFrame {
 		tarjetaPanel.add(tarjetaTexto);
 		add(tarjetaPanel);
 		entregaPanel.add(entregaLabel);
-		entregaPanel.add(entregaTexto);
+		entregaPanel.add(entregaButton);
 		add(entregaPanel);
 		usuarioPanel.add(usuarioLabel);
 		usuarioPanel.add(usuarioTexto);
@@ -140,7 +144,19 @@ public class VentanaCrearCliente extends JFrame {
 			}
 		});
 		
-		
+		agregar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Cliente c = new Cliente(nombreTexto.getText(), apellidoTexto.getText(), Integer.parseInt(dniTexto.getText()), 
+								direccionTexto.getText(), Integer.parseInt(telefonoTexto.getText()), Integer.parseInt(tarjetaTexto.getText()), entregaButton.isSelected(), 
+								usuarioTexto.getText(), contraseñaTexto.getText());
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+		});
 		
 		add(cancelar);
 		add(agregar);
