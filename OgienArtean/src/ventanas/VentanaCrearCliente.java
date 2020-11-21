@@ -160,12 +160,17 @@ public class VentanaCrearCliente extends JFrame {
 					
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 					Statement stmt = (Statement) conn.createStatement();
-					String instruccion = "INSERT INTO CLIENTE VALUES(" + c.getNombre() + "," + c.getApellido() + "," + 
-					c.getDni() + "," + c.getDireccion() + "," + c.getTelefono() + "," + c.getTarjeta() + "," + c.getEntrega() + "," + 
-					c.getUsuario() + "," + c.getContraseña() + ");";
 					
-					int rs = stmt.executeUpdate(instruccion);
+					String instruccion = "INSERT INTO CLIENTE VALUES('" + c.getNombre() +"'" + "," + c.getApellido() +"'" + "," + 
+					c.getDni() + ",'" + c.getDireccion() + "' ," + c.getTelefono() + "," + c.getTarjeta() + "," + c.getEntrega() + ", '" + 
+					c.getUsuario() + "' , '" + c.getContraseña() + "');";
 					
+					stmt.executeUpdate(instruccion);
+					
+					stmt.close();
+					conn.commit();
+					conn.close();
+
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
@@ -177,7 +182,7 @@ public class VentanaCrearCliente extends JFrame {
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("Administrar Empleados");
+		setTitle("Crear Cliente");
 		setSize(500, 600);
 		setLayout(new FlowLayout());
 		setResizable(false);
