@@ -32,7 +32,7 @@ public class VentanaIdentif extends JFrame{
 			}
 		});
 		
-		registrarse = new JButton();
+		registrarse = new JButton("registrarse");
 		registrarse.setContentAreaFilled(false);
 		registrarse.setBorderPainted(false);
 		registrarse.setFocusPainted(false);
