@@ -161,9 +161,11 @@ public class VentanaCrearCliente extends JFrame {
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 					Statement stmt = (Statement) conn.createStatement();
 					
-					String instruccion = "INSERT INTO CLIENTE VALUES('" + c.getNombre() +"'" + "," + c.getApellido() +"'" + "," + 
+					String instruccion = "INSERT INTO CLIENTE VALUES('" + c.getNombre() +"'" + ", '" + c.getApellido() +"'" + "," + 
 					c.getDni() + ",'" + c.getDireccion() + "' ," + c.getTelefono() + "," + c.getTarjeta() + "," + c.getEntrega() + ", '" + 
 					c.getUsuario() + "' , '" + c.getContraseña() + "');";
+					
+					System.out.println(instruccion);
 					
 					stmt.executeUpdate(instruccion);
 					
