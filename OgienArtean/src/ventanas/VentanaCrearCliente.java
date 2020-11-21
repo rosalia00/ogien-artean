@@ -1,6 +1,10 @@
 package ventanas;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -78,12 +82,12 @@ public class VentanaCrearCliente extends JFrame {
 
 		tarjetaTexto = new JTextField();
 		tarjetaTexto.setPreferredSize(new Dimension(250, 20));
-		tarjetaLabel = new JLabel("TELEFONO: ");
+		tarjetaLabel = new JLabel("TARJETA: ");
 		tarjetaPanel = new JPanel();
 
 		entregaTexto = new JTextField();
 		entregaTexto.setPreferredSize(new Dimension(250, 20));
-		entregaLabel = new JLabel("TELEFONO: ");
+		entregaLabel = new JLabel("ENTREGA: ");
 		entregaPanel = new JPanel();
 		
 
@@ -99,9 +103,57 @@ public class VentanaCrearCliente extends JFrame {
 
 		agregar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
+		
+		nombrePanel.add(nombreLabel);
+		nombrePanel.add(nombreTexto);
+		add(nombrePanel);
+		apellidoPanel.add(apellidoLabel);
+		apellidoPanel.add(apellidoTexto);
+		add(apellidoPanel);
+		dniPanel.add(dniLabel);
+		dniPanel.add(dniTexto);
+		add(dniPanel);
+		direccionPanel.add(direccionLabel);
+		direccionPanel.add(direccionTexto);
+		add(direccionPanel);
+		telefonoPanel.add(telefonoLabel);
+		telefonoPanel.add(telefonoTexto);
+		add(telefonoPanel);
+		tarjetaPanel.add(tarjetaLabel);
+		tarjetaPanel.add(tarjetaTexto);
+		add(tarjetaPanel);
+		entregaPanel.add(entregaLabel);
+		entregaPanel.add(entregaTexto);
+		add(entregaPanel);
+		usuarioPanel.add(usuarioLabel);
+		usuarioPanel.add(usuarioTexto);
+		add(usuarioPanel);
+		contraseñaPanel.add(contraseñaLabel);
+		contraseñaPanel.add(contraseñaTexto);
+		add(contraseñaPanel);
 
 		
+		cancelar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		
+		
+		
+		add(cancelar);
+		add(agregar);
+		
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setTitle("Administrar Empleados");
+		setSize(500, 600);
+		setLayout(new FlowLayout());
+		setResizable(false);
+		setLocationRelativeTo(null);
+		setVisible(true);
+
 
 	}
 
