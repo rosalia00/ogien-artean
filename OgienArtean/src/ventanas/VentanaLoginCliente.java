@@ -98,13 +98,96 @@ public class VentanaLoginCliente extends JFrame {
 		panelBotones.setBackground(new Color(149));
 		panelDatos.add(panelBotones);
 		
+		aceptar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (comprobar()) {
+					vio = new VentanaClienteInicio();
+					dispose();
+				} else {
+					JOptionPane op = new JOptionPane();
+					op.showMessageDialog(null,
+							"Su usuario o contraseña no coinciden. Si cree que se trata de un error contacte con el administrador.",
+							"ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		
-		
-		
+		usuario.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {
+				changed();
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				changed();
+			}
+
+			public void insertUpdate(DocumentEvent e) {
+				changed();
+			}
+		});
+
+		contraseña.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {
+				changed();
+			}
+
+			public void removeUpdate(DocumentEvent e) {
+				changed();
+			}
+
+			public void insertUpdate(DocumentEvent e) {
+				changed();
+			}
+		});
 		
 		setVisible(true);
 		
+		
+	}
+		
+		public boolean comprobar() {
+
+			try {
+				Class.forName("org.sqlite.JDBC");
+
+				Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+				Statement stmt = (Statement) conn.createStatement();
+				ResultSet rs = stmt.executeQuery("Select * from CLIENTE");
+
+				while (rs.next()) {
+
+					usuarioGuardado = rs.getString("USUARIO");
+					contraseñaGuardada = rs.getString("CONTRASEÑA");
+
+					if (usuarioGuardado.equals(usuario.getText()) && contraseñaGuardada.equals(contraseña.getText())) {
+						usuarioEscogido = usuarioGuardado;
+						return true;
+					}
+				}
+
+			} catch (ClassNotFoundException e) {
+
+				e.printStackTrace();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+			return false;
+		
+		
+		
+		
 		}
+		
+		public void changed() {
+			if (contraseña.getText().equals("") || contraseña.getText().contains(" ") || usuario.getText().equals("")
+					|| usuario.getText().contains(" ")) {
+				aceptar.setEnabled(false);
+			} else {
+				aceptar.setEnabled(true);
+			}
+		};
 		
 
 	}

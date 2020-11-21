@@ -102,7 +102,7 @@ public class VentanaLoginEmpleado extends JFrame {
 				} else {
 					JOptionPane op = new JOptionPane();
 					op.showMessageDialog(null,
-							"Su usuario o contraseña no coinciden. Si cree que se trata de error contacte con el administrador.",
+							"Su usuario o contraseña no coinciden. Si cree que se trata de un error contacte con el administrador.",
 							"ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
