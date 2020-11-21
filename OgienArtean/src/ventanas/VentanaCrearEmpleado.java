@@ -147,7 +147,7 @@ public class VentanaCrearEmpleado extends JFrame {
 							+ empleado.getApellido() + "," + empleado.getDni() + "," + empleado.getDireccion() + ","
 							+ empleado.getTelefono() + "," + empleado.getUsuario() + "," + empleado.getContraseña()
 							+ ");";
-					System.out.println(instruccion);
+					
 					int rs = stmt.executeUpdate(instruccion);
 
 				} catch (Exception e2) {
