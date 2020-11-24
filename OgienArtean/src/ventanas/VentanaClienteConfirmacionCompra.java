@@ -103,7 +103,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("Confirmación compra");
+		setTitle("CONFIRMAR");
 		setSize(1000, 600);
 		setLayout(new GridLayout(3, 1, 0, 0));
 		setResizable(false);

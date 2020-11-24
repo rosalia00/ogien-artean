@@ -27,12 +27,12 @@ public class VentanaIdentif extends JFrame{
 				if(d == "empleado") {
 					VentanaLoginEmpleado a = new VentanaLoginEmpleado();
 				} else if(d == "cliente") {
-					VentanaLoginEmpleado b = new VentanaLoginEmpleado();
+					VentanaLoginCliente b = new VentanaLoginCliente();
 				}
 			}
 		});
 		
-		registrarse = new JButton("registrarse");
+		registrarse = new JButton("Registrarse");
 		registrarse.setContentAreaFilled(false);
 		registrarse.setBorderPainted(false);
 		registrarse.setFocusPainted(false);
@@ -41,8 +41,11 @@ public class VentanaIdentif extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				if(d == "empleado") {
+					VentanaCrearEmpleado a = new VentanaCrearEmpleado();
+				} else if(d == "cliente") {
+					VentanaCrearCliente b = new VentanaCrearCliente();
+				}
 			}
 		});
 		
@@ -54,7 +57,7 @@ public class VentanaIdentif extends JFrame{
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("Inicio");
+		setTitle("INICIO");
 		setSize(500, 250);
 		setLayout(new FlowLayout());
 		setLocationRelativeTo(null);

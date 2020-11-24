@@ -138,7 +138,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 				
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("Empleado Pedidos");
+		setTitle("PEDIDOS");
 		setSize(1000,600);
 		setLayout(new GridLayout(6,1));
 		setVisible(true);

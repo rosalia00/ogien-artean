@@ -49,7 +49,7 @@ public class VentanaInicio extends JFrame{
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("Inicio");
+		setTitle("INICIO");
 		setSize(500, 250);
 		setLayout(new FlowLayout());
 		setLocationRelativeTo(null);

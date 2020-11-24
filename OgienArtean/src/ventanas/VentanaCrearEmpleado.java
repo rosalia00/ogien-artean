@@ -168,7 +168,7 @@ public class VentanaCrearEmpleado extends JFrame {
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("Administrar Empleados");
+		setTitle("REGISTRAR NUEVO EMPLEADO");
 		setSize(500, 600);
 		setLayout(new FlowLayout());
 		setResizable(false);

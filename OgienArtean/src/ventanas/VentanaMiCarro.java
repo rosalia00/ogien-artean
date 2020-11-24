@@ -57,7 +57,7 @@ public class VentanaMiCarro extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("MI CARRO");
+		setTitle("CARRO");
 		setSize(550, 550);
 		setLayout(new GridLayout(3, 1));
 		setVisible(true);

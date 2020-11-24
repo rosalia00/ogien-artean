@@ -98,7 +98,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 		
 		//Final
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("Empleado Inicio");
+		setTitle("INICIO");
 		setSize(500, 500);
 		setLayout(new GridLayout(2,1));
 		setResizable(false);

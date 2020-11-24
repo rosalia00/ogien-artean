@@ -47,7 +47,7 @@ public class VentanaLoginEmpleado extends JFrame {
 
 	public VentanaLoginEmpleado() {
 
-		setTitle("Inicio");
+		setTitle("LOGIN");
 		setSize(310, 260);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridLayout(2, 1));

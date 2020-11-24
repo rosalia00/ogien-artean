@@ -45,7 +45,7 @@ public class VentanaLoginCliente extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		
 		//Caracteristicas Ventana
-		setTitle("Registro");
+		setTitle("LOGIN");
 		setSize(310, 260);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridLayout(2,1));
@@ -95,7 +95,7 @@ public class VentanaLoginCliente extends JFrame {
 		aceptar.setEnabled(false);
 		
 		panelBotones.add(aceptar);
-		panelBotones.setBackground(new Color(149));
+		panelBotones.setBackground(new Color(149, 194, 197));
 		panelDatos.add(panelBotones);
 		
 		aceptar.addActionListener(new ActionListener() {

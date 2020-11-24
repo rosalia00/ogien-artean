@@ -10,7 +10,7 @@ public class Main {
 		//VentanaCrearCliente as = new VentanaCrearCliente();
 		//VentanaCrearEmpleado asd = new VentanaCrearEmpleado();
 		//VentanaLoginEmpleado i = new VentanaLoginEmpleado();
-		VentanaLoginCliente i = new VentanaLoginCliente();
+		//VentanaLoginCliente i = new VentanaLoginCliente();
 		//VentanaMiCarro f = new VentanaMiCarro();
 		//VentanaCompra d = new VentanaCompra();
 		//VentanaClienteConfirmacionCompra z = new VentanaClienteConfirmacionCompra();
@@ -19,7 +19,7 @@ public class Main {
 		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
 		//VentanaClienteInicio a = new VentanaClienteInicio();
 		//VentanaPerfil a = new VentanaPerfil();
-		//VentanaInicio i = new VentanaInicio();
+		VentanaInicio i = new VentanaInicio();
 		
 	}
 	

@@ -184,7 +184,7 @@ public class VentanaCrearCliente extends JFrame {
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setTitle("Crear Cliente");
+		setTitle("REGISTRAR NUEVO CLIENTE");
 		setSize(500, 600);
 		setLayout(new FlowLayout());
 		setResizable(false);
