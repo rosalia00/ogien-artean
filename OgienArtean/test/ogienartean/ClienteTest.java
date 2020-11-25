@@ -1,4 +1,4 @@
-package tests;
+package ogienartean;
 
 import ogienartean.Cliente;
 import static org.junit.Assert.*;

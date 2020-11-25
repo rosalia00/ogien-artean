@@ -1,4 +1,4 @@
-package tests;
+package ogienartean;
 
 import static org.junit.Assert.*;
 
