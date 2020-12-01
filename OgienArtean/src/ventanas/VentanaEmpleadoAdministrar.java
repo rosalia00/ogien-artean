@@ -14,22 +14,24 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 	JTextField ingredientes;
 	JButton añadirIngredientes;
 	JRadioButton celiaco;
-	JPanel celiacoNombre;
+	JLabel celiacoNombre;
 	JRadioButton sal;
-	JRadioButton salNombre;
+	JLabel salNombre;
 	
 	JButton horas;
 	JButton perfil;
+	
+	JPanel panPoner;
 	
 	JPanel botones;
 	JPanel empleadoPerfil;
 	JPanel empleados;
 	
-	
 	JButton aceptar;
 	
 	JLabel eliminar;
 	JLabel añadir;
+	
 	public VentanaEmpleadoAdministrar() {
 		
 		horas = new JButton();
@@ -56,22 +58,32 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		
 		empleados = new JPanel();
 		empleados.setOpaque(false);
+		empleados.setLayout(new GridLayout(2, 5));
 		
-		for (int i = 0; i < 10; i++) {
-			empleadoPerfil = new JPanel();
-			empleadoPerfil.setOpaque(false);
-			fotoEmpleado = new JPanel();
-			nombreYApellidos = new JLabel("BD");
-			opcion = new JComboBox();
-			opcion.addItem("Añadir");
-			opcion.addItem("Eliminar");
+		for (int i = 0; i < 8; i++) {
+			panPoner = new JPanel();
+			panPoner.setLayout(new GridLayout(5, 2));
+			nombre.inputHint("asd");
+			nombre = new JTextField();
+			precio = new JSpinner();
+			ingredientes = new JTextField();
+			añadirIngredientes = new JButton("AÑADIR");
+			celiaco = new JRadioButton();
+			celiacoNombre = new JLabel("CELIACO");
+			sal = new JRadioButton();
+			salNombre = new JLabel("SAL");
 			
-			empleadoPerfil.add(fotoEmpleado);
-			empleadoPerfil.add(nombreYApellidos);
-			empleadoPerfil.add(opcion);
+			panPoner.add(nombre);
+			panPoner.add(precio);
+			panPoner.add(ingredientes);
+			panPoner.add(añadirIngredientes);
+			panPoner.add(celiaco);
+			panPoner.add(celiacoNombre);
+			panPoner.add(sal);
+			panPoner.add(salNombre);
 			
-			empleados.setLayout(new GridLayout(2, 5));
-			empleados.add(empleadoPerfil);
+			empleados.add(panPoner);
+			
 		} 
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		
@@ -86,7 +98,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("ADMINISTRACION");
-		setSize(500, 600);
+		setSize(700, 600);
 		setLayout(new GridLayout(2, 1));
 		setResizable(false);
 		setLocationRelativeTo(null);

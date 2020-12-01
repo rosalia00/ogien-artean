@@ -50,7 +50,7 @@ public class Empleado extends Persona {
 			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 			Statement stmt = (Statement) conn.createStatement();
 			
-			String instruccion = "INSERT INTO PAN "
+			String instruccion = "INSERT INTO PAN ";
 			
 		} catch (Exception e) {
 			// TODO: handle exception
