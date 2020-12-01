@@ -9,8 +9,14 @@ import javax.swing.*;
 
 public class VentanaEmpleadoAdministrar extends JFrame{
 	
-	JLabel nombreYApellidos;
-	JPanel fotoEmpleado;
+	JTextField nombre;
+	JSpinner precio;
+	JTextField ingredientes;
+	JButton añadirIngredientes;
+	JRadioButton celiaco;
+	JPanel celiacoNombre;
+	JRadioButton sal;
+	JRadioButton salNombre;
 	
 	JButton horas;
 	JButton perfil;
@@ -19,7 +25,6 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 	JPanel empleadoPerfil;
 	JPanel empleados;
 	
-	JComboBox opcion;
 	
 	JButton aceptar;
 	
@@ -48,7 +53,6 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 				
 			}
 		});
-		
 		
 		empleados = new JPanel();
 		empleados.setOpaque(false);

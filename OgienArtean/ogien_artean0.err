@@ -1,1 +1,11 @@
 /COM,ANSYS RELEASE 2020 R1           BUILD 20.1      UP20191203       10:22:13
+/COM,ANSYS RELEASE 2020 R1           BUILD 20.1      UP20191203       10:19:39
+
+ *** ERROR ***                           CP =       0.516   TIME= 10:19:42
+ Data file C:\Users\tylerdemier\git\ogien-artean\OgienArtean\ogien_artean
+ .db has incorrect format, is missing READ/WRITE permission, or is       
+ empty for RESUME.                                                       
+
+ *** WARNING ***                         CP =       0.516   TIME= 10:19:42
+ WHILE PROCESSING FILE BASED INPUT (/INPUT OR MACRO) AN ERROR HAS        
+ OCCURRED.  SHOULD INPUT PROCESSING BE SUSPENDED?                        
