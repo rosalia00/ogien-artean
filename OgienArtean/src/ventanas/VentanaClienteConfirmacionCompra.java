@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
 
 public class VentanaClienteConfirmacionCompra extends JFrame {
 
@@ -18,7 +21,9 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 	
 	JOptionPane cancelarSeguro;
 	JOptionPane gracias;
-
+	
+	private static Logger logger = Logger.getLogger(VentanaClienteConfirmacionCompra.class.getName());
+	
 	public VentanaClienteConfirmacionCompra() {
 
 		carro = new JButton();
@@ -31,6 +36,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaMiCarro();
 				dispose();
+				logger.log(Level.INFO, "Ha funciono el boton carro.");
 			}
 		});
 		
@@ -44,6 +50,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaPerfil();
 				dispose();
+				logger.log(Level.INFO, "Ha funciono el boton perfil.");
 			}
 		});
 		
@@ -61,6 +68,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 				if (respuesta == cancelarSeguro.YES_OPTION) {
 					new VentanaClienteInicio();
 					dispose();
+					logger.log(Level.INFO, "Ha funciono el boton cancelar.");
 				}
 			}
 		});
@@ -77,6 +85,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 				gracias.setFocusable(false);
 				gracias.showMessageDialog(null, "¡Gracias por comprar en OGIEN ARTEAN!");
 				dispose();
+				logger.log(Level.INFO, "Ha funciono el boton confirmar.");
 			}
 		});
 		

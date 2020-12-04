@@ -1,7 +1,9 @@
 package ventanas;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-
+import javax.swing.border.LineBorder;
 
 import ogienartean.Cliente;
 
@@ -59,57 +61,92 @@ public class VentanaCrearCliente extends JFrame {
 
 	private JButton agregar;
 	private JButton cancelar;
+	private JPanel botones;
 
 	public VentanaCrearCliente() {
 	
 		nombreTexto = new JTextField();
 		nombreTexto.setPreferredSize(new Dimension(250, 20));
+		nombreTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
 		nombreLabel = new JLabel("NOMBRE: ");
+		nombreLabel.setPreferredSize(new Dimension(100, 20));
 		nombrePanel = new JPanel();
+		nombrePanel.setBackground(Color.WHITE);
 
 		apellidoTexto = new JTextField();
 		apellidoTexto.setPreferredSize(new Dimension(250, 20));
+		apellidoTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
 		apellidoLabel = new JLabel("APELLIDO: ");
+		apellidoLabel.setPreferredSize(new Dimension(100, 20));
 		apellidoPanel = new JPanel();
+		apellidoPanel.setBackground(Color.WHITE);
 
 		dniTexto = new JTextField();
 		dniTexto.setPreferredSize(new Dimension(250, 20));
+		dniTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
 		dniLabel = new JLabel("DNI: ");
+		dniLabel.setPreferredSize(new Dimension(100, 20));
 		dniPanel = new JPanel();
+		dniPanel.setBackground(Color.WHITE);
 
 		direccionTexto = new JTextField();
 		direccionTexto.setPreferredSize(new Dimension(250, 20));
+		direccionTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
 		direccionLabel = new JLabel("DIRECCION: ");
+		direccionLabel.setPreferredSize(new Dimension(100, 20));
 		direccionPanel = new JPanel();
+		direccionPanel.setBackground(Color.WHITE);
 
 		telefonoTexto = new JTextField();
 		telefonoTexto.setPreferredSize(new Dimension(250, 20));
+		telefonoTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
 		telefonoLabel = new JLabel("TELEFONO: ");
+		telefonoLabel.setPreferredSize(new Dimension(100, 20));
 		telefonoPanel = new JPanel();
+		telefonoPanel.setBackground(Color.WHITE);
 
 		tarjetaTexto = new JTextField();
 		tarjetaTexto.setPreferredSize(new Dimension(250, 20));
+		tarjetaTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
 		tarjetaLabel = new JLabel("TARJETA: ");
+		tarjetaLabel.setPreferredSize(new Dimension(100, 20));
 		tarjetaPanel = new JPanel();
+		tarjetaPanel.setBackground(Color.WHITE);
 
-		entregaButton = new JRadioButton();
+
+		entregaButton = new JRadioButton("SI");
 		entregaButton.setPreferredSize(new Dimension(250, 20));
-		entregaLabel = new JLabel("ENTREGA");
+		entregaButton.setBorder(new LineBorder(new Color(115, 115, 115)));
+		entregaButton.setOpaque(false);
+		entregaLabel = new JLabel("ENTREGA: ");
+		entregaLabel.setPreferredSize(new Dimension(100, 20));
 		entregaPanel = new JPanel();
+		entregaPanel.setBackground(Color.WHITE);
 		
 
 		usuarioTexto = new JTextField();
 		usuarioTexto.setPreferredSize(new Dimension(250, 20));
+		usuarioTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
 		usuarioLabel = new JLabel("USUARIO: ");
+		usuarioLabel.setPreferredSize(new Dimension(100, 20));
 		usuarioPanel = new JPanel();
+		usuarioPanel.setBackground(Color.WHITE);
+
 
 		contraseñaTexto = new JTextField();
 		contraseñaTexto.setPreferredSize(new Dimension(250, 20));
+		contraseñaTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
 		contraseñaLabel = new JLabel("CONTRASEÑA: ");
+		contraseñaLabel.setPreferredSize(new Dimension(100, 20));
 		contraseñaPanel = new JPanel();
+		contraseñaPanel.setBackground(Color.WHITE);
 
 		agregar = new JButton("AGREGAR");
+		agregar.setPreferredSize(new Dimension(100, 30));
 		cancelar = new JButton("CANCELAR");
+		cancelar.setPreferredSize(new Dimension(130, 30));
+		botones = new JPanel();
+		botones.setBackground(new Color(149, 194, 197));
 		
 		nombrePanel.add(nombreLabel);
 		nombrePanel.add(nombreTexto);
@@ -179,14 +216,17 @@ public class VentanaCrearCliente extends JFrame {
 			}
 		});
 		
-		add(cancelar);
-		add(agregar);
+		botones.add(cancelar);
+		botones.add(agregar);
+		add(botones);
+		
+		setBackground(Color.WHITE);
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("REGISTRAR NUEVO CLIENTE");
-		setSize(500, 600);
-		setLayout(new FlowLayout());
+		setSize(450, 600);
+		setLayout(new GridLayout(10, 1));
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);

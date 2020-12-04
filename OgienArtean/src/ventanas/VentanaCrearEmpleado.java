@@ -124,7 +124,7 @@ public class VentanaCrearEmpleado extends JFrame {
 		agregar = new JButton("AGREGAR");
 		agregar.setPreferredSize(new Dimension(100, 30));
 		cancelar = new JButton("CANCELAR");
-		cancelar.setPreferredSize(new Dimension(100, 30));
+		cancelar.setPreferredSize(new Dimension(130, 30));
 		botones = new JPanel();
 		botones.setBackground(new Color(149, 194, 197));
 

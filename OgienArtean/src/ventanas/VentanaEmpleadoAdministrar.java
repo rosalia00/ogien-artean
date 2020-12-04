@@ -63,7 +63,6 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		for (int i = 0; i < 8; i++) {
 			panPoner = new JPanel();
 			panPoner.setLayout(new GridLayout(5, 2));
-			nombre.inputHint("asd");
 			nombre = new JTextField();
 			precio = new JSpinner();
 			ingredientes = new JTextField();
