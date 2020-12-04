@@ -1,5 +1,8 @@
 package ventanas;
 import java.awt.*;
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,7 +29,9 @@ public class VentanaCompra extends JFrame {
 	JPanel centro22;
 
 	JPanel abajo;
-
+	
+	private static Logger logger = Logger.getLogger(VentanaClienteConfirmacionCompra.class.getName());
+	
 	public VentanaCompra() {
 
 		carro = new JButton();
@@ -38,7 +43,8 @@ public class VentanaCompra extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new VentanaMiCarro();
-				dispose();				
+				dispose();
+				logger.log(Level.INFO, "Ha funciono el boton carro.");				
 			}
 		});
 
@@ -52,6 +58,7 @@ public class VentanaCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaPerfil();
 				dispose();
+				logger.log(Level.INFO, "Ha funciono el boton perfil.");
 			}
 		});
 
@@ -65,6 +72,7 @@ public class VentanaCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaClienteConfirmacionCompra();
 				dispose();
+				logger.log(Level.INFO, "Ha funciono el boton compro.");
 			}
 		});
 
@@ -78,6 +86,7 @@ public class VentanaCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaClienteInicio();
 				dispose();
+				logger.log(Level.INFO, "Ha funciono el boton volver.");
 			}
 		});
 
