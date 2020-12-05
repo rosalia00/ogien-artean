@@ -5,6 +5,9 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
 import javax.swing.*;
 
 public class VentanaEmpleadoPedidos extends JFrame{
@@ -27,6 +30,8 @@ public class VentanaEmpleadoPedidos extends JFrame{
 	JPanel centro4;
 	JPanel abajo;
 	
+	private static Logger logger = Logger.getLogger(VentanaEmpleadoPedidos.class.getName());
+	
 	public VentanaEmpleadoPedidos() {
 		//Botones de perfil del empleado
 		//Boton horas
@@ -47,6 +52,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					new VentanaPerfil();
 					dispose();
+					logger.log(Level.INFO, "Ha funciono el boton perfil.");
 				}
 			});
 			
@@ -61,6 +67,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					new VentanaEmpleadoInicio();
 					dispose();
+					logger.log(Level.INFO, "Ha funciono el boton atras.");
 				}
 			});
 			
