@@ -3,6 +3,10 @@ import java.awt.*;
 
 import java.awt.event.*;
 
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
+
 import java.io.*;
 
 import javax.swing.*;
@@ -22,6 +26,9 @@ public class VentanaPerfil extends JFrame{
 	JButton pedidoComun;
 	
 	JOptionPane confirmar;
+	
+	private static Logger logger = Logger.getLogger(VentanaInicio.class.getName());
+	
 	public VentanaPerfil() {
 		tituloPanel = new JPanel();
 		tituloPanel.setOpaque(false);
@@ -55,6 +62,8 @@ public class VentanaPerfil extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					confirmar = new JOptionPane();
 					confirmar.showConfirmDialog(pedidoComun, "¿Quieres añadir este pedido a tu carro?:");
+					logger.log(Level.INFO, "Se añadido el pedido.");
+					
 				}
 			});
 		}
