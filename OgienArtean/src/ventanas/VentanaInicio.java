@@ -4,6 +4,10 @@ import java.awt.*;
 
 import java.awt.event.*;
 
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
+
 import java.io.*;
 
 import javax.swing.*;
@@ -12,6 +16,8 @@ public class VentanaInicio extends JFrame{
 	
 	JButton cliente;
 	JButton empleado;
+	
+	private static Logger logger = Logger.getLogger(VentanaInicio.class.getName());
 	
 	public VentanaInicio() {
 		
@@ -24,7 +30,8 @@ public class VentanaInicio extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaIdentif a = new VentanaIdentif("cliente");			
+				VentanaIdentif a = new VentanaIdentif("cliente");
+				logger.log(Level.INFO, "Ha funcionado el boton cliente.");
 			}
 		});
 		
@@ -38,6 +45,7 @@ public class VentanaInicio extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaIdentif a = new VentanaIdentif("empleado");
+				logger.log(Level.INFO, "Ha funcionado el boton empleado.");
 			}
 		});
 		
