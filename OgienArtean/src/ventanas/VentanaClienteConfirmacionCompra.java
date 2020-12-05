@@ -36,7 +36,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaMiCarro();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton carro.");
+				logger.log(Level.INFO, "Ha funcionado el boton carro.");
 			}
 		});
 		
@@ -50,7 +50,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaPerfil();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton perfil.");
+				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}
 		});
 		
@@ -68,7 +68,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 				if (respuesta == cancelarSeguro.YES_OPTION) {
 					new VentanaClienteInicio();
 					dispose();
-					logger.log(Level.INFO, "Ha funciono el boton cancelar.");
+					logger.log(Level.INFO, "Ha funcionado el boton cancelar.");
 				}
 			}
 		});
@@ -85,7 +85,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 				gracias.setFocusable(false);
 				gracias.showMessageDialog(null, "¡Gracias por comprar en OGIEN ARTEAN!");
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton confirmar.");
+				logger.log(Level.INFO, "Ha funcionado el boton confirmar.");
 			}
 		});
 		

@@ -57,7 +57,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 				
 				VentanaPerfil a = new VentanaPerfil();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton perfil.");
+				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}
 		});
 		

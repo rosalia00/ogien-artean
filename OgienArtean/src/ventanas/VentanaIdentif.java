@@ -5,12 +5,18 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
 import javax.swing.*;
 
 public class VentanaIdentif extends JFrame{
 	
 	JButton iniciarSesion;
 	JButton registrarse;
+
+	private static Logger logger = Logger.getLogger(VentanaIdentif.class.getName());
 	
 	public VentanaIdentif(String d) {
 		
@@ -26,8 +32,10 @@ public class VentanaIdentif extends JFrame{
 				// TODO Auto-generated method stub
 				if(d == "empleado") {
 					VentanaLoginEmpleado a = new VentanaLoginEmpleado();
+					logger.log(Level.INFO, "Se ha iniciado sesion como empleado.");
 				} else if(d == "cliente") {
 					VentanaLoginCliente b = new VentanaLoginCliente();
+					logger.log(Level.INFO, "Se ha iniciado sesion como cliente.");
 				}
 			}
 		});
@@ -43,8 +51,10 @@ public class VentanaIdentif extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(d == "empleado") {
 					VentanaCrearEmpleado a = new VentanaCrearEmpleado();
+					logger.log(Level.INFO, "Se ha registrado como empleado.");
 				} else if(d == "cliente") {
 					VentanaCrearCliente b = new VentanaCrearCliente();
+					logger.log(Level.INFO, "Se ha registrado como cliente.");
 				}
 			}
 		});

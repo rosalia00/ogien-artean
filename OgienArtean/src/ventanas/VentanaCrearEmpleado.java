@@ -162,7 +162,7 @@ public class VentanaCrearEmpleado extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton cancelar.");
+				logger.log(Level.INFO, "Ha funcionado el boton cancelar.");
 			}
 		});
 
@@ -194,7 +194,7 @@ public class VentanaCrearEmpleado extends JFrame {
 					conn.commit();
 					conn.close();
 
-					logger.log(Level.INFO, "Ha funciono el boton agregar.");
+					logger.log(Level.INFO, "Ha funcionado el boton agregar.");
 					
 				} catch (Exception e2) {
 					// TODO: handle exception

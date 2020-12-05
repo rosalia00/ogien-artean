@@ -44,7 +44,7 @@ public class VentanaCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaMiCarro();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton carro.");				
+				logger.log(Level.INFO, "Ha funcionado el boton carro.");				
 			}
 		});
 
@@ -58,7 +58,7 @@ public class VentanaCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaPerfil();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton perfil.");
+				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}
 		});
 
@@ -72,7 +72,7 @@ public class VentanaCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaClienteConfirmacionCompra();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton compro.");
+				logger.log(Level.INFO, "Ha funcionado el boton compro.");
 			}
 		});
 
@@ -86,7 +86,7 @@ public class VentanaCompra extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaClienteInicio();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton volver.");
+				logger.log(Level.INFO, "Ha funcionado el boton volver.");
 			}
 		});
 

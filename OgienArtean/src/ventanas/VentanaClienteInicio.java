@@ -44,7 +44,7 @@ public class VentanaClienteInicio extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VentanaCompra a = new VentanaCompra();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton panaderia.");
+				logger.log(Level.INFO, "Ha funcionado el boton panaderia.");
 			}
 		});
 		
@@ -58,7 +58,7 @@ public class VentanaClienteInicio extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VentanaCompra a = new VentanaCompra();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton pasteleria.");
+				logger.log(Level.INFO, "Ha funcionado el boton pasteleria.");
 			}
 		});
 		
@@ -72,7 +72,7 @@ public class VentanaClienteInicio extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VentanaCompra a = new VentanaCompra();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton cocina.");
+				logger.log(Level.INFO, "Ha funcionado el boton cocina.");
 			}
 		});
 		
@@ -86,7 +86,7 @@ public class VentanaClienteInicio extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VentanaMiCarro a = new VentanaMiCarro();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton mi carro.");
+				logger.log(Level.INFO, "Ha funcionado el boton mi carro.");
 			}
 		});
 		
@@ -100,7 +100,7 @@ public class VentanaClienteInicio extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				VentanaPerfil a = new VentanaPerfil();
 				dispose();
-				logger.log(Level.INFO, "Ha funciono el boton perfil.");
+				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}
 		});
 		

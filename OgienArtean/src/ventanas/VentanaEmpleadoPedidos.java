@@ -52,7 +52,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					new VentanaPerfil();
 					dispose();
-					logger.log(Level.INFO, "Ha funciono el boton perfil.");
+					logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 				}
 			});
 			
@@ -67,7 +67,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					new VentanaEmpleadoInicio();
 					dispose();
-					logger.log(Level.INFO, "Ha funciono el boton atras.");
+					logger.log(Level.INFO, "Ha funcionado el boton atras.");
 				}
 			});
 			

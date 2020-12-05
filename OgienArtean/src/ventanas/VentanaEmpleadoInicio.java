@@ -37,7 +37,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					new VentanaEmpleadoAdministrar();
 					dispose();
-					logger.log(Level.INFO, "Ha funciono el boton administrar.");
+					logger.log(Level.INFO, "Ha funcionado el boton administrar.");
 				}
 				
 			});
@@ -53,7 +53,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					new VentanaEmpleadoPedidos();
 					dispose();
-					logger.log(Level.INFO, "Ha funciono el boton pedidos.");
+					logger.log(Level.INFO, "Ha funcionado el boton pedidos.");
 				}
 			});
 		
