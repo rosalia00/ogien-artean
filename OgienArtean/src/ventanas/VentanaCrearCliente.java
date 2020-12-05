@@ -220,7 +220,7 @@ public class VentanaCrearCliente extends JFrame {
 				} catch (Exception e) {
 					// TODO: handle exception
 
-					logger.log(Level.INFO, "No se ha podido acceder a la base de datos.");
+					logger.log(Level.SEVERE, "No se ha podido acceder a la base de datos.");
 				}
 			}
 		});
