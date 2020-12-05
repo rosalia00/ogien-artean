@@ -8,6 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -45,6 +49,8 @@ public class VentanaLoginEmpleado extends JFrame {
 
 	private static VentanaEmpleadoInicio vei;
 
+	private static Logger logger = Logger.getLogger(VentanaLoginEmpleado.class.getName());
+	
 	public VentanaLoginEmpleado() {
 
 		setTitle("LOGIN");
@@ -99,11 +105,13 @@ public class VentanaLoginEmpleado extends JFrame {
 				if (comprobar()) {
 					vei = new VentanaEmpleadoInicio();
 					dispose();
+					logger.log(Level.INFO, "Se ha loggineado el empleado.");
 				} else {
 					JOptionPane op = new JOptionPane();
 					op.showMessageDialog(null,
 							"Su usuario o contraseña no coinciden. Si cree que se trata de un error contacte con el administrador.",
 							"ERROR", JOptionPane.ERROR_MESSAGE);
+							logger.log(Level.INFO, "Ha habido un problema.");
 				}
 			}
 		});
@@ -115,28 +123,34 @@ public class VentanaLoginEmpleado extends JFrame {
 		usuario.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				changed();
+				logger.log(Level.INFO, "El documento se ha cambiado correctamente.");
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				changed();
+				logger.log(Level.INFO, "El documento se ha borrado correctamente.");
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				changed();
+				logger.log(Level.INFO, "El documento se ha insertado correctamente.");
 			}
 		});
 
 		contraseña.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				changed();
+				logger.log(Level.INFO, "El documento se ha cambiado correctamente.");
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				changed();
+				logger.log(Level.INFO, "El documento se ha borrado correctamente.");
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				changed();
+				logger.log(Level.INFO, "El documento se ha insertado correctamente.");
 			}
 		});
 
@@ -161,6 +175,8 @@ public class VentanaLoginEmpleado extends JFrame {
 			Statement stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery("Select * from EMPLEADO");
 
+			logger.log(Level.INFO, "Se ha cargado correctamente la base de datos.");
+			
 			while (rs.next()) {
 
 				usuarioGuardado = rs.getString("USUARIO");
@@ -168,6 +184,7 @@ public class VentanaLoginEmpleado extends JFrame {
 
 				if (usuarioGuardado.equals(usuario.getText()) && contraseñaGuardada.equals(contraseña.getText())) {
 					usuarioEscogido = usuarioGuardado;
+					logger.log(Level.INFO, "Ha comparado correctamente el usuario y la contraseña.");
 					return true;
 				}
 			}
@@ -175,9 +192,12 @@ public class VentanaLoginEmpleado extends JFrame {
 		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "Se ha producido un error.");
+		
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "Se ha producido un error.");
 		}
 		return false;
 	}
