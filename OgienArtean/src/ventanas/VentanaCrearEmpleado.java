@@ -12,8 +12,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;

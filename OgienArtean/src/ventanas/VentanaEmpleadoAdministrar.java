@@ -1,5 +1,8 @@
 package ventanas;
 import java.awt.*;
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
 
 import java.awt.event.*;
 
@@ -31,6 +34,8 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 	
 	JLabel eliminar;
 	JLabel añadir;
+
+	private static Logger logger = Logger.getLogger(VentanaEmpleadoAdministrar.class.getName());
 	
 	public VentanaEmpleadoAdministrar() {
 		
@@ -52,7 +57,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 				
 				VentanaPerfil a = new VentanaPerfil();
 				dispose();
-				
+				logger.log(Level.INFO, "Ha funciono el boton perfil.");
 			}
 		});
 		
