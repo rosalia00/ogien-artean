@@ -31,7 +31,7 @@ public class VentanaCompra extends JFrame {
 
 	JPanel abajo;
 	
-	JOptionPane anyadir;
+	JOptionPane anyadido;
 	
 	private ArrayList<String> compra = new ArrayList<String>();
 	
@@ -75,8 +75,12 @@ public class VentanaCompra extends JFrame {
 		comprar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaClienteConfirmacionCompra();
+				anyadido = new JOptionPane();
+				anyadido.setFocusable(false);
+				anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
 				dispose();
+				new VentanaClienteInicio();
+				logger.log(Level.INFO, "Ha funcionado el boton volver.");;
 				logger.log(Level.INFO, "Ha funcionado el boton compro.");
 			}
 		});
@@ -89,12 +93,8 @@ public class VentanaCompra extends JFrame {
 		volver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				anyadido = new JOptionPane();
-				anyadido.setFocusable(false);
-				anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
+				new VentanaClienteInicio();
 				dispose();
-				new VentanaInicio();
-				logger.log(Level.INFO, "Ha funcionado el boton volver.");
 			}
 		});
 
