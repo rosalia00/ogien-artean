@@ -2,6 +2,7 @@ package ventanas;
 import java.awt.*;
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,10 @@ public class VentanaCompra extends JFrame {
 	JPanel centro22;
 
 	JPanel abajo;
+	
+	JOptionPane anyadir;
+	
+	private ArrayList<String> compra = new ArrayList<String>();
 	
 	private static Logger logger = Logger.getLogger(VentanaCompra.class.getName());
 	
@@ -84,8 +89,11 @@ public class VentanaCompra extends JFrame {
 		volver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaClienteInicio();
+				anyadido = new JOptionPane();
+				anyadido.setFocusable(false);
+				anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
 				dispose();
+				new VentanaInicio();
 				logger.log(Level.INFO, "Ha funcionado el boton volver.");
 			}
 		});

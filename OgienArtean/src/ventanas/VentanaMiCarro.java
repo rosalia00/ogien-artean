@@ -72,7 +72,5 @@ public class VentanaMiCarro extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
-	}
-	
-	
+	}	
 }
