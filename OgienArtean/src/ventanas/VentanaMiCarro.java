@@ -2,6 +2,11 @@ package ventanas;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
+
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
 
 import javax.swing.*;
 
@@ -13,6 +18,8 @@ public class VentanaMiCarro extends JFrame {
 	JButton comprar;
 	
 	JPanel abajo;
+	
+	private static Logger logger = Logger.getLogger(VentanaMiCarro.class.getName());
 	
 	public VentanaMiCarro() {
 		
@@ -40,6 +47,7 @@ public class VentanaMiCarro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaClienteConfirmacionCompra();
 				dispose();
+				logger.log(Level.INFO, "Ha funcionado el boton comprar.");
 			}
 		});
 		
