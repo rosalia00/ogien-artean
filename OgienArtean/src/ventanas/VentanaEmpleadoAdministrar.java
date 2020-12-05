@@ -21,7 +21,6 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 	JRadioButton sal;
 	JLabel salNombre;
 	
-	JButton horas;
 	JButton perfil;
 	
 	JPanel panPoner;
@@ -39,11 +38,6 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 	
 	public VentanaEmpleadoAdministrar() {
 		
-		horas = new JButton();
-		horas.setContentAreaFilled(false);
-		horas.setBorderPainted(false);
-		horas.setFocusPainted(false);
-		horas.setIcon(new ImageIcon("imagenes/horas.png"));
 		
 		perfil = new JButton();
 		perfil.setContentAreaFilled(false);
@@ -92,7 +86,6 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		
 		botones = new JPanel(new FlowLayout());
-		botones.add(horas);
 		botones.add(perfil);
 		botones.setOpaque(false);
 		

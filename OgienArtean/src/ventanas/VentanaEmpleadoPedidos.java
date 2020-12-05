@@ -12,7 +12,6 @@ import javax.swing.*;
 
 public class VentanaEmpleadoPedidos extends JFrame{
 	//Botones de perfil del empleado
-	JButton horas;
 	JButton perfil;
 	
 	//Boton atras
@@ -34,13 +33,6 @@ public class VentanaEmpleadoPedidos extends JFrame{
 	
 	public VentanaEmpleadoPedidos() {
 		//Botones de perfil del empleado
-		//Boton horas
-		horas = new JButton();
-			horas.setIcon(new ImageIcon("imagenes/horas.png"));
-			horas.setContentAreaFilled(false);
-			horas.setBorderPainted(false);
-			horas.setFocusPainted(false);
-			
 		//Boton perfil
 		perfil = new JButton();
 			perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
@@ -104,8 +96,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		abajo = new JPanel();
 		abajo.setOpaque(false);
 
-		//Añadir a paneles las horas, perfil, atras
-		arriba.add(horas);
+		//Añadir a paneles perfil, atras
 		arriba.add(perfil);
 		abajo.add(atras);		
 		

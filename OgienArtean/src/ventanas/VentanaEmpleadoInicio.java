@@ -16,7 +16,6 @@ public class VentanaEmpleadoInicio extends JFrame {
 	JButton registro;
 	
 	//Botones de perfil del empleado
-	JButton horas;
 	JButton perfil;
 	
 	//Paneles
@@ -66,12 +65,6 @@ public class VentanaEmpleadoInicio extends JFrame {
 			
 		
 		
-		//Boton horas
-		horas = new JButton();
-			horas.setIcon(new ImageIcon("imagenes/horas1.png"));
-			horas.setContentAreaFilled(false);
-			horas.setBorderPainted(false);
-			horas.setFocusPainted(false);
 		
 		//Boton perfil
 		perfil = new JButton();
@@ -90,7 +83,6 @@ public class VentanaEmpleadoInicio extends JFrame {
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		
 		//Añadir a los panels 
-		arriba.add(horas);
 		arriba.add(perfil);
 		abajo.add(pedidos);
 		abajo.add(registro);
