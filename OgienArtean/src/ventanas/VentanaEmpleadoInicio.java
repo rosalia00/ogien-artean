@@ -4,6 +4,9 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.util.logging.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Level;
 import javax.swing.*;
 
 public class VentanaEmpleadoInicio extends JFrame {
@@ -20,6 +23,8 @@ public class VentanaEmpleadoInicio extends JFrame {
 	JPanel arriba;
 	JPanel abajo;
 	
+	private static Logger logger = Logger.getLogger(VentanaEmpleadoInicio.class.getName());
+	
 	public VentanaEmpleadoInicio() {
 		//Boton administrar
 		administrar = new JButton();
@@ -31,7 +36,8 @@ public class VentanaEmpleadoInicio extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					new VentanaEmpleadoAdministrar();
-					dispose();					
+					dispose();
+					logger.log(Level.INFO, "Ha funciono el boton administrar.");
 				}
 				
 			});
@@ -47,6 +53,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					new VentanaEmpleadoPedidos();
 					dispose();
+					logger.log(Level.INFO, "Ha funciono el boton pedidos.");
 				}
 			});
 		
