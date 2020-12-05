@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -62,7 +64,9 @@ public class VentanaCrearCliente extends JFrame {
 	private JButton agregar;
 	private JButton cancelar;
 	private JPanel botones;
-
+	
+	private static Logger logger = Logger.getLogger(VentanaCrearCliente.class.getName());
+	
 	public VentanaCrearCliente() {
 	
 		nombreTexto = new JTextField();
@@ -181,6 +185,7 @@ public class VentanaCrearCliente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				logger.log(Level.INFO, "Ha funciono el boton cancelar.");
 			}
 		});
 		
@@ -210,8 +215,12 @@ public class VentanaCrearCliente extends JFrame {
 					conn.commit();
 					conn.close();
 
+					logger.log(Level.INFO, "Ha funciono la funcion agregar.");
+
 				} catch (Exception e) {
 					// TODO: handle exception
+
+					logger.log(Level.INFO, "No se ha podido acceder a la base de datos.");
 				}
 			}
 		});

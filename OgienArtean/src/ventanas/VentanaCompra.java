@@ -30,7 +30,7 @@ public class VentanaCompra extends JFrame {
 
 	JPanel abajo;
 	
-	private static Logger logger = Logger.getLogger(VentanaClienteConfirmacionCompra.class.getName());
+	private static Logger logger = Logger.getLogger(VentanaCompra.class.getName());
 	
 	public VentanaCompra() {
 
