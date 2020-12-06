@@ -17,6 +17,7 @@ import javax.swing.*;
 
 import ogienartean.Comida;
 import ogienartean.Pan;
+import ogienartean.Pasteleria;
 
 public class VentanaEmpleadoAdministrar extends JFrame {
 
@@ -127,11 +128,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
-					cNombre.setText(null);
-					cPrecio.setValue(0);
-					cCeliaco.setSelected(false);
-					cCaliente.setSelected(false);
-
+					
 					Comida c = new Comida(cNombre.getText(), (double) cPrecio.getValue(), cCeliaco.isSelected(),
 							(String) cTipo.getSelectedItem(), cCaliente.isSelected());
 
@@ -146,6 +143,11 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					stmt.close();
 					conn.commit();
 					conn.close();
+					
+					cNombre.setText(null);
+					cPrecio.setValue(0);
+					cCeliaco.setSelected(false);
+					cCaliente.setSelected(false);
 
 				} catch (Exception e2) {
 
@@ -199,7 +201,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
-					
+
 					Pan b = new Pan(bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bLista,
 							bSal.isSelected());
 
@@ -210,7 +212,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 					String instruccion = "INSERT INTO PAN VALUES('" + b.getNombre() + "', " + b.getPrecio() + ", '"
 							+ b.isCeliaco() + "', '" + b.getIngredientes() + "', '" + b.getSal() + "')";
-					
+
 					stmt.executeUpdate(instruccion);
 					stmt.close();
 					conn.commit();
@@ -223,7 +225,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					bLista.removeAll(bLista);
 
 				} catch (Exception e2) {
-					// TODO: handle exception
+
 				}
 
 			}
@@ -255,6 +257,37 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		pTipo.addItem("Galleta");
 		pTipoLabel = new JLabel("TIPO: ");
 		pAñadir = new JButton("AÑADIR");
+		pAñadir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					
+					Pasteleria p = new Pasteleria(pNombre.getText(), (double)pPrecio.getValue(), pCeliaco.isSelected(), (String)pTipo.getSelectedItem());
+					
+					Class.forName("org.sqlite.JDBC");
+
+					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+					Statement stmt = (Statement) conn.createStatement();
+					
+					String instruccion = "INSERT INTO PASTELERIA('"+p.getNombre()+"', "+p.getPrecio()+", '"+p.isCeliaco()+"', '"+p.getTipo()+"')";
+					
+					stmt.executeUpdate(instruccion);
+					stmt.close();
+					conn.commit();
+					conn.close();
+
+					pNombre.setText(null);
+					pPrecio.setValue(0);
+					pCeliaco.setSelected(false);
+					
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+				
+			}
+		});
+		
 		pBorrar = new JButton("BORRAR");
 		pPanel = new JPanel();
 		pPanel.setLayout(new GridLayout(5, 2));
