@@ -33,6 +33,20 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 	
 	JLabel eliminar;
 	JLabel añadir;
+	
+	JTextField cNombre;
+	JLabel cNombreLabel;
+	JSpinner cPrecio;
+	JLabel cPrecioLabel;
+	JRadioButton cCeliaco;
+	JLabel cCeliacoLabel;
+	JRadioButton cCaliente;
+	JLabel cCalienteLabel;
+	JComboBox<String> cTipo;
+	JLabel cTipoLabel;
+	JButton cAñadir;
+	JPanel cPanelArriba;
+	JPanel cPanelAbajo;
 
 	private static Logger logger = Logger.getLogger(VentanaEmpleadoAdministrar.class.getName());
 	
@@ -59,7 +73,48 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		empleados.setOpaque(false);
 		empleados.setLayout(new GridLayout(2, 5));
 		
-		for (int i = 0; i < 8; i++) {
+		cNombre = new JTextField();
+		cNombreLabel = new JLabel("NOMBRE: ");
+		cPrecio = new JSpinner(new SpinnerNumberModel(0, 0.00, 99.99, 0.01));
+		cPrecioLabel = new JLabel("PRECIO: ");
+		cCeliaco = new JRadioButton("Sí");
+		cCeliacoLabel = new JLabel("CELIACO: ");
+		cCaliente = new JRadioButton("Sí");
+		cCalienteLabel = new JLabel("CALIENTE: ");
+		cTipo = new JComboBox<String>();
+		cTipo.addItem("Pizza");
+		cTipo.addItem("Bocadillo");
+		cTipo.addItem("Empanada");
+		cTipoLabel = new JLabel("TIPO: ");
+		cAñadir = new JButton("AÑADIR");
+		cPanelArriba = new JPanel();
+		cPanelArriba.setLayout(new GridLayout(5, 2));
+		cPanelAbajo = new JPanel();
+		cPanelAbajo.setLayout(new GridLayout(2, 1));
+		cPanelArriba.add(cNombreLabel);
+		cPanelArriba.add(cNombre);
+		cPanelArriba.add(cPrecioLabel);
+		cPanelArriba.add(cPrecio);
+		cPanelArriba.add(cCeliacoLabel);
+		cPanelArriba.add(cCeliaco);
+		cPanelArriba.add(cCalienteLabel);
+		cPanelArriba.add(cCaliente);
+		cPanelArriba.add(cTipoLabel);
+		cPanelArriba.add(cTipo);
+		cPanelAbajo.add(cPanelArriba);
+		cPanelAbajo.add(cAñadir);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/* for (int i = 0; i < 8; i++) {
 			panPoner = new JPanel();
 			panPoner.setLayout(new GridLayout(5, 2));
 			nombre = new JTextField();
@@ -82,7 +137,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 			
 			empleados.add(panPoner);
 			
-		} 
+		} */
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		
 		botones = new JPanel(new FlowLayout());
