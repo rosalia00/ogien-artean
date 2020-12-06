@@ -187,6 +187,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				bLista.add(bIngredientes.getText());
+				bIngredientes.setText(null);
 
 			}
 		});
@@ -270,7 +271,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 					Statement stmt = (Statement) conn.createStatement();
 					
-					String instruccion = "INSERT INTO PASTELERIA('"+p.getNombre()+"', "+p.getPrecio()+", '"+p.isCeliaco()+"', '"+p.getTipo()+"')";
+					String instruccion = "INSERT INTO PASTELERIA VALUES('"+p.getNombre()+"', "+p.getPrecio()+", '"+p.isCeliaco()+"', '"+p.getTipo()+"')";
 					
 					stmt.executeUpdate(instruccion);
 					stmt.close();
@@ -336,6 +337,11 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (numero == 1) {
 					opcionLabel.setText("PAN");
+					bNombre.setText(null);
+					bPrecio.setValue(0);
+					bCeliaco.setSelected(false);
+					bSal.setSelected(false);
+					bLista.removeAll(bLista);
 					mover.gridx = 0;
 					mover.gridy = 1;
 					mover.weighty = 3;
@@ -381,6 +387,11 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (numero == 1) {
 					opcionLabel.setText("PAN");
+					bNombre.setText(null);
+					bPrecio.setValue(0);
+					bCeliaco.setSelected(false);
+					bSal.setSelected(false);
+					bLista.removeAll(bLista);
 					mover.gridx = 0;
 					mover.gridy = 1;
 					mover.weighty = 3;
