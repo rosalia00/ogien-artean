@@ -46,7 +46,25 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 	JLabel cTipoLabel;
 	JButton cAñadir;
 	JPanel cPanelArriba;
-	JPanel cPanelAbajo;
+	JPanel cPanel;
+	
+	JTextField bNombre;
+	JLabel bNombreLabel;
+	JSpinner bPrecio;
+	JLabel bPrecioLabel;
+	JRadioButton bCeliaco;
+	JLabel bCeliacoLabel;
+	JPanel bIngredientesPanel;
+	JTextField bIngredientes;
+	JLabel bIngredientesLabel;
+	JButton bIngredientesButon;
+	JRadioButton bSal;
+	JLabel bSalLabel;
+	JButton bAñadir;
+	JPanel bPanelArriba;
+	JPanel bPanel;
+	
+	
 
 	private static Logger logger = Logger.getLogger(VentanaEmpleadoAdministrar.class.getName());
 	
@@ -89,8 +107,8 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		cAñadir = new JButton("AÑADIR");
 		cPanelArriba = new JPanel();
 		cPanelArriba.setLayout(new GridLayout(5, 2));
-		cPanelAbajo = new JPanel();
-		cPanelAbajo.setLayout(new GridLayout(2, 1));
+		cPanel = new JPanel();
+		cPanel.setLayout(new GridLayout(2, 1));
 		cPanelArriba.add(cNombreLabel);
 		cPanelArriba.add(cNombre);
 		cPanelArriba.add(cPrecioLabel);
@@ -101,8 +119,52 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		cPanelArriba.add(cCaliente);
 		cPanelArriba.add(cTipoLabel);
 		cPanelArriba.add(cTipo);
-		cPanelAbajo.add(cPanelArriba);
-		cPanelAbajo.add(cAñadir);
+		cPanel.add(cPanelArriba);
+		cPanel.add(cAñadir);
+		
+		
+		bNombre = new JTextField();
+		bNombreLabel = new JLabel("NOMBRE: ");
+		bPrecio = new JSpinner(new SpinnerNumberModel(0, 0.00, 99.99, 0.01));
+		bPrecioLabel = new JLabel("PRECIO: ");
+		bCeliaco = new JRadioButton("Sí");
+		bCeliacoLabel = new JLabel("CELIACO: ");
+		bIngredientesPanel = new JPanel(new GridLayout(1, 2));
+		bIngredientes = new JTextField();
+		bIngredientesLabel = new JLabel("INGREDIENTES: ");
+		bIngredientesButon = new JButton("AÑADIR");
+		bIngredientesPanel.add(bIngredientes);
+		bIngredientesPanel.add(bIngredientesButon);
+		bSal = new JRadioButton("Sí");
+		bSalLabel = new JLabel("SAL: ");
+		bAñadir = new JButton("AÑADIR");
+		bPanelArriba = new JPanel(new GridLayout(5, 2));
+		bPanel = new JPanel(new GridLayout(2, 1));
+		bPanelArriba.add(bNombreLabel);
+		bPanelArriba.add(bNombre);
+		bPanelArriba.add(bPrecioLabel);
+		bPanelArriba.add(bPrecio);
+		bPanelArriba.add(bCeliacoLabel);
+		bPanelArriba.add(bCeliaco);
+		bPanelArriba.add(bIngredientesLabel);
+		bPanelArriba.add(bIngredientesPanel);
+		bPanelArriba.add(bSalLabel);
+		bPanelArriba.add(bSal);
+		bPanel.add(bPanelArriba);
+		bPanel.add(bAñadir);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -145,7 +207,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		botones.setOpaque(false);
 		
 		add(botones);
-		add(empleados);
+		add(bPanel);
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
