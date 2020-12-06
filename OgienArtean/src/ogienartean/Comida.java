@@ -7,15 +7,16 @@ public class Comida extends Producto {
 	public String getTipo() {
 		return tipo;
 	}
-	public boolean getCaliente() {
+	public boolean isCaliente() {
 		return caliente;
 	}
+
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	public void setCaliente(boolean caliente) {
 		this.caliente = caliente;
-	}
+	} 
 	
 	
 	public Comida(String nombre, double precio, boolean celiaco, String tipo, boolean caliente) {

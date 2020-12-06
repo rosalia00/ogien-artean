@@ -8,8 +8,13 @@ import java.util.logging.Level;
 import java.awt.event.*;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.*;
+
+import ogienartean.Comida;
 
 public class VentanaEmpleadoAdministrar extends JFrame {
 
@@ -114,6 +119,35 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		cTipo.addItem("Empanada");
 		cTipoLabel = new JLabel("TIPO: ");
 		cAñadir = new JButton("AÑADIR");
+		cAñadir.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				try {
+
+					Comida c = new Comida(cNombre.getText(), (double) cPrecio.getValue(), cCeliaco.isSelected(),
+							(String) cTipo.getSelectedItem(), cCaliente.isSelected());
+
+					Class.forName("org.sqlite.JDBC");
+					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+					Statement stmt = (Statement) conn.createStatement();
+
+					String instruccion = "INSERT INTO COMIDA VALUES(" + "'" + c.getNombre() + "', " + c.getPrecio()
+							+ ", '" + c.isCeliaco() + "', '" + c.getTipo() + "', '" + c.isCaliente() + "')";
+
+					stmt.executeUpdate(instruccion);
+					stmt.close();
+					conn.commit();
+					conn.close();
+
+				} catch (Exception e2) {
+					
+				}
+
+			}
+		});
+
 		cBorrar = new JButton("BORRAR");
 		cPanel = new JPanel();
 		cPanel.setLayout(new GridLayout(6, 2));

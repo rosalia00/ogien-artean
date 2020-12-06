@@ -186,9 +186,6 @@ public class VentanaCrearEmpleado extends JFrame {
 							+ "," + "'" + empleado.getUsuario() + "'" + "," + "'" + empleado.getContraseña() + "'"
 							+ ");";
 
-					System.out.println(instruccion);
-					// AQUI LOGGER EN VEZ DE SYSO
-
 					stmt.executeUpdate(instruccion);
 					stmt.close();
 					conn.commit();

@@ -24,14 +24,14 @@ public class ComidaTest {
 	@Test
 	public void testGetCaliente() {
 		Comida c = new Comida("Bocadillo", 2.5, false, "de calamares", true);
-		assertTrue(c.getCaliente());
+		assertTrue(c.isCaliente());
 	}
 	
 	@Test
 	public void testSetCaliente() {
 		Comida c = new Comida("Bocadillo", 2.5, false, "de calamares", true);
 		c.setCaliente(false);
-		assertFalse(c.getCaliente());
+		assertFalse(c.isCaliente());
 	}
 
 }
