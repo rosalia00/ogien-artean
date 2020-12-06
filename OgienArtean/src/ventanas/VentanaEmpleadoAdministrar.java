@@ -64,6 +64,20 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 	JPanel bPanelArriba;
 	JPanel bPanel;
 	
+	JTextField pNombre;
+	JLabel pNombreLabel;
+	JSpinner pPrecio;
+	JLabel pPrecioLabel;
+	JRadioButton pCeliaco;
+	JLabel pCeliacoLabel;
+	JComboBox<String> pTipo;
+	JLabel pTipoLabel;
+	JButton pAñadir;
+	JPanel pPanelArriba;
+	JPanel pPanel;
+	
+	
+	
 	
 
 	private static Logger logger = Logger.getLogger(VentanaEmpleadoAdministrar.class.getName());
@@ -153,8 +167,32 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		bPanel.add(bPanelArriba);
 		bPanel.add(bAñadir);
 		
-		
-		
+		pNombre = new JTextField();
+		pNombreLabel = new JLabel("NOMBRE: ");
+		pPrecio = new JSpinner(new SpinnerNumberModel(0, 0.00, 99.99, 0.01));
+		pPrecioLabel = new JLabel("PRECIO: ");
+		pCeliaco = new JRadioButton("Sí");
+		pCeliacoLabel = new JLabel("CELIACO: ");
+		pTipo = new JComboBox<String>();
+		pTipo.addItem("Tarta");
+		pTipo.addItem("Pastel");
+		pTipo.addItem("Galleta");
+		pTipoLabel = new JLabel("TIPO: ");
+		pAñadir = new JButton("AÑADIR");
+		pPanelArriba = new JPanel();
+		pPanelArriba.setLayout(new GridLayout(4, 2));
+		pPanel = new JPanel();
+		pPanel.setLayout(new GridLayout(2, 1));
+		pPanelArriba.add(pNombreLabel);
+		pPanelArriba.add(pNombre);
+		pPanelArriba.add(pPrecioLabel);
+		pPanelArriba.add(pPrecio);
+		pPanelArriba.add(pCeliacoLabel);
+		pPanelArriba.add(pCeliaco);
+		pPanelArriba.add(pTipoLabel);
+		pPanelArriba.add(pTipo);
+		pPanel.add(pPanelArriba);
+		pPanel.add(pAñadir);
 		
 		
 		
@@ -207,7 +245,7 @@ public class VentanaEmpleadoAdministrar extends JFrame{
 		botones.setOpaque(false);
 		
 		add(botones);
-		add(bPanel);
+		add(pPanel);
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
