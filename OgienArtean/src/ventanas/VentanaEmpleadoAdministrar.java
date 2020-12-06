@@ -65,14 +65,18 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JPanel pPanel;
 
 	private int numero = 1;
-	JButton izquierda;
-	JLabel opcion;
-	JButton derecha;
-	JPanel derechaAbajo;
+	JButton izquierdaButton;
+	JLabel opcionLabel;
+	JButton derechaButton;
+	JPanel derechaAbajoPanel;
+
+	JPanel derecha;
 
 	private static Logger logger = Logger.getLogger(VentanaEmpleadoAdministrar.class.getName());
 
 	public VentanaEmpleadoAdministrar() {
+
+		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
 		perfil = new JButton();
 		perfil.setContentAreaFilled(false);
@@ -178,20 +182,42 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		pPanel.add(pPanelArriba);
 		pPanel.add(pAñadir);
 
-		izquierda = new JButton("<");
-		opcion = new JLabel("ELECCION");
-		derecha = new JButton(">");
+		izquierdaButton = new JButton("<");
+		opcionLabel = new JLabel("ELECCION");
+		derechaButton = new JButton(">");
 
-		izquierda.addActionListener(new ActionListener() {
+		derechaAbajoPanel = new JPanel();
+		derechaAbajoPanel.add(izquierdaButton);
+		derechaAbajoPanel.add(opcionLabel);
+		derechaAbajoPanel.add(derechaButton);
+
+		derecha = new JPanel(new GridLayout(2, 1));
+		derecha.add(derechaAbajoPanel);
+
+		izquierdaButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (numero == 1) {
-					opcion.setText("PAN");
+					opcionLabel.setText("PAN");
+					derecha.add(bPanel);
+					derecha.remove(cPanel);
+					derecha.remove(pPanel);
+					repaint();
+
 				} else if (numero == 2) {
-					opcion.setText("PASTELERIA");
+					opcionLabel.setText("PASTELERIA");
+					derecha.add(pPanel);
+					derecha.remove(cPanel);
+					derecha.remove(bPanel);
+					repaint();
+
 				} else if (numero == 0) {
-					opcion.setText("COMIDA");
+					opcionLabel.setText("COMIDA");
+					derecha.add(cPanel);
+					derecha.remove(bPanel);
+					derecha.remove(pPanel);
+					repaint();
 				}
 
 				if (numero <= 2 && numero >= 1) {
@@ -203,16 +229,30 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			}
 		});
 
-		derecha.addActionListener(new ActionListener() {
+		derechaButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (numero == 1) {
-					opcion.setText("PAN");
+					opcionLabel.setText("PAN");
+					derecha.add(bPanel);
+					derecha.remove(cPanel);
+					derecha.remove(pPanel);
+					repaint();
+
 				} else if (numero == 2) {
-					opcion.setText("PASTELERIA");
+					opcionLabel.setText("PASTELERIA");
+					derecha.add(pPanel);
+					derecha.remove(cPanel);
+					derecha.remove(bPanel);
+					repaint();
+
 				} else if (numero == 0) {
-					opcion.setText("COMIDA");
+					opcionLabel.setText("COMIDA");
+					derecha.add(cPanel);
+					derecha.remove(bPanel);
+					derecha.remove(pPanel);
+					repaint();
 				}
 
 				if (numero < 2 && numero >= 0) {
@@ -224,19 +264,12 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			}
 		});
 
-		derechaAbajo = new JPanel();
-		derechaAbajo.add(izquierda);
-		derechaAbajo.add(opcion);
-		derechaAbajo.add(derecha);
-
-		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
-
 		botones = new JPanel(new FlowLayout());
 		botones.add(perfil);
 		botones.setOpaque(false);
 
 		add(botones);
-		add(derechaAbajo);
+		add(derecha);
 
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
