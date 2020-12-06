@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.*;
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 import java.awt.event.*;
@@ -15,6 +16,7 @@ import java.sql.Statement;
 import javax.swing.*;
 
 import ogienartean.Comida;
+import ogienartean.Pan;
 
 public class VentanaEmpleadoAdministrar extends JFrame {
 
@@ -125,6 +127,10 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
+					cNombre.setText(null);
+					cPrecio.setValue(0);
+					cCeliaco.setSelected(false);
+					cCaliente.setSelected(false);
 
 					Comida c = new Comida(cNombre.getText(), (double) cPrecio.getValue(), cCeliaco.isSelected(),
 							(String) cTipo.getSelectedItem(), cCaliente.isSelected());
@@ -142,12 +148,11 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					conn.close();
 
 				} catch (Exception e2) {
-					
+
 				}
 
 			}
 		});
-
 		cBorrar = new JButton("BORRAR");
 		cPanel = new JPanel();
 		cPanel.setLayout(new GridLayout(6, 2));
@@ -174,11 +179,55 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		bIngredientes = new JTextField();
 		bIngredientesLabel = new JLabel("INGREDIENTES: ");
 		bIngredientesButon = new JButton("AÑADIR");
+		ArrayList<String> bLista = new ArrayList<String>();
+		bIngredientesButon.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bLista.add(bIngredientes.getText());
+
+			}
+		});
 		bIngredientesPanel.add(bIngredientes);
 		bIngredientesPanel.add(bIngredientesButon);
 		bSal = new JRadioButton("Sí");
 		bSalLabel = new JLabel("SAL: ");
 		bAñadir = new JButton("AÑADIR");
+		bAñadir.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				try {
+					
+					Pan b = new Pan(bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bLista,
+							bSal.isSelected());
+
+					Class.forName("org.sqlite.JDBC");
+
+					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+					Statement stmt = (Statement) conn.createStatement();
+
+					String instruccion = "INSERT INTO PAN VALUES('" + b.getNombre() + "', " + b.getPrecio() + ", '"
+							+ b.isCeliaco() + "', '" + b.getIngredientes() + "', '" + b.getSal() + "')";
+					
+					stmt.executeUpdate(instruccion);
+					stmt.close();
+					conn.commit();
+					conn.close();
+
+					bNombre.setText(null);
+					bPrecio.setValue(0);
+					bCeliaco.setSelected(false);
+					bSal.setSelected(false);
+					bLista.removeAll(bLista);
+
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+
+			}
+		});
 		bBorrar = new JButton("BORRAR");
 		bPanel = new JPanel(new GridLayout(6, 2));
 		bPanel.add(bNombreLabel);
