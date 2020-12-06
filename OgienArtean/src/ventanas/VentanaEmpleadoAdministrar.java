@@ -33,7 +33,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JComboBox<String> cTipo;
 	JLabel cTipoLabel;
 	JButton cAñadir;
-	JPanel cPanelArriba;
+	JButton cBorrar;
 	JPanel cPanel;
 
 	JTextField bNombre;
@@ -49,6 +49,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JRadioButton bSal;
 	JLabel bSalLabel;
 	JButton bAñadir;
+	JButton bBorrar;
 	JPanel bPanelArriba;
 	JPanel bPanel;
 
@@ -61,6 +62,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JComboBox<String> pTipo;
 	JLabel pTipoLabel;
 	JButton pAñadir;
+	JButton pBorrar;
 	JPanel pPanelArriba;
 	JPanel pPanel;
 
@@ -71,6 +73,10 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JPanel derechaAbajoPanel;
 
 	JPanel derecha;
+
+	JPanel izquierda;
+
+	JPanel completo;
 
 	private static Logger logger = Logger.getLogger(VentanaEmpleadoAdministrar.class.getName());
 
@@ -108,21 +114,20 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		cTipo.addItem("Empanada");
 		cTipoLabel = new JLabel("TIPO: ");
 		cAñadir = new JButton("AÑADIR");
-		cPanelArriba = new JPanel();
-		cPanelArriba.setLayout(new GridLayout(5, 2));
+		cBorrar = new JButton("BORRAR");
 		cPanel = new JPanel();
-		cPanel.setLayout(new GridLayout(2, 1));
-		cPanelArriba.add(cNombreLabel);
-		cPanelArriba.add(cNombre);
-		cPanelArriba.add(cPrecioLabel);
-		cPanelArriba.add(cPrecio);
-		cPanelArriba.add(cCeliacoLabel);
-		cPanelArriba.add(cCeliaco);
-		cPanelArriba.add(cCalienteLabel);
-		cPanelArriba.add(cCaliente);
-		cPanelArriba.add(cTipoLabel);
-		cPanelArriba.add(cTipo);
-		cPanel.add(cPanelArriba);
+		cPanel.setLayout(new GridLayout(6, 2));
+		cPanel.add(cNombreLabel);
+		cPanel.add(cNombre);
+		cPanel.add(cPrecioLabel);
+		cPanel.add(cPrecio);
+		cPanel.add(cCeliacoLabel);
+		cPanel.add(cCeliaco);
+		cPanel.add(cCalienteLabel);
+		cPanel.add(cCaliente);
+		cPanel.add(cTipoLabel);
+		cPanel.add(cTipo);
+		cPanel.add(cBorrar);
 		cPanel.add(cAñadir);
 
 		bNombre = new JTextField();
@@ -140,19 +145,19 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		bSal = new JRadioButton("Sí");
 		bSalLabel = new JLabel("SAL: ");
 		bAñadir = new JButton("AÑADIR");
-		bPanelArriba = new JPanel(new GridLayout(5, 2));
-		bPanel = new JPanel(new GridLayout(2, 1));
-		bPanelArriba.add(bNombreLabel);
-		bPanelArriba.add(bNombre);
-		bPanelArriba.add(bPrecioLabel);
-		bPanelArriba.add(bPrecio);
-		bPanelArriba.add(bCeliacoLabel);
-		bPanelArriba.add(bCeliaco);
-		bPanelArriba.add(bIngredientesLabel);
-		bPanelArriba.add(bIngredientesPanel);
-		bPanelArriba.add(bSalLabel);
-		bPanelArriba.add(bSal);
-		bPanel.add(bPanelArriba);
+		bBorrar = new JButton("BORRAR");
+		bPanel = new JPanel(new GridLayout(6, 2));
+		bPanel.add(bNombreLabel);
+		bPanel.add(bNombre);
+		bPanel.add(bPrecioLabel);
+		bPanel.add(bPrecio);
+		bPanel.add(bCeliacoLabel);
+		bPanel.add(bCeliaco);
+		bPanel.add(bIngredientesLabel);
+		bPanel.add(bIngredientesPanel);
+		bPanel.add(bSalLabel);
+		bPanel.add(bSal);
+		bPanel.add(bBorrar);
 		bPanel.add(bAñadir);
 
 		pNombre = new JTextField();
@@ -167,19 +172,18 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		pTipo.addItem("Galleta");
 		pTipoLabel = new JLabel("TIPO: ");
 		pAñadir = new JButton("AÑADIR");
-		pPanelArriba = new JPanel();
-		pPanelArriba.setLayout(new GridLayout(4, 2));
+		pBorrar = new JButton("BORRAR");
 		pPanel = new JPanel();
-		pPanel.setLayout(new GridLayout(2, 1));
-		pPanelArriba.add(pNombreLabel);
-		pPanelArriba.add(pNombre);
-		pPanelArriba.add(pPrecioLabel);
-		pPanelArriba.add(pPrecio);
-		pPanelArriba.add(pCeliacoLabel);
-		pPanelArriba.add(pCeliaco);
-		pPanelArriba.add(pTipoLabel);
-		pPanelArriba.add(pTipo);
-		pPanel.add(pPanelArriba);
+		pPanel.setLayout(new GridLayout(5, 2));
+		pPanel.add(pNombreLabel);
+		pPanel.add(pNombre);
+		pPanel.add(pPrecioLabel);
+		pPanel.add(pPrecio);
+		pPanel.add(pCeliacoLabel);
+		pPanel.add(pCeliaco);
+		pPanel.add(pTipoLabel);
+		pPanel.add(pTipo);
+		pPanel.add(pBorrar);
 		pPanel.add(pAñadir);
 
 		izquierdaButton = new JButton("<");
@@ -191,8 +195,24 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		derechaAbajoPanel.add(opcionLabel);
 		derechaAbajoPanel.add(derechaButton);
 
-		derecha = new JPanel(new GridLayout(2, 1));
-		derecha.add(derechaAbajoPanel);
+		derecha = new JPanel(new GridBagLayout());
+
+		GridBagConstraints mover = new GridBagConstraints();
+		mover.weightx = 1;
+		mover.weighty = 1;
+		mover.fill = GridBagConstraints.HORIZONTAL;
+
+		mover.gridx = 0;
+		mover.gridy = 0;
+		mover.weightx = 3;
+		mover.weighty = 1;
+		derecha.add(derechaAbajoPanel, mover);
+
+		izquierda = new JPanel();
+
+		completo = new JPanel(new GridLayout(1, 2));
+		completo.add(izquierda);
+		completo.add(derecha);
 
 		izquierdaButton.addActionListener(new ActionListener() {
 
@@ -200,21 +220,31 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (numero == 1) {
 					opcionLabel.setText("PAN");
-					derecha.add(bPanel);
+					mover.gridx = 0;
+					mover.gridy = 1;
+					mover.weighty = 3;
+					derecha.add(bPanel, mover);
 					derecha.remove(cPanel);
 					derecha.remove(pPanel);
 					repaint();
 
 				} else if (numero == 2) {
 					opcionLabel.setText("PASTELERIA");
-					derecha.add(pPanel);
+					mover.gridx = 0;
+					mover.gridy = 1;
+					mover.weighty = 3;
+					mover.weightx = 4;
+					derecha.add(pPanel, mover);
 					derecha.remove(cPanel);
 					derecha.remove(bPanel);
 					repaint();
 
 				} else if (numero == 0) {
 					opcionLabel.setText("COMIDA");
-					derecha.add(cPanel);
+					mover.gridx = 0;
+					mover.gridy = 1;
+					mover.weighty = 3;
+					derecha.add(cPanel, mover);
 					derecha.remove(bPanel);
 					derecha.remove(pPanel);
 					repaint();
@@ -235,21 +265,30 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (numero == 1) {
 					opcionLabel.setText("PAN");
-					derecha.add(bPanel);
+					mover.gridx = 0;
+					mover.gridy = 1;
+					mover.weighty = 3;
+					derecha.add(bPanel, mover);
 					derecha.remove(cPanel);
 					derecha.remove(pPanel);
 					repaint();
 
 				} else if (numero == 2) {
 					opcionLabel.setText("PASTELERIA");
-					derecha.add(pPanel);
+					mover.gridx = 0;
+					mover.gridy = 1;
+					mover.weighty = 3;
+					derecha.add(pPanel, mover);
 					derecha.remove(cPanel);
 					derecha.remove(bPanel);
 					repaint();
 
 				} else if (numero == 0) {
 					opcionLabel.setText("COMIDA");
-					derecha.add(cPanel);
+					mover.gridx = 0;
+					mover.gridy = 1;
+					mover.weighty = 3;
+					derecha.add(cPanel, mover);
 					derecha.remove(bPanel);
 					derecha.remove(pPanel);
 					repaint();
@@ -269,7 +308,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		botones.setOpaque(false);
 
 		add(botones);
-		add(derecha);
+		add(completo);
 
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
