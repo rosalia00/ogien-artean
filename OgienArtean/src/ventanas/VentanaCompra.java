@@ -6,8 +6,13 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.*;
+
+import ogienartean.*;
 
 public class VentanaCompra extends JFrame {
 
@@ -33,11 +38,73 @@ public class VentanaCompra extends JFrame {
 	
 	JOptionPane anyadido;
 	
-	private ArrayList<String> compra = new ArrayList<String>();
+	private ArrayList<Pan> panes = new ArrayList<Pan>();
+	
+	private ArrayList<Pasteleria> pasteles = new ArrayList<Pasteleria>();
+	
+	private ArrayList<Comida> comidas = new ArrayList<Comida>();
 	
 	private static Logger logger = Logger.getLogger(VentanaCompra.class.getName());
 	
-	public VentanaCompra() {
+	public VentanaCompra(String s) {
+		
+	//borrar arraylist
+	if (s == "pan") {
+		try {
+			Pan p = new Pan();
+			Class.forName("org.sqlite.JDBC");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+			Statement stmt = (Statement) conn.createStatement();
+			
+			String instruccion = "SELECT * FROM PAN";
+			
+
+			stmt.executeUpdate(instruccion);
+			stmt.close();
+			conn.commit();
+			conn.close();
+			
+			
+			
+		} catch (Exception e) {
+			
+		}
+	} else if (s == "comida") {
+		try {
+			Comida c = new Comida();
+			Class.forName("org.sqlite.JDBC");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+			Statement stmt = (Statement) conn.createStatement();
+			
+			String instruccion = "SELECT * FROM PAN";
+			
+
+			stmt.executeUpdate(instruccion);
+			stmt.close();
+			conn.commit();
+			conn.close();
+			
+		} catch (Exception e) {
+			
+		}
+	} else if (s == "pasteleria") {
+		try {
+			Pasteleria p = new Pasteleria();
+			Class.forName("org.sqlite.JDBC");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+			Statement stmt = (Statement) conn.createStatement();
+			
+			String instruccion = "SELECT * FROM PAN";
+			
+			stmt.executeUpdate(instruccion);
+			stmt.close();
+			conn.commit();
+			conn.close();
+			
+		} catch (Exception e) {
+			
+		}
+	}
 
 		carro = new JButton();
 		carro.setIcon(new ImageIcon("imagenes/carro.png"));

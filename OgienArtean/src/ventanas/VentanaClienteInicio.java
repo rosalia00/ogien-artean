@@ -32,6 +32,8 @@ public class VentanaClienteInicio extends JFrame{
 	
 	private static Logger logger = Logger.getLogger(VentanaClienteInicio.class.getName());
 	
+	private String s;
+	
 	public VentanaClienteInicio() {
 		
 		panaderia = new JButton();
@@ -42,7 +44,8 @@ public class VentanaClienteInicio extends JFrame{
 		panaderia.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaCompra a = new VentanaCompra();
+				s = "pan";
+				VentanaCompra a = new VentanaCompra(s);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton panaderia.");
 			}
@@ -56,7 +59,8 @@ public class VentanaClienteInicio extends JFrame{
 		pasteleria.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaCompra a = new VentanaCompra();
+				s = "pasteleria";
+				VentanaCompra a = new VentanaCompra(s);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton pasteleria.");
 			}
@@ -70,7 +74,8 @@ public class VentanaClienteInicio extends JFrame{
 		cocina.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaCompra a = new VentanaCompra();
+				s = "comida";
+				VentanaCompra a = new VentanaCompra(s);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton cocina.");
 			}
