@@ -8,7 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.format.DateTimeParseException;
 
 import javax.swing.*;
 
@@ -16,6 +19,8 @@ import ogienartean.*;
 
 public class VentanaCompra extends JFrame {
 
+	private Connection conn = null; 
+	
 	JButton carro;
 	JButton perfil;
 
@@ -38,7 +43,6 @@ public class VentanaCompra extends JFrame {
 	
 	JOptionPane anyadido;
 	
-	private ArrayList<Pan> panes = new ArrayList<Pan>();
 	
 	private ArrayList<Pasteleria> pasteles = new ArrayList<Pasteleria>();
 	
@@ -46,64 +50,32 @@ public class VentanaCompra extends JFrame {
 	
 	private static Logger logger = Logger.getLogger(VentanaCompra.class.getName());
 	
+	public ArrayList<Pan> getAllPanes() throws Exception{
+		ArrayList<Pan> panes = new ArrayList<Pan>();
+		try (Statement stmt = conn.createStatement()){
+			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM PAN");
+			while(rs.next()) {
+				Pan pan = new Pan();
+				pan.setNombre(rs.getString("nombre"));
+				pan.setPrecio(rs.getDouble(0));
+				pan.setCeliaco(rs.getBoolean(0));
+				panes.add(pan);
+			}
+			return panes;
+		} catch (SQLException | DateTimeParseException e) {
+			throw new Exception("Error obteniendo todos los usuarios'", e);
+		}
+	}
+	
 	public VentanaCompra(String s) {
 		
 	//borrar arraylist
 	if (s == "pan") {
-		try {
-			Pan p = new Pan();
-			Class.forName("org.sqlite.JDBC");
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-			Statement stmt = (Statement) conn.createStatement();
-			
-			String instruccion = "SELECT * FROM PAN";
-			
-
-			stmt.executeUpdate(instruccion);
-			stmt.close();
-			conn.commit();
-			conn.close();
-			
-			
-			
-		} catch (Exception e) {
-			
-		}
+		getAllPanes();
 	} else if (s == "comida") {
-		try {
-			Comida c = new Comida();
-			Class.forName("org.sqlite.JDBC");
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-			Statement stmt = (Statement) conn.createStatement();
-			
-			String instruccion = "SELECT * FROM PAN";
-			
-
-			stmt.executeUpdate(instruccion);
-			stmt.close();
-			conn.commit();
-			conn.close();
-			
-		} catch (Exception e) {
-			
-		}
+		
 	} else if (s == "pasteleria") {
-		try {
-			Pasteleria p = new Pasteleria();
-			Class.forName("org.sqlite.JDBC");
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-			Statement stmt = (Statement) conn.createStatement();
-			
-			String instruccion = "SELECT * FROM PAN";
-			
-			stmt.executeUpdate(instruccion);
-			stmt.close();
-			conn.commit();
-			conn.close();
-			
-		} catch (Exception e) {
-			
-		}
+		
 	}
 
 		carro = new JButton();
