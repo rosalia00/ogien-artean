@@ -128,7 +128,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
-					
+
 					Comida c = new Comida(cNombre.getText(), (double) cPrecio.getValue(), cCeliaco.isSelected(),
 							(String) cTipo.getSelectedItem(), cCaliente.isSelected());
 
@@ -139,15 +139,15 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					String instruccion = "INSERT INTO COMIDA VALUES(" + "'" + c.getNombre() + "', " + c.getPrecio()
 							+ ", '" + c.isCeliaco() + "', '" + c.getTipo() + "', '" + c.isCaliente() + "')";
 
-					stmt.executeUpdate(instruccion);
-					stmt.close();
-					conn.commit();
-					conn.close();
-					
 					cNombre.setText(null);
 					cPrecio.setValue(0);
 					cCeliaco.setSelected(false);
 					cCaliente.setSelected(false);
+
+					stmt.executeUpdate(instruccion);
+					stmt.close();
+					conn.commit();
+					conn.close();
 
 				} catch (Exception e2) {
 
@@ -156,6 +156,16 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			}
 		});
 		cBorrar = new JButton("BORRAR");
+		cBorrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cNombre.setText(null);
+				cPrecio.setValue(0);
+				cCeliaco.setSelected(false);
+				cCaliente.setSelected(false);
+			}
+		});
 		cPanel = new JPanel();
 		cPanel.setLayout(new GridLayout(6, 2));
 		cPanel.add(cNombreLabel);
@@ -188,7 +198,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				bLista.add(bIngredientes.getText());
 				bIngredientes.setText(null);
-
 			}
 		});
 		bIngredientesPanel.add(bIngredientes);
@@ -214,16 +223,16 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					String instruccion = "INSERT INTO PAN VALUES('" + b.getNombre() + "', " + b.getPrecio() + ", '"
 							+ b.isCeliaco() + "', '" + b.getIngredientes() + "', '" + b.getSal() + "')";
 
-					stmt.executeUpdate(instruccion);
-					stmt.close();
-					conn.commit();
-					conn.close();
-
 					bNombre.setText(null);
 					bPrecio.setValue(0);
 					bCeliaco.setSelected(false);
 					bSal.setSelected(false);
 					bLista.removeAll(bLista);
+
+					stmt.executeUpdate(instruccion);
+					stmt.close();
+					conn.commit();
+					conn.close();
 
 				} catch (Exception e2) {
 
@@ -232,6 +241,18 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			}
 		});
 		bBorrar = new JButton("BORRAR");
+		bBorrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				bNombre.setText(null);
+				bPrecio.setValue(0);
+				bCeliaco.setSelected(false);
+				bSal.setSelected(false);
+				bLista.removeAll(bLista);
+			}
+		});
 		bPanel = new JPanel(new GridLayout(6, 2));
 		bPanel.add(bNombreLabel);
 		bPanel.add(bNombre);
@@ -259,37 +280,47 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		pTipoLabel = new JLabel("TIPO: ");
 		pAñadir = new JButton("AÑADIR");
 		pAñadir.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					
-					Pasteleria p = new Pasteleria(pNombre.getText(), (double)pPrecio.getValue(), pCeliaco.isSelected(), (String)pTipo.getSelectedItem());
-					
+
+					Pasteleria p = new Pasteleria(pNombre.getText(), (double) pPrecio.getValue(), pCeliaco.isSelected(),
+							(String) pTipo.getSelectedItem());
+
 					Class.forName("org.sqlite.JDBC");
 
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 					Statement stmt = (Statement) conn.createStatement();
-					
-					String instruccion = "INSERT INTO PASTELERIA VALUES('"+p.getNombre()+"', "+p.getPrecio()+", '"+p.isCeliaco()+"', '"+p.getTipo()+"')";
-					
+
+					String instruccion = "INSERT INTO PASTELERIA VALUES('" + p.getNombre() + "', " + p.getPrecio()
+							+ ", '" + p.isCeliaco() + "', '" + p.getTipo() + "')";
+
+					pNombre.setText(null);
+					pPrecio.setValue(0);
+					pCeliaco.setSelected(false);
+
 					stmt.executeUpdate(instruccion);
 					stmt.close();
 					conn.commit();
 					conn.close();
 
-					pNombre.setText(null);
-					pPrecio.setValue(0);
-					pCeliaco.setSelected(false);
-					
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
-				
+
 			}
 		});
-		
 		pBorrar = new JButton("BORRAR");
+		pBorrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pNombre.setText(null);
+				pPrecio.setValue(0);
+				pCeliaco.setSelected(false);
+			}
+		});
 		pPanel = new JPanel();
 		pPanel.setLayout(new GridLayout(5, 2));
 		pPanel.add(pNombreLabel);
@@ -335,6 +366,13 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (numero == 2 || numero == 1) {
+					numero--;
+
+				} else if (numero == 0) {
+					numero = 2;
+				}
+
 				if (numero == 1) {
 					opcionLabel.setText("PAN");
 					bNombre.setText(null);
@@ -372,12 +410,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					repaint();
 				}
 
-				if (numero <= 2 && numero >= 1) {
-					numero--;
-				} else if (numero == 0) {
-					numero = 2;
-				}
-
 			}
 		});
 
@@ -385,6 +417,12 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (numero == 1 || numero == 0) {
+					numero++;
+				} else if (numero == 2) {
+					numero = 0;
+				}
+
 				if (numero == 1) {
 					opcionLabel.setText("PAN");
 					bNombre.setText(null);
@@ -419,12 +457,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					derecha.remove(bPanel);
 					derecha.remove(pPanel);
 					repaint();
-				}
-
-				if (numero < 2 && numero >= 0) {
-					numero++;
-				} else if (numero == 2) {
-					numero = 0;
 				}
 
 			}
