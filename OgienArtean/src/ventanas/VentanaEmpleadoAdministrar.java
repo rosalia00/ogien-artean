@@ -85,12 +85,50 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JPanel izquierda;
 
 	JPanel completo;
+	
+	JTabbedPane pestañas;
+	JPanel bPestaña;
+	JPanel cPestaña;
+	JPanel pPestaña;
+	JTextField nombre;
 
 	private static Logger logger = Logger.getLogger(VentanaEmpleadoAdministrar.class.getName());
 
 	public VentanaEmpleadoAdministrar() {
 
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
+		
+		pestañas = new JTabbedPane();
+		bPestaña = new JPanel();
+		cPestaña = new JPanel();
+		pPestaña = new JPanel();
+		nombre = new JTextField();
+		bPestaña.add(nombre);
+		pestañas.addTab("PAN", bPestaña);
+		pestañas.addTab("COMIDA", cPestaña);
+		pestañas.addTab("PASTELERIA", pPestaña);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		perfil = new JButton();
 		perfil.setContentAreaFilled(false);
@@ -357,6 +395,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		derecha.add(derechaAbajoPanel, mover);
 
 		izquierda = new JPanel();
+		izquierda.add(pestañas);
 
 		completo = new JPanel(new GridLayout(1, 2));
 		completo.add(izquierda);
