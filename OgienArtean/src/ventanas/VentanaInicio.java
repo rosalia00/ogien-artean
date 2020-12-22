@@ -17,9 +17,8 @@ public class VentanaInicio extends JFrame{
 	JButton cliente;
 	JButton empleado;
 	
-	private static Logger logger = Logger.getLogger(VentanaInicio.class.getName());
 	
-	public VentanaInicio() {
+	public VentanaInicio(Logger logger) {
 		
 		cliente = new JButton("cliente");
 		cliente.setContentAreaFilled(false);
@@ -30,7 +29,7 @@ public class VentanaInicio extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaIdentif a = new VentanaIdentif("cliente");
+				VentanaIdentif a = new VentanaIdentif("cliente", logger);
 				logger.log(Level.INFO, "Ha funcionado el boton cliente.");
 			}
 		});
@@ -44,7 +43,7 @@ public class VentanaInicio extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaIdentif a = new VentanaIdentif("empleado");
+				VentanaIdentif a = new VentanaIdentif("empleado", logger);
 				logger.log(Level.INFO, "Ha funcionado el boton empleado.");
 			}
 		});

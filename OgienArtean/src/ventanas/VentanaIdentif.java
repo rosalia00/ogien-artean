@@ -16,9 +16,8 @@ public class VentanaIdentif extends JFrame{
 	JButton iniciarSesion;
 	JButton registrarse;
 
-	private static Logger logger = Logger.getLogger(VentanaIdentif.class.getName());
 	
-	public VentanaIdentif(String d) {
+	public VentanaIdentif(String d, Logger logger) {
 		
 		iniciarSesion = new JButton("a");
 		iniciarSesion.setContentAreaFilled(false);
@@ -31,10 +30,10 @@ public class VentanaIdentif extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if(d == "empleado") {
-					VentanaLoginEmpleado a = new VentanaLoginEmpleado();
+					VentanaLoginEmpleado a = new VentanaLoginEmpleado(logger);
 					logger.log(Level.INFO, "Se ha iniciado sesion como empleado.");
 				} else if(d == "cliente") {
-					VentanaLoginCliente b = new VentanaLoginCliente();
+					VentanaLoginCliente b = new VentanaLoginCliente(logger);
 					logger.log(Level.INFO, "Se ha iniciado sesion como cliente.");
 				}
 			}
@@ -50,10 +49,10 @@ public class VentanaIdentif extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(d == "empleado") {
-					VentanaCrearEmpleado a = new VentanaCrearEmpleado();
+					VentanaCrearEmpleado a = new VentanaCrearEmpleado(logger);
 					logger.log(Level.INFO, "Se ha registrado como empleado.");
 				} else if(d == "cliente") {
-					VentanaCrearCliente b = new VentanaCrearCliente();
+					VentanaCrearCliente b = new VentanaCrearCliente(logger);
 					logger.log(Level.INFO, "Se ha registrado como cliente.");
 				}
 			}

@@ -43,10 +43,7 @@ public class VentanaLoginCliente extends JFrame {
 
 	private static VentanaClienteInicio vio;
 	
-	private static Logger logger = Logger.getLogger(VentanaLoginCliente.class.getName());
-	
-
-	public VentanaLoginCliente() {
+	public VentanaLoginCliente(Logger logger) {
 		// Imagen de icono
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 
@@ -107,8 +104,8 @@ public class VentanaLoginCliente extends JFrame {
 		aceptar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (comprobar()) {
-					vio = new VentanaClienteInicio();
+				if (comprobar(logger)) {
+					vio = new VentanaClienteInicio(logger);
 					dispose();
 					logger.log(Level.INFO, "Se ha loggineado el cliente.");
 				} else {
@@ -156,7 +153,7 @@ public class VentanaLoginCliente extends JFrame {
 		setVisible(true);
 	}
 
-	public boolean comprobar() {
+	public boolean comprobar(Logger logger) {
 
 		try {
 			Class.forName("org.sqlite.JDBC");

@@ -105,28 +105,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		pestañas.addTab("PAN", bPestaña);
 		pestañas.addTab("COMIDA", cPestaña);
 		pestañas.addTab("PASTELERIA", pPestaña);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+				
 
 		perfil = new JButton();
 		perfil.setContentAreaFilled(false);
@@ -138,7 +117,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				VentanaPerfil a = new VentanaPerfil();
+				VentanaPerfil a = new VentanaPerfil(logger);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}

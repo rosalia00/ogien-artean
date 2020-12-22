@@ -19,9 +19,8 @@ public class VentanaMiCarro extends JFrame {
 	
 	JPanel abajo;
 	
-	private static Logger logger = Logger.getLogger(VentanaMiCarro.class.getName());
 	
-	public VentanaMiCarro() {
+	public VentanaMiCarro(Logger logger) {
 		
 		nombre = new JButton();
 		nombre.setIcon(new ImageIcon("imagenes/carro.png"));
@@ -45,7 +44,7 @@ public class VentanaMiCarro extends JFrame {
 		comprar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaClienteConfirmacionCompra();
+				new VentanaClienteConfirmacionCompra(logger);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton comprar.");
 			}

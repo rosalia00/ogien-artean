@@ -49,9 +49,7 @@ public class VentanaLoginEmpleado extends JFrame {
 
 	private static VentanaEmpleadoInicio vei;
 
-	private static Logger logger = Logger.getLogger(VentanaLoginEmpleado.class.getName());
-	
-	public VentanaLoginEmpleado() {
+	public VentanaLoginEmpleado(Logger logger) {
 
 		setTitle("LOGIN");
 		setSize(310, 260);
@@ -102,8 +100,8 @@ public class VentanaLoginEmpleado extends JFrame {
 		aceptar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (comprobar()) {
-					vei = new VentanaEmpleadoInicio();
+				if (comprobar(logger)) {
+					vei = new VentanaEmpleadoInicio(logger);
 					dispose();
 					logger.log(Level.INFO, "Se ha loggineado el empleado.");
 				} else {
@@ -166,7 +164,7 @@ public class VentanaLoginEmpleado extends JFrame {
 		}
 	};
 
-	public boolean comprobar() {
+	public boolean comprobar(Logger logger) {
 
 		try {
 			Class.forName("org.sqlite.JDBC");

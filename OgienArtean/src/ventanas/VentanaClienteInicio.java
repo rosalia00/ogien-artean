@@ -92,7 +92,7 @@ public class VentanaClienteInicio extends JFrame{
 		miCarro.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaMiCarro a = new VentanaMiCarro();
+				VentanaMiCarro a = new VentanaMiCarro(logger);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton mi carro.");
 			}
@@ -106,7 +106,7 @@ public class VentanaClienteInicio extends JFrame{
 		perfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaPerfil a = new VentanaPerfil();
+				VentanaPerfil a = new VentanaPerfil(logger);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}

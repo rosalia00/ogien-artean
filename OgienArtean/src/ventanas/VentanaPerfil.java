@@ -27,9 +27,7 @@ public class VentanaPerfil extends JFrame{
 	
 	JOptionPane confirmar;
 	
-	private static Logger logger = Logger.getLogger(VentanaInicio.class.getName());
-	
-	public VentanaPerfil() {
+	public VentanaPerfil(Logger logger) {
 		tituloPanel = new JPanel();
 		tituloPanel.setOpaque(false);
 		
