@@ -39,8 +39,7 @@ public class Main {
 		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos(logger);
 		//VentanaIdentif d = new VentanaIdentif(logger);
 		//VentanaInicio i = new VentanaInicio(logger);
-		
-		//VentanaLoginCliente i = new VentanaLoginCliente();
+		VentanaLoginCliente i = new VentanaLoginCliente();
 		//VentanaMiCarro f = new VentanaMiCarro();
 		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
 		//VentanaPerfil a = new VentanaPerfil();
