@@ -48,8 +48,6 @@ public class VentanaCompra extends JFrame {
 	
 	private ArrayList<Comida> comidas = new ArrayList<Comida>();
 	
-	private static Logger logger = Logger.getLogger(VentanaCompra.class.getName());
-	
 	public ArrayList<Pan> getAllPanes() throws Exception{
 		ArrayList<Pan> panes = new ArrayList<Pan>();
 		try (Statement stmt = conn.createStatement()){
@@ -70,13 +68,13 @@ public class VentanaCompra extends JFrame {
 	public VentanaCompra(String s) {
 		
 	//borrar arraylist
-	if (s == "pan") {
-		getAllPanes();
-	} else if (s == "comida") {
+	//if (s == "pan") {
+	//	getAllPanes();
+//	} else if (s == "comida") {
 		
-	} else if (s == "pasteleria") {
+	//} else if (s == "pasteleria") {
 		
-	}
+	//}
 
 		carro = new JButton();
 		carro.setIcon(new ImageIcon("imagenes/carro.png"));

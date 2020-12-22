@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import java.util.logging.*;
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
 import java.util.logging.Level;
@@ -22,10 +23,9 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 	JOptionPane cancelarSeguro;
 	JOptionPane gracias;
 	
-	private static Logger logger = Logger.getLogger(VentanaClienteConfirmacionCompra.class.getName());
 	
-	public VentanaClienteConfirmacionCompra() {
-
+	public VentanaClienteConfirmacionCompra(Logger logger) {
+		
 		carro = new JButton();
 		carro.setIcon(new ImageIcon("imagenes/carro.png"));
 		carro.setContentAreaFilled(false);
