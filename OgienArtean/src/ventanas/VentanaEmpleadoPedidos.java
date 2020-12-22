@@ -29,9 +29,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 	JPanel centro4;
 	JPanel abajo;
 	
-	private static Logger logger = Logger.getLogger(VentanaEmpleadoPedidos.class.getName());
-	
-	public VentanaEmpleadoPedidos() {
+	public VentanaEmpleadoPedidos(Logger logger) {
 		//Botones de perfil del empleado
 		//Boton perfil
 		perfil = new JButton();
@@ -57,7 +55,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 			atras.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					new VentanaEmpleadoInicio();
+					new VentanaEmpleadoInicio(logger);
 					dispose();
 					logger.log(Level.INFO, "Ha funcionado el boton atras.");
 				}

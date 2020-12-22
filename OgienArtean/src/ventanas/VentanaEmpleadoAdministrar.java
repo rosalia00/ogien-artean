@@ -92,9 +92,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JPanel pPestaña;
 	JTextField nombre;
 
-	private static Logger logger = Logger.getLogger(VentanaEmpleadoAdministrar.class.getName());
-
-	public VentanaEmpleadoAdministrar() {
+	public VentanaEmpleadoAdministrar(Logger logger) {
 
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		

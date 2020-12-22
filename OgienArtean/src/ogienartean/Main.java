@@ -34,15 +34,17 @@ public class Main {
 		//VentanaCompra d = new VentanaCompra(logger);
 		//VentanaCrearCliente as = new VentanaCrearCliente(logger);
 		//VentanaCrearEmpleado asd = new VentanaCrearEmpleado(logger);
+		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar(logger);
+		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio(logger);
+		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos(logger);
 		
-		//VentanaLoginEmpleado i = new VentanaLoginEmpleado();
 		//VentanaLoginCliente i = new VentanaLoginCliente();
 		//VentanaMiCarro f = new VentanaMiCarro();
-		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
 		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
-		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
 		//VentanaPerfil a = new VentanaPerfil();
 		//VentanaInicio i = new VentanaInicio();
+		//VentanaLoginEmpleado i = new VentanaLoginEmpleado();
+		
 		
 	}
 	

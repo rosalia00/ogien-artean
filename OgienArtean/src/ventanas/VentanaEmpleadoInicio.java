@@ -22,9 +22,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 	JPanel arriba;
 	JPanel abajo;
 	
-	private static Logger logger = Logger.getLogger(VentanaEmpleadoInicio.class.getName());
-	
-	public VentanaEmpleadoInicio() {
+	public VentanaEmpleadoInicio(Logger logger) {
 		//Boton administrar
 		administrar = new JButton();
 			administrar.setIcon(new ImageIcon("imagenes/administracion.png"));
@@ -34,7 +32,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 			administrar.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					new VentanaEmpleadoAdministrar();
+					new VentanaEmpleadoAdministrar(logger);
 					dispose();
 					logger.log(Level.INFO, "Ha funcionado el boton administrar.");
 				}
@@ -50,7 +48,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 			pedidos.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					new VentanaEmpleadoPedidos();
+					new VentanaEmpleadoPedidos(logger);
 					dispose();
 					logger.log(Level.INFO, "Ha funcionado el boton pedidos.");
 				}
