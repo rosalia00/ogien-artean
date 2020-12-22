@@ -10,11 +10,11 @@ public class Main {
 		//VentanaCrearCliente as = new VentanaCrearCliente();
 		//VentanaCrearEmpleado asd = new VentanaCrearEmpleado();
 		//VentanaLoginEmpleado i = new VentanaLoginEmpleado();
-		//VentanaLoginCliente i = new VentanaLoginCliente();
+		VentanaLoginCliente i = new VentanaLoginCliente();
 		//VentanaMiCarro f = new VentanaMiCarro();
 		//VentanaCompra d = new VentanaCompra();
 		//VentanaClienteConfirmacionCompra z = new VentanaClienteConfirmacionCompra();
-		VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
+		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
 		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
 		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
 		//VentanaClienteInicio a = new VentanaClienteInicio();
