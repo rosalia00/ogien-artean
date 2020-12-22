@@ -66,7 +66,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 				cancelarSeguro = new JOptionPane();
 				int respuesta = cancelarSeguro.showConfirmDialog(null, "¿QUIERE CANCELAR EL PEDIDO?", "CANCELAR", JOptionPane.YES_NO_OPTION);
 				if (respuesta == cancelarSeguro.YES_OPTION) {
-					new VentanaClienteInicio();
+					new VentanaClienteInicio(logger);
 					dispose();
 					logger.log(Level.INFO, "Ha funcionado el boton cancelar.");
 				}

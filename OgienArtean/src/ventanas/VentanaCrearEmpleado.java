@@ -59,9 +59,7 @@ public class VentanaCrearEmpleado extends JFrame {
 	private JButton cancelar;
 	private JPanel botones;
 
-	private static Logger logger = Logger.getLogger(VentanaCrearEmpleado.class.getName());
-	
-	public VentanaCrearEmpleado() {
+	public VentanaCrearEmpleado(Logger logger) {
 		nombreTexto = new JTextField();
 		nombreTexto.setPreferredSize(new Dimension(250, 20));
 		nombreTexto.setBorder(new LineBorder(new Color(115, 115, 115)));

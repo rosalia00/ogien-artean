@@ -64,8 +64,8 @@ public class VentanaCompra extends JFrame {
 			throw new Exception("Error obteniendo todos los usuarios'", e);
 		}
 	}
-	
-	public VentanaCompra(String s) {
+
+	public VentanaCompra(String s, Logger logger) {
 		
 	//borrar arraylist
 	//if (s == "pan") {
@@ -116,7 +116,7 @@ public class VentanaCompra extends JFrame {
 				anyadido.setFocusable(false);
 				anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
 				dispose();
-				new VentanaClienteInicio();
+				new VentanaClienteInicio(logger);
 				logger.log(Level.INFO, "Ha funcionado el boton volver.");;
 				logger.log(Level.INFO, "Ha funcionado el boton compro.");
 			}
@@ -130,7 +130,7 @@ public class VentanaCompra extends JFrame {
 		volver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaClienteInicio();
+				new VentanaClienteInicio(logger);
 				dispose();
 			}
 		});

@@ -67,9 +67,7 @@ public class VentanaCrearCliente extends JFrame {
 	private JButton cancelar;
 	private JPanel botones;
 	
-	private static Logger logger = Logger.getLogger(VentanaCrearCliente.class.getName());
-	
-	public VentanaCrearCliente() {
+	public VentanaCrearCliente(Logger logger) {
 	
 		nombreTexto = new JTextField();
 		nombreTexto.setPreferredSize(new Dimension(250, 20));

@@ -13,7 +13,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		//LOGGER
 		try {
 			FileHandler fH = new FileHandler("MyLogFile.log", 8096, 1, false);
 			for (Handler handler : logger.getHandlers()) {
@@ -27,17 +27,20 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//VentanaCrearCliente as = new VentanaCrearCliente();
-		//VentanaCrearEmpleado asd = new VentanaCrearEmpleado();
+		
+		//VENTANAS
+		//VentanaClienteConfirmacionCompra z = new VentanaClienteConfirmacionCompra(logger);
+		//VentanaClienteInicio a = new VentanaClienteInicio(logger);
+		//VentanaCompra d = new VentanaCompra(logger);
+		//VentanaCrearCliente as = new VentanaCrearCliente(logger);
+		//VentanaCrearEmpleado asd = new VentanaCrearEmpleado(logger);
+		
 		//VentanaLoginEmpleado i = new VentanaLoginEmpleado();
 		//VentanaLoginCliente i = new VentanaLoginCliente();
 		//VentanaMiCarro f = new VentanaMiCarro();
-		//VentanaCompra d = new VentanaCompra();
-		VentanaClienteConfirmacionCompra z = new VentanaClienteConfirmacionCompra(logger);
 		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar();
 		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio();
 		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos();
-		//VentanaClienteInicio a = new VentanaClienteInicio();
 		//VentanaPerfil a = new VentanaPerfil();
 		//VentanaInicio i = new VentanaInicio();
 		
