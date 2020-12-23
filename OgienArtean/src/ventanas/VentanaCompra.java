@@ -15,6 +15,8 @@ import java.time.format.DateTimeParseException;
 
 import javax.swing.*;
 
+import org.junit.internal.runners.model.EachTestNotifier;
+
 import ogienartean.*;
 
 public class VentanaCompra extends JFrame {
@@ -43,10 +45,44 @@ public class VentanaCompra extends JFrame {
 	
 	JOptionPane anyadido;
 	
+	JButton a;
 	
-	private ArrayList<Pasteleria> pasteles = new ArrayList<Pasteleria>();
+	public ArrayList<Pasteleria> getAllPasteles() throws Exception{
+		ArrayList<Pasteleria> pasteles = new ArrayList<Pasteleria>();
+		try (Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM PASTELERIA");
+			while(rs.next()) {
+				Pasteleria pastel = new Pasteleria();
+				pastel.setNombre(rs.getString("nombre"));
+				pastel.setPrecio(rs.getDouble(0));
+				pastel.setCeliaco(rs.getBoolean(0));
+				pastel.setBoton(a = new JButton(pastel.getNombre()));
+				pasteles.add(pastel);
+			}
+			return pasteles;
+		} catch (SQLException | DateTimeParseException e) {
+			throw new Exception("Error obteniendo todas los pasteles", e);
+		}
+	}
+
+	public ArrayList<Comida> getAllComidas() throws Exception{
+		ArrayList<Comida> comidas = new ArrayList<Comida>();
+		try (Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM COMIDA");
+			while(rs.next()) {
+				Comida comida = new Comida();
+				comida.setNombre(rs.getString("nombre"));
+				comida.setPrecio(rs.getDouble(0));
+				comida.setCeliaco(rs.getBoolean(0));
+				comida.setBoton(a = new JButton(comida.getNombre()));
+				comidas.add(comida);
+			}
+			return comidas;
+		} catch (SQLException | DateTimeParseException e) {
+			throw new Exception("Error obteniendo todas las comidas", e);
+		}
+	}
 	
-	private ArrayList<Comida> comidas = new ArrayList<Comida>();
 	
 	public ArrayList<Pan> getAllPanes() throws Exception{
 		ArrayList<Pan> panes = new ArrayList<Pan>();
@@ -57,15 +93,16 @@ public class VentanaCompra extends JFrame {
 				pan.setNombre(rs.getString("nombre"));
 				pan.setPrecio(rs.getDouble(0));
 				pan.setCeliaco(rs.getBoolean(0));
+				pan.setBoton(a = new JButton(pan.getNombre()));
 				panes.add(pan);
 			}
 			return panes;
 		} catch (SQLException | DateTimeParseException e) {
-			throw new Exception("Error obteniendo todos los usuarios'", e);
+			throw new Exception("Error obteniendo todos los panes", e);
 		}
 	}
 
-	public VentanaCompra(String s, Logger logger) {
+	public VentanaCompra(String s, Logger logger) throws Exception {
 		
 	//borrar arraylist
 	//if (s == "pan") {
@@ -189,7 +226,11 @@ public class VentanaCompra extends JFrame {
 			centro11.add(itemLabel0);
 			centro22.add(itemSpinner0);
 		}
+		
 
+		
+		ArrayList<Pan> panes = getAllPanes();
+		System.out.println(panes);
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
 		abajo.add(volver);

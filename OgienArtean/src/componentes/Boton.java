@@ -15,5 +15,4 @@ public class Boton extends JButton{
 		iniciarSesion.setIcon(new ImageIcon("imagenes/iniciarSesion.png"));
 		iniciarSesion.addActionListener(new ActionListener() {
 	 */
-	
-}
+} 

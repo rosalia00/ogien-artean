@@ -48,7 +48,12 @@ public class VentanaClienteInicio extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				s = "pan";
-				VentanaCompra a = new VentanaCompra(s, logger);
+				try {
+					VentanaCompra a = new VentanaCompra(s, logger);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton panaderia.");
 			}
@@ -63,7 +68,12 @@ public class VentanaClienteInicio extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				s = "pasteleria";
-				VentanaCompra a = new VentanaCompra(s, logger);
+				try {
+					VentanaCompra a = new VentanaCompra(s, logger);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton pasteleria.");
 			}
@@ -78,7 +88,12 @@ public class VentanaClienteInicio extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				s = "comida";
-				VentanaCompra a = new VentanaCompra(s, logger);
+				try {
+					VentanaCompra a = new VentanaCompra(s, logger);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton cocina.");
 			}
