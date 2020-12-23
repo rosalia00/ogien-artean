@@ -481,12 +481,10 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					Statement stmt = (Statement) conn.createStatement();
 
 					while (true) {
-
-						if (opcionLabel.getText().contains("COMIDA")) {
-							izquierda.removeAll();
+						
+						if (opcionLabel.getText().matches("COMIDA")) {
 
 							String instruccionComida = "SELECT NOMBRE FROM COMIDA";
-
 							ResultSet rs = stmt.executeQuery(instruccionComida);
 
 							while (rs.next()) {
@@ -510,6 +508,8 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 												String instruccionBorrar = "DELETE FROM COMIDA WHERE NOMBRE = '"
 														+ nombreBD + "';";
 												stmt.executeUpdate(instruccionBorrar);
+												
+												lista.remove(nombreBD);
 
 											} catch (SQLException e1) {
 												// TODO Auto-generated catch block
@@ -524,17 +524,18 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 									panel.add(izqBorrar);
 									panel.add(izqEditar);
 									izquierda.add(panel);
+									
 								}
-
+								
 								repaint();
 								validate();
 
 							}
 
-						} else if (opcionLabel.getText().contains("PAN")) {
+						} else if (opcionLabel.getText().matches("PAN")) {
 							izquierda.removeAll();
 
-						} else if (opcionLabel.getText().contains("PASTELERIA")) {
+						} else if (opcionLabel.getText().matches("PASTELERIA")) {
 							izquierda.removeAll();
 
 						}
