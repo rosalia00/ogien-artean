@@ -492,8 +492,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 						if (opcionLabel.getText().matches("COMIDA")) {
 
-							izquierda.removeAll();
-
 							String instruccionComida = "SELECT NOMBRE FROM COMIDA";
 							ResultSet rs = stmt.executeQuery(instruccionComida);
 
@@ -514,14 +512,13 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 										@Override
 										public void actionPerformed(ActionEvent e) {
 											try {
-
+												System.out.println("SI");
+												
 												String instruccionBorrar = "DELETE FROM COMIDA WHERE NOMBRE = '"
 														+ nombreBD + "';";
 												stmt.executeUpdate(instruccionBorrar);
 
-												lista.remove(nombreBD);
-
-											} catch (SQLException e1) {
+											} catch (Exception e1) {
 												// TODO Auto-generated catch block
 												e1.printStackTrace();
 											}
@@ -570,8 +567,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 														+ "';";
 												stmt.executeUpdate(instruccionBorrar);
 
-												lista.remove(nombreBD);
-
 											} catch (SQLException e1) {
 												// TODO Auto-generated catch block
 												e1.printStackTrace();
@@ -617,11 +612,9 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 										public void actionPerformed(ActionEvent e) {
 											try {
 
-												String instruccionBorrar = "DELETE FROM PASTLERIA WHERE NOMBRE = '"
+												String instruccionBorrar = "DELETE FROM PASTELERIA WHERE NOMBRE = '"
 														+ nombreBD + "';";
 												stmt.executeUpdate(instruccionBorrar);
-
-												lista.remove(nombreBD);
 
 											} catch (SQLException e1) {
 												// TODO Auto-generated catch block
