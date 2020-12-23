@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.logging.Level;
 
 import java.awt.event.*;
@@ -11,6 +12,8 @@ import java.awt.event.*;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.*;
@@ -85,27 +88,15 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JPanel izquierda;
 
 	JPanel completo;
-	
-	JTabbedPane pestañas;
-	JPanel bPestaña;
-	JPanel cPestaña;
-	JPanel pPestaña;
-	JTextField nombre;
+
+	Thread hilo;
+
+	private static LinkedList<String> lista = new LinkedList<>();
+	private static LinkedList<String> listaBorrados = new LinkedList<>();
 
 	public VentanaEmpleadoAdministrar(Logger logger) {
 
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
-		
-		pestañas = new JTabbedPane();
-		bPestaña = new JPanel();
-		cPestaña = new JPanel();
-		pPestaña = new JPanel();
-		nombre = new JTextField();
-		bPestaña.add(nombre);
-		pestañas.addTab("PAN", bPestaña);
-		pestañas.addTab("COMIDA", cPestaña);
-		pestañas.addTab("PASTELERIA", pPestaña);
-				
 
 		perfil = new JButton();
 		perfil.setContentAreaFilled(false);
@@ -372,7 +363,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		derecha.add(derechaAbajoPanel, mover);
 
 		izquierda = new JPanel();
-		izquierda.add(pestañas);
 
 		completo = new JPanel(new GridLayout(1, 2));
 		completo.add(izquierda);
@@ -477,6 +467,88 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 			}
 		});
+
+		hilo = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				try {
+					
+					Class.forName("org.sqlite.JDBC");
+
+					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+					Statement stmt = (Statement) conn.createStatement();
+
+					while (true) {
+
+						if (opcionLabel.getText().contains("COMIDA")) {
+							izquierda.removeAll();
+
+							String instruccionComida = "SELECT NOMBRE FROM COMIDA";
+
+							ResultSet rs = stmt.executeQuery(instruccionComida);
+
+							while (rs.next()) {
+
+								String nombreBD = rs.getString("NOMBRE");
+
+								if (!lista.contains(nombreBD)) {
+									lista.add(nombreBD);
+
+									JPanel panel = new JPanel();
+									JTextField nombre = new JTextField();
+									nombre.setText(nombreBD);
+									nombre.setEditable(false);
+									JButton izqBorrar = new JButton("BORRAR");
+									izqBorrar.addActionListener(new ActionListener() {
+
+										@Override
+										public void actionPerformed(ActionEvent e) {
+											try {
+
+												String instruccionBorrar = "DELETE FROM COMIDA WHERE NOMBRE = '"
+														+ nombreBD + "';";
+												stmt.executeUpdate(instruccionBorrar);
+
+											} catch (SQLException e1) {
+												// TODO Auto-generated catch block
+												e1.printStackTrace();
+											}
+
+										}
+									});
+
+									JButton izqEditar = new JButton("EDITAR");
+									panel.add(nombre);
+									panel.add(izqBorrar);
+									panel.add(izqEditar);
+									izquierda.add(panel);
+								}
+
+								repaint();
+								validate();
+
+							}
+
+						} else if (opcionLabel.getText().contains("PAN")) {
+							izquierda.removeAll();
+
+						} else if (opcionLabel.getText().contains("PASTELERIA")) {
+							izquierda.removeAll();
+
+						}
+
+					}
+
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
+			}
+		});
+
+		hilo.start();
 
 		botones = new JPanel(new FlowLayout());
 		botones.add(perfil);
