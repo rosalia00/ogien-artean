@@ -372,6 +372,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				if (numero == 2 || numero == 1) {
 					numero--;
 
@@ -393,6 +394,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					derecha.remove(cPanel);
 					derecha.remove(pPanel);
 					repaint();
+					validate();
 
 				} else if (numero == 2) {
 					opcionLabel.setText("PASTELERIA");
@@ -404,6 +406,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					derecha.remove(cPanel);
 					derecha.remove(bPanel);
 					repaint();
+					validate();
 
 				} else if (numero == 0) {
 					opcionLabel.setText("COMIDA");
@@ -414,6 +417,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					derecha.remove(bPanel);
 					derecha.remove(pPanel);
 					repaint();
+					validate();
 				}
 
 			}
@@ -423,6 +427,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				if (numero == 1 || numero == 0) {
 					numero++;
 				} else if (numero == 2) {
@@ -443,6 +448,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					derecha.remove(cPanel);
 					derecha.remove(pPanel);
 					repaint();
+					validate();
 
 				} else if (numero == 2) {
 					opcionLabel.setText("PASTELERIA");
@@ -453,6 +459,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					derecha.remove(cPanel);
 					derecha.remove(bPanel);
 					repaint();
+					validate();
 
 				} else if (numero == 0) {
 					opcionLabel.setText("COMIDA");
@@ -463,6 +470,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 					derecha.remove(bPanel);
 					derecha.remove(pPanel);
 					repaint();
+					validate();
 				}
 
 			}
@@ -474,15 +482,17 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void run() {
 
 				try {
-					
+
 					Class.forName("org.sqlite.JDBC");
 
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 					Statement stmt = (Statement) conn.createStatement();
 
 					while (true) {
-						
+
 						if (opcionLabel.getText().matches("COMIDA")) {
+
+							izquierda.removeAll();
 
 							String instruccionComida = "SELECT NOMBRE FROM COMIDA";
 							ResultSet rs = stmt.executeQuery(instruccionComida);
@@ -508,7 +518,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 												String instruccionBorrar = "DELETE FROM COMIDA WHERE NOMBRE = '"
 														+ nombreBD + "';";
 												stmt.executeUpdate(instruccionBorrar);
-												
+
 												lista.remove(nombreBD);
 
 											} catch (SQLException e1) {
@@ -524,19 +534,115 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 									panel.add(izqBorrar);
 									panel.add(izqEditar);
 									izquierda.add(panel);
-									
+
 								}
-								
+
 								repaint();
 								validate();
 
 							}
 
 						} else if (opcionLabel.getText().matches("PAN")) {
-							izquierda.removeAll();
+
+							String instruccionPan = "SELECT NOMBRE FROM PAN";
+							ResultSet rs = stmt.executeQuery(instruccionPan);
+
+							while (rs.next()) {
+
+								String nombreBD = rs.getString("NOMBRE");
+
+								if (!lista.contains(nombreBD)) {
+
+									lista.add(nombreBD);
+
+									JPanel panel = new JPanel();
+									JTextField nombre = new JTextField();
+									nombre.setText(nombreBD);
+									nombre.setEditable(false);
+									JButton izqBorrar = new JButton("BORRAR");
+									izqBorrar.addActionListener(new ActionListener() {
+
+										@Override
+										public void actionPerformed(ActionEvent e) {
+											try {
+
+												String instruccionBorrar = "DELETE FROM PAN WHERE NOMBRE = '" + nombreBD
+														+ "';";
+												stmt.executeUpdate(instruccionBorrar);
+
+												lista.remove(nombreBD);
+
+											} catch (SQLException e1) {
+												// TODO Auto-generated catch block
+												e1.printStackTrace();
+											}
+
+										}
+									});
+
+									JButton izqEditar = new JButton("EDITAR");
+									panel.add(nombre);
+									panel.add(izqBorrar);
+									panel.add(izqEditar);
+									izquierda.add(panel);
+
+								}
+
+								repaint();
+								validate();
+
+							}
 
 						} else if (opcionLabel.getText().matches("PASTELERIA")) {
-							izquierda.removeAll();
+
+							String instruccionPasteleria = "SELECT NOMBRE FROM PASTELERIA";
+							ResultSet rs = stmt.executeQuery(instruccionPasteleria);
+
+							while (rs.next()) {
+
+								String nombreBD = rs.getString("NOMBRE");
+
+								if (!lista.contains(nombreBD)) {
+
+									lista.add(nombreBD);
+
+									JPanel panel = new JPanel();
+									JTextField nombre = new JTextField();
+									nombre.setText(nombreBD);
+									nombre.setEditable(false);
+									JButton izqBorrar = new JButton("BORRAR");
+									izqBorrar.addActionListener(new ActionListener() {
+
+										@Override
+										public void actionPerformed(ActionEvent e) {
+											try {
+
+												String instruccionBorrar = "DELETE FROM PASTLERIA WHERE NOMBRE = '"
+														+ nombreBD + "';";
+												stmt.executeUpdate(instruccionBorrar);
+
+												lista.remove(nombreBD);
+
+											} catch (SQLException e1) {
+												// TODO Auto-generated catch block
+												e1.printStackTrace();
+											}
+
+										}
+									});
+
+									JButton izqEditar = new JButton("EDITAR");
+									panel.add(nombre);
+									panel.add(izqBorrar);
+									panel.add(izqEditar);
+									izquierda.add(panel);
+
+								}
+
+								repaint();
+								validate();
+
+							}
 
 						}
 
