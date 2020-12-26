@@ -1,5 +1,7 @@
 package ogienartean;
 
+import javax.swing.JButton;
+
 public class Pasteleria extends Producto {
 	String tipo;
 
@@ -11,9 +13,8 @@ public class Pasteleria extends Producto {
 		this.tipo = tipo;
 	}
 
-	
-	public Pasteleria(String nombre, double precio, boolean celiaco, String tipo) {
-		super(nombre, precio, celiaco);
+	protected Pasteleria(String nombre, double precio, boolean celiaco, JButton boton, String tipo) {
+		super(nombre, precio, celiaco, boton);
 		this.tipo = tipo;
 	}
 

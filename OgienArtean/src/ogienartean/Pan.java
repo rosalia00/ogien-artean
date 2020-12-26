@@ -1,6 +1,8 @@
 package ogienartean;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+
 public class Pan extends Producto {
 		ArrayList<String> ingredientes;
 		boolean sal;
@@ -18,8 +20,9 @@ public class Pan extends Producto {
 			this.sal = sal;
 		}
 		
-		public Pan(String nombre, double precio, boolean celiaco, ArrayList<String> ingredientes, boolean sal) {
-			super(nombre, precio, celiaco);
+		protected Pan(String nombre, double precio, boolean celiaco, JButton boton, ArrayList<String> ingredientes,
+				boolean sal) {
+			super(nombre, precio, celiaco, boton);
 			this.ingredientes = ingredientes;
 			this.sal = sal;
 		}

@@ -39,6 +39,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JLabel cPrecioLabel;
 	JRadioButton cCeliaco;
 	JLabel cCeliacoLabel;
+	JButton cBoton;
 	JRadioButton cCaliente;
 	JLabel cCalienteLabel;
 	JComboBox<String> cTipo;
@@ -53,6 +54,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JLabel bPrecioLabel;
 	JRadioButton bCeliaco;
 	JLabel bCeliacoLabel;
+	JButton bBoton;
 	JPanel bIngredientesPanel;
 	JTextField bIngredientes;
 	JLabel bIngredientesLabel;
@@ -70,6 +72,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JLabel pPrecioLabel;
 	JRadioButton pCeliaco;
 	JLabel pCeliacoLabel;
+	JButton pBoton;
 	JComboBox<String> pTipo;
 	JLabel pTipoLabel;
 	JButton pAñadir;
@@ -120,6 +123,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		cPrecioLabel = new JLabel("PRECIO: ");
 		cCeliaco = new JRadioButton("Sí");
 		cCeliacoLabel = new JLabel("CELIACO: ");
+		cBoton = new JButton();
 		cCaliente = new JRadioButton("Sí");
 		cCalienteLabel = new JLabel("CALIENTE: ");
 		cTipo = new JComboBox<String>();
@@ -135,7 +139,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 				try {
 
-					Comida c = new Comida(cNombre.getText(), (double) cPrecio.getValue(), cCeliaco.isSelected(),
+					Comida c = new Comida(cNombre.getText(), (double) cPrecio.getValue(), cCeliaco.isSelected(), cBoton,
 							(String) cTipo.getSelectedItem(), cCaliente.isSelected());
 
 					Class.forName("org.sqlite.JDBC");
@@ -217,9 +221,9 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
-
-					Pan b = new Pan(bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bLista,
-							bSal.isSelected());
+ //bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bBoton, bLista,
+				//	bSal.isSelected()
+					Pan b = new Pan(bNombre.getText(), (double) bPrecio.getValue(),  bCeliaco.isSelected(), bBoton = new JButton(), bLista, bSal.isSelected());
 
 					Class.forName("org.sqlite.JDBC");
 
@@ -279,6 +283,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 		pPrecioLabel = new JLabel("PRECIO: ");
 		pCeliaco = new JRadioButton("Sí");
 		pCeliacoLabel = new JLabel("CELIACO: ");
+		pBoton = new JButton();
 		pTipo = new JComboBox<String>();
 		pTipo.addItem("Tarta");
 		pTipo.addItem("Pastel");
@@ -291,7 +296,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 
-					Pasteleria p = new Pasteleria(pNombre.getText(), (double) pPrecio.getValue(), pCeliaco.isSelected(),
+					Pasteleria p = new Pasteleria(pNombre.getText(), (double) pPrecio.getValue(), pCeliaco.isSelected(), pBoton,
 							(String) pTipo.getSelectedItem());
 
 					Class.forName("org.sqlite.JDBC");
