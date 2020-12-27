@@ -223,7 +223,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 				try {
  //bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bBoton, bLista,
 				//	bSal.isSelected()
-					Pan b = new Pan(bNombre.getText(), (double) bPrecio.getValue(),  bCeliaco.isSelected(), bBoton = new JButton(), bLista, bSal.isSelected());
+				Pan b = new Pan(bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bBoton = new JButton(""), bLista, bSal.isSelected());
 
 					Class.forName("org.sqlite.JDBC");
 

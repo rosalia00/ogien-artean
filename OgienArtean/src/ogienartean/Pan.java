@@ -20,7 +20,7 @@ public class Pan extends Producto {
 			this.sal = sal;
 		}
 		
-		protected Pan(String nombre, double precio, boolean celiaco, JButton boton, ArrayList<String> ingredientes,
+		Pan(String nombre, double precio, boolean celiaco, JButton boton, ArrayList<String> ingredientes,
 				boolean sal) {
 			super(nombre, precio, celiaco, boton);
 			this.ingredientes = ingredientes;
