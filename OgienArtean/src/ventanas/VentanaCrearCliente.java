@@ -194,10 +194,14 @@ public class VentanaCrearCliente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					System.out.println("llega");
+					
 					Cliente c = new Cliente(nombreTexto.getText(), apellidoTexto.getText(), Integer.parseInt(dniTexto.getText()), 
 								direccionTexto.getText(), Integer.parseInt(telefonoTexto.getText()), Integer.parseInt(tarjetaTexto.getText()), entregaButton.isSelected(), 
 								usuarioTexto.getText(), contraseñaTexto.getText());
 
+					System.out.println("llega0");
+					
 					Class.forName("org.sqlite.JDBC");
 					
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");

@@ -12,55 +12,56 @@ import java.io.*;
 
 import javax.swing.*;
 
-public class VentanaInicio extends JFrame{
-	
+public class VentanaInicio extends JFrame {
+
 	JButton cliente;
 	JButton empleado;
-	
-	
+
 	public VentanaInicio(Logger logger) {
-		
-		cliente = new JButton("cliente");
+
+		cliente = new JButton();
 		cliente.setContentAreaFilled(false);
 		cliente.setBorderPainted(false);
 		cliente.setFocusPainted(false);
 		cliente.setIcon(new ImageIcon("imagenes/cliente.png"));
 		cliente.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaIdentif a = new VentanaIdentif("cliente", logger);
 				logger.log(Level.INFO, "Ha funcionado el boton cliente.");
+				dispose();
 			}
 		});
-		
-		empleado = new JButton("empleado");
+
+		empleado = new JButton();
 		empleado.setContentAreaFilled(false);
 		empleado.setBorderPainted(false);
 		empleado.setFocusPainted(false);
 		empleado.setIcon(new ImageIcon("imagenes/empleado.png"));
 		empleado.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				VentanaIdentif a = new VentanaIdentif("empleado", logger);
 				logger.log(Level.INFO, "Ha funcionado el boton empleado.");
+				dispose();
 			}
 		});
-		
+
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
-		
+
 		add(cliente);
 		add(empleado);
-		
+
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
-		
+
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("INICIO");
-		setSize(500, 250);
-		setLayout(new FlowLayout());
+		setSize(500, 400);
+		setLayout(new GridLayout(1, 2));
 		setLocationRelativeTo(null);
-		
+
 		setVisible(true);
 	}
 

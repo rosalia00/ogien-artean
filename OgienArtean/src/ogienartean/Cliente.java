@@ -48,14 +48,6 @@ public class Cliente extends Persona {
 		this.contraseña = contraseña;
 	}
 
-	protected Cliente() {
-		super();
-		this.tarjeta = 0;
-		this.entrega = false;
-		this.usuario = "";
-		this.contraseña = "";
-	}
-
 	@Override
 	public String toString() {
 		return "Cliente [tarjeta=" + tarjeta + ", entrega=" + entrega + ", usuario=" + usuario + ", contraseña="

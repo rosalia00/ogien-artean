@@ -42,7 +42,7 @@ public class VentanaLoginCliente extends JFrame {
 	private String contraseñaGuardada;
 
 	private static VentanaClienteInicio vio;
-	
+
 	public VentanaLoginCliente(Logger logger) {
 		// Imagen de icono
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
@@ -50,7 +50,6 @@ public class VentanaLoginCliente extends JFrame {
 		// Caracteristicas Ventana
 		setTitle("LOGIN");
 		setSize(310, 260);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new GridLayout(2, 1));
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -107,7 +106,7 @@ public class VentanaLoginCliente extends JFrame {
 				if (comprobar(logger)) {
 					vio = new VentanaClienteInicio(logger);
 					dispose();
-					logger.log(Level.INFO, "Se ha loggineado el cliente.");
+					logger.log(Level.INFO, "Se ha loggeado el cliente.");
 				} else {
 					JOptionPane op = new JOptionPane();
 					op.showMessageDialog(null,
@@ -124,14 +123,16 @@ public class VentanaLoginCliente extends JFrame {
 				changed();
 				logger.log(Level.INFO, "El archivo se ha cambiado correctamente.");
 			}
+
 			public void removeUpdate(DocumentEvent e) {
 				changed();
 				logger.log(Level.INFO, "El archivo se ha borrado correctamente.");
 			}
+
 			public void insertUpdate(DocumentEvent e) {
 				changed();
 				logger.log(Level.INFO, "El archivo se ha insertado correctamente.");
-				
+
 			}
 		});
 
@@ -140,10 +141,12 @@ public class VentanaLoginCliente extends JFrame {
 				changed();
 				logger.log(Level.INFO, "El documento se ha cambiado correctamente.");
 			}
+
 			public void removeUpdate(DocumentEvent e) {
 				changed();
 				logger.log(Level.INFO, "El documento se ha borrado correctamente.");
 			}
+
 			public void insertUpdate(DocumentEvent e) {
 				changed();
 				logger.log(Level.INFO, "El documento se ha insertado correctamente.");
@@ -163,7 +166,7 @@ public class VentanaLoginCliente extends JFrame {
 			ResultSet rs = stmt.executeQuery("Select * from CLIENTE");
 
 			logger.log(Level.INFO, "Se ha cargado correctamente la base de datos.");
-			
+
 			while (rs.next()) {
 
 				usuarioGuardado = rs.getString("USUARIO");

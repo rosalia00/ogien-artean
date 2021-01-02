@@ -107,7 +107,7 @@ public class VentanaCrearEmpleado extends JFrame {
 		nominaLabel.setPreferredSize(new Dimension(100, 20));
 		nominaPanel = new JPanel();
 		nominaPanel.setBackground(Color.WHITE);
-		
+
 		usuarioTexto = new JTextField();
 		usuarioTexto.setPreferredSize(new Dimension(250, 20));
 		usuarioTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
@@ -169,20 +169,33 @@ public class VentanaCrearEmpleado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
+					
+					System.out.println("llega0");
+					
+					
 					Empleado empleado = new Empleado(nombreTexto.getText(), apellidoTexto.getText(),
 							Integer.parseInt(dniTexto.getText()), direccionTexto.getText(),
 							Integer.parseInt(telefonoTexto.getText()), Double.parseDouble(nominaTexto.getText()),
 							usuarioTexto.getText(), contraseñaTexto.getText());
+					
+					System.out.println("llega?");
 
 					Class.forName("org.sqlite.JDBC");
-
+					
+					System.out.println("llega");
+					
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 					Statement stmt = (Statement) conn.createStatement();
+					
+					System.out.println("llega2");
+					
 					String instruccion = "INSERT INTO EMPLEADO VALUES(" + "'" + empleado.getNombre() + "'" + ", " + "'"
 							+ empleado.getApellido() + "'" + "," + empleado.getDni() + "," + "'"
 							+ empleado.getDireccion() + "'" + "," + empleado.getTelefono() + "," + empleado.getNomina()
 							+ "," + "'" + empleado.getUsuario() + "'" + "," + "'" + empleado.getContraseña() + "'"
 							+ ");";
+					
+					System.out.println(instruccion);
 
 					stmt.executeUpdate(instruccion);
 					stmt.close();
@@ -190,7 +203,7 @@ public class VentanaCrearEmpleado extends JFrame {
 					conn.close();
 
 					logger.log(Level.INFO, "Ha funcionado el boton agregar.");
-					
+
 				} catch (Exception e2) {
 					// TODO: handle exception
 
@@ -203,9 +216,9 @@ public class VentanaCrearEmpleado extends JFrame {
 		botones.add(cancelar);
 		botones.add(agregar);
 		add(botones);
-		
+
 		setBackground(Color.WHITE);
-		
+
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("REGISTRAR NUEVO EMPLEADO");

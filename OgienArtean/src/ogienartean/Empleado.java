@@ -40,22 +40,22 @@ public class Empleado extends Persona {
 		this.usuario = usuario;
 		this.contraseña = contraseña;
 	}
-	
+
 	public void añadirPan() {
 		try {
-			
+
 			Pan p = new Pan();
 			Class.forName("org.sqlite.JDBC");
-			
+
 			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 			Statement stmt = (Statement) conn.createStatement();
-			
+
 			String instruccion = "INSERT INTO PAN ";
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 	}
 
 }
