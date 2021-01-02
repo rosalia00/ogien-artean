@@ -6,7 +6,6 @@ public class Producto {
 	String nombre;
 	double precio;
 	boolean celiaco;
-	JButton boton;
 	
 	
 	public String getNombre() {
@@ -19,9 +18,6 @@ public class Producto {
 		return celiaco;
 	}
 	
-	public JButton getBoton() {
-		return boton;
-	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -31,16 +27,12 @@ public class Producto {
 	public void setCeliaco(boolean celiaco) {
 		this.celiaco = celiaco;
 	}
-	public void setBoton(JButton boton) {
-		this.boton = boton;
-	}
 	
-	public Producto(String nombre, double precio, boolean celiaco, JButton boton) {
+	public Producto(String nombre, double precio, boolean celiaco) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.celiaco = celiaco;
-		this.boton = boton;
 	}
 	
 	public Producto() {
@@ -48,7 +40,6 @@ public class Producto {
 		this.nombre = "";
 		this.precio = 0.0;
 		this.celiaco = false;
-		this.boton = null;
 	}
 	
 	

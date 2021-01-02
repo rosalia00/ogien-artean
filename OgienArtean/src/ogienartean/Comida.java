@@ -20,8 +20,8 @@ public class Comida extends Producto {
 		this.caliente = caliente;
 	} 
 	
-	protected Comida(String nombre, double precio, boolean celiaco, JButton boton, String tipo, boolean caliente) {
-		super(nombre, precio, celiaco, boton);
+	public Comida(String nombre, double precio, boolean celiaco, String tipo, boolean caliente) {
+		super(nombre, precio, celiaco);
 		this.tipo = tipo;
 		this.caliente = caliente;
 	}

@@ -139,7 +139,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 				try {
 
-					Comida c = new Comida(cNombre.getText(), (double) cPrecio.getValue(), cCeliaco.isSelected(), cBoton,
+					Comida c = new Comida(cNombre.getText(), (double) cPrecio.getValue(), cCeliaco.isSelected(),
 							(String) cTipo.getSelectedItem(), cCaliente.isSelected());
 
 					Class.forName("org.sqlite.JDBC");
@@ -221,9 +221,9 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
- //bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bBoton, bLista,
-				//	bSal.isSelected()
-				Pan b = new Pan(bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bBoton = new JButton(""), bLista, bSal.isSelected());
+
+					Pan b = new Pan(bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bLista,
+							bSal.isSelected());
 
 					Class.forName("org.sqlite.JDBC");
 
@@ -296,7 +296,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 
-					Pasteleria p = new Pasteleria(pNombre.getText(), (double) pPrecio.getValue(), pCeliaco.isSelected(), pBoton,
+					Pasteleria p = new Pasteleria(pNombre.getText(), (double) pPrecio.getValue(), pCeliaco.isSelected(),
 							(String) pTipo.getSelectedItem());
 
 					Class.forName("org.sqlite.JDBC");
@@ -377,7 +377,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (numero == 2 || numero == 1) {
 					numero--;
 
@@ -432,7 +432,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				if (numero == 1 || numero == 0) {
 					numero++;
 				} else if (numero == 2) {
@@ -518,7 +518,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 										public void actionPerformed(ActionEvent e) {
 											try {
 												System.out.println("SI");
-												
+
 												String instruccionBorrar = "DELETE FROM COMIDA WHERE NOMBRE = '"
 														+ nombreBD + "';";
 												stmt.executeUpdate(instruccionBorrar);
