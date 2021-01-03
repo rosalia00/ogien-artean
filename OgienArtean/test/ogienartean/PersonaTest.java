@@ -72,5 +72,23 @@ public class PersonaTest {
 		p.setTelefono(111111111);
 		assertEquals(111111111, p.getTelefono());
 	}
+	
+	@Test
+	 public void testToStringVacio() {
+		Persona p = new Persona();
+		String expected = "Persona [nombre=" + "" + ", apellido=" + "" + ", dni=" + 0 + ", direccion=" + ""
+				+ ", telefono=" + 0 + "]";
+		assertEquals(expected, p.toString());
+		
+	}
 
+	@Test
+	 public void testToString() {
+		Persona p = new Persona("Tyler", "de Mier", 00000000, "Casa", 00000000);
+		String expected = "Persona [nombre=" + "Tyler" + ", apellido=" + "de Mier" + ", dni=" + 00000000 + ", direccion=" + "Casa"
+				+ ", telefono=" + 00000000 + "]";
+		assertEquals(expected, p.toString());
+	 }
+	
+	
 }

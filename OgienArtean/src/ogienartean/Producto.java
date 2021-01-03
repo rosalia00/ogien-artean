@@ -42,5 +42,10 @@ public class Producto {
 		this.celiaco = false;
 	}
 	
+	@Override
+	public String toString() {
+		return "Producto [nombre=" + nombre + ", precio=" + precio + ", celiaco=" + celiaco + "]";
+	}
+	
 	
 }
