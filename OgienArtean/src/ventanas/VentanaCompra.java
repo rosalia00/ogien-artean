@@ -17,6 +17,9 @@ import javax.swing.*;
 
 import org.junit.internal.runners.model.EachTestNotifier;
 
+import componentes.PanDisplay;
+import componentes.PasteleriaDisplay;
+import componentes.ComidaDisplay;
 import ogienartean.*;
 
 public class VentanaCompra extends JFrame {
@@ -26,9 +29,9 @@ public class VentanaCompra extends JFrame {
 	JButton carro;
 	JButton perfil;
 
-	JButton item0;
-	JLabel itemLabel0;
-	JSpinner itemSpinner0;
+	JButton boton;
+	JLabel nombre;
+	JSpinner cantidad;
 
 	JButton comprar;
 	JButton volver;
@@ -56,7 +59,6 @@ public class VentanaCompra extends JFrame {
 				pastel.setNombre(rs.getString("nombre"));
 				pastel.setPrecio(rs.getDouble(0));
 				pastel.setCeliaco(rs.getBoolean(0));
-				pastel.setBoton(a = new JButton(pastel.getNombre()));
 				pasteles.add(pastel);
 			}
 			return pasteles;
@@ -74,7 +76,6 @@ public class VentanaCompra extends JFrame {
 				comida.setNombre(rs.getString("nombre"));
 				comida.setPrecio(rs.getDouble(0));
 				comida.setCeliaco(rs.getBoolean(0));
-				comida.setBoton(a = new JButton(comida.getNombre()));
 				comidas.add(comida);
 			}
 			return comidas;
@@ -93,7 +94,6 @@ public class VentanaCompra extends JFrame {
 				pan.setNombre(rs.getString("nombre"));
 				pan.setPrecio(rs.getDouble(0));
 				pan.setCeliaco(rs.getBoolean(0));
-				pan.setBoton(a = new JButton(pan.getNombre()));
 				panes.add(pan);
 			}
 			return panes;
@@ -101,7 +101,40 @@ public class VentanaCompra extends JFrame {
 			throw new Exception("Error obteniendo todos los panes", e);
 		}
 	}
-
+	
+	public ArrayList<PanDisplay> getPanesDisplay() throws Exception{
+		ArrayList<Pan> panes = getAllPanes();
+		System.out.println(panes);
+		ArrayList<PanDisplay> productosPan = new ArrayList();
+	
+		for (Pan pan : panes) {
+			PanDisplay p = new PanDisplay(pan, boton = new JButton(),cantidad = new JSpinner(), nombre = new JLabel());
+		}
+		return productosPan;
+	}
+	
+	public ArrayList<PasteleriaDisplay> getPasteleriaDisplay() throws Exception{
+		ArrayList<Pasteleria> pasteles = getAllPasteles();
+		System.out.println(pasteles);
+		ArrayList<PasteleriaDisplay> productosPasteles = new ArrayList();
+		
+		for (Pasteleria pastel : pasteles) {
+			PasteleriaDisplay q = new PasteleriaDisplay(pastel, boton = new JButton(),cantidad = new JSpinner(), nombre = new JLabel());
+		}
+		return productosPasteles;
+	}
+	
+	public ArrayList<ComidaDisplay> getComidaDisplay() throws Exception {
+		ArrayList<Comida> comidas = getAllComidas();
+		System.out.println(comidas);
+		ArrayList<ComidaDisplay> productosComida = new ArrayList();
+		for (Comida comida : comidas) {
+			ComidaDisplay c = new ComidaDisplay(comida, boton = new JButton(), cantidad = new JSpinner(), nombre = new JLabel());
+			productosComida.add(c);
+		}
+		return productosComida;
+	}
+	
 	public VentanaCompra(String s, Logger logger) throws Exception {
 		
 	//borrar arraylist
@@ -198,39 +231,21 @@ public class VentanaCompra extends JFrame {
 
 		arriba.add(carro);
 		arriba.add(perfil);
-
-		for (int i = 1; i <= 5; i++) {
-			item0 = new JButton("COSO");
-			item0.setOpaque(false);
-			item0.setContentAreaFilled(false);
-			item0.setBorderPainted(false);
-			item0.setFocusPainted(false);
-			itemLabel0 = new JLabel("NOMBRE COSO");
-			itemSpinner0 = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
-
-			centro0.add(item0);
-			centro1.add(itemLabel0);
-			centro2.add(itemSpinner0);
-		}
-
-		for (int i = 1; i <= 5; i++) {
-			item0 = new JButton("COSO");
-			item0.setOpaque(false);
-			item0.setContentAreaFilled(false);
-			item0.setBorderPainted(false);
-			item0.setFocusPainted(false);
-			itemLabel0 = new JLabel("NOMBRE COSO");
-			itemSpinner0 = new JSpinner(new SpinnerNumberModel(0, 0, 100, 1));
-
-			centro00.add(item0);
-			centro11.add(itemLabel0);
-			centro22.add(itemSpinner0);
-		}
 		
-
+		int productosPorFila = 5;
 		
-		ArrayList<Pan> panes = getAllPanes();
-		System.out.println(panes);
+		if (s == "pan") {
+			ArrayList<PanDisplay> panes = getPanesDisplay();
+			for (PanDisplay panDisplay : panes) {
+				
+			}
+		}
+		else if (s == "pasteleria") {
+			ArrayList<PasteleriaDisplay> pasteles = getPasteleriaDisplay();
+		}
+		else if (s == "comida") {
+			ArrayList<ComidaDisplay> comidas = getComidaDisplay();
+		}
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
 		abajo.add(volver);
