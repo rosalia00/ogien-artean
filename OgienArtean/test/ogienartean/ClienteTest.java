@@ -59,7 +59,7 @@ public class ClienteTest {
 	}
 	
 	@Test
-	public void testToString() {
+	public void testToString() { 
 		Cliente c = new Cliente("Rosalia","Perez", 000000000, "Bilbao",  000000000, 123456789, true, "ros","1234");
 		String expected = "Cliente [tarjeta=" + 123456789 + ", entrega=" + true + ", usuario=" + "ros" + ", contraseña="
 				 + "1234"+ "]";
