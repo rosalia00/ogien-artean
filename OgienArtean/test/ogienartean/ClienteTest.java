@@ -50,11 +50,20 @@ public class ClienteTest {
 		c.setUsuario("eva");
 		assertEquals("eva", c.getUsuario());
 	}
-	
+
 	@Test
 	public void testSetContraseña() {
 		Cliente c = new Cliente("Rosalia","Perez", 000000000, "Bilbao",  000000000, 123456789, true, "ros","1234");
-		c.setUsuario("012");
+		c.setContraseña("012");
 		assertEquals("012", c.getContraseña());
 	}
+	
+	@Test
+	public void testToString() {
+		Cliente c = new Cliente("Rosalia","Perez", 000000000, "Bilbao",  000000000, 123456789, true, "ros","1234");
+		String expected = "Cliente [tarjeta=" + 123456789 + ", entrega=" + true + ", usuario=" + "ros" + ", contraseña="
+				 + "1234"+ "]";
+		assertEquals(expected , c.toString());
+	}
+
 }
