@@ -50,8 +50,12 @@ public class VentanaCompra extends JFrame {
 	
 	JButton a;
 	
+	
+	
 	public ArrayList<Pasteleria> getAllPasteles() throws Exception{
 		ArrayList<Pasteleria> pasteles = new ArrayList<Pasteleria>();
+		Class.forName("org.sqlite.JDBC");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 		try (Statement stmt = conn.createStatement()) {
 			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM PASTELERIA");
 			while(rs.next()) {
@@ -69,6 +73,8 @@ public class VentanaCompra extends JFrame {
 
 	public ArrayList<Comida> getAllComidas() throws Exception{
 		ArrayList<Comida> comidas = new ArrayList<Comida>();
+		Class.forName("org.sqlite.JDBC");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 		try (Statement stmt = conn.createStatement()) {
 			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM COMIDA");
 			while(rs.next()) {
@@ -87,6 +93,8 @@ public class VentanaCompra extends JFrame {
 	
 	public ArrayList<Pan> getAllPanes() throws Exception{
 		ArrayList<Pan> panes = new ArrayList<Pan>();
+		Class.forName("org.sqlite.JDBC");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 		try (Statement stmt = conn.createStatement()){
 			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM PAN");
 			while(rs.next()) {

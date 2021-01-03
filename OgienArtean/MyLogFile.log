@@ -1,2 +1,4 @@
-Jan 03, 2021 11:47:58 AM ventanas.VentanaClienteInicio$2 actionPerformed
-INFO: Ha funcionado el boton pasteleria.
+Jan 03, 2021 5:14:08 PM ventanas.VentanaCrearEmpleado$2 actionPerformed
+SEVERE: No se ha podido acceder a la base de datos.
+Jan 03, 2021 5:14:27 PM ventanas.VentanaCrearEmpleado$2 actionPerformed
+SEVERE: No se ha podido acceder a la base de datos.
