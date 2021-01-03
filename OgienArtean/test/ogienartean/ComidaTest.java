@@ -33,5 +33,18 @@ public class ComidaTest {
 		c.setCaliente(false);
 		assertFalse(c.isCaliente());
 	}
+	
+	 @Test
+	 public void testToStringVacio() {
+	    Comida c = new Comida(); 
+	    String expected = "Comida [tipo=" + "" + ", caliente=" + false + "]"; 
+	    assertEquals(expected, c.toString());
+	 }
 
+	 @Test
+	 public void testToString() {
+	    Comida c = new Comida("Bocadillo", 2.5, false, "de calamares", true); 
+	    String expected = "Comida [tipo=" + "de calamares" + ", caliente=" + true + "]"; 
+	    assertEquals(expected, c.toString());
+	  }
 }
