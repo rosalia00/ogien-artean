@@ -187,16 +187,13 @@ public class VentanaCrearEmpleado extends JFrame {
 							+ "," + "'" + empleado.getUsuario() + "'" + "," + "'" + empleado.getContraseña() + "'"
 							+ ");";
 					
-				logger.log(Level.INFO, "Ha funcionado el boton agregar.");
-
 					
 					stmt.executeUpdate(instruccion);
 					stmt.close();
-					conn.commit();
 					conn.close();
 
 					logger.log(Level.INFO, "Ha funcionado el boton agregar.");
-
+										
 				} catch (Exception e2) {
 					// TODO: handle exception
 

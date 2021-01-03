@@ -32,8 +32,8 @@ public class Main {
 		//VentanaClienteConfirmacionCompra z = new VentanaClienteConfirmacionCompra(logger);
 		//VentanaClienteInicio a = new VentanaClienteInicio(logger);
 		//VentanaCompra d = new VentanaCompra(logger);
-		//VentanaCrearCliente as = new VentanaCrearCliente(logger);
-		VentanaCrearEmpleado asd = new VentanaCrearEmpleado(logger);
+		VentanaCrearCliente as = new VentanaCrearCliente(logger);
+		//VentanaCrearEmpleado asd = new VentanaCrearEmpleado(logger);
 		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar(logger);
 		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio(logger);
 		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos(logger);
