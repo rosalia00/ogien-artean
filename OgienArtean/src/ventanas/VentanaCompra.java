@@ -3,6 +3,7 @@ import java.awt.*;
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +36,7 @@ public class VentanaCompra extends JFrame {
 
 	JButton comprar;
 	JButton volver;
-
+	
 	JPanel arriba;
 	JPanel centro0;
 	JPanel centro1;
@@ -43,14 +44,12 @@ public class VentanaCompra extends JFrame {
 	JPanel centro00;
 	JPanel centro11;
 	JPanel centro22;
-
 	JPanel abajo;
+	JPanel productoDisplay;
 	
 	JOptionPane anyadido;
 	
 	JButton a;
-	
-	
 	
 	public ArrayList<Pasteleria> getAllPasteles() throws Exception{
 		ArrayList<Pasteleria> pasteles = new ArrayList<Pasteleria>();
@@ -60,9 +59,10 @@ public class VentanaCompra extends JFrame {
 			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM PASTELERIA");
 			while(rs.next()) {
 				Pasteleria pastel = new Pasteleria();
-				pastel.setNombre(rs.getString("nombre"));
-				pastel.setPrecio(rs.getDouble(0));
-				pastel.setCeliaco(rs.getBoolean(0));
+				pastel.setNombre(rs.getString("NOMBRE"));
+				pastel.setPrecio(rs.getDouble("PRECIO"));
+				pastel.setCeliaco(rs.getBoolean("CELIACO"));
+				pastel.setTipo(rs.getString("TIPO"));
 				pasteles.add(pastel);
 			}
 			return pasteles;
@@ -76,12 +76,14 @@ public class VentanaCompra extends JFrame {
 		Class.forName("org.sqlite.JDBC");
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 		try (Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM COMIDA");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM COMIDA");
 			while(rs.next()) {
 				Comida comida = new Comida();
-				comida.setNombre(rs.getString("nombre"));
-				comida.setPrecio(rs.getDouble(0));
-				comida.setCeliaco(rs.getBoolean(0));
+				comida.setNombre(rs.getString("NOMBRE"));
+				comida.setPrecio(rs.getDouble("PRECIO"));
+				comida.setCeliaco(rs.getBoolean("CELIACO"));
+				comida.setTipo(rs.getString("TIPO"));
+				comida.setCaliente(rs.getBoolean("CALIENTE"));
 				comidas.add(comida);
 			}
 			return comidas;
@@ -96,12 +98,18 @@ public class VentanaCompra extends JFrame {
 		Class.forName("org.sqlite.JDBC");
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 		try (Statement stmt = conn.createStatement()){
-			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM PAN");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM PAN");
 			while(rs.next()) {
 				Pan pan = new Pan();
-				pan.setNombre(rs.getString("nombre"));
-				pan.setPrecio(rs.getDouble(0));
-				pan.setCeliaco(rs.getBoolean(0));
+				pan.setNombre(rs.getString("NOMBRE"));
+				pan.setPrecio(rs.getDouble("PRECIO"));
+				pan.setCeliaco(rs.getBoolean("CELIACO"));
+				ArrayList<String> ingredientes = new ArrayList<String>();
+				String ingredientesLista = rs.getString("INGREDIENTES"); 
+				ingredientes.add(ingredientesLista);
+				pan.setIngredientes(ingredientes);
+				pan.setSal(rs.getBoolean("SAL"));
+				
 				panes.add(pan);
 			}
 			return panes;
@@ -114,9 +122,9 @@ public class VentanaCompra extends JFrame {
 		ArrayList<Pan> panes = getAllPanes();
 		System.out.println(panes);
 		ArrayList<PanDisplay> productosPan = new ArrayList();
-	
 		for (Pan pan : panes) {
 			PanDisplay p = new PanDisplay(pan, boton = new JButton(),cantidad = new JSpinner(), nombre = new JLabel());
+			productosPan.add(p);
 		}
 		return productosPan;
 	}
@@ -145,14 +153,6 @@ public class VentanaCompra extends JFrame {
 	
 	public VentanaCompra(String s, Logger logger) throws Exception {
 		
-	//borrar arraylist
-	//if (s == "pan") {
-	//	getAllPanes();
-//	} else if (s == "comida") {
-		
-	//} else if (s == "pasteleria") {
-		
-	//}
 
 		carro = new JButton();
 		carro.setIcon(new ImageIcon("imagenes/carro.png"));
@@ -244,9 +244,17 @@ public class VentanaCompra extends JFrame {
 		
 		if (s == "pan") {
 			ArrayList<PanDisplay> panes = getPanesDisplay();
-			for (PanDisplay panDisplay : panes) {
+			System.out.println(panes);
+			for (PanDisplay p : panes) {
+				productoDisplay = new JPanel();
+				p.getL().setText(p.getP().getNombre() + " " + p.getP().getPrecio() + " €");
+				productoDisplay.add(p.getL());
+				p.getB().setText("COMPRAR");
+				productoDisplay.add(p.getB());
 				
+				centro0.add(productoDisplay);
 			}
+			
 		}
 		else if (s == "pasteleria") {
 			ArrayList<PasteleriaDisplay> pasteles = getPasteleriaDisplay();

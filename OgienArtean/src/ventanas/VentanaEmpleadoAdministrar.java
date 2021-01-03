@@ -481,7 +481,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			}
 		});
 
-		hilo = new Thread(new Runnable() {
+		/*hilo = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
@@ -653,7 +653,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			}
 		});
 
-		hilo.start();
+		hilo.start();*/
 
 		botones = new JPanel(new FlowLayout());
 		botones.add(perfil);

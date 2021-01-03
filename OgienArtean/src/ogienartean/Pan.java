@@ -36,4 +36,12 @@ public class Pan extends Producto {
 		this.sal = false;
 	}
 
+	@Override
+	public String toString() {
+		return "Pan [ingredientes=" + ingredientes + ", sal=" + sal + ", nombre=" + nombre + ", precio=" + precio
+				+ ", celiaco=" + celiaco + ", getIngredientes()=" + getIngredientes() + ", getSal()=" + getSal()
+				+ ", getNombre()=" + getNombre() + ", getPrecio()=" + getPrecio() + ", isCeliaco()=" + isCeliaco()
+				+ "]";
+	}
+	
 }
