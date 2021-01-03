@@ -23,7 +23,6 @@ public class VentanaPerfil extends JFrame{
 	JPanel datos;
 	JPanel pedidos;
 	
-	JButton pedidoComun;
 	
 	JOptionPane confirmar;
 	
@@ -51,24 +50,6 @@ public class VentanaPerfil extends JFrame{
 		pedidos = new JPanel();
 		pedidos.setOpaque(false);
 		
-		int n = 0;
-		for (int i = 0; i < 3; i++) {
-			n +=1;
-			pedidoComun = new JButton("BD" + n);
-			pedidoComun.setBorderPainted(false);
-			pedidoComun.setFocusPainted(false);
-			pedidos.add(pedidoComun);
-			pedidoComun.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					confirmar = new JOptionPane();
-					confirmar.showConfirmDialog(null, "¿Quieres añadir este pedido a tu carro?", "AÑADIR", JOptionPane.YES_NO_OPTION);
-					logger.log(Level.INFO, "Se añadido el pedido.");
-					
-				}
-			});
-		}
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		add(tituloPanel);
 		add(datos);
