@@ -1,4 +1,5 @@
 package ventanas;
+
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -10,94 +11,70 @@ import java.util.logging.Level;
 import javax.swing.*;
 
 public class VentanaEmpleadoInicio extends JFrame {
-	//Botones opciones de empleado
+	// Botones opciones de empleado
 	JButton administrar;
 	JButton pedidos;
-	JButton registro;
-	
-	//Botones de perfil del empleado
+
+	// Botones de perfil del empleado
 	JButton perfil;
-	
-	//Paneles
-	JPanel arriba;
+
+	// Paneles
 	JPanel abajo;
-	
+
 	public VentanaEmpleadoInicio(Logger logger) {
-		//Boton administrar
+		// Boton administrar
 		administrar = new JButton();
-			administrar.setIcon(new ImageIcon("imagenes/administracion.png"));
-			administrar.setContentAreaFilled(false);
-			administrar.setBorderPainted(false);
-			administrar.setFocusPainted(false);
-			administrar.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					new VentanaEmpleadoAdministrar(logger);
-					dispose();
-					logger.log(Level.INFO, "Ha funcionado el boton administrar.");
-				}
-				
-			});
-			
-		//Boton pedidos
+		administrar.setIcon(new ImageIcon("imagenes/administracion.png"));
+		administrar.setContentAreaFilled(false);
+		administrar.setBorderPainted(false);
+		administrar.setFocusPainted(false);
+		administrar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaEmpleadoAdministrar(logger);
+				dispose();
+				logger.log(Level.INFO, "Ha funcionado el boton administrar.");
+			}
+
+		});
+
+		// Boton pedidos
 		pedidos = new JButton();
-			pedidos.setIcon(new ImageIcon("imagenes/pedidos.png"));
-			pedidos.setContentAreaFilled(false);
-			pedidos.setBorderPainted(false);
-			pedidos.setFocusPainted(false);
-			pedidos.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					new VentanaEmpleadoPedidos(logger);
-					dispose();
-					logger.log(Level.INFO, "Ha funcionado el boton pedidos.");
-				}
-			});
-		
-		//Boton registro
-		registro = new JButton();
-			registro.setIcon(new ImageIcon("imagenes/registro.png"));
-			registro.setContentAreaFilled(false);
-			registro.setBorderPainted(false);
-			registro.setFocusPainted(false);
-			
-		
-		
-		
-		//Boton perfil
-		perfil = new JButton();
-			perfil.setIcon(new ImageIcon("imagenes/perfil1.png"));
-			perfil.setContentAreaFilled(false);
-			perfil.setBorderPainted(false);
-			perfil.setFocusPainted(false);
+		pedidos.setIcon(new ImageIcon("imagenes/pedidos.png"));
+		pedidos.setContentAreaFilled(false);
+		pedidos.setBorderPainted(false);
+		pedidos.setFocusPainted(false);
+		pedidos.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaEmpleadoPedidos(logger);
+				dispose();
+				logger.log(Level.INFO, "Ha funcionado el boton pedidos.");
+			}
+		});
 
-
-		arriba = new JPanel();
-		arriba.setOpaque(false);
 		abajo = new JPanel();
 		abajo.setOpaque(false);
-		
-		//Fondo
+		abajo.setLayout(new GridLayout(1, 32));
+
+		// Fondo
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
-		
-		//Añadir a los panels 
-		arriba.add(perfil);
+
+		// Añadir a los panels
 		abajo.add(pedidos);
-		abajo.add(registro);
 		abajo.add(administrar);
-		
-		//Añadir a la pagina
-		add(arriba);
+
+		// Añadir a la pagina
 		add(abajo);
-		
-		//Icono de paginas
+
+		// Icono de paginas
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
-		
-		//Final
+
+		// Final
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("INICIO");
-		setSize(500, 500);
-		setLayout(new GridLayout(2,1));
+		setSize(600, 300);
+		setLayout(new GridLayout(1, 1));
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);

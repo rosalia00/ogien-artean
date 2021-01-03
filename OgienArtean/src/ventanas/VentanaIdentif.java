@@ -69,7 +69,7 @@ public class VentanaIdentif extends JFrame {
 		setSize(500, 400);
 		setLayout(new GridLayout(1, 2));
 		setLocationRelativeTo(null);
-
+		setResizable(false);
 		setVisible(true);
 
 	}

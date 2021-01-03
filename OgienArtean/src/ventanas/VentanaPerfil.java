@@ -14,7 +14,7 @@ import javax.swing.*;
 public class VentanaPerfil extends JFrame{
 	
 	JPanel tituloPanel;
-	JLabel titulo;
+	JButton titulo;
 	
 	JLabel nombreYApellidos;
 	JLabel direccion;
@@ -31,7 +31,11 @@ public class VentanaPerfil extends JFrame{
 		tituloPanel = new JPanel();
 		tituloPanel.setOpaque(false);
 		
-		titulo = new JLabel("Mi Perfil");
+		titulo = new JButton();
+		titulo.setIcon(new ImageIcon("imagenes/miperfil.png"));
+		titulo.setContentAreaFilled(false);
+		titulo.setBorderPainted(false);
+		titulo.setFocusPainted(false);
 		tituloPanel.add(titulo);
 		
 		nombreYApellidos = new JLabel("BD");
@@ -59,7 +63,7 @@ public class VentanaPerfil extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					confirmar = new JOptionPane();
-					confirmar.showConfirmDialog(pedidoComun, "¿Quieres añadir este pedido a tu carro?:");
+					confirmar.showConfirmDialog(null, "¿Quieres añadir este pedido a tu carro?", "AÑADIR", JOptionPane.YES_NO_OPTION);
 					logger.log(Level.INFO, "Se añadido el pedido.");
 					
 				}
@@ -70,11 +74,14 @@ public class VentanaPerfil extends JFrame{
 		add(datos);
 		add(pedidos);
 		
+		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("PERFIL");
 		setSize(300, 400);
 		setLayout(new GridLayout(3, 1));
 		setLocationRelativeTo(null);
 		setVisible(true);
+		setResizable(false);
 	}
 }

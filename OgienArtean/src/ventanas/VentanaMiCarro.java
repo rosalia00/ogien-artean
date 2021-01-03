@@ -19,7 +19,6 @@ public class VentanaMiCarro extends JFrame {
 	
 	JPanel abajo;
 	
-	
 	public VentanaMiCarro(Logger logger) {
 		
 		nombre = new JButton();
@@ -35,6 +34,19 @@ public class VentanaMiCarro extends JFrame {
 		volver.setContentAreaFilled(false);
 		volver.setBorderPainted(false);
 		volver.setFocusPainted(false);
+		volver.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String s = null;
+				try {
+					new VentanaCompra(s, logger);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		
 		comprar = new JButton();
 		comprar.setIcon(new ImageIcon("imagenes/comprar.png"));
