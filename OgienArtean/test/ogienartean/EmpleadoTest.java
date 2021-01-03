@@ -46,5 +46,12 @@ public class EmpleadoTest {
 		e.setContraseña("4321");
 		assertEquals("4321", e.getContraseña());
 	}
+	
+	@Test
+	 public void testToString() {
+	    Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234"); 
+	    String expected = "Empleado [nomina=" + 1000000.0 + ", usuario=" + "peter" + ", contraseña=" + "1234" + "]"; 
+	    assertEquals(expected, e.toString());
+	  }
 
 }

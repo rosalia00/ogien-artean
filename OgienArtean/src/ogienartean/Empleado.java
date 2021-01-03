@@ -41,5 +41,12 @@ public class Empleado extends Persona {
 		this.contraseña = contraseña;
 	}
 
+	@Override
+	public String toString() {
+		return "Empleado [nomina=" + nomina + ", usuario=" + usuario + ", contraseña=" + contraseña + "]";
+	}
+	
+	
+
 
 }
