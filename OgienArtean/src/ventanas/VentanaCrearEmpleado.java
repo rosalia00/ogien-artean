@@ -62,7 +62,6 @@ public class VentanaCrearEmpleado extends JFrame {
 	public VentanaCrearEmpleado(Logger logger) {
 		nombreTexto = new JTextField();
 		nombreTexto.setPreferredSize(new Dimension(250, 20));
-		nombreTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
 		nombreLabel = new JLabel("NOMBRE: ");
 		nombreLabel.setPreferredSize(new Dimension(100, 20));
 		nombrePanel = new JPanel();
@@ -170,24 +169,17 @@ public class VentanaCrearEmpleado extends JFrame {
 
 				try {
 					
-					System.out.println("llega0");
-					
-					
 					Empleado empleado = new Empleado(nombreTexto.getText(), apellidoTexto.getText(),
 							Integer.parseInt(dniTexto.getText()), direccionTexto.getText(),
 							Integer.parseInt(telefonoTexto.getText()), Double.parseDouble(nominaTexto.getText()),
 							usuarioTexto.getText(), contraseñaTexto.getText());
 					
-					System.out.println("llega?");
-
 					Class.forName("org.sqlite.JDBC");
 					
-					System.out.println("llega");
 					
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 					Statement stmt = (Statement) conn.createStatement();
 					
-					System.out.println("llega2");
 					
 					String instruccion = "INSERT INTO EMPLEADO VALUES(" + "'" + empleado.getNombre() + "'" + ", " + "'"
 							+ empleado.getApellido() + "'" + "," + empleado.getDni() + "," + "'"
@@ -195,8 +187,9 @@ public class VentanaCrearEmpleado extends JFrame {
 							+ "," + "'" + empleado.getUsuario() + "'" + "," + "'" + empleado.getContraseña() + "'"
 							+ ");";
 					
-					System.out.println(instruccion);
+				logger.log(Level.INFO, "Ha funcionado el boton agregar.");
 
+					
 					stmt.executeUpdate(instruccion);
 					stmt.close();
 					conn.commit();
