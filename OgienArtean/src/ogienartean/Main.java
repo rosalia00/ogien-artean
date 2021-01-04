@@ -16,7 +16,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		//LOGGER
 		try {
-			FileHandler fH = new FileHandler("MyLogFile.log", 8096, 1, false);
+			FileHandler fH = new FileHandler("logs/MyLogFile.log", 8096, 1, false);
 			for (Handler handler : logger.getHandlers()) {
 				logger.removeHandler(handler);
 			}
@@ -28,14 +28,15 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		ArrayList<String> tickets = new ArrayList();
+		
+		//ArrayList<String> tickets = new ArrayList();
 		//VENTANAS
 		//VentanaClienteConfirmacionCompra z = new VentanaClienteConfirmacionCompra(logger);
 		//VentanaClienteInicio a = new VentanaClienteInicio(logger, tickets);
 		//VentanaCompra d = new VentanaCompra(logger);
 		//VentanaCrearCliente as = new VentanaCrearCliente(logger);
 		//VentanaCrearEmpleado asd = new VentanaCrearEmpleado(logger);
-		VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar(logger);
+		//VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar(logger);
 		//VentanaEmpleadoInicio v = new VentanaEmpleadoInicio(logger);
 		//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos(logger);
 		//VentanaIdentif d = new VentanaIdentif(logger);

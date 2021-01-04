@@ -137,17 +137,14 @@ public class VentanaLoginCliente extends JFrame {
 		usuario.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El archivo se ha cambiado correctamente.");
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El archivo se ha borrado correctamente.");
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El archivo se ha insertado correctamente.");
 
 			}
 		});
@@ -155,17 +152,14 @@ public class VentanaLoginCliente extends JFrame {
 		contraseña.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El documento se ha cambiado correctamente.");
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El documento se ha borrado correctamente.");
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El documento se ha insertado correctamente.");
 			}
 		});
 

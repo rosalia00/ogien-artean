@@ -121,34 +121,28 @@ public class VentanaLoginEmpleado extends JFrame {
 		usuario.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El documento se ha cambiado correctamente.");
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El documento se ha borrado correctamente.");
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El documento se ha insertado correctamente.");
 			}
 		});
 
 		contraseña.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El documento se ha cambiado correctamente.");
 			}
 
 			public void removeUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El documento se ha borrado correctamente.");
 			}
 
 			public void insertUpdate(DocumentEvent e) {
 				changed();
-				logger.log(Level.INFO, "El documento se ha insertado correctamente.");
 			}
 		});
 
