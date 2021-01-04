@@ -7,6 +7,7 @@ import javax.swing.event.DocumentListener;
 
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 import java.awt.*;
@@ -104,7 +105,22 @@ public class VentanaLoginCliente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (comprobar(logger)) {
-					vio = new VentanaClienteInicio(logger);
+					String dni = "";
+					try {
+						Class.forName("org.sqlite.JDBC");
+						Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+						Statement stmt = conn.createStatement();
+						System.out.println("SELECT DNI FROM CLIENTE WHERE USUARIO =" + usuario.getText() + ";");
+						ResultSet rs = stmt.executeQuery("SELECT DNI FROM CLIENTE WHERE USUARIO = '" + usuario.getText() + "' ;");				
+						dni = rs.getString("DNI");
+						stmt.close();
+						conn.close();
+					} catch (ClassNotFoundException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					ArrayList<String> tickets = new ArrayList();
+					vio = new VentanaClienteInicio(logger, tickets, dni);
 					dispose();
 					logger.log(Level.INFO, "Se ha loggeado el cliente.");
 				} else {

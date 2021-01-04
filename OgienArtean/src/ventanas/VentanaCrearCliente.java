@@ -225,7 +225,10 @@ public class VentanaCrearCliente extends JFrame {
 
 					logger.log(Level.SEVERE, "No se ha podido acceder a la base de datos.");
 				}
+				VentanaLoginCliente i = new VentanaLoginCliente(logger);
+				dispose();
 			}
+			
 		});
 		
 		botones.add(cancelar);

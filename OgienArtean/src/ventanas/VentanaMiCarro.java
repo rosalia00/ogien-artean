@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class VentanaMiCarro extends JFrame {
 	
 	JPanel abajo;
 	
-	public VentanaMiCarro(Logger logger) {
+	public VentanaMiCarro(Logger logger, ArrayList<String> tickets, String dni) {
 		
 		nombre = new JButton();
 		nombre.setIcon(new ImageIcon("imagenes/carro.png"));
@@ -28,6 +29,11 @@ public class VentanaMiCarro extends JFrame {
 		nombre.setFocusPainted(false);
 		
 		coso = new JTextPane();
+		coso.setEnabled(false);
+		for (String ticket : tickets) {
+			String texto = coso.getText() + "\n" + ticket;
+			coso.setText(texto);
+		}
 		
 		volver  = new JButton();
 		volver.setIcon(new ImageIcon("imagenes/volver.png"));
@@ -39,7 +45,7 @@ public class VentanaMiCarro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String s = null;
 				try {
-					new VentanaCompra(s, logger);
+					new VentanaCompra(s, logger, tickets, dni);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -56,7 +62,7 @@ public class VentanaMiCarro extends JFrame {
 		comprar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaClienteConfirmacionCompra(logger);
+				new VentanaClienteConfirmacionCompra(logger, tickets, dni);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton comprar.");
 			}

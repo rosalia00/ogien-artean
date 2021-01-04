@@ -33,7 +33,7 @@ public class VentanaCompra extends JFrame {
 	JButton boton;
 	JLabel nombre;
 	JSpinner cantidad;
-	SpinnerModel model = new SpinnerNumberModel(0, 0, 25, 1);
+	
 	
 	JButton comprar;
 	JButton volver;
@@ -125,7 +125,7 @@ public class VentanaCompra extends JFrame {
 		ArrayList<PanDisplay> productosPan = new ArrayList();
 		
 		for (Pan pan : panes) {
-			PanDisplay p = new PanDisplay(pan, boton = new JButton(),cantidad = new JSpinner(model), nombre = new JLabel());
+			PanDisplay p = new PanDisplay(pan, boton = new JButton(),cantidad = new JSpinner(), nombre = new JLabel());
 			productosPan.add(p);
 		}
 		return productosPan;
@@ -137,7 +137,7 @@ public class VentanaCompra extends JFrame {
 		ArrayList<PasteleriaDisplay> productosPasteles = new ArrayList();
 		
 		for (Pasteleria pastel : pasteles) {
-			PasteleriaDisplay q = new PasteleriaDisplay(pastel, boton = new JButton(),cantidad = new JSpinner(model), nombre = new JLabel());
+			PasteleriaDisplay q = new PasteleriaDisplay(pastel, boton = new JButton(),cantidad = new JSpinner(), nombre = new JLabel());
 		}
 		return productosPasteles;
 	}
@@ -147,13 +147,13 @@ public class VentanaCompra extends JFrame {
 		System.out.println(comidas);
 		ArrayList<ComidaDisplay> productosComida = new ArrayList();
 		for (Comida comida : comidas) {
-			ComidaDisplay c = new ComidaDisplay(comida, boton = new JButton(), cantidad = new JSpinner(model), nombre = new JLabel());
+			ComidaDisplay c = new ComidaDisplay(comida, boton = new JButton(), cantidad = new JSpinner(), nombre = new JLabel());
 			productosComida.add(c);
 		}
 		return productosComida;
 	}
 	
-	public VentanaCompra(String s, Logger logger) throws Exception {
+	public VentanaCompra(String s, Logger logger, ArrayList<String> tickets, String dni) throws Exception {
 		
 		
 
@@ -165,7 +165,7 @@ public class VentanaCompra extends JFrame {
 		carro.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaMiCarro(logger);
+				new VentanaMiCarro(logger, tickets, dni);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton carro.");				
 			}
@@ -190,19 +190,7 @@ public class VentanaCompra extends JFrame {
 		comprar.setContentAreaFilled(false);
 		comprar.setBorderPainted(false);
 		comprar.setFocusPainted(false);
-		comprar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				anyadido = new JOptionPane();
-				anyadido.setFocusable(false);
-				anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
-				dispose();
-				new VentanaClienteInicio(logger);
-				logger.log(Level.INFO, "Ha funcionado el boton volver.");;
-				logger.log(Level.INFO, "Ha funcionado el boton compro.");
-			}
-		});
+		
 
 		volver = new JButton();
 		volver.setIcon(new ImageIcon("imagenes/volver.png"));
@@ -212,7 +200,7 @@ public class VentanaCompra extends JFrame {
 		volver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaClienteInicio(logger);
+				new VentanaClienteInicio(logger, tickets, dni);
 				dispose();
 			}
 		});
@@ -267,6 +255,8 @@ public class VentanaCompra extends JFrame {
 				p.getB().setText("COMPRAR");
 				productoDisplay.add(p.getB());
 				p.getS().setEnabled(false);
+				SpinnerModel model = new SpinnerNumberModel(0, 0, 25, 1);
+				p.getS().setModel(model);
 				productoDisplay.add(p.getS());
 				productoDisplay.setOpaque(false);
 				p.getB().addActionListener(new ActionListener() {
@@ -287,7 +277,6 @@ public class VentanaCompra extends JFrame {
 						panelesCentro.get(numeroPanel).add(productoDisplay);
 						numeroPanel ++;
 						i++;
-						System.out.println(i);
 					} else if(i == panes.size()-1) {
 						panelesCentro.get(numeroPanel).add(productoDisplay);
 						if(0 <= i && i < 5) {
@@ -309,7 +298,31 @@ public class VentanaCompra extends JFrame {
 						panelesCentro.get(numeroPanel).add(productoDisplay);
 						i++;
 					}
+					
 			}
+			comprar.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					 
+					for (PanDisplay pan : panes) {
+						int comprado = (int) pan.getS().getValue();
+						if(comprado > 0) {
+							String ticket = pan.getP().getNombre() + " Precio/u: " + pan.getP().getPrecio() + " Unidades: " + pan.getS().getValue() 
+								+ " Precio/total: " + pan.getP().getPrecio()* (int) pan.getS().getValue();
+							System.out.println(ticket);
+							tickets.add(ticket);
+						}
+					}
+					
+					anyadido = new JOptionPane();
+					anyadido.setFocusable(false);
+					anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
+					dispose();
+					new VentanaClienteInicio(logger, tickets, dni);
+					logger.log(Level.INFO, "Ha funcionado el boton volver.");;
+					logger.log(Level.INFO, "Ha funcionado el boton compro.");
+				}
+			});
 			
 		}
 		else if (s == "pasteleria") {
@@ -321,7 +334,8 @@ public class VentanaCompra extends JFrame {
 				productoDisplay.add(q.getL());
 				q.getB().setText("COMPRAR");
 				productoDisplay.add(q.getB());
-				
+				SpinnerModel model = new SpinnerNumberModel(0, 0, 25, 1);
+				q.getS().setModel(model);
 				q.getS().setEnabled(false);
 				productoDisplay.add(q.getS());
 				q.getB().addActionListener(new ActionListener() {
@@ -368,6 +382,29 @@ public class VentanaCompra extends JFrame {
 						i++;
 					}
 			}
+			comprar.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					 
+					for (PasteleriaDisplay pastel : pasteles) {
+						int comprado = (int) pastel.getS().getValue();
+						if(comprado > 0) {
+							String ticket = pastel.getQ().getNombre() + " Precio/u: " + pastel.getQ().getPrecio() + " Unidades: " + pastel.getS().getValue() 
+								+ " Precio/total: " + pastel.getQ().getPrecio()* (int) pastel.getS().getValue();
+							System.out.println(ticket);
+							tickets.add(ticket);
+						}
+					}
+					
+					anyadido = new JOptionPane();
+					anyadido.setFocusable(false);
+					anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
+					dispose();
+					new VentanaClienteInicio(logger, tickets, dni);
+					logger.log(Level.INFO, "Ha funcionado el boton volver.");;
+					logger.log(Level.INFO, "Ha funcionado el boton compro.");
+				}
+			});
 		}
 		else if (s == "comida") {
 			ArrayList<ComidaDisplay> comidas = getComidaDisplay();
@@ -378,7 +415,8 @@ public class VentanaCompra extends JFrame {
 				productoDisplay.add(c.getL());
 				c.getB().setText("COMPRAR");
 				productoDisplay.add(c.getB());
-				
+				SpinnerModel model = new SpinnerNumberModel(0, 0, 25, 1);
+				c.getS().setModel(model);
 				c.getS().setEnabled(false);
 				productoDisplay.add(c.getS());
 				c.getB().addActionListener(new ActionListener() {
@@ -421,6 +459,29 @@ public class VentanaCompra extends JFrame {
 						i++;
 					}
 			}
+			comprar.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					 
+					for (ComidaDisplay comida : comidas) {
+						int comprado = (int) comida.getS().getValue();
+						if(comprado > 0) {
+							String ticket = comida.getC().getNombre() + " Precio/u: " + comida.getC().getPrecio() + " Unidades: " + comida.getS().getValue() 
+								+ " Precio/total: " + comida.getC().getPrecio()* (int) comida.getS().getValue();
+							System.out.println(ticket);
+							tickets.add(ticket);
+						}
+					}
+					
+					anyadido = new JOptionPane();
+					anyadido.setFocusable(false);
+					anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
+					dispose();
+					new VentanaClienteInicio(logger, tickets, dni);
+					logger.log(Level.INFO, "Ha funcionado el boton volver.");;
+					logger.log(Level.INFO, "Ha funcionado el boton compro.");
+				}
+			});
 			
 		}
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));

@@ -1,6 +1,7 @@
 package ventanas;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.logging.*;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -37,8 +38,10 @@ public class VentanaClienteInicio extends JFrame {
 
 	private String s;
 
-	public VentanaClienteInicio(Logger logger) {
-
+	public VentanaClienteInicio(Logger logger, ArrayList<String> tickets, String dni) {
+		
+		System.out.println(dni);
+		
 		panaderia = new JButton();
 		panaderia.setContentAreaFilled(false);
 		panaderia.setBorderPainted(false);
@@ -49,7 +52,8 @@ public class VentanaClienteInicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				s = "pan";
 				try {
-					VentanaCompra a = new VentanaCompra(s, logger);
+					System.out.println(tickets);
+					VentanaCompra a = new VentanaCompra(s, logger, tickets, dni);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -69,7 +73,7 @@ public class VentanaClienteInicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				s = "pasteleria";
 				try {
-					VentanaCompra a = new VentanaCompra(s, logger);
+					VentanaCompra a = new VentanaCompra(s, logger, tickets, dni);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -89,7 +93,7 @@ public class VentanaClienteInicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				s = "comida";
 				try {
-					VentanaCompra a = new VentanaCompra(s, logger);
+					VentanaCompra a = new VentanaCompra(s, logger, tickets, dni);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -107,7 +111,7 @@ public class VentanaClienteInicio extends JFrame {
 		miCarro.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaMiCarro a = new VentanaMiCarro(logger);
+				VentanaMiCarro a = new VentanaMiCarro(logger, tickets, dni);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton mi carro.");
 			}
