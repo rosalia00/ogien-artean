@@ -33,7 +33,8 @@ public class VentanaCompra extends JFrame {
 	JButton boton;
 	JLabel nombre;
 	JSpinner cantidad;
-
+	SpinnerModel model = new SpinnerNumberModel(0, 0, 25, 1);
+	
 	JButton comprar;
 	JButton volver;
 	
@@ -122,8 +123,9 @@ public class VentanaCompra extends JFrame {
 		ArrayList<Pan> panes = getAllPanes();
 		System.out.println(panes);
 		ArrayList<PanDisplay> productosPan = new ArrayList();
+		
 		for (Pan pan : panes) {
-			PanDisplay p = new PanDisplay(pan, boton = new JButton(),cantidad = new JSpinner(), nombre = new JLabel());
+			PanDisplay p = new PanDisplay(pan, boton = new JButton(),cantidad = new JSpinner(model), nombre = new JLabel());
 			productosPan.add(p);
 		}
 		return productosPan;
@@ -135,7 +137,7 @@ public class VentanaCompra extends JFrame {
 		ArrayList<PasteleriaDisplay> productosPasteles = new ArrayList();
 		
 		for (Pasteleria pastel : pasteles) {
-			PasteleriaDisplay q = new PasteleriaDisplay(pastel, boton = new JButton(),cantidad = new JSpinner(), nombre = new JLabel());
+			PasteleriaDisplay q = new PasteleriaDisplay(pastel, boton = new JButton(),cantidad = new JSpinner(model), nombre = new JLabel());
 		}
 		return productosPasteles;
 	}
@@ -145,13 +147,14 @@ public class VentanaCompra extends JFrame {
 		System.out.println(comidas);
 		ArrayList<ComidaDisplay> productosComida = new ArrayList();
 		for (Comida comida : comidas) {
-			ComidaDisplay c = new ComidaDisplay(comida, boton = new JButton(), cantidad = new JSpinner(), nombre = new JLabel());
+			ComidaDisplay c = new ComidaDisplay(comida, boton = new JButton(), cantidad = new JSpinner(model), nombre = new JLabel());
 			productosComida.add(c);
 		}
 		return productosComida;
 	}
 	
 	public VentanaCompra(String s, Logger logger) throws Exception {
+		
 		
 
 		carro = new JButton();
@@ -190,6 +193,7 @@ public class VentanaCompra extends JFrame {
 		comprar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				anyadido = new JOptionPane();
 				anyadido.setFocusable(false);
 				anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
@@ -216,13 +220,13 @@ public class VentanaCompra extends JFrame {
 		arriba = new JPanel();
 		arriba.setOpaque(false);
 		centro0 = new JPanel();
-		centro0.setLayout(new GridLayout(1, 6, 5, 0));
+		centro0.setLayout(new GridLayout(1, 5, 5, 0));
 		centro0.setOpaque(false);
 		centro1 = new JPanel();
-		centro1.setLayout(new GridLayout(1, 6, 5, 0));
+		centro1.setLayout(new GridLayout(1, 5, 5, 0));
 		centro1.setOpaque(false);
 		centro2 = new JPanel();
-		centro2.setLayout(new GridLayout(1, 6, 5, 0));
+		centro2.setLayout(new GridLayout(1, 5, 5, 0));
 		centro2.setOpaque(false);
 
 		centro00 = new JPanel();
@@ -240,27 +244,184 @@ public class VentanaCompra extends JFrame {
 		arriba.add(carro);
 		arriba.add(perfil);
 		
-		int productosPorFila = 5;
+		ArrayList<JPanel> panelesCentro = new ArrayList<>();
+		panelesCentro.add(centro0);
+		panelesCentro.add(centro1);
+		panelesCentro.add(centro2);
+		panelesCentro.add(centro00);
+		panelesCentro.add(centro11);
+		panelesCentro.add(centro22);
 		
+		int i = 0;
+		int diferencia = 0;
 		if (s == "pan") {
 			ArrayList<PanDisplay> panes = getPanesDisplay();
 			System.out.println(panes);
+			int numeroPanel = 0;
 			for (PanDisplay p : panes) {
 				productoDisplay = new JPanel();
 				p.getL().setText(p.getP().getNombre() + " " + p.getP().getPrecio() + " €");
+				p.getL().setBackground(Color.WHITE);
+				p.getL().setOpaque(true);
 				productoDisplay.add(p.getL());
 				p.getB().setText("COMPRAR");
 				productoDisplay.add(p.getB());
+				p.getS().setEnabled(false);
+				productoDisplay.add(p.getS());
+				productoDisplay.setOpaque(false);
+				p.getB().addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if(p.getB().getText() == "COMPRAR") {
+							p.getB().setText("RETIRAR");
+							p.getS().setEnabled(true);
+						} else {
+							p.getB().setText("COMPRAR");
+							p.getS().setEnabled(false);
+							p.getS().setValue(0);
+						}
+					}
+				});
 				
-				centro0.add(productoDisplay);
+					if(i == 4 || i == 9 || i == 14) {
+						panelesCentro.get(numeroPanel).add(productoDisplay);
+						numeroPanel ++;
+						i++;
+						System.out.println(i);
+					} else if(i == panes.size()-1) {
+						panelesCentro.get(numeroPanel).add(productoDisplay);
+						if(0 <= i && i < 5) {
+							 diferencia = 4-i;
+						} else if(5 <= i && i < 10) {
+							 diferencia = 9-i;
+						} else if (10 <= i && i < 15){
+							 diferencia = 14-i;
+						} else {
+							 diferencia = 19-i;
+						}
+						for (int j = 0; j < diferencia; j++) {
+							JPanel vacio = new JPanel();
+							vacio.setVisible(false);
+							panelesCentro.get(numeroPanel).add(vacio);
+						}
+					}
+					else {
+						panelesCentro.get(numeroPanel).add(productoDisplay);
+						i++;
+					}
 			}
 			
 		}
 		else if (s == "pasteleria") {
 			ArrayList<PasteleriaDisplay> pasteles = getPasteleriaDisplay();
+			int numeroPanel = 0;
+			for (PasteleriaDisplay q : pasteles) {
+				productoDisplay = new JPanel();
+				q.getL().setText(q.getQ().getNombre() + " " + q.getQ().getPrecio() + " €");
+				productoDisplay.add(q.getL());
+				q.getB().setText("COMPRAR");
+				productoDisplay.add(q.getB());
+				
+				q.getS().setEnabled(false);
+				productoDisplay.add(q.getS());
+				q.getB().addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if(q.getB().getText() == "COMPRAR") {
+							q.getB().setText("RETIRAR");
+							q.getS().setEnabled(true);
+						} else {
+							q.getB().setText("COMPRAR");
+							q.getS().setEnabled(false);
+							q.getS().setValue(0);
+						}
+					}
+				});
+				
+					if(i == 4 || i == 9 || i == 14) {
+						panelesCentro.get(numeroPanel).add(productoDisplay);
+						numeroPanel ++;
+						i++;
+						System.out.println(i);
+					} else if(i == pasteles.size()-1) {
+						panelesCentro.get(numeroPanel).add(productoDisplay);
+						if(0 <= i && i < 5) {
+							 diferencia = 4-i;
+						} else if(5 <= i && i < 10) {
+							 diferencia = 9-i;
+						} else if (10 <= i && i < 15){
+							 diferencia = 14-i;
+						} else {
+							 diferencia = 19-i;
+						}
+						for (int j = 0; j < diferencia; j++) {
+							JButton vacioBoton = new JButton();
+							vacioBoton.setVisible(false);
+							vacioBoton.setEnabled(false);
+							JPanel vacio = new JPanel();
+							//vacio.add(vacioBoton);
+							panelesCentro.get(numeroPanel).add(vacio);
+						}
+					}
+					else {
+						panelesCentro.get(numeroPanel).add(productoDisplay);
+						i++;
+					}
+			}
 		}
 		else if (s == "comida") {
 			ArrayList<ComidaDisplay> comidas = getComidaDisplay();
+			int numeroPanel = 0;
+			for (ComidaDisplay c : comidas) {
+				productoDisplay = new JPanel();
+				c.getL().setText(c.getC().getNombre() + " " + c.getC().getPrecio() + " €");
+				productoDisplay.add(c.getL());
+				c.getB().setText("COMPRAR");
+				productoDisplay.add(c.getB());
+				
+				c.getS().setEnabled(false);
+				productoDisplay.add(c.getS());
+				c.getB().addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if(c.getB().getText() == "COMPRAR") {
+							c.getB().setText("RETIRAR");
+							c.getS().setEnabled(true);
+						} else {
+							c.getB().setText("COMPRAR");
+							c.getS().setEnabled(false);
+							c.getS().setValue(0);
+						}
+					}
+				});
+				
+					if(i == 4 || i == 9 || i == 14) {
+						panelesCentro.get(numeroPanel).add(productoDisplay);
+						numeroPanel ++;
+						i++;
+						System.out.println(i);
+					} else if(i == comidas.size()-1) {
+						panelesCentro.get(numeroPanel).add(productoDisplay);
+						if(0 <= i && i < 5) {
+							 diferencia = 4-i;
+						} else if(5 <= i && i < 10) {
+							 diferencia = 9-i;
+						} else if (10 <= i && i < 15){
+							 diferencia = 14-i;
+						} else {
+							 diferencia = 19-i;
+						}
+						for (int j = 0; j < diferencia; j++) {
+							JPanel vacio = new JPanel();
+							panelesCentro.get(numeroPanel).add(vacio);
+						}
+					}
+					else {
+						panelesCentro.get(numeroPanel).add(productoDisplay);
+						i++;
+					}
+			}
+			
 		}
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
