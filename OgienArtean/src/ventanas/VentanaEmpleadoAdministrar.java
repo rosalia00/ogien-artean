@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.logging.Level;
 
@@ -16,13 +17,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.sql.ConnectionPoolDataSource;
 import javax.swing.*;
 
 import org.apache.commons.dbutils.DbUtils;
+import org.sqlite.javax.SQLiteConnectionPoolDataSource;
 
 import ogienartean.Comida;
 import ogienartean.Pan;
 import ogienartean.Pasteleria;
+import ogienartean.Producto;
 
 public class VentanaEmpleadoAdministrar extends JFrame {
 
@@ -99,15 +103,95 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JButton nombrehilo;
 
 	private static LinkedList<String> lista = new LinkedList<>();
-	private static LinkedList<String> listaBorrados = new LinkedList<>();
+
+	private static LinkedList<Pasteleria> pastelerias = new LinkedList<>();
+	private static LinkedList<Pan> panes = new LinkedList<>();
+	private static LinkedList<Comida> comidas = new LinkedList<>();
 
 	private boolean haCambiadoDePagina = false;
+
+	private HashMap<Integer, JPanel> hashPaginas = new HashMap<>();
 
 	public VentanaEmpleadoAdministrar(Logger logger) {
 
 		try {
 			Class.forName("org.sqlite.JDBC");
+
 			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+
+			Statement stmt = (Statement) conn.createStatement();
+
+			String instruccion = "SELECT * FROM PAN";
+
+			ResultSet rs = stmt.executeQuery(instruccion);
+
+			while (rs.next()) {
+
+				String nombreGuardado = rs.getString("NOMBRE");
+				Double precioGuardado = rs.getDouble("PRECIO");
+				boolean celiacoGuardado = rs.getBoolean("CELIACO");
+				String ingredientesGuardados = rs.getString("INGREDIENTES");
+
+				String[] ingredientesMuyGuardados;
+				String stringTocho = "";
+				for (Character letra : ingredientesGuardados.toCharArray()) {
+					if (letra.equals('[') || letra.equals(']')) {
+						continue;
+					} else {
+						stringTocho = stringTocho + letra;
+					}
+				}
+				ingredientesMuyGuardados = stringTocho.split(",");
+
+				ArrayList<String> ingredientesDemasiadoGuardados = new ArrayList<String>();
+				for (int i = 0; i < ingredientesMuyGuardados.length; i++) {
+					ingredientesDemasiadoGuardados.add(ingredientesMuyGuardados[i]);
+				}
+
+				boolean salGuardada = rs.getBoolean("SAL");
+				Pan p = new Pan(nombreGuardado, precioGuardado, celiacoGuardado, ingredientesDemasiadoGuardados,
+						salGuardada);
+
+				panes.add(p);
+			}
+
+			rs.close();
+
+			String instruccion2 = "SELECT * FROM PASTELERIA";
+
+			ResultSet rs2 = stmt.executeQuery(instruccion2);
+
+			while (rs2.next()) {
+
+				String nombreGuardado = rs.getString("NOMBRE");
+				Double precioGuardado = rs.getDouble("PRECIO");
+				boolean celiacoGuardado = rs.getBoolean("CELIACO");
+				String tipoGuardado = rs.getString("TIPO");
+
+				Pasteleria p = new Pasteleria(nombreGuardado, precioGuardado, celiacoGuardado, tipoGuardado);
+
+				pastelerias.add(p);
+			}
+
+			String instruccion3 = "SELECT * FROM COMIDA";
+
+			ResultSet rs3 = stmt.executeQuery(instruccion3);
+
+			while (rs3.next()) {
+
+				String nombreGuardado = rs.getString("NOMBRE");
+				Double precioGuardado = rs.getDouble("PRECIO");
+				boolean celiacoGuardado = rs.getBoolean("CELIACO");
+				String tipoGuardado = rs.getString("TIPO");
+				boolean calienteGuardado = rs.getBoolean("CALIENTE");
+
+				Comida c = new Comida(nombreGuardado, precioGuardado, celiacoGuardado, tipoGuardado, calienteGuardado);
+
+				comidas.add(c);
+			}
+
+			// stmt.close();
+			// conn.close();
 
 			setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
@@ -122,6 +206,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 
 					VentanaPerfil a = new VentanaPerfil(logger);
+					cargarABaseDeDatos(conn, stmt);
 					dispose();
 					logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 				}
@@ -146,33 +231,13 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-
-					haCambiadoDePagina = false;
-
-					try {
-
-						Comida c = new Comida(cNombre.getText(), Double.parseDouble(cPrecio.getValue()+""), cCeliaco.isSelected(),
-								(String) cTipo.getSelectedItem(), cCaliente.isSelected());
-
-						Statement stmt = (Statement) conn.createStatement();
-
-						String instruccion = "INSERT INTO COMIDA VALUES(" + "'" + c.getNombre() + "', " + c.getPrecio()
-								+ ", '" + c.isCeliaco() + "', '" + c.getTipo() + "', '" + c.isCaliente() + "')";
-
-						cNombre.setText(null);
-						cPrecio.setValue(0);
-						cCeliaco.setSelected(false);
-						cCaliente.setSelected(false);
-
-						System.out.println(instruccion);
-
-						stmt.executeUpdate(instruccion);
-						DbUtils.closeQuietly(stmt);
-
-					} catch (Exception e2) {
-						e2.printStackTrace();
-					}
-
+					Comida c = new Comida(cNombre.getText(), Double.parseDouble(bPrecio.getValue() + ""),
+							bCeliaco.isSelected(), (String) cTipo.getSelectedItem(), cCaliente.isSelected());
+					comidas.add(c);
+					prepararPanel(izquierda, true);
+					haCambiadoDePagina = true;
+					izquierda.repaint();
+					izquierda.validate();
 				}
 			});
 			cBorrar = new JButton("BORRAR");
@@ -229,33 +294,13 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-
-					try {
-
-						haCambiadoDePagina = false;
-
-						Pan b = new Pan(bNombre.getText(), (double) bPrecio.getValue(), bCeliaco.isSelected(), bLista,
-								bSal.isSelected());
-
-						Statement stmt = (Statement) conn.createStatement();
-
-						String instruccion = "INSERT INTO PAN VALUES('" + b.getNombre() + "', " + b.getPrecio() + ", '"
-								+ b.isCeliaco() + "', '" + b.getIngredientes() + "', '" + b.getSal() + "')";
-
-						bNombre.setText(null);
-						bPrecio.setValue(0);
-						bCeliaco.setSelected(false);
-						bSal.setSelected(false);
-						bLista.removeAll(bLista);
-
-						stmt.executeUpdate(instruccion);
-						stmt.close();
-						conn.commit();
-						conn.close();
-
-					} catch (Exception e2) {
-						e2.printStackTrace();
-					}
+					Pan p = new Pan(bNombre.getText(), Double.parseDouble(bPrecio.getValue() + ""),
+							bCeliaco.isSelected(), bLista, bSal.isSelected());
+					panes.add(p);
+					prepararPanel(izquierda, true);
+					haCambiadoDePagina = true;
+					izquierda.repaint();
+					izquierda.validate();
 
 				}
 			});
@@ -303,31 +348,17 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					try {
-
-						Pasteleria p = new Pasteleria(pNombre.getText(), (double) pPrecio.getValue(),
-								pCeliaco.isSelected(), (String) pTipo.getSelectedItem());
-
-						Statement stmt = (Statement) conn.createStatement();
-
-						String instruccion = "INSERT INTO PASTELERIA VALUES('" + p.getNombre() + "', " + p.getPrecio()
-								+ ", '" + p.isCeliaco() + "', '" + p.getTipo() + "')";
-
-						pNombre.setText(null);
-						pPrecio.setValue(0);
-						pCeliaco.setSelected(false);
-
-						stmt.executeUpdate(instruccion);
-						stmt.close();
-						conn.commit();
-						conn.close();
-
-					} catch (Exception e2) {
-						e2.printStackTrace();
-					}
+					Pasteleria p = new Pasteleria(pNombre.getText(), Double.parseDouble(pPrecio.getValue() + ""),
+							pCeliaco.isSelected(), (String) pTipo.getSelectedItem());
+					pastelerias.add(p);
+					prepararPanel(izquierda, true);
+					haCambiadoDePagina = true;
+					izquierda.repaint();
+					izquierda.validate();
 
 				}
 			});
+
 			pBorrar = new JButton("BORRAR");
 			pBorrar.addActionListener(new ActionListener() {
 
@@ -384,8 +415,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 
-					haCambiadoDePagina = true;
-
 					if (numero == 2 || numero == 1) {
 						numero--;
 
@@ -395,6 +424,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 					if (numero == 1) {
 						opcionLabel.setText("PAN");
+						prepararPanel(izquierda, true);
 						bNombre.setText(null);
 						bPrecio.setValue(0);
 						bCeliaco.setSelected(false);
@@ -411,6 +441,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 					} else if (numero == 2) {
 						opcionLabel.setText("PASTELERIA");
+						prepararPanel(izquierda, true);
 						mover.gridx = 0;
 						mover.gridy = 1;
 						mover.weighty = 3;
@@ -423,6 +454,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 					} else if (numero == 0) {
 						opcionLabel.setText("COMIDA");
+						prepararPanel(izquierda, true);
 						mover.gridx = 0;
 						mover.gridy = 1;
 						mover.weighty = 3;
@@ -433,6 +465,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 						validate();
 					}
 
+					haCambiadoDePagina = true;
 				}
 			});
 
@@ -440,8 +473,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-
-					haCambiadoDePagina = true;
 
 					if (numero == 1 || numero == 0) {
 						numero++;
@@ -451,6 +482,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 					if (numero == 1) {
 						opcionLabel.setText("PAN");
+						prepararPanel(izquierda, true);
 						bNombre.setText(null);
 						bPrecio.setValue(0);
 						bCeliaco.setSelected(false);
@@ -467,6 +499,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 					} else if (numero == 2) {
 						opcionLabel.setText("PASTELERIA");
+						prepararPanel(izquierda, true);
 						mover.gridx = 0;
 						mover.gridy = 1;
 						mover.weighty = 3;
@@ -478,6 +511,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 					} else if (numero == 0) {
 						opcionLabel.setText("COMIDA");
+						prepararPanel(izquierda, true);
 						mover.gridx = 0;
 						mover.gridy = 1;
 						mover.weighty = 3;
@@ -488,7 +522,9 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 						validate();
 					}
 
+					haCambiadoDePagina = true;
 				}
+
 			});
 
 			hilo = new Thread(new Runnable() {
@@ -500,177 +536,26 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 						while (true) {
 
-							Statement stmt = (Statement) conn.createStatement();
+							izquierda.repaint();
+							izquierda.validate();
 
-							if (opcionLabel.getText().matches("COMIDA")) {
-								String instruccionComida = "SELECT NOMBRE FROM COMIDA";
+							if (opcionLabel.getText().matches("COMIDA") && haCambiadoDePagina) {
 
-								if (haCambiadoDePagina) {
+								haCambiadoDePagina = false;
 
-									ResultSet rs = stmt.executeQuery(instruccionComida);
+								crearPanelesComida();
 
-									while (rs.next() && haCambiadoDePagina) {
+							} else if (opcionLabel.getText().matches("PAN") && haCambiadoDePagina) {
 
-										String nombreBD = rs.getString("NOMBRE");
+								haCambiadoDePagina = false;
 
-										if (!lista.contains(nombreBD)) {
-											lista.add(nombreBD);
+								crearPanelPanes();
 
-											JPanel panel = new JPanel();
-											JTextField nombre = new JTextField();
-											nombre.setText(nombreBD);
-											nombre.setEditable(false);
-											JButton izqBorrar = new JButton("BORRAR");
-											izqBorrar.addActionListener(new ActionListener() {
+							} else if (opcionLabel.getText().matches("PASTELERIA") && haCambiadoDePagina) {
 
-												@Override
-												public void actionPerformed(ActionEvent e) {
-													try {
+								haCambiadoDePagina = false;
 
-														String instruccionBorrar = "DELETE FROM COMIDA WHERE NOMBRE = '"
-																+ nombreBD + "';";
-
-														stmt.executeUpdate(instruccionBorrar);
-
-														stmt.close();
-
-														System.out.println("SI");
-
-													} catch (Exception e1) {
-														// TODO Auto-generated catch block
-														e1.printStackTrace();
-													}
-
-												}
-											});
-
-											JButton izqEditar = new JButton("EDITAR");
-											panel.add(nombre);
-											panel.add(izqBorrar);
-											panel.add(izqEditar);
-											izquierda.add(panel);
-
-										}
-
-										repaint();
-										validate();
-										haCambiadoDePagina = false;
-
-									}
-								}
-
-							} else if (opcionLabel.getText().matches("PAN")) {
-
-								String instruccionPan = "SELECT NOMBRE FROM PAN";
-
-								if (haCambiadoDePagina) {
-									ResultSet rs = stmt.executeQuery(instruccionPan);
-
-									while (rs.next() && haCambiadoDePagina) {
-
-										String nombreBD = rs.getString("NOMBRE");
-
-										if (!lista.contains(nombreBD)) {
-
-											lista.add(nombreBD);
-
-											JPanel panel = new JPanel();
-											JTextField nombre = new JTextField();
-											nombre.setText(nombreBD);
-											nombre.setEditable(false);
-											JButton izqBorrar = new JButton("BORRAR");
-											izqBorrar.addActionListener(new ActionListener() {
-
-												@Override
-												public void actionPerformed(ActionEvent e) {
-													try {
-
-														String instruccionBorrar = "DELETE FROM PAN WHERE NOMBRE = '"
-																+ nombreBD + "';";
-
-														stmt.executeUpdate(instruccionBorrar);
-
-														stmt.close();
-
-														System.out.println("funciona3");
-
-													} catch (SQLException e1) {
-														// TODO Auto-generated catch block
-														e1.printStackTrace();
-													}
-
-												}
-											});
-
-											JButton izqEditar = new JButton("EDITAR");
-											panel.add(nombre);
-											panel.add(izqBorrar);
-											panel.add(izqEditar);
-											izquierda.add(panel);
-
-										}
-
-										haCambiadoDePagina = false;
-										repaint();
-										validate();
-
-									}
-								}
-
-							} else if (opcionLabel.getText().matches("PASTELERIA")) {
-
-								String instruccionPasteleria = "SELECT NOMBRE FROM PASTELERIA";
-								if (rootPaneCheckingEnabled) {
-
-									ResultSet rs = stmt.executeQuery(instruccionPasteleria);
-
-									while (rs.next() && haCambiadoDePagina) {
-
-										String nombreBD = rs.getString("NOMBRE");
-
-										if (!lista.contains(nombreBD)) {
-
-											lista.add(nombreBD);
-
-											JPanel panel = new JPanel();
-											JTextField nombre = new JTextField();
-											nombre.setText(nombreBD);
-											nombre.setEditable(false);
-											JButton izqBorrar = new JButton("BORRAR");
-											izqBorrar.addActionListener(new ActionListener() {
-
-												@Override
-												public void actionPerformed(ActionEvent e) {
-													try {
-
-														String instruccionBorrar = "DELETE FROM PASTELERIA WHERE NOMBRE = '"
-																+ nombreBD + "';";
-														stmt.executeUpdate(instruccionBorrar);
-														stmt.close();
-
-													} catch (SQLException e1) {
-														e1.printStackTrace();
-													}
-
-												}
-											});
-
-											JButton izqEditar = new JButton("EDITAR");
-											panel.add(nombre);
-											panel.add(izqBorrar);
-											panel.add(izqEditar);
-											izquierda.add(panel);
-
-										}
-
-										haCambiadoDePagina = false;
-										repaint();
-										validate();
-
-									}
-
-								}
-
+								crearPanelesPasteleria();
 							}
 						}
 
@@ -705,6 +590,165 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			e3.printStackTrace();
 		} catch (SQLException e3) {
 			e3.printStackTrace();
+		} finally {
+			try {
+				SQLiteConnectionPoolDataSource coso = new SQLiteConnectionPoolDataSource();
+				coso.getConnection().close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
+
+	public void prepararPanel(JPanel panel, Boolean booleano) {
+		if (booleano) {
+			try {
+				panel.remove(panel.getComponent(0));
+				prepararPanel(panel, true);
+				repaint();
+				validate();
+			} catch (Exception e) {
+				prepararPanel(panel, false);
+			}
+		}
+	}
+
+	public void crearPanelPanes() {
+		for (Pan pan : panes) {
+			JPanel panel = new JPanel();
+			JLabel label = new JLabel(pan.getNombre());
+			JButton boton = new JButton("Eliminar");
+			boton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					panes.remove(pan);
+					prepararPanel(izquierda, true);
+					haCambiadoDePagina = true;
+
+				}
+			});
+
+			panel.add(label);
+			panel.add(boton);
+			izquierda.add(panel);
+		}
+	}
+
+	public void crearPanelesComida() {
+		for (Comida comida : comidas) {
+			JPanel panel = new JPanel();
+			JLabel label = new JLabel(comida.getNombre());
+			JButton boton = new JButton("Eliminar");
+			boton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					comidas.remove(comida);
+					prepararPanel(izquierda, true);
+					haCambiadoDePagina = true;
+
+				}
+			});
+
+			panel.add(label);
+			panel.add(boton);
+			izquierda.add(panel);
+			lista.add(label.getText());
+
+		}
+	}
+
+	public void crearPanelesPasteleria() {
+		for (Pasteleria pastel : pastelerias) {
+			JPanel panel = new JPanel();
+			JLabel label = new JLabel(pastel.getNombre());
+			JButton boton = new JButton("Eliminar");
+			boton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					pastelerias.remove(pastel);
+					prepararPanel(izquierda, true);
+					haCambiadoDePagina = true;
+
+				}
+			});
+
+			panel.add(label);
+			panel.add(boton);
+			izquierda.add(panel);
+			lista.add(label.getText());
+
+		}
+	}
+
+	public void cargarABaseDeDatos(Connection conn, Statement stmt) {
+		try {
+			ResultSet r2 = stmt.executeQuery("SELECT NOMBRE FROM PAN;");
+			LinkedList<String> nombres = new LinkedList<>();
+			while (r2.next()) {
+				String nombre = r2.getString("NOMBRE");
+				nombres.add(nombre);
+			}
+
+			for (String nombre : nombres) {
+				String instruccion = "DELETE FROM PAN WHERE NOMBRE = '" + nombre + "';";
+				int delete = stmt.executeUpdate(instruccion);
+			}
+
+			for (Pan b : panes) {
+				String instruccion = "INSERT INTO PAN VALUES('" + b.getNombre() + "', " + b.getPrecio() + ", '"
+						+ b.isCeliaco() + "', '" + b.getIngredientes() + "', '" + b.getSal() + "');";
+
+				int r3 = stmt.executeUpdate(instruccion);
+			}
+
+			ResultSet r7 = stmt.executeQuery("SELECT NOMBRE FROM PASTELERIA;");
+			LinkedList<String> nombres2 = new LinkedList<>();
+			while (r7.next()) {
+				String nombre = r7.getString("NOMBRE");
+				nombres2.add(nombre);
+			}
+
+			for (String nombre : nombres2) {
+				String instruccion = "DELETE FROM PASTELERIA WHERE NOMBRE = '" + nombre + "';";
+				int delete = stmt.executeUpdate(instruccion);
+			}
+
+			for (Pasteleria p : pastelerias) {
+				String instruccion = "INSERT INTO PASTELERIA VALUES('" + p.getNombre() + "', " + p.getPrecio() + ", '"
+						+ p.isCeliaco() + "', '" + p.getTipo() + "');";
+
+				int r5 = stmt.executeUpdate(instruccion);
+			}
+
+			ResultSet r6 = stmt.executeQuery("SELECT NOMBRE FROM COMIDA;");
+			LinkedList<String> nombres3 = new LinkedList<>();
+			while (r6.next()) {
+				String nombre = r6.getString("NOMBRE");
+				nombres3.add(nombre);
+			}
+
+			for (String nombre : nombres3) {
+				String instruccion = "DELETE FROM COMIDA WHERE NOMBRE = '" + nombre + "';";
+				int delete = stmt.executeUpdate(instruccion);
+			}
+
+			for (Comida c : comidas) {
+				String instruccion = "INSERT INTO COMIDA VALUES(" + "'" + c.getNombre() + "', " + c.getPrecio() + ", '"
+						+ c.isCeliaco() + "', '" + c.getTipo() + "', '" + c.isCaliente() + "');";
+
+				int r8 = stmt.executeUpdate(instruccion);
+			}
+
+			stmt.close();
+			conn.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
