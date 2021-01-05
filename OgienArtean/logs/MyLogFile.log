@@ -1,0 +1,106 @@
+Jan 05, 2021 8:49:21 PM ventanas.VentanaInicio$1 actionPerformed
+INFO: Ha funcionado el boton cliente.
+Jan 05, 2021 8:49:22 PM ventanas.VentanaIdentif$1 actionPerformed
+INFO: Se ha iniciado sesion como cliente.
+Jan 05, 2021 8:49:27 PM ventanas.VentanaLoginCliente comprobar
+INFO: Se ha cargado correctamente la base de datos.
+Jan 05, 2021 8:49:27 PM ventanas.VentanaLoginCliente comprobar
+INFO: Ha comparado correctamente el usuario y la contraseña.
+Jan 05, 2021 8:49:27 PM ventanas.VentanaLoginCliente$1 actionPerformed
+INFO: Se ha loggeado el cliente.
+Jan 05, 2021 8:49:43 PM ventanas.VentanaClienteInicio$1 actionPerformed
+INFO: Ha funcionado el boton panaderia.
+Jan 05, 2021 8:49:49 PM ventanas.VentanaCompra$5 actionPerformed
+INFO: Ha funcionado el boton volver.
+Jan 05, 2021 8:49:49 PM ventanas.VentanaCompra$5 actionPerformed
+INFO: Ha funcionado el boton compro.
+Jan 05, 2021 8:49:50 PM ventanas.VentanaClienteInicio$4 actionPerformed
+INFO: Ha funcionado el boton mi carro.
+Jan 05, 2021 8:49:51 PM ventanas.VentanaMiCarro$2 actionPerformed
+INFO: Ha funcionado el boton comprar.
+Jan 05, 2021 8:49:58 PM ventanas.VentanaClienteConfirmacionCompra$4 actionPerformed
+INFO: Ha funcionado el boton confirmar.
+Jan 05, 2021 8:54:43 PM ventanas.VentanaInicio$1 actionPerformed
+INFO: Ha funcionado el boton cliente.
+Jan 05, 2021 8:54:44 PM ventanas.VentanaIdentif$1 actionPerformed
+INFO: Se ha iniciado sesion como cliente.
+Jan 05, 2021 8:54:48 PM ventanas.VentanaLoginCliente comprobar
+INFO: Se ha cargado correctamente la base de datos.
+Jan 05, 2021 8:54:48 PM ventanas.VentanaLoginCliente comprobar
+INFO: Ha comparado correctamente el usuario y la contraseña.
+Jan 05, 2021 8:54:48 PM ventanas.VentanaLoginCliente$1 actionPerformed
+INFO: Se ha loggeado el cliente.
+Jan 05, 2021 8:54:50 PM ventanas.VentanaClienteInicio$2 actionPerformed
+INFO: Ha funcionado el boton pasteleria.
+Jan 05, 2021 8:54:51 PM ventanas.VentanaIdentif$1 actionPerformed
+INFO: Se ha iniciado sesion como cliente.
+Jan 05, 2021 8:54:54 PM ventanas.VentanaLoginCliente comprobar
+INFO: Se ha cargado correctamente la base de datos.
+Jan 05, 2021 8:54:54 PM ventanas.VentanaLoginCliente comprobar
+INFO: Ha comparado correctamente el usuario y la contraseña.
+Jan 05, 2021 8:54:54 PM ventanas.VentanaLoginCliente$1 actionPerformed
+INFO: Se ha loggeado el cliente.
+Jan 05, 2021 8:54:55 PM ventanas.VentanaClienteInicio$1 actionPerformed
+INFO: Ha funcionado el boton panaderia.
+Jan 05, 2021 8:54:58 PM ventanas.VentanaCompra$5 actionPerformed
+INFO: Ha funcionado el boton volver.
+Jan 05, 2021 8:54:58 PM ventanas.VentanaCompra$5 actionPerformed
+INFO: Ha funcionado el boton compro.
+Jan 05, 2021 8:54:59 PM ventanas.VentanaClienteInicio$4 actionPerformed
+INFO: Ha funcionado el boton mi carro.
+Jan 05, 2021 8:55:00 PM ventanas.VentanaMiCarro$2 actionPerformed
+INFO: Ha funcionado el boton comprar.
+Jan 05, 2021 8:55:02 PM ventanas.VentanaClienteConfirmacionCompra$4 actionPerformed
+INFO: Ha funcionado el boton confirmar.
+Jan 05, 2021 8:57:17 PM ventanas.VentanaInicio$1 actionPerformed
+INFO: Ha funcionado el boton cliente.
+Jan 05, 2021 8:57:18 PM ventanas.VentanaIdentif$1 actionPerformed
+INFO: Se ha iniciado sesion como cliente.
+Jan 05, 2021 8:57:51 PM ventanas.VentanaLoginCliente comprobar
+INFO: Se ha cargado correctamente la base de datos.
+Jan 05, 2021 8:57:51 PM ventanas.VentanaLoginCliente comprobar
+INFO: Ha comparado correctamente el usuario y la contraseña.
+Jan 05, 2021 8:57:51 PM ventanas.VentanaLoginCliente$1 actionPerformed
+INFO: Se ha loggeado el cliente.
+Jan 05, 2021 8:57:52 PM ventanas.VentanaClienteInicio$2 actionPerformed
+INFO: Ha funcionado el boton pasteleria.
+Jan 05, 2021 8:57:58 PM ventanas.VentanaIdentif$1 actionPerformed
+INFO: Se ha iniciado sesion como cliente.
+Jan 05, 2021 9:05:05 PM ventanas.VentanaInicio$1 actionPerformed
+INFO: Ha funcionado el boton cliente.
+Jan 05, 2021 9:05:06 PM ventanas.VentanaIdentif$1 actionPerformed
+INFO: Se ha iniciado sesion como cliente.
+Jan 05, 2021 9:05:10 PM ventanas.VentanaLoginCliente comprobar
+INFO: Se ha cargado correctamente la base de datos.
+Jan 05, 2021 9:05:10 PM ventanas.VentanaLoginCliente comprobar
+INFO: Ha comparado correctamente el usuario y la contraseña.
+Jan 05, 2021 9:05:10 PM ventanas.VentanaLoginCliente$1 actionPerformed
+INFO: Se ha loggeado el cliente.
+Jan 05, 2021 9:05:12 PM ventanas.VentanaClienteInicio$2 actionPerformed
+INFO: Ha funcionado el boton pasteleria.
+Jan 05, 2021 9:05:14 PM ventanas.VentanaClienteInicio$3 actionPerformed
+INFO: Ha funcionado el boton cocina.
+Jan 05, 2021 9:05:22 PM ventanas.VentanaCompra$9 actionPerformed
+INFO: Ha funcionado el boton volver.
+Jan 05, 2021 9:05:22 PM ventanas.VentanaCompra$9 actionPerformed
+INFO: Ha funcionado el boton compro.
+Jan 05, 2021 9:05:24 PM ventanas.VentanaClienteInicio$4 actionPerformed
+INFO: Ha funcionado el boton mi carro.
+Jan 05, 2021 9:05:25 PM ventanas.VentanaMiCarro$2 actionPerformed
+INFO: Ha funcionado el boton comprar.
+Jan 05, 2021 9:05:28 PM ventanas.VentanaClienteConfirmacionCompra$4 actionPerformed
+INFO: Ha funcionado el boton confirmar.
+Jan 05, 2021 9:05:32 PM ventanas.VentanaClienteInicio$2 actionPerformed
+INFO: Ha funcionado el boton pasteleria.
+Jan 05, 2021 9:05:33 PM ventanas.VentanaClienteInicio$1 actionPerformed
+INFO: Ha funcionado el boton panaderia.
+Jan 05, 2021 9:05:39 PM ventanas.VentanaCompra$5 actionPerformed
+INFO: Ha funcionado el boton volver.
+Jan 05, 2021 9:05:39 PM ventanas.VentanaCompra$5 actionPerformed
+INFO: Ha funcionado el boton compro.
+Jan 05, 2021 9:05:40 PM ventanas.VentanaClienteInicio$4 actionPerformed
+INFO: Ha funcionado el boton mi carro.
+Jan 05, 2021 9:05:41 PM ventanas.VentanaMiCarro$2 actionPerformed
+INFO: Ha funcionado el boton comprar.
+Jan 05, 2021 9:05:44 PM ventanas.VentanaClienteConfirmacionCompra$4 actionPerformed
+INFO: Ha funcionado el boton confirmar.

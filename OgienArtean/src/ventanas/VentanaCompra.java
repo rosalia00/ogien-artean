@@ -52,11 +52,10 @@ public class VentanaCompra extends JFrame {
 
 	JButton a;
 
-	public ArrayList<Pasteleria> getAllPasteles() throws Exception {
+	public ArrayList<Pasteleria> getAllPasteles(Connection conn, Statement stmt) throws Exception {
 		ArrayList<Pasteleria> pasteles = new ArrayList<Pasteleria>();
-
-		try (Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT NOMBRE, PRECIO FROM PASTELERIA");
+		try {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM PASTELERIA;");
 			while (rs.next()) {
 				Pasteleria pastel = new Pasteleria();
 				pastel.setNombre(rs.getString("NOMBRE"));
@@ -71,12 +70,10 @@ public class VentanaCompra extends JFrame {
 		}
 	}
 
-	public ArrayList<Comida> getAllComidas() throws Exception {
+	public ArrayList<Comida> getAllComidas(Connection conn, Statement stmt) throws Exception {
 		ArrayList<Comida> comidas = new ArrayList<Comida>();
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-		try (Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT * FROM COMIDA");
+		try {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM COMIDA;");
 			while (rs.next()) {
 				Comida comida = new Comida();
 				comida.setNombre(rs.getString("NOMBRE"));
@@ -92,12 +89,11 @@ public class VentanaCompra extends JFrame {
 		}
 	}
 
-	public ArrayList<Pan> getAllPanes() throws Exception {
+	public ArrayList<Pan> getAllPanes(Connection conn, Statement stmt) throws Exception {
 		ArrayList<Pan> panes = new ArrayList<Pan>();
 		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-		try (Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT * FROM PAN");
+		try {
+			ResultSet rs = stmt.executeQuery("SELECT * FROM PAN;");
 			while (rs.next()) {
 				Pan pan = new Pan();
 				pan.setNombre(rs.getString("NOMBRE"));
@@ -117,8 +113,8 @@ public class VentanaCompra extends JFrame {
 		}
 	}
 
-	public ArrayList<PanDisplay> getPanesDisplay() throws Exception {
-		ArrayList<Pan> panes = getAllPanes();
+	public ArrayList<PanDisplay> getPanesDisplay(Connection conn, Statement stmt) throws Exception {
+		ArrayList<Pan> panes = getAllPanes(conn, stmt);
 		System.out.println(panes);
 		ArrayList<PanDisplay> productosPan = new ArrayList();
 
@@ -129,8 +125,8 @@ public class VentanaCompra extends JFrame {
 		return productosPan;
 	}
 
-	public ArrayList<PasteleriaDisplay> getPasteleriaDisplay() throws Exception {
-		ArrayList<Pasteleria> pasteles = getAllPasteles();
+	public ArrayList<PasteleriaDisplay> getPasteleriaDisplay(Connection conn, Statement stmt) throws Exception {
+		ArrayList<Pasteleria> pasteles = getAllPasteles(conn, stmt);
 		System.out.println(pasteles);
 		ArrayList<PasteleriaDisplay> productosPasteles = new ArrayList();
 
@@ -141,8 +137,8 @@ public class VentanaCompra extends JFrame {
 		return productosPasteles;
 	}
 
-	public ArrayList<ComidaDisplay> getComidaDisplay() throws Exception {
-		ArrayList<Comida> comidas = getAllComidas();
+	public ArrayList<ComidaDisplay> getComidaDisplay(Connection conn, Statement stmt) throws Exception {
+		ArrayList<Comida> comidas = getAllComidas(conn, stmt);
 		System.out.println(comidas);
 		ArrayList<ComidaDisplay> productosComida = new ArrayList();
 		for (Comida comida : comidas) {
@@ -241,7 +237,7 @@ public class VentanaCompra extends JFrame {
 		int i = 0;
 		int diferencia = 0;
 		if (s == "pan") {
-			ArrayList<PanDisplay> panes = getPanesDisplay();
+			ArrayList<PanDisplay> panes = getPanesDisplay(conn, stmt);
 			System.out.println(panes);
 			int numeroPanel = 0;
 			for (PanDisplay p : panes) {
@@ -324,7 +320,7 @@ public class VentanaCompra extends JFrame {
 			});
 
 		} else if (s == "pasteleria") {
-			ArrayList<PasteleriaDisplay> pasteles = getPasteleriaDisplay();
+			ArrayList<PasteleriaDisplay> pasteles = getPasteleriaDisplay(conn, stmt);
 			int numeroPanel = 0;
 			for (PasteleriaDisplay q : pasteles) {
 				productoDisplay = new JPanel();
@@ -336,6 +332,8 @@ public class VentanaCompra extends JFrame {
 				q.getS().setModel(model);
 				q.getS().setEnabled(false);
 				productoDisplay.add(q.getS());
+				productoDisplay.setOpaque(false);
+				q.getL().setOpaque(true);
 				q.getB().addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -367,10 +365,8 @@ public class VentanaCompra extends JFrame {
 						diferencia = 19 - i;
 					}
 					for (int j = 0; j < diferencia; j++) {
-						JButton vacioBoton = new JButton();
-						vacioBoton.setVisible(false);
-						vacioBoton.setEnabled(false);
 						JPanel vacio = new JPanel();
+						vacio.setVisible(false);
 						// vacio.add(vacioBoton);
 						panelesCentro.get(numeroPanel).add(vacio);
 					}
@@ -405,7 +401,7 @@ public class VentanaCompra extends JFrame {
 				}
 			});
 		} else if (s == "comida") {
-			ArrayList<ComidaDisplay> comidas = getComidaDisplay();
+			ArrayList<ComidaDisplay> comidas = getComidaDisplay(conn, stmt);
 			int numeroPanel = 0;
 			for (ComidaDisplay c : comidas) {
 				productoDisplay = new JPanel();
@@ -417,6 +413,8 @@ public class VentanaCompra extends JFrame {
 				c.getS().setModel(model);
 				c.getS().setEnabled(false);
 				productoDisplay.add(c.getS());
+				productoDisplay.setOpaque(false);
+				c.getL().setOpaque(true);
 				c.getB().addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -449,6 +447,7 @@ public class VentanaCompra extends JFrame {
 					}
 					for (int j = 0; j < diferencia; j++) {
 						JPanel vacio = new JPanel();
+						vacio.setVisible(false);
 						panelesCentro.get(numeroPanel).add(vacio);
 					}
 				} else {

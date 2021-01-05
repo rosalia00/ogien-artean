@@ -209,9 +209,6 @@ public class VentanaCrearCliente extends JFrame {
 
 					stmt.executeUpdate(instruccion);
 
-					stmt.close();
-					conn.close();
-
 					logger.log(Level.INFO, "Ha funcionado la funcion agregar.");
 
 				} catch (Exception e) {

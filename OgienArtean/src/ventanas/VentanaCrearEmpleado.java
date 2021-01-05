@@ -181,9 +181,7 @@ public class VentanaCrearEmpleado extends JFrame {
 							+ ");";
 
 					stmt.executeUpdate(instruccion);
-					stmt.close();
-					conn.close();
-
+					
 					logger.log(Level.INFO, "Ha funcionado el boton agregar.");
 
 				} catch (Exception e2) {

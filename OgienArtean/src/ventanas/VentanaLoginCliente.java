@@ -111,8 +111,6 @@ public class VentanaLoginCliente extends JFrame {
 						ResultSet rs = stmt
 								.executeQuery("SELECT DNI FROM CLIENTE WHERE USUARIO = '" + usuario.getText() + "' ;");
 						dni = rs.getString("DNI");
-						stmt.close();
-						conn.close();
 
 					} catch (SQLException e1) {
 						e1.printStackTrace();
@@ -165,6 +163,7 @@ public class VentanaLoginCliente extends JFrame {
 		});
 
 		setVisible(true);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
 	public boolean comprobar(Logger logger, Connection conn, Statement stmt) {
