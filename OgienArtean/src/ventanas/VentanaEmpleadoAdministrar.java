@@ -115,13 +115,12 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	public VentanaEmpleadoAdministrar(Logger logger) {
 
 		try {
-			Class.forName("org.sqlite.JDBC");
 
 			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 
 			Statement stmt = (Statement) conn.createStatement();
 
-			String instruccion = "SELECT * FROM PAN";
+			String instruccion = "SELECT * FROM PAN;";
 
 			ResultSet rs = stmt.executeQuery(instruccion);
 
@@ -157,7 +156,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 			rs.close();
 
-			String instruccion2 = "SELECT * FROM PASTELERIA";
+			String instruccion2 = "SELECT * FROM PASTELERIA;";
 
 			ResultSet rs2 = stmt.executeQuery(instruccion2);
 
@@ -173,7 +172,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 				pastelerias.add(p);
 			}
 
-			String instruccion3 = "SELECT * FROM COMIDA";
+			String instruccion3 = "SELECT * FROM COMIDA;";
 
 			ResultSet rs3 = stmt.executeQuery(instruccion3);
 
@@ -583,8 +582,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			setLocationRelativeTo(null);
 			setVisible(true);
 
-		} catch (ClassNotFoundException e3) {
-			e3.printStackTrace();
 		} catch (SQLException e3) {
 			e3.printStackTrace();
 		} finally {

@@ -168,32 +168,27 @@ public class VentanaCrearEmpleado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
-					
+
 					Empleado empleado = new Empleado(nombreTexto.getText(), apellidoTexto.getText(),
 							Integer.parseInt(dniTexto.getText()), direccionTexto.getText(),
 							Integer.parseInt(telefonoTexto.getText()), Double.parseDouble(nominaTexto.getText()),
 							usuarioTexto.getText(), contraseñaTexto.getText());
-					
-					Class.forName("org.sqlite.JDBC");
-					
-					
+
 					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 					Statement stmt = (Statement) conn.createStatement();
-					
-					
+
 					String instruccion = "INSERT INTO EMPLEADO VALUES(" + "'" + empleado.getNombre() + "'" + ", " + "'"
 							+ empleado.getApellido() + "'" + "," + empleado.getDni() + "," + "'"
 							+ empleado.getDireccion() + "'" + "," + empleado.getTelefono() + "," + empleado.getNomina()
 							+ "," + "'" + empleado.getUsuario() + "'" + "," + "'" + empleado.getContraseña() + "'"
 							+ ");";
-					
-					
+
 					stmt.executeUpdate(instruccion);
 					stmt.close();
 					conn.close();
 
 					logger.log(Level.INFO, "Ha funcionado el boton agregar.");
-										
+
 				} catch (Exception e2) {
 					// TODO: handle exception
 
