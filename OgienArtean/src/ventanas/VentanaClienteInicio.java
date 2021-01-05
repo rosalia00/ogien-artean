@@ -13,6 +13,8 @@ import java.util.logging.Level;
 import java.awt.event.*;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.Statement;
 
 import javax.swing.*;
 
@@ -38,10 +40,10 @@ public class VentanaClienteInicio extends JFrame {
 
 	private String s;
 
-	public VentanaClienteInicio(Logger logger, ArrayList<String> tickets, String dni) {
-		
+	public VentanaClienteInicio(Logger logger, ArrayList<String> tickets, String dni, Connection conn, Statement stmt) {
+
 		System.out.println(dni);
-		
+
 		panaderia = new JButton();
 		panaderia.setContentAreaFilled(false);
 		panaderia.setBorderPainted(false);
@@ -53,7 +55,7 @@ public class VentanaClienteInicio extends JFrame {
 				s = "pan";
 				try {
 					System.out.println(tickets);
-					VentanaCompra a = new VentanaCompra(s, logger, tickets, dni);
+					VentanaCompra a = new VentanaCompra(s, logger, tickets, dni, conn, stmt);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -73,7 +75,7 @@ public class VentanaClienteInicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				s = "pasteleria";
 				try {
-					VentanaCompra a = new VentanaCompra(s, logger, tickets, dni);
+					VentanaCompra a = new VentanaCompra(s, logger, tickets, dni, conn, stmt);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -93,7 +95,7 @@ public class VentanaClienteInicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				s = "comida";
 				try {
-					VentanaCompra a = new VentanaCompra(s, logger, tickets, dni);
+					VentanaCompra a = new VentanaCompra(s, logger, tickets, dni, conn, stmt);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -111,7 +113,7 @@ public class VentanaClienteInicio extends JFrame {
 		miCarro.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaMiCarro a = new VentanaMiCarro(logger, tickets, dni);
+				VentanaMiCarro a = new VentanaMiCarro(logger, tickets, dni, conn, stmt);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton mi carro.");
 			}
@@ -125,7 +127,7 @@ public class VentanaClienteInicio extends JFrame {
 		perfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaPerfil a = new VentanaPerfil(logger);
+				VentanaPerfil a = new VentanaPerfil(logger, conn, stmt);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}

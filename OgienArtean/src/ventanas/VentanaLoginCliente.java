@@ -44,7 +44,7 @@ public class VentanaLoginCliente extends JFrame {
 
 	private static VentanaClienteInicio vio;
 
-	public VentanaLoginCliente(Logger logger) {
+	public VentanaLoginCliente(Logger logger, Connection conn, Statement stmt) {
 		// Imagen de icono
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 
@@ -104,25 +104,26 @@ public class VentanaLoginCliente extends JFrame {
 		aceptar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (comprobar(logger)) {
+				if (comprobar(logger, conn, stmt)) {
 					String dni = "";
 					try {
-						Class.forName("org.sqlite.JDBC");
-						Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-						Statement stmt = conn.createStatement();
 						System.out.println("SELECT DNI FROM CLIENTE WHERE USUARIO =" + usuario.getText() + ";");
-						ResultSet rs = stmt.executeQuery("SELECT DNI FROM CLIENTE WHERE USUARIO = '" + usuario.getText() + "' ;");				
+						ResultSet rs = stmt
+								.executeQuery("SELECT DNI FROM CLIENTE WHERE USUARIO = '" + usuario.getText() + "' ;");
 						dni = rs.getString("DNI");
 						stmt.close();
 						conn.close();
-					} catch (ClassNotFoundException | SQLException e1) {
-						// TODO Auto-generated catch block
+
+					} catch (SQLException e1) {
 						e1.printStackTrace();
+
 					}
+
 					ArrayList<String> tickets = new ArrayList();
-					vio = new VentanaClienteInicio(logger, tickets, dni);
+					vio = new VentanaClienteInicio(logger, tickets, dni, conn, stmt);
 					dispose();
 					logger.log(Level.INFO, "Se ha loggeado el cliente.");
+
 				} else {
 					JOptionPane op = new JOptionPane();
 					op.showMessageDialog(null,
@@ -166,13 +167,10 @@ public class VentanaLoginCliente extends JFrame {
 		setVisible(true);
 	}
 
-	public boolean comprobar(Logger logger) {
+	public boolean comprobar(Logger logger, Connection conn, Statement stmt) {
 
 		try {
-			Class.forName("org.sqlite.JDBC");
 
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-			Statement stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery("Select * from CLIENTE");
 
 			logger.log(Level.INFO, "Se ha cargado correctamente la base de datos.");
@@ -190,11 +188,6 @@ public class VentanaLoginCliente extends JFrame {
 				}
 			}
 
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-
-			logger.log(Level.SEVERE, "Se ha producido un error.");
 		} catch (SQLException e) {
 
 			e.printStackTrace();

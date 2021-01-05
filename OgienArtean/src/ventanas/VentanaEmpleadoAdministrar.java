@@ -112,13 +112,9 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 	private HashMap<Integer, JPanel> hashPaginas = new HashMap<>();
 
-	public VentanaEmpleadoAdministrar(Logger logger) {
+	public VentanaEmpleadoAdministrar(Logger logger, Connection conn, Statement stmt) {
 
 		try {
-
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-
-			Statement stmt = (Statement) conn.createStatement();
 
 			String instruccion = "SELECT * FROM PAN;";
 
@@ -201,8 +197,11 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 
-					VentanaEmpleadoInicio vei = new VentanaEmpleadoInicio(logger);
+					VentanaEmpleadoInicio vei = new VentanaEmpleadoInicio(logger, conn, stmt);
 					cargarABaseDeDatos(conn, stmt);
+					panes = new LinkedList<>();
+					pastelerias = new LinkedList<>();
+					comidas = new LinkedList<>();
 					dispose();
 					logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 				}
@@ -589,7 +588,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 				SQLiteConnectionPoolDataSource coso = new SQLiteConnectionPoolDataSource();
 				coso.getConnection().close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -736,9 +734,6 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 
 				int r8 = stmt.executeUpdate(instruccion);
 			}
-
-			stmt.close();
-			conn.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

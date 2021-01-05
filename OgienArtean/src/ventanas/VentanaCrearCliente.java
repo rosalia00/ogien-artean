@@ -22,7 +22,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-
 import ogienartean.Cliente;
 
 public class VentanaCrearCliente extends JFrame {
@@ -45,16 +44,16 @@ public class VentanaCrearCliente extends JFrame {
 
 	private JTextField telefonoTexto;
 	private JLabel telefonoLabel;
-	private JPanel telefonoPanel;	
+	private JPanel telefonoPanel;
 
 	private JTextField tarjetaTexto;
 	private JLabel tarjetaLabel;
 	private JPanel tarjetaPanel;
-	
+
 	private JRadioButton entregaButton;
 	private JLabel entregaLabel;
 	private JPanel entregaPanel;
-	
+
 	private JTextField usuarioTexto;
 	private JLabel usuarioLabel;
 	private JPanel usuarioPanel;
@@ -66,9 +65,9 @@ public class VentanaCrearCliente extends JFrame {
 	private JButton agregar;
 	private JButton cancelar;
 	private JPanel botones;
-	
-	public VentanaCrearCliente(Logger logger) {
-	
+
+	public VentanaCrearCliente(Logger logger, Connection conn, Statement stmt) {
+
 		nombreTexto = new JTextField();
 		nombreTexto.setPreferredSize(new Dimension(250, 20));
 		nombreTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
@@ -117,7 +116,6 @@ public class VentanaCrearCliente extends JFrame {
 		tarjetaPanel = new JPanel();
 		tarjetaPanel.setBackground(Color.WHITE);
 
-
 		entregaButton = new JRadioButton("SI");
 		entregaButton.setPreferredSize(new Dimension(250, 20));
 		entregaButton.setBorder(new LineBorder(new Color(115, 115, 115)));
@@ -126,7 +124,6 @@ public class VentanaCrearCliente extends JFrame {
 		entregaLabel.setPreferredSize(new Dimension(100, 20));
 		entregaPanel = new JPanel();
 		entregaPanel.setBackground(Color.WHITE);
-		
 
 		usuarioTexto = new JTextField();
 		usuarioTexto.setPreferredSize(new Dimension(250, 20));
@@ -135,7 +132,6 @@ public class VentanaCrearCliente extends JFrame {
 		usuarioLabel.setPreferredSize(new Dimension(100, 20));
 		usuarioPanel = new JPanel();
 		usuarioPanel.setBackground(Color.WHITE);
-
 
 		contraseñaTexto = new JTextField();
 		contraseñaTexto.setPreferredSize(new Dimension(250, 20));
@@ -151,7 +147,7 @@ public class VentanaCrearCliente extends JFrame {
 		cancelar.setPreferredSize(new Dimension(130, 30));
 		botones = new JPanel();
 		botones.setBackground(new Color(149, 194, 197));
-		
+
 		nombrePanel.add(nombreLabel);
 		nombrePanel.add(nombreTexto);
 		add(nombrePanel);
@@ -180,7 +176,6 @@ public class VentanaCrearCliente extends JFrame {
 		contraseñaPanel.add(contraseñaTexto);
 		add(contraseñaPanel);
 
-		
 		cancelar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -188,33 +183,32 @@ public class VentanaCrearCliente extends JFrame {
 				logger.log(Level.INFO, "Ha funcionado el boton cancelar.");
 			}
 		});
-		
+
 		agregar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					System.out.println("llega");
-					
-					Cliente c = new Cliente(nombreTexto.getText(), apellidoTexto.getText(), Integer.parseInt(dniTexto.getText()), 
-								direccionTexto.getText(), Integer.parseInt(telefonoTexto.getText()), Integer.parseInt(tarjetaTexto.getText()), entregaButton.isSelected(), 
-								usuarioTexto.getText(), contraseñaTexto.getText());
+
+					Cliente c = new Cliente(nombreTexto.getText(), apellidoTexto.getText(),
+							Integer.parseInt(dniTexto.getText()), direccionTexto.getText(),
+							Integer.parseInt(telefonoTexto.getText()), Integer.parseInt(tarjetaTexto.getText()),
+							entregaButton.isSelected(), usuarioTexto.getText(), contraseñaTexto.getText());
 
 					System.out.println("llega0");
-					
-					Class.forName("org.sqlite.JDBC");
-					
-					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+
 					Statement stmt = (Statement) conn.createStatement();
-					
-					String instruccion = "INSERT INTO CLIENTE VALUES('" + c.getNombre() +"'" + ", '" + c.getApellido() +"'" + "," + 
-					c.getDni() + ",'" + c.getDireccion() + "' ," + c.getTelefono() + "," + c.getTarjeta() + "," + c.getEntrega() + ", '" + 
-					c.getUsuario() + "' , '" + c.getContraseña() + "');";
-					
+
+					String instruccion = "INSERT INTO CLIENTE VALUES('" + c.getNombre() + "'" + ", '" + c.getApellido()
+							+ "'" + "," + c.getDni() + ",'" + c.getDireccion() + "' ," + c.getTelefono() + ","
+							+ c.getTarjeta() + "," + c.getEntrega() + ", '" + c.getUsuario() + "' , '"
+							+ c.getContraseña() + "');";
+
 					System.out.println(instruccion);
-					
+
 					stmt.executeUpdate(instruccion);
-					
+
 					stmt.close();
 					conn.close();
 
@@ -225,18 +219,18 @@ public class VentanaCrearCliente extends JFrame {
 
 					logger.log(Level.SEVERE, "No se ha podido acceder a la base de datos.");
 				}
-				VentanaLoginCliente i = new VentanaLoginCliente(logger);
+				VentanaLoginCliente i = new VentanaLoginCliente(logger, conn, stmt);
 				dispose();
 			}
-			
+
 		});
-		
+
 		botones.add(cancelar);
 		botones.add(agregar);
 		add(botones);
-		
+
 		setBackground(Color.WHITE);
-		
+
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("REGISTRAR NUEVO CLIENTE");
@@ -245,7 +239,6 @@ public class VentanaCrearCliente extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
-
 
 	}
 

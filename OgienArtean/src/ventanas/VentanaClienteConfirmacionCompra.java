@@ -1,4 +1,5 @@
 package ventanas;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,13 +26,13 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 	JPanel arriba;
 	JPanel centro;
 	JPanel abajo;
-	
+
 	JOptionPane cancelarSeguro;
 	JOptionPane gracias;
-	
-	
-	public VentanaClienteConfirmacionCompra(Logger logger, ArrayList<String> tickets, String dni) {
-		
+
+	public VentanaClienteConfirmacionCompra(Logger logger, ArrayList<String> tickets, String dni, Connection conn,
+			Statement stmt) {
+
 		carro = new JButton();
 		carro.setIcon(new ImageIcon("imagenes/carro.png"));
 		carro.setContentAreaFilled(false);
@@ -40,12 +41,12 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		carro.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaMiCarro(logger, tickets, dni);
+				new VentanaMiCarro(logger, tickets, dni, conn, stmt);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton carro.");
 			}
 		});
-		
+
 		perfil = new JButton();
 		perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
 		perfil.setContentAreaFilled(false);
@@ -54,18 +55,18 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		perfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaPerfil(logger);
+				new VentanaPerfil(logger, conn, stmt);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}
 		});
-		
+
 		coso = new JTextPane();
 		for (String ticket : tickets) {
 			String texto = coso.getText() + "\n" + ticket;
 			coso.setText(texto);
 		}
-		
+
 		cancelar = new JButton();
 		cancelar.setIcon(new ImageIcon("imagenes/cancelar.png"));
 		cancelar.setContentAreaFilled(false);
@@ -75,15 +76,16 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cancelarSeguro = new JOptionPane();
-				int respuesta = cancelarSeguro.showConfirmDialog(null, "¿QUIERE CANCELAR EL PEDIDO?", "CANCELAR", JOptionPane.YES_NO_OPTION);
+				int respuesta = cancelarSeguro.showConfirmDialog(null, "¿QUIERE CANCELAR EL PEDIDO?", "CANCELAR",
+						JOptionPane.YES_NO_OPTION);
 				if (respuesta == cancelarSeguro.YES_OPTION) {
-					new VentanaClienteInicio(logger, tickets, dni);
+					new VentanaClienteInicio(logger, tickets, dni, conn, stmt);
 					dispose();
 					logger.log(Level.INFO, "Ha funcionado el boton cancelar.");
 				}
 			}
 		});
-		
+
 		confirmar = new JButton();
 		confirmar.setIcon(new ImageIcon("imagenes/confirmar.png"));
 		confirmar.setContentAreaFilled(false);
@@ -93,32 +95,28 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Class.forName("org.sqlite.JDBC");
-					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-					Statement stmt = conn.createStatement();
-					
+
 					String ticket = "";
 					for (String string : tickets) {
 						ticket = ticket + string;
 					}
-					System.out.println("INSERT INTO PEDIDO VALUES("+ dni +", '"+ ticket +"');");
-					stmt.executeUpdate("INSERT INTO PEDIDO VALUES("+ dni +", '"+ ticket +"');");
+					System.out.println("INSERT INTO PEDIDO VALUES(" + dni + ", '" + ticket + "');");
+					stmt.executeUpdate("INSERT INTO PEDIDO VALUES(" + dni + ", '" + ticket + "');");
+
+				} catch (SQLException e1) {
 					
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				gracias  = new JOptionPane();
+
+				gracias = new JOptionPane();
 				gracias.setFocusable(false);
 				gracias.showMessageDialog(null, "¡Gracias por comprar en OGIEN ARTEAN!");
 				ArrayList<String> vacio = new ArrayList<String>();
-				VentanaClienteInicio v = new VentanaClienteInicio(logger, vacio, dni);
+				VentanaClienteInicio v = new VentanaClienteInicio(logger, vacio, dni, conn, stmt);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton confirmar.");
 			}
 		});
-		
 
 		arriba = new JPanel();
 		arriba.setOpaque(false);
@@ -132,13 +130,13 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		centro.add(coso);
 		abajo.add(cancelar);
 		abajo.add(confirmar);
-		
+
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
 		add(arriba);
 		add(centro);
 		add(abajo);
-		
+
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

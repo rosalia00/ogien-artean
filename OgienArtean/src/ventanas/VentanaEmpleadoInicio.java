@@ -4,7 +4,8 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
 import java.util.logging.Level;
@@ -21,7 +22,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 	// Paneles
 	JPanel abajo;
 
-	public VentanaEmpleadoInicio(Logger logger) {
+	public VentanaEmpleadoInicio(Logger logger, Connection conn, Statement stmt) {
 		// Boton administrar
 		administrar = new JButton();
 		administrar.setIcon(new ImageIcon("imagenes/administracion.png"));
@@ -31,7 +32,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 		administrar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaEmpleadoAdministrar(logger);
+				new VentanaEmpleadoAdministrar(logger, conn, stmt);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton administrar.");
 			}
@@ -47,7 +48,7 @@ public class VentanaEmpleadoInicio extends JFrame {
 		pedidos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaEmpleadoPedidos(logger);
+				new VentanaEmpleadoPedidos(logger, conn, stmt);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton pedidos.");
 			}

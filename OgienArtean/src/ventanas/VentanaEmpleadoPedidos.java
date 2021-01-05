@@ -40,7 +40,7 @@ public class VentanaEmpleadoPedidos extends JFrame {
 	JPanel centro;
 	JPanel abajo;
 
-	public VentanaEmpleadoPedidos(Logger logger) {
+	public VentanaEmpleadoPedidos(Logger logger, Connection conn, Statement stmt) {
 		// Botones de perfil del empleado
 		// Boton perfil
 		perfil = new JButton();
@@ -51,7 +51,7 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		perfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaPerfil(logger);
+				new VentanaPerfil(logger, conn, stmt);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}
@@ -66,7 +66,7 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		atras.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaEmpleadoInicio(logger);
+				new VentanaEmpleadoInicio(logger, conn, stmt);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton atras.");
 			}
@@ -92,8 +92,6 @@ public class VentanaEmpleadoPedidos extends JFrame {
 
 		try {
 
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-			Statement stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery("Select * from PEDIDO");
 
 			while (rs.next()) {

@@ -59,7 +59,7 @@ public class VentanaCrearEmpleado extends JFrame {
 	private JButton cancelar;
 	private JPanel botones;
 
-	public VentanaCrearEmpleado(Logger logger) {
+	public VentanaCrearEmpleado(Logger logger, Connection conn, Statement stmt) {
 		nombreTexto = new JTextField();
 		nombreTexto.setPreferredSize(new Dimension(250, 20));
 		nombreLabel = new JLabel("NOMBRE: ");
@@ -173,9 +173,6 @@ public class VentanaCrearEmpleado extends JFrame {
 							Integer.parseInt(dniTexto.getText()), direccionTexto.getText(),
 							Integer.parseInt(telefonoTexto.getText()), Double.parseDouble(nominaTexto.getText()),
 							usuarioTexto.getText(), contraseñaTexto.getText());
-
-					Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-					Statement stmt = (Statement) conn.createStatement();
 
 					String instruccion = "INSERT INTO EMPLEADO VALUES(" + "'" + empleado.getNombre() + "'" + ", " + "'"
 							+ empleado.getApellido() + "'" + "," + empleado.getDni() + "," + "'"

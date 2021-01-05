@@ -49,7 +49,7 @@ public class VentanaLoginEmpleado extends JFrame {
 
 	private static VentanaEmpleadoInicio vei;
 
-	public VentanaLoginEmpleado(Logger logger) {
+	public VentanaLoginEmpleado(Logger logger, Connection conn, Statement stmt) {
 
 		setTitle("LOGIN");
 		setSize(310, 260);
@@ -100,8 +100,8 @@ public class VentanaLoginEmpleado extends JFrame {
 		aceptar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (comprobar(logger)) {
-					vei = new VentanaEmpleadoInicio(logger);
+				if (comprobar(logger, conn, stmt)) {
+					vei = new VentanaEmpleadoInicio(logger, conn, stmt);
 					dispose();
 					logger.log(Level.INFO, "Se ha loggineado el empleado.");
 				} else {
@@ -109,7 +109,7 @@ public class VentanaLoginEmpleado extends JFrame {
 					op.showMessageDialog(null,
 							"Su usuario o contraseña no coinciden. Si cree que se trata de un error contacte con el administrador.",
 							"ERROR", JOptionPane.ERROR_MESSAGE);
-							logger.log(Level.INFO, "Ha habido un problema.");
+					logger.log(Level.INFO, "Ha habido un problema.");
 				}
 			}
 		});
@@ -158,17 +158,14 @@ public class VentanaLoginEmpleado extends JFrame {
 		}
 	};
 
-	public boolean comprobar(Logger logger) {
+	public boolean comprobar(Logger logger, Connection conn, Statement stmt) {
 
 		try {
-			Class.forName("org.sqlite.JDBC");
 
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
-			Statement stmt = (Statement) conn.createStatement();
 			ResultSet rs = stmt.executeQuery("Select * from EMPLEADO");
 
 			logger.log(Level.INFO, "Se ha cargado correctamente la base de datos.");
-			
+
 			while (rs.next()) {
 
 				usuarioGuardado = rs.getString("USUARIO");
@@ -181,11 +178,6 @@ public class VentanaLoginEmpleado extends JFrame {
 				}
 			}
 
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-			logger.log(Level.SEVERE, "Se ha producido un error.");
-		
 		} catch (SQLException e) {
 
 			e.printStackTrace();

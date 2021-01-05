@@ -9,6 +9,8 @@ import java.util.logging.LogManager;
 import java.util.logging.Level;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.Statement;
 
 import javax.swing.*;
 
@@ -17,7 +19,7 @@ public class VentanaInicio extends JFrame {
 	JButton cliente;
 	JButton empleado;
 
-	public VentanaInicio(Logger logger) {
+	public VentanaInicio(Logger logger, Connection conn, Statement stmt) {
 
 		cliente = new JButton();
 		cliente.setContentAreaFilled(false);
@@ -28,7 +30,7 @@ public class VentanaInicio extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaIdentif a = new VentanaIdentif("cliente", logger);
+				VentanaIdentif a = new VentanaIdentif("cliente", logger, conn, stmt);
 				logger.log(Level.INFO, "Ha funcionado el boton cliente.");
 				dispose();
 			}
@@ -43,7 +45,7 @@ public class VentanaInicio extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaIdentif a = new VentanaIdentif("empleado", logger);
+				VentanaIdentif a = new VentanaIdentif("empleado", logger, conn, stmt);
 				logger.log(Level.INFO, "Ha funcionado el boton empleado.");
 				dispose();
 			}
