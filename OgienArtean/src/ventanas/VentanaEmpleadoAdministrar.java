@@ -190,22 +190,19 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 				comidas.add(c);
 			}
 
-			// stmt.close();
-			// conn.close();
-
 			setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
 			perfil = new JButton();
 			perfil.setContentAreaFilled(false);
 			perfil.setBorderPainted(false);
 			perfil.setFocusPainted(false);
-			perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
+			perfil.setIcon(new ImageIcon("imagenes/volver.png"));
 			perfil.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 
-					VentanaPerfil a = new VentanaPerfil(logger);
+					VentanaEmpleadoInicio vei = new VentanaEmpleadoInicio(logger);
 					cargarABaseDeDatos(conn, stmt);
 					dispose();
 					logger.log(Level.INFO, "Ha funcionado el boton perfil.");
