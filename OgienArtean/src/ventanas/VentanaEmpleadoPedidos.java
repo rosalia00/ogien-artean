@@ -1,14 +1,27 @@
 package ventanas;
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Logger;
 import java.util.logging.LogManager;
 import java.util.logging.Level;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 public class VentanaEmpleadoPedidos extends JFrame{
 	//Botones de perfil del empleado
@@ -23,10 +36,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 	
 	//Paneles
 	JPanel arriba;
-	JPanel centro1;
-	JPanel centro2;
-	JPanel centro3;
-	JPanel centro4;
+	JPanel centro;
 	JPanel abajo;
 	
 	public VentanaEmpleadoPedidos(Logger logger) {
@@ -36,7 +46,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 			perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
 			perfil.setContentAreaFilled(false);
 			perfil.setBorderPainted(false);
-			perfil.setFocusPainted(false);
+			perfil.setFocusPainted(false); 
 			perfil.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -66,68 +76,106 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		arriba = new JPanel();
 		arriba.setOpaque(false);
 		
-		//Panel Centro 1
-		centro1 = new JPanel();
-		centro1.setLayout(new GridLayout(1,6));
-		centro1.setOpaque(false);
-		//centro1.setMaximumSize(new Dimension(400,400));
+		//Panel centro 
+		centro = new JPanel();
+		centro.setOpaque(false);
+		centro.setSize(new Dimension(500,300));		
+		centro.setLayout(new GridLayout(1,1,0,6));
+		JTable tablaPedidos = new JTable(new DefaultTableModel(new Object[]{"DNI", "PEDIDO"}, 0));
+		tablaPedidos.setPreferredScrollableViewportSize(new Dimension(500, 300));
+		DefaultTableModel model = (DefaultTableModel) tablaPedidos.getModel();
+		String[] nomCol = {"DNI", "PEDIDO", "BORRAR" };
+		tablaPedidos.getColumn("DNI").setResizable(true);
+		tablaPedidos.getColumn("DNI").setMaxWidth(70);
+		model.addRow(nomCol);
+
+		try {
+			Class.forName("org.sqlite.JDBC");
+
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
+			Statement stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery("Select * from PEDIDO");
+
+			while(rs.next()){
+				
+				String dniGuardado = rs.getString("DNI");
+				String pedidoGuardado = rs.getString("PEDIDO");
+				
+				Object[] cosos = {dniGuardado, pedidoGuardado};
+				model.addRow(cosos);
+
+			}
 		
-		//Panel Centro 2
-		centro2 = new JPanel();
-		centro2.setLayout(new GridLayout(1,6));
-		centro2.setOpaque(false);
-		//centro2.setMaximumSize(new Dimension(400,400));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		//Panel Centro 3
-		centro3 = new JPanel();
-		centro3.setLayout(new GridLayout(1,6));
-		centro3.setOpaque(false);
-		//centro3.setMaximumSize(new Dimension(400,400));
 		
-		//Panel Centro 4
-		centro4 = new JPanel();
-		centro4.setLayout(new GridLayout(1,6));
-		centro4.setOpaque(false);
-		//centro4.setMaximumSize(new Dimension(400,400));
+		//Panel SemiAbajo
+		JPanel semiabajo = new JPanel();
+		semiabajo.setOpaque(false);
+		File archivo = new File("tabla.csv");
+
+		if(!archivo.exists()){
+			try {
+				archivo.createNewFile();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+
+		JButton botonDescargar = new JButton("Descargar Tabla");
+		botonDescargar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
 		
+				try {
+					PrintStream ps = new PrintStream(archivo);
+
+					for (int i = 0; i < model.getRowCount(); i++) {
+					for (int j = 0; j < model.getColumnCount(); j++) {
+						ps.print(model.getValueAt(i, j));
+						ps.print(";");
+					}
+					ps.println("");
+				}
+
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				JOptionPane.showMessageDialog(null, "Se ha descargado la tabla.");
+				
+			}
+		});
+		semiabajo.add(botonDescargar);
+		
+		
+
+
+
+
 		//Panel Abajo
 		abajo = new JPanel();
 		abajo.setOpaque(false);
 
 		//Añadir a paneles perfil, atras
-		arriba.add(perfil);
+		arriba.add(perfil);		
+		centro.add(tablaPedidos);
 		abajo.add(atras);		
 		
-				
-		//Botones pedidos primera fila 
-		for (int i = 0; i <= 5; i++) {
-			pedido0 = new JLabel("PEDIDO");
-			confirmar0 = new JButton("CONFIRMAR");
-			confirmar0.setPreferredSize(new Dimension(20,20));
-			
-			centro1.add(pedido0);
-			centro2.add(confirmar0);
-		}
 		
-		//Botones pedidos segunda fila 
-		for (int i = 0; i <= 5; i++) {
-			pedido0 = new JLabel("PEDIDO");
-			confirmar0 = new JButton("CONFIRMAR");
-			confirmar0.setPreferredSize(new Dimension(20,20));
-			
-			centro3.add(pedido0);
-			centro4.add(confirmar0);
-		}
+	
 		
 		//Fondo 
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 				
 		//Añadir paneles
 		add(arriba);
-		add(centro1);
-		add(centro2);
-		add(centro3);
-		add(centro4);
+		add(centro);
+		add(semiabajo);
 		add(abajo);
 				
 		//Icono de pagina
@@ -136,7 +184,7 @@ public class VentanaEmpleadoPedidos extends JFrame{
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("PEDIDOS");
 		setSize(1000,600);
-		setLayout(new GridLayout(6,1));
+		setLayout(new GridLayout(4,1));
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setResizable(false);
