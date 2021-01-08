@@ -122,6 +122,7 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		}
 
 		JButton botonDescargar = new JButton("Descargar Tabla");
+		botonDescargar.setIcon(new ImageIcon("imagenes/descargar.png"));
 		botonDescargar.addActionListener(new ActionListener() {
 
 			@Override
