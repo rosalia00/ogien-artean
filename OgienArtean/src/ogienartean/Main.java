@@ -50,9 +50,9 @@ public class Main {
 			// VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar(logger, conn,
 			// stmt);
 			// VentanaEmpleadoInicio v = new VentanaEmpleadoInicio(logger);
-			 VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos(logger, conn, stmt);
+			//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos(logger, conn, stmt);
 			// VentanaIdentif d = new VentanaIdentif(logger);
-			// VentanaInicio i = new VentanaInicio(logger, conn, stmt);
+			 VentanaInicio i = new VentanaInicio(logger, conn, stmt);
 			// VentanaLoginCliente i = new VentanaLoginCliente(logger);
 			// VentanaLoginEmpleado i = new VentanaLoginEmpleado(logger);
 			// VentanaMiCarro f = new VentanaMiCarro(logger);

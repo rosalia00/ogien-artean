@@ -55,7 +55,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 		perfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaPerfil(logger, conn, stmt);
+				new VentanaPerfil(logger, conn, stmt, dni);
 				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}
