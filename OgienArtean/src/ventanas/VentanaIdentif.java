@@ -32,10 +32,12 @@ public class VentanaIdentif extends JFrame {
 				if (d == "empleado") {
 					VentanaLoginEmpleado a = new VentanaLoginEmpleado(logger, conn, stmt);
 					logger.log(Level.INFO, "Se ha iniciado sesion como empleado.");
+					dispose();
 				} else if (d == "cliente") {
 					VentanaLoginCliente b = new VentanaLoginCliente(logger, conn, stmt);
 					logger.log(Level.INFO, "Se ha iniciado sesion como cliente.");
-				}
+					dispose();
+				} 
 			}
 		});
 
@@ -50,9 +52,12 @@ public class VentanaIdentif extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (d == "empleado") {
 					VentanaCrearEmpleado a = new VentanaCrearEmpleado(logger, conn, stmt);
+					dispose();
+					
 					logger.log(Level.INFO, "Se ha registrado como empleado.");
 				} else if (d == "cliente") {
 					VentanaCrearCliente b = new VentanaCrearCliente(logger, conn, stmt);
+					dispose();
 					logger.log(Level.INFO, "Se ha registrado como cliente.");
 				}
 			}

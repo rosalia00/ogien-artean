@@ -71,7 +71,7 @@ public class VentanaCrearCliente extends JFrame {
 		nombreTexto = new JTextField();
 		nombreTexto.setPreferredSize(new Dimension(250, 20));
 		nombreTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		nombreLabel = new JLabel("NOMBRE: ");
+		nombreLabel = new JLabel("NOMBRE: *");
 		nombreLabel.setPreferredSize(new Dimension(100, 20));
 		nombrePanel = new JPanel();
 		nombrePanel.setBackground(Color.WHITE);
@@ -79,7 +79,7 @@ public class VentanaCrearCliente extends JFrame {
 		apellidoTexto = new JTextField();
 		apellidoTexto.setPreferredSize(new Dimension(250, 20));
 		apellidoTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		apellidoLabel = new JLabel("APELLIDO: ");
+		apellidoLabel = new JLabel("APELLIDO: *");
 		apellidoLabel.setPreferredSize(new Dimension(100, 20));
 		apellidoPanel = new JPanel();
 		apellidoPanel.setBackground(Color.WHITE);
@@ -87,7 +87,7 @@ public class VentanaCrearCliente extends JFrame {
 		dniTexto = new JTextField();
 		dniTexto.setPreferredSize(new Dimension(250, 20));
 		dniTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		dniLabel = new JLabel("DNI: ");
+		dniLabel = new JLabel("DNI: *");
 		dniLabel.setPreferredSize(new Dimension(100, 20));
 		dniPanel = new JPanel();
 		dniPanel.setBackground(Color.WHITE);
@@ -111,7 +111,7 @@ public class VentanaCrearCliente extends JFrame {
 		tarjetaTexto = new JTextField();
 		tarjetaTexto.setPreferredSize(new Dimension(250, 20));
 		tarjetaTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		tarjetaLabel = new JLabel("TARJETA: ");
+		tarjetaLabel = new JLabel("TARJETA: *");
 		tarjetaLabel.setPreferredSize(new Dimension(100, 20));
 		tarjetaPanel = new JPanel();
 		tarjetaPanel.setBackground(Color.WHITE);
@@ -128,7 +128,7 @@ public class VentanaCrearCliente extends JFrame {
 		usuarioTexto = new JTextField();
 		usuarioTexto.setPreferredSize(new Dimension(250, 20));
 		usuarioTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		usuarioLabel = new JLabel("USUARIO: ");
+		usuarioLabel = new JLabel("USUARIO: *");
 		usuarioLabel.setPreferredSize(new Dimension(100, 20));
 		usuarioPanel = new JPanel();
 		usuarioPanel.setBackground(Color.WHITE);
@@ -136,7 +136,7 @@ public class VentanaCrearCliente extends JFrame {
 		contraseñaTexto = new JTextField();
 		contraseñaTexto.setPreferredSize(new Dimension(250, 20));
 		contraseñaTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		contraseñaLabel = new JLabel("CONTRASEÑA: ");
+		contraseñaLabel = new JLabel("CONTRASEÑA: *");
 		contraseñaLabel.setPreferredSize(new Dimension(100, 20));
 		contraseñaPanel = new JPanel();
 		contraseñaPanel.setBackground(Color.WHITE);
@@ -189,14 +189,11 @@ public class VentanaCrearCliente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					System.out.println("llega");
 
 					Cliente c = new Cliente(nombreTexto.getText(), apellidoTexto.getText(),
 							Integer.parseInt(dniTexto.getText()), direccionTexto.getText(),
 							Integer.parseInt(telefonoTexto.getText()), Integer.parseInt(tarjetaTexto.getText()),
 							entregaButton.isSelected(), usuarioTexto.getText(), contraseñaTexto.getText());
-
-					System.out.println("llega0");
 
 					Statement stmt = (Statement) conn.createStatement();
 
@@ -204,8 +201,6 @@ public class VentanaCrearCliente extends JFrame {
 							+ "'" + "," + c.getDni() + ",'" + c.getDireccion() + "' ," + c.getTelefono() + ","
 							+ c.getTarjeta() + "," + c.getEntrega() + ", '" + c.getUsuario() + "' , '"
 							+ c.getContraseña() + "');";
-
-					System.out.println(instruccion);
 
 					stmt.executeUpdate(instruccion);
 

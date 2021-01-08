@@ -107,7 +107,6 @@ public class VentanaLoginCliente extends JFrame {
 				if (comprobar(logger, conn, stmt)) {
 					String dni = "";
 					try {
-						System.out.println("SELECT DNI FROM CLIENTE WHERE USUARIO =" + usuario.getText() + ";");
 						ResultSet rs = stmt
 								.executeQuery("SELECT DNI FROM CLIENTE WHERE USUARIO = '" + usuario.getText() + "' ;");
 						dni = rs.getString("DNI");

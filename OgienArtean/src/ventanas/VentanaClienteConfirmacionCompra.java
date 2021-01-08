@@ -104,7 +104,7 @@ public class VentanaClienteConfirmacionCompra extends JFrame {
 					stmt.executeUpdate("INSERT INTO PEDIDO VALUES(" + dni + ", '" + ticket + "');");
 
 				} catch (SQLException e1) {
-					
+
 					e1.printStackTrace();
 				}
 
