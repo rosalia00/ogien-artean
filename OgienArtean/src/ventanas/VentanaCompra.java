@@ -299,9 +299,8 @@ public class VentanaCompra extends JFrame {
 					for (PanDisplay pan : panes) {
 						int comprado = (int) pan.getS().getValue();
 						if (comprado > 0) {
-							String ticket = pan.getP().getNombre() + " Precio/u: " + pan.getP().getPrecio()
-									+ " Unidades: " + pan.getS().getValue() + " Precio/total: "
-									+ pan.getP().getPrecio() * (int) pan.getS().getValue();
+							String ticket = "Nombre: "+ pan.getP().getNombre() + " Unidades: " + pan.getS().getValue() 
+									+ " Precio: " + pan.getP().getPrecio() * (int) pan.getS().getValue() + " ";
 							tickets.add(ticket);
 						}
 					}
@@ -381,9 +380,8 @@ public class VentanaCompra extends JFrame {
 					for (PasteleriaDisplay pastel : pasteles) {
 						int comprado = (int) pastel.getS().getValue();
 						if (comprado > 0) {
-							String ticket = pastel.getQ().getNombre() + " Precio/u: " + pastel.getQ().getPrecio()
-									+ " Unidades: " + pastel.getS().getValue() + " Precio/total: "
-									+ pastel.getQ().getPrecio() * (int) pastel.getS().getValue();
+							String ticket = "Nombre: " + pastel.getQ().getNombre() + " Unidades: " + pastel.getS().getValue() 
+									+ " Precio: " + pastel.getQ().getPrecio() * (int) pastel.getS().getValue() + " ";
 							tickets.add(ticket);
 						}
 					}
@@ -461,9 +459,8 @@ public class VentanaCompra extends JFrame {
 					for (ComidaDisplay comida : comidas) {
 						int comprado = (int) comida.getS().getValue();
 						if (comprado > 0) {
-							String ticket = comida.getC().getNombre() + " Precio/u: " + comida.getC().getPrecio()
-									+ " Unidades: " + comida.getS().getValue() + " Precio/total: "
-									+ comida.getC().getPrecio() * (int) comida.getS().getValue();
+							String ticket = "Nombre: " + comida.getC().getNombre() + " Unidades: " + comida.getS().getValue()
+									+ " Precio: " + comida.getC().getPrecio() * (int) comida.getS().getValue() + " ";
 							tickets.add(ticket);
 						}
 					}

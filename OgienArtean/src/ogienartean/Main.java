@@ -52,7 +52,7 @@ public class Main {
 			// VentanaEmpleadoInicio v = new VentanaEmpleadoInicio(logger);
 			 VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos(logger, conn, stmt);
 			// VentanaIdentif d = new VentanaIdentif(logger);
-			//VentanaInicio i = new VentanaInicio(logger, conn, stmt);
+			// VentanaInicio i = new VentanaInicio(logger, conn, stmt);
 			// VentanaLoginCliente i = new VentanaLoginCliente(logger);
 			// VentanaLoginEmpleado i = new VentanaLoginEmpleado(logger);
 			// VentanaMiCarro f = new VentanaMiCarro(logger);

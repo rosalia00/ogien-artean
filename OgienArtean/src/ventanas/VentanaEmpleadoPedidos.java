@@ -24,6 +24,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
+
 public class VentanaEmpleadoPedidos extends JFrame {
 	// Botones de perfil del empleado
 	JButton perfil;
@@ -81,15 +82,21 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		centro = new JPanel();
 		centro.setOpaque(false);
 		centro.setSize(new Dimension(500, 300));
-		centro.setLayout(new GridLayout(1, 1, 0, 6));
+
+		
+		// Creacion Tabla
 		JTable tablaPedidos = new JTable(new DefaultTableModel(new Object[] { "DNI", "PEDIDO" }, 0));
 		tablaPedidos.setPreferredScrollableViewportSize(new Dimension(500, 300));
 		DefaultTableModel model = (DefaultTableModel) tablaPedidos.getModel();
-		String[] nomCol = { "DNI", "PEDIDO", "BORRAR" };
+		tablaPedidos.getColumnModel().getColumn(0).setPreferredWidth(80);
+		tablaPedidos.getColumnModel().getColumn(1).setPreferredWidth(700);
+		String[] nomCol = { "DNI", "PEDIDO"};
 		tablaPedidos.getColumn("DNI").setResizable(true);
 		tablaPedidos.getColumn("DNI").setMaxWidth(70);
 		model.addRow(nomCol);
 
+		
+		
 		try {
 
 			ResultSet rs = stmt.executeQuery("Select * from PEDIDO");
@@ -121,8 +128,11 @@ public class VentanaEmpleadoPedidos extends JFrame {
 			}
 		}
 
-		JButton botonDescargar = new JButton("Descargar Tabla");
+		JButton botonDescargar = new JButton();
 		botonDescargar.setIcon(new ImageIcon("imagenes/descargar.png"));
+		botonDescargar.setContentAreaFilled(false);
+		botonDescargar.setBorderPainted(false);
+		botonDescargar.setFocusPainted(false);
 		botonDescargar.addActionListener(new ActionListener() {
 
 			@Override
@@ -173,11 +183,11 @@ public class VentanaEmpleadoPedidos extends JFrame {
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("PEDIDOS");
-		setSize(1000, 600);
+		setSize(850, 500);
 		setLayout(new GridLayout(4, 1));
 		setVisible(true);
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(true);
 
 	}
 

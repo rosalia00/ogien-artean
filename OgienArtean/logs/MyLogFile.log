@@ -104,3 +104,33 @@ Jan 05, 2021 9:05:41 PM ventanas.VentanaMiCarro$2 actionPerformed
 INFO: Ha funcionado el boton comprar.
 Jan 05, 2021 9:05:44 PM ventanas.VentanaClienteConfirmacionCompra$4 actionPerformed
 INFO: Ha funcionado el boton confirmar.
+ene. 08, 2021 12:00:32 P. M. ventanas.VentanaInicio$1 actionPerformed
+INFO: Ha funcionado el boton cliente.
+ene. 08, 2021 12:00:33 P. M. ventanas.VentanaIdentif$2 actionPerformed
+INFO: Se ha registrado como cliente.
+ene. 08, 2021 12:01:22 P. M. ventanas.VentanaCrearCliente$2 actionPerformed
+INFO: Ha funcionado la funcion agregar.
+ene. 08, 2021 12:01:35 P. M. ventanas.VentanaLoginCliente comprobar
+INFO: Se ha cargado correctamente la base de datos.
+ene. 08, 2021 12:01:35 P. M. ventanas.VentanaLoginCliente comprobar
+INFO: Ha comparado correctamente el usuario y la contraseña.
+ene. 08, 2021 12:01:35 P. M. ventanas.VentanaLoginCliente$1 actionPerformed
+INFO: Se ha loggeado el cliente.
+ene. 08, 2021 12:01:47 P. M. ventanas.VentanaClienteInicio$1 actionPerformed
+INFO: Ha funcionado el boton panaderia.
+ene. 08, 2021 12:01:55 P. M. ventanas.VentanaCompra$4 actionPerformed
+INFO: Ha funcionado el boton comprar.
+ene. 08, 2021 12:01:55 P. M. ventanas.VentanaCompra$4 actionPerformed
+INFO: Ha funcionado el boton retirar.
+ene. 08, 2021 12:01:56 P. M. ventanas.VentanaCompra$4 actionPerformed
+INFO: Ha funcionado el boton comprar.
+ene. 08, 2021 12:02:03 P. M. ventanas.VentanaCompra$5 actionPerformed
+INFO: Ha funcionado el boton volver.
+ene. 08, 2021 12:02:03 P. M. ventanas.VentanaCompra$5 actionPerformed
+INFO: Ha funcionado el boton compro.
+ene. 08, 2021 12:02:09 P. M. ventanas.VentanaClienteInicio$4 actionPerformed
+INFO: Ha funcionado el boton mi carro.
+ene. 08, 2021 12:02:13 P. M. ventanas.VentanaMiCarro$2 actionPerformed
+INFO: Ha funcionado el boton comprar.
+ene. 08, 2021 12:02:18 P. M. ventanas.VentanaClienteConfirmacionCompra$4 actionPerformed
+INFO: Ha funcionado el boton confirmar.
