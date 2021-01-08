@@ -66,7 +66,20 @@ public class PanTest {
 		
 	}
 	
-	
+	@Test
+	public void testToString() { 
+		ArrayList<String> ingredientes = new ArrayList<String>();
+		ingredientes.add("harina");
+		ingredientes.add("levadura");
+		ingredientes.add("sal");
+		ingredientes.add("agua");
+		
+		Pan p = new Pan("Baguette", 0.75, false, ingredientes, true);
+		String expected = "Pan [ingredientes=" + ingredientes + ", sal=" + true + ", nombre=" + "Baguette" + ", precio=" + 0.75
+				+ ", celiaco=" + false + "]";
+		assertEquals(expected , p.toString());
+	}
+
 	
 	
 	
