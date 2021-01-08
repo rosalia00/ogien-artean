@@ -24,7 +24,6 @@ public class VentanaPerfil extends JFrame {
 	JLabel cuenta;
 
 	JPanel datos;
-	JPanel pedidos;
 
 	JOptionPane confirmar;
 
@@ -49,13 +48,10 @@ public class VentanaPerfil extends JFrame {
 		datos.add(cuenta);
 		datos.setOpaque(false);
 
-		pedidos = new JPanel();
-		pedidos.setOpaque(false);
 
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 		add(tituloPanel);
 		add(datos);
-		add(pedidos);
 
 		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
 
