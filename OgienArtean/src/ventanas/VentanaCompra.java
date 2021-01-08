@@ -115,7 +115,6 @@ public class VentanaCompra extends JFrame {
 
 	public ArrayList<PanDisplay> getPanesDisplay(Connection conn, Statement stmt) throws Exception {
 		ArrayList<Pan> panes = getAllPanes(conn, stmt);
-		System.out.println(panes);
 		ArrayList<PanDisplay> productosPan = new ArrayList();
 
 		for (Pan pan : panes) {
@@ -127,7 +126,6 @@ public class VentanaCompra extends JFrame {
 
 	public ArrayList<PasteleriaDisplay> getPasteleriaDisplay(Connection conn, Statement stmt) throws Exception {
 		ArrayList<Pasteleria> pasteles = getAllPasteles(conn, stmt);
-		System.out.println(pasteles);
 		ArrayList<PasteleriaDisplay> productosPasteles = new ArrayList();
 
 		for (Pasteleria pastel : pasteles) {
@@ -139,7 +137,6 @@ public class VentanaCompra extends JFrame {
 
 	public ArrayList<ComidaDisplay> getComidaDisplay(Connection conn, Statement stmt) throws Exception {
 		ArrayList<Comida> comidas = getAllComidas(conn, stmt);
-		System.out.println(comidas);
 		ArrayList<ComidaDisplay> productosComida = new ArrayList();
 		for (Comida comida : comidas) {
 			ComidaDisplay c = new ComidaDisplay(comida, boton = new JButton(), cantidad = new JSpinner(),
@@ -195,6 +192,7 @@ public class VentanaCompra extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new VentanaClienteInicio(logger, tickets, dni, conn, stmt);
+				logger.log(Level.INFO, "Ha funcionado el boton volver.");
 				dispose();
 			}
 		});
@@ -238,7 +236,6 @@ public class VentanaCompra extends JFrame {
 		int diferencia = 0;
 		if (s == "pan") {
 			ArrayList<PanDisplay> panes = getPanesDisplay(conn, stmt);
-			System.out.println(panes);
 			int numeroPanel = 0;
 			for (PanDisplay p : panes) {
 				productoDisplay = new JPanel();
@@ -259,10 +256,12 @@ public class VentanaCompra extends JFrame {
 						if (p.getB().getText() == "COMPRAR") {
 							p.getB().setText("RETIRAR");
 							p.getS().setEnabled(true);
+							logger.log(Level.INFO, "Ha funcionado el boton comprar.");
 						} else {
 							p.getB().setText("COMPRAR");
 							p.getS().setEnabled(false);
 							p.getS().setValue(0);
+							logger.log(Level.INFO, "Ha funcionado el boton retirar.");
 						}
 					}
 				});
@@ -303,7 +302,6 @@ public class VentanaCompra extends JFrame {
 							String ticket = pan.getP().getNombre() + " Precio/u: " + pan.getP().getPrecio()
 									+ " Unidades: " + pan.getS().getValue() + " Precio/total: "
 									+ pan.getP().getPrecio() * (int) pan.getS().getValue();
-							System.out.println(ticket);
 							tickets.add(ticket);
 						}
 					}
@@ -340,10 +338,12 @@ public class VentanaCompra extends JFrame {
 						if (q.getB().getText() == "COMPRAR") {
 							q.getB().setText("RETIRAR");
 							q.getS().setEnabled(true);
+							logger.log(Level.INFO, "Ha funcionado el boton comprar.");
 						} else {
 							q.getB().setText("COMPRAR");
 							q.getS().setEnabled(false);
 							q.getS().setValue(0);
+							logger.log(Level.INFO, "Ha funcionado el boton retirar.");
 						}
 					}
 				});
@@ -352,7 +352,6 @@ public class VentanaCompra extends JFrame {
 					panelesCentro.get(numeroPanel).add(productoDisplay);
 					numeroPanel++;
 					i++;
-					System.out.println(i);
 				} else if (i == pasteles.size() - 1) {
 					panelesCentro.get(numeroPanel).add(productoDisplay);
 					if (0 <= i && i < 5) {
@@ -385,7 +384,6 @@ public class VentanaCompra extends JFrame {
 							String ticket = pastel.getQ().getNombre() + " Precio/u: " + pastel.getQ().getPrecio()
 									+ " Unidades: " + pastel.getS().getValue() + " Precio/total: "
 									+ pastel.getQ().getPrecio() * (int) pastel.getS().getValue();
-							System.out.println(ticket);
 							tickets.add(ticket);
 						}
 					}
@@ -421,10 +419,12 @@ public class VentanaCompra extends JFrame {
 						if (c.getB().getText() == "COMPRAR") {
 							c.getB().setText("RETIRAR");
 							c.getS().setEnabled(true);
+							logger.log(Level.INFO, "Ha funcionado el boton comprar.");
 						} else {
 							c.getB().setText("COMPRAR");
 							c.getS().setEnabled(false);
 							c.getS().setValue(0);
+							logger.log(Level.INFO, "Ha funcionado el boton retirar.");
 						}
 					}
 				});
@@ -433,7 +433,6 @@ public class VentanaCompra extends JFrame {
 					panelesCentro.get(numeroPanel).add(productoDisplay);
 					numeroPanel++;
 					i++;
-					System.out.println(i);
 				} else if (i == comidas.size() - 1) {
 					panelesCentro.get(numeroPanel).add(productoDisplay);
 					if (0 <= i && i < 5) {
@@ -465,7 +464,6 @@ public class VentanaCompra extends JFrame {
 							String ticket = comida.getC().getNombre() + " Precio/u: " + comida.getC().getPrecio()
 									+ " Unidades: " + comida.getS().getValue() + " Precio/total: "
 									+ comida.getC().getPrecio() * (int) comida.getS().getValue();
-							System.out.println(ticket);
 							tickets.add(ticket);
 						}
 					}
