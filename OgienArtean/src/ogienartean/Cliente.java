@@ -1,12 +1,12 @@
 package ogienartean;
 
 public class Cliente extends Persona {
-	int tarjeta;
+	long tarjeta;
 	Boolean entrega;
 	String usuario;
-	String contraseña;
+	String contraseÃ±a;
 
-	public int getTarjeta() {
+	public long getTarjeta() {
 		return tarjeta;
 	}
 
@@ -18,11 +18,11 @@ public class Cliente extends Persona {
 		return usuario;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContraseÃ±a() {
+		return contraseÃ±a;
 	}
 
-	public void setTarjeta(int tarjeta) {
+	public void setTarjeta(long tarjeta) {
 		this.tarjeta = tarjeta;
 	}
 
@@ -34,24 +34,24 @@ public class Cliente extends Persona {
 		this.usuario = usuario;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContraseÃ±a(String contraseÃ±a) {
+		this.contraseÃ±a = contraseÃ±a;
 	}
 
 
-	public Cliente(String nombre, String apellido, int dni, String direccion, int telefono, int tarjeta,
-			Boolean entrega, String usuario, String contraseña) {
+	public Cliente(String nombre, String apellido, int dni, String direccion, int telefono, long tarjeta,
+			Boolean entrega, String usuario, String contraseÃ±a) {
 		super(nombre, apellido, dni, direccion, telefono);
 		this.tarjeta = tarjeta;
 		this.entrega = entrega;
 		this.usuario = usuario;
-		this.contraseña = contraseña;
+		this.contraseÃ±a = contraseÃ±a;
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [tarjeta=" + tarjeta + ", entrega=" + entrega + ", usuario=" + usuario + ", contraseña="
-				+ contraseña + "]";
+		return "Cliente [tarjeta=" + tarjeta + ", entrega=" + entrega + ", usuario=" + usuario + ", contraseÃ±a="
+				+ contraseÃ±a + "]";
 	}
 
 

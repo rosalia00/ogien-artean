@@ -51,9 +51,9 @@ public class VentanaCrearEmpleado extends JFrame {
 	private JLabel usuarioLabel;
 	private JPanel usuarioPanel;
 
-	private JTextField contraseñaTexto;
-	private JLabel contraseñaLabel;
-	private JPanel contraseñaPanel;
+	private JTextField contraseÃ±aTexto;
+	private JLabel contraseÃ±aLabel;
+	private JPanel contraseÃ±aPanel;
 
 	private JButton agregar;
 	private JButton cancelar;
@@ -115,13 +115,13 @@ public class VentanaCrearEmpleado extends JFrame {
 		usuarioPanel = new JPanel();
 		usuarioPanel.setBackground(Color.WHITE);
 
-		contraseñaTexto = new JTextField();
-		contraseñaTexto.setPreferredSize(new Dimension(250, 20));
-		contraseñaTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		contraseñaLabel = new JLabel("CONTRASEÑA: *");
-		contraseñaLabel.setPreferredSize(new Dimension(100, 20));
-		contraseñaPanel = new JPanel();
-		contraseñaPanel.setBackground(Color.WHITE);
+		contraseÃ±aTexto = new JTextField();
+		contraseÃ±aTexto.setPreferredSize(new Dimension(250, 20));
+		contraseÃ±aTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
+		contraseÃ±aLabel = new JLabel("CONTRASEï¿½A: *");
+		contraseÃ±aLabel.setPreferredSize(new Dimension(100, 20));
+		contraseÃ±aPanel = new JPanel();
+		contraseÃ±aPanel.setBackground(Color.WHITE);
 
 		agregar = new JButton("AGREGAR");
 		agregar.setPreferredSize(new Dimension(100, 30));
@@ -151,9 +151,9 @@ public class VentanaCrearEmpleado extends JFrame {
 		usuarioPanel.add(usuarioLabel);
 		usuarioPanel.add(usuarioTexto);
 		add(usuarioPanel);
-		contraseñaPanel.add(contraseñaLabel);
-		contraseñaPanel.add(contraseñaTexto);
-		add(contraseñaPanel);
+		contraseÃ±aPanel.add(contraseÃ±aLabel);
+		contraseÃ±aPanel.add(contraseÃ±aTexto);
+		add(contraseÃ±aPanel);
 
 		cancelar.addActionListener(new ActionListener() {
 			@Override
@@ -172,12 +172,12 @@ public class VentanaCrearEmpleado extends JFrame {
 					Empleado empleado = new Empleado(nombreTexto.getText(), apellidoTexto.getText(),
 							Integer.parseInt(dniTexto.getText()), direccionTexto.getText(),
 							Integer.parseInt(telefonoTexto.getText()), Double.parseDouble(nominaTexto.getText()),
-							usuarioTexto.getText(), contraseñaTexto.getText());
+							usuarioTexto.getText(), contraseÃ±aTexto.getText());
 
 					String instruccion = "INSERT INTO EMPLEADO VALUES(" + "'" + empleado.getNombre() + "'" + ", " + "'"
 							+ empleado.getApellido() + "'" + "," + empleado.getDni() + "," + "'"
 							+ empleado.getDireccion() + "'" + "," + empleado.getTelefono() + "," + empleado.getNomina()
-							+ "," + "'" + empleado.getUsuario() + "'" + "," + "'" + empleado.getContraseña() + "'"
+							+ "," + "'" + empleado.getUsuario() + "'" + "," + "'" + empleado.getContraseÃ±a() + "'"
 							+ ");";
 
 					stmt.executeUpdate(instruccion);

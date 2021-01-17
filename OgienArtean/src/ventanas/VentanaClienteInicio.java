@@ -42,8 +42,6 @@ public class VentanaClienteInicio extends JFrame {
 
 	public VentanaClienteInicio(Logger logger, ArrayList<String> tickets, String dni, Connection conn, Statement stmt) {
 
-		System.out.println(dni);
-
 		panaderia = new JButton();
 		panaderia.setContentAreaFilled(false);
 		panaderia.setBorderPainted(false);

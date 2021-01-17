@@ -39,24 +39,7 @@ public class Main {
 			Connection conn = DriverManager.getConnection("jdbc:sqlite:ogien_artean.db");
 			Statement stmt = (Statement) conn.createStatement();
 
-			// ArrayList<String> tickets = new ArrayList();
-			// VENTANAS
-			// VentanaClienteConfirmacionCompra z = new
-			// VentanaClienteConfirmacionCompra(logger);
-			// VentanaClienteInicio a = new VentanaClienteInicio(logger, tickets);
-			// VentanaCompra d = new VentanaCompra(logger);
-			// VentanaCrearCliente as = new VentanaCrearCliente(logger);
-			// VentanaCrearEmpleado asd = new VentanaCrearEmpleado(logger);
-			// VentanaEmpleadoAdministrar c = new VentanaEmpleadoAdministrar(logger, conn,
-			// stmt);
-			// VentanaEmpleadoInicio v = new VentanaEmpleadoInicio(logger);
-			//VentanaEmpleadoPedidos c = new VentanaEmpleadoPedidos(logger, conn, stmt);
-			// VentanaIdentif d = new VentanaIdentif(logger);
-			 VentanaInicio i = new VentanaInicio(logger, conn, stmt);
-			// VentanaLoginCliente i = new VentanaLoginCliente(logger);
-			// VentanaLoginEmpleado i = new VentanaLoginEmpleado(logger);
-			// VentanaMiCarro f = new VentanaMiCarro(logger);
-			// VentanaPerfil a = new VentanaPerfil(logger);
+			VentanaInicio i = new VentanaInicio(logger, conn, stmt);
 
 		} catch (ClassNotFoundException | SQLException e) {
 

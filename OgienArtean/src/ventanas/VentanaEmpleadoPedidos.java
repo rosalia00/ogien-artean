@@ -26,8 +26,7 @@ import javax.swing.table.TableCellRenderer;
 
 
 public class VentanaEmpleadoPedidos extends JFrame {
-	// Botones de perfil del empleado
-	JButton perfil;
+
 
 	// Boton atras
 	JButton atras;
@@ -42,22 +41,7 @@ public class VentanaEmpleadoPedidos extends JFrame {
 	JPanel abajo;
 
 	public VentanaEmpleadoPedidos(Logger logger, Connection conn, Statement stmt) {
-		// Botones de perfil del empleado
-		// Boton perfil
-		perfil = new JButton();
-		perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
-		perfil.setContentAreaFilled(false);
-		perfil.setBorderPainted(false);
-		perfil.setFocusPainted(false);
-		perfil.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaPerfil(logger, conn, stmt);
-				dispose();
-				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
-			}
-		});
-
+		
 		// Boton atras
 		atras = new JButton();
 		atras.setIcon(new ImageIcon("imagenes/volver.png"));
@@ -114,6 +98,8 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		tablaPedidos.setEnabled(false);
 
 		// Panel SemiAbajo
 		JPanel semiabajo = new JPanel();
@@ -164,15 +150,14 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		abajo = new JPanel();
 		abajo.setOpaque(false);
 
-		// Añadir a paneles perfil, atras
-		arriba.add(perfil);
+		// Aï¿½adir a paneles atras
 		centro.add(tablaPedidos);
 		abajo.add(atras);
 
 		// Fondo
 		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
 
-		// Añadir paneles
+		// Aï¿½adir paneles
 		add(arriba);
 		add(centro);
 		add(semiabajo);

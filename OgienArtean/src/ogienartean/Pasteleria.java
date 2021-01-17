@@ -28,5 +28,4 @@ public class Pasteleria extends Producto {
 		return "Pasteleria [tipo=" + tipo + "]";
 	}
 
-	
 }

@@ -58,9 +58,9 @@ public class VentanaCrearCliente extends JFrame {
 	private JLabel usuarioLabel;
 	private JPanel usuarioPanel;
 
-	private JTextField contraseñaTexto;
-	private JLabel contraseñaLabel;
-	private JPanel contraseñaPanel;
+	private JTextField contraseÃ±aTexto;
+	private JLabel contraseÃ±aLabel;
+	private JPanel contraseÃ±aPanel;
 
 	private JButton agregar;
 	private JButton cancelar;
@@ -71,7 +71,7 @@ public class VentanaCrearCliente extends JFrame {
 		nombreTexto = new JTextField();
 		nombreTexto.setPreferredSize(new Dimension(250, 20));
 		nombreTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		nombreLabel = new JLabel("NOMBRE: *");
+		nombreLabel = new JLabel("NOMBRE: ");
 		nombreLabel.setPreferredSize(new Dimension(100, 20));
 		nombrePanel = new JPanel();
 		nombrePanel.setBackground(Color.WHITE);
@@ -79,7 +79,7 @@ public class VentanaCrearCliente extends JFrame {
 		apellidoTexto = new JTextField();
 		apellidoTexto.setPreferredSize(new Dimension(250, 20));
 		apellidoTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		apellidoLabel = new JLabel("APELLIDO: *");
+		apellidoLabel = new JLabel("APELLIDO: ");
 		apellidoLabel.setPreferredSize(new Dimension(100, 20));
 		apellidoPanel = new JPanel();
 		apellidoPanel.setBackground(Color.WHITE);
@@ -87,7 +87,7 @@ public class VentanaCrearCliente extends JFrame {
 		dniTexto = new JTextField();
 		dniTexto.setPreferredSize(new Dimension(250, 20));
 		dniTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		dniLabel = new JLabel("DNI: *");
+		dniLabel = new JLabel("DNI: ");
 		dniLabel.setPreferredSize(new Dimension(100, 20));
 		dniPanel = new JPanel();
 		dniPanel.setBackground(Color.WHITE);
@@ -111,7 +111,7 @@ public class VentanaCrearCliente extends JFrame {
 		tarjetaTexto = new JTextField();
 		tarjetaTexto.setPreferredSize(new Dimension(250, 20));
 		tarjetaTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		tarjetaLabel = new JLabel("TARJETA: *");
+		tarjetaLabel = new JLabel("TARJETA: ");
 		tarjetaLabel.setPreferredSize(new Dimension(100, 20));
 		tarjetaPanel = new JPanel();
 		tarjetaPanel.setBackground(Color.WHITE);
@@ -133,13 +133,13 @@ public class VentanaCrearCliente extends JFrame {
 		usuarioPanel = new JPanel();
 		usuarioPanel.setBackground(Color.WHITE);
 
-		contraseñaTexto = new JTextField();
-		contraseñaTexto.setPreferredSize(new Dimension(250, 20));
-		contraseñaTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		contraseñaLabel = new JLabel("CONTRASEÑA: *");
-		contraseñaLabel.setPreferredSize(new Dimension(100, 20));
-		contraseñaPanel = new JPanel();
-		contraseñaPanel.setBackground(Color.WHITE);
+		contraseÃ±aTexto = new JTextField();
+		contraseÃ±aTexto.setPreferredSize(new Dimension(250, 20));
+		contraseÃ±aTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
+		contraseÃ±aLabel = new JLabel("CONTRASEÃ‘A: *");
+		contraseÃ±aLabel.setPreferredSize(new Dimension(100, 20));
+		contraseÃ±aPanel = new JPanel();
+		contraseÃ±aPanel.setBackground(Color.WHITE);
 
 		agregar = new JButton("AGREGAR");
 		agregar.setPreferredSize(new Dimension(100, 30));
@@ -172,9 +172,9 @@ public class VentanaCrearCliente extends JFrame {
 		usuarioPanel.add(usuarioLabel);
 		usuarioPanel.add(usuarioTexto);
 		add(usuarioPanel);
-		contraseñaPanel.add(contraseñaLabel);
-		contraseñaPanel.add(contraseñaTexto);
-		add(contraseñaPanel);
+		contraseÃ±aPanel.add(contraseÃ±aLabel);
+		contraseÃ±aPanel.add(contraseÃ±aTexto);
+		add(contraseÃ±aPanel);
 
 		cancelar.addActionListener(new ActionListener() {
 			@Override
@@ -192,15 +192,17 @@ public class VentanaCrearCliente extends JFrame {
 
 					Cliente c = new Cliente(nombreTexto.getText(), apellidoTexto.getText(),
 							Integer.parseInt(dniTexto.getText()), direccionTexto.getText(),
-							Integer.parseInt(telefonoTexto.getText()), Integer.parseInt(tarjetaTexto.getText()),
-							entregaButton.isSelected(), usuarioTexto.getText(), contraseñaTexto.getText());
+							Integer.parseInt(telefonoTexto.getText()), Long.parseLong(tarjetaTexto.getText()),
+							entregaButton.isSelected(), usuarioTexto.getText(), contraseÃ±aTexto.getText());
 
 					Statement stmt = (Statement) conn.createStatement();
 
 					String instruccion = "INSERT INTO CLIENTE VALUES('" + c.getNombre() + "'" + ", '" + c.getApellido()
 							+ "'" + "," + c.getDni() + ",'" + c.getDireccion() + "' ," + c.getTelefono() + ","
 							+ c.getTarjeta() + "," + c.getEntrega() + ", '" + c.getUsuario() + "' , '"
-							+ c.getContraseña() + "');";
+							+ c.getContraseÃ±a() + "');";
+
+					System.out.println(instruccion);
 
 					stmt.executeUpdate(instruccion);
 
@@ -208,7 +210,7 @@ public class VentanaCrearCliente extends JFrame {
 
 				} catch (Exception e) {
 					// TODO: handle exception
-
+					e.printStackTrace();
 					logger.log(Level.SEVERE, "No se ha podido acceder a la base de datos.");
 				}
 				VentanaLoginCliente i = new VentanaLoginCliente(logger, conn, stmt);

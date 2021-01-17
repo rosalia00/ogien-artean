@@ -91,7 +91,6 @@ public class VentanaCompra extends JFrame {
 
 	public ArrayList<Pan> getAllPanes(Connection conn, Statement stmt) throws Exception {
 		ArrayList<Pan> panes = new ArrayList<Pan>();
-		Class.forName("org.sqlite.JDBC");
 		try {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM PAN;");
 			while (rs.next()) {
@@ -131,6 +130,7 @@ public class VentanaCompra extends JFrame {
 		for (Pasteleria pastel : pasteles) {
 			PasteleriaDisplay q = new PasteleriaDisplay(pastel, boton = new JButton(), cantidad = new JSpinner(),
 					nombre = new JLabel());
+			productosPasteles.add(q);
 		}
 		return productosPasteles;
 	}
@@ -239,7 +239,7 @@ public class VentanaCompra extends JFrame {
 			int numeroPanel = 0;
 			for (PanDisplay p : panes) {
 				productoDisplay = new JPanel();
-				p.getL().setText(p.getP().getNombre() + " " + p.getP().getPrecio() + " €");
+				p.getL().setText(p.getP().getNombre() + " " + p.getP().getPrecio() + " â‚¬");
 				p.getL().setBackground(Color.WHITE);
 				p.getL().setOpaque(true);
 				productoDisplay.add(p.getL());
@@ -299,7 +299,7 @@ public class VentanaCompra extends JFrame {
 					for (PanDisplay pan : panes) {
 						int comprado = (int) pan.getS().getValue();
 						if (comprado > 0) {
-							String ticket = "Nombre: "+ pan.getP().getNombre() + " Unidades: " + pan.getS().getValue() 
+							String ticket = "Nombre: " + pan.getP().getNombre() + " Unidades: " + pan.getS().getValue()
 									+ " Precio: " + pan.getP().getPrecio() * (int) pan.getS().getValue() + " ";
 							tickets.add(ticket);
 						}
@@ -307,7 +307,7 @@ public class VentanaCompra extends JFrame {
 
 					anyadido = new JOptionPane();
 					anyadido.setFocusable(false);
-					anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
+					anyadido.showMessageDialog(null, "Su compra se ha aÃ±adido al Carro");
 					dispose();
 					new VentanaClienteInicio(logger, tickets, dni, conn, stmt);
 					logger.log(Level.INFO, "Ha funcionado el boton volver.");
@@ -321,7 +321,7 @@ public class VentanaCompra extends JFrame {
 			int numeroPanel = 0;
 			for (PasteleriaDisplay q : pasteles) {
 				productoDisplay = new JPanel();
-				q.getL().setText(q.getQ().getNombre() + " " + q.getQ().getPrecio() + " €");
+				q.getL().setText(q.getQ().getNombre() + " " + q.getQ().getPrecio() + " â‚¬");
 				productoDisplay.add(q.getL());
 				q.getB().setText("COMPRAR");
 				productoDisplay.add(q.getB());
@@ -380,15 +380,16 @@ public class VentanaCompra extends JFrame {
 					for (PasteleriaDisplay pastel : pasteles) {
 						int comprado = (int) pastel.getS().getValue();
 						if (comprado > 0) {
-							String ticket = "Nombre: " + pastel.getQ().getNombre() + " Unidades: " + pastel.getS().getValue() 
-									+ " Precio: " + pastel.getQ().getPrecio() * (int) pastel.getS().getValue() + " ";
+							String ticket = "Nombre: " + pastel.getQ().getNombre() + " Unidades: "
+									+ pastel.getS().getValue() + " Precio: "
+									+ pastel.getQ().getPrecio() * (int) pastel.getS().getValue() + " ";
 							tickets.add(ticket);
 						}
 					}
 
 					anyadido = new JOptionPane();
 					anyadido.setFocusable(false);
-					anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
+					anyadido.showMessageDialog(null, "Su compra se ha aÃ±adido al Carro");
 					dispose();
 					new VentanaClienteInicio(logger, tickets, dni, conn, stmt);
 					logger.log(Level.INFO, "Ha funcionado el boton volver.");
@@ -401,7 +402,7 @@ public class VentanaCompra extends JFrame {
 			int numeroPanel = 0;
 			for (ComidaDisplay c : comidas) {
 				productoDisplay = new JPanel();
-				c.getL().setText(c.getC().getNombre() + " " + c.getC().getPrecio() + " €");
+				c.getL().setText(c.getC().getNombre() + " " + c.getC().getPrecio() + " â‚¬");
 				productoDisplay.add(c.getL());
 				c.getB().setText("COMPRAR");
 				productoDisplay.add(c.getB());
@@ -459,15 +460,16 @@ public class VentanaCompra extends JFrame {
 					for (ComidaDisplay comida : comidas) {
 						int comprado = (int) comida.getS().getValue();
 						if (comprado > 0) {
-							String ticket = "Nombre: " + comida.getC().getNombre() + " Unidades: " + comida.getS().getValue()
-									+ " Precio: " + comida.getC().getPrecio() * (int) comida.getS().getValue() + " ";
+							String ticket = "Nombre: " + comida.getC().getNombre() + " Unidades: "
+									+ comida.getS().getValue() + " Precio: "
+									+ comida.getC().getPrecio() * (int) comida.getS().getValue() + " ";
 							tickets.add(ticket);
 						}
 					}
 
 					anyadido = new JOptionPane();
 					anyadido.setFocusable(false);
-					anyadido.showMessageDialog(null, "Su compra se ha añadido al Carro");
+					anyadido.showMessageDialog(null, "Su compra se ha aÃ±adido al Carro");
 					dispose();
 					new VentanaClienteInicio(logger, tickets, dni, conn, stmt);
 					logger.log(Level.INFO, "Ha funcionado el boton volver.");

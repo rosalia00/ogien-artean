@@ -25,9 +25,9 @@ public class ClienteTest {
 	}
 	
 	@Test
-	public void testGetCOntraseña() {
+	public void testGetContraseÃ±a() {
 		Cliente c = new Cliente("Rosalia","Perez", 000000000, "Bilbao",  000000000, 123456789, true, "ros","1234");
-		assertEquals("1234", c.getContraseña());
+		assertEquals("1234", c.getContraseÃ±a());
 	}
 	
 	@Test
@@ -52,16 +52,16 @@ public class ClienteTest {
 	}
 
 	@Test
-	public void testSetContraseña() {
+	public void testSetContraseÃ±a() {
 		Cliente c = new Cliente("Rosalia","Perez", 000000000, "Bilbao",  000000000, 123456789, true, "ros","1234");
-		c.setContraseña("012");
-		assertEquals("012", c.getContraseña());
+		c.setContraseÃ±a("012");
+		assertEquals("012", c.getContraseÃ±a());
 	}
 	
 	@Test
 	public void testToString() { 
 		Cliente c = new Cliente("Rosalia","Perez", 000000000, "Bilbao",  000000000, 123456789, true, "ros","1234");
-		String expected = "Cliente [tarjeta=" + 123456789 + ", entrega=" + true + ", usuario=" + "ros" + ", contraseña="
+		String expected = "Cliente [tarjeta=" + 123456789 + ", entrega=" + true + ", usuario=" + "ros" + ", contraseï¿½a="
 				 + "1234"+ "]";
 		assertEquals(expected , c.toString());
 	}

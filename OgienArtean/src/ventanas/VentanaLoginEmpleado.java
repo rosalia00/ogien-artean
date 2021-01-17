@@ -31,9 +31,9 @@ public class VentanaLoginEmpleado extends JFrame {
 	private JLabel labelUsuario = new JLabel("        Usuario: ");
 	private JPanel panelUsuario;
 
-	private JPanel panelContraseña;
-	private JPasswordField contraseña;
-	private JLabel labelContraseña = new JLabel("  Contraseña: ");
+	private JPanel panelContraseÃ±a;
+	private JPasswordField contraseÃ±a;
+	private JLabel labelContraseÃ±a = new JLabel("  Contraseï¿½a: ");
 
 	private JButton aceptar;
 	private JPanel panelBotonera;
@@ -45,7 +45,7 @@ public class VentanaLoginEmpleado extends JFrame {
 
 	private static String usuarioEscogido;
 	private String usuarioGuardado;
-	private String contraseñaGuardada;
+	private String contraseÃ±aGuardada;
 
 	private static VentanaEmpleadoInicio vei;
 
@@ -85,16 +85,16 @@ public class VentanaLoginEmpleado extends JFrame {
 		panelUsuario.setBackground(new Color(149, 194, 197));
 		panelDatos.add(panelUsuario);
 
-		panelContraseña = new JPanel();
-		contraseña = new JPasswordField();
-		contraseña.setPreferredSize(new Dimension(100, 25));
-		panelContraseña.add(labelContraseña);
-		panelContraseña.add(contraseña);
-		panelContraseña.setBackground(new Color(149, 194, 197));
-		panelDatos.add(panelContraseña);
+		panelContraseÃ±a = new JPanel();
+		contraseÃ±a = new JPasswordField();
+		contraseÃ±a.setPreferredSize(new Dimension(100, 25));
+		panelContraseÃ±a.add(labelContraseÃ±a);
+		panelContraseÃ±a.add(contraseÃ±a);
+		panelContraseÃ±a.setBackground(new Color(149, 194, 197));
+		panelDatos.add(panelContraseÃ±a);
 
 		panelBotonera = new JPanel();
-		aceptar = new JButton("Iniciar Sesión");
+		aceptar = new JButton("Iniciar Sesiï¿½n");
 		aceptar.setEnabled(false);
 
 		aceptar.addActionListener(new ActionListener() {
@@ -107,7 +107,7 @@ public class VentanaLoginEmpleado extends JFrame {
 				} else {
 					JOptionPane op = new JOptionPane();
 					op.showMessageDialog(null,
-							"Su usuario o contraseña no coinciden. Si cree que se trata de un error contacte con el administrador.",
+							"Su usuario o contraseï¿½a no coinciden. Si cree que se trata de un error contacte con el administrador.",
 							"ERROR", JOptionPane.ERROR_MESSAGE);
 					logger.log(Level.INFO, "Ha habido un problema.");
 				}
@@ -132,7 +132,7 @@ public class VentanaLoginEmpleado extends JFrame {
 			}
 		});
 
-		contraseña.getDocument().addDocumentListener(new DocumentListener() {
+		contraseÃ±a.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				changed();
 			}
@@ -150,7 +150,7 @@ public class VentanaLoginEmpleado extends JFrame {
 	}
 
 	public void changed() {
-		if (contraseña.getText().equals("") || contraseña.getText().contains(" ") || usuario.getText().equals("")
+		if (contraseÃ±a.getText().equals("") || contraseÃ±a.getText().contains(" ") || usuario.getText().equals("")
 				|| usuario.getText().contains(" ")) {
 			aceptar.setEnabled(false);
 		} else {
@@ -169,11 +169,11 @@ public class VentanaLoginEmpleado extends JFrame {
 			while (rs.next()) {
 
 				usuarioGuardado = rs.getString("USUARIO");
-				contraseñaGuardada = rs.getString("CONTRASEÑA");
+				contraseÃ±aGuardada = rs.getString("CONTRASEÃ‘A");
 
-				if (usuarioGuardado.equals(usuario.getText()) && contraseñaGuardada.equals(contraseña.getText())) {
+				if (usuarioGuardado.equals(usuario.getText()) && contraseÃ±aGuardada.equals(contraseÃ±a.getText())) {
 					usuarioEscogido = usuarioGuardado;
-					logger.log(Level.INFO, "Ha comparado correctamente el usuario y la contraseña.");
+					logger.log(Level.INFO, "Ha comparado correctamente el usuario y la contraseÃ±a.");
 					return true;
 				}
 			}

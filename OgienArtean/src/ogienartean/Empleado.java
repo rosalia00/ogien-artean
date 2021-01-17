@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class Empleado extends Persona {
 	double nomina;
 	String usuario;
-	String contraseña;
+	String contraseÃ±a;
 
 	public double getNomina() {
 		return nomina;
@@ -17,8 +17,8 @@ public class Empleado extends Persona {
 		return usuario;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContraseÃ±a() {
+		return contraseÃ±a;
 	}
 
 	public void setNomina(double nomina) {
@@ -29,21 +29,21 @@ public class Empleado extends Persona {
 		this.usuario = usuario;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContraseÃ±a(String contraseÃ±a) {
+		this.contraseÃ±a = contraseÃ±a;
 	}
 
 	public Empleado(String nombre, String apellido, int dni, String direccion, int telefono, double nomina,
-			String usuario, String contraseña) {
+			String usuario, String contraseÃ±a) {
 		super(nombre, apellido, dni, direccion, telefono);
 		this.nomina = nomina;
 		this.usuario = usuario;
-		this.contraseña = contraseña;
+		this.contraseÃ±a = contraseÃ±a;
 	}
 
 	@Override
 	public String toString() {
-		return "Empleado [nomina=" + nomina + ", usuario=" + usuario + ", contraseña=" + contraseña + "]";
+		return "Empleado [nomina=" + nomina + ", usuario=" + usuario + ", contraseï¿½a=" + contraseÃ±a + "]";
 	}
 	
 	

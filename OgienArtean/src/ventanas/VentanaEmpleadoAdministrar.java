@@ -37,7 +37,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JButton aceptar;
 
 	JLabel eliminar;
-	JLabel añadir;
+	JLabel aÃ±adir;
 
 	JTextField cNombre;
 	JLabel cNombreLabel;
@@ -50,7 +50,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JLabel cCalienteLabel;
 	JComboBox<String> cTipo;
 	JLabel cTipoLabel;
-	JButton cAñadir;
+	JButton cAÃ±adir;
 	JButton cBorrar;
 	JPanel cPanel;
 
@@ -67,7 +67,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JButton bIngredientesButon;
 	JRadioButton bSal;
 	JLabel bSalLabel;
-	JButton bAñadir;
+	JButton bAÃ±adir;
 	JButton bBorrar;
 	JPanel bPanelArriba;
 	JPanel bPanel;
@@ -81,7 +81,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 	JButton pBoton;
 	JComboBox<String> pTipo;
 	JLabel pTipoLabel;
-	JButton pAñadir;
+	JButton pAÃ±adir;
 	JButton pBorrar;
 	JPanel pPanelArriba;
 	JPanel pPanel;
@@ -211,18 +211,18 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			cNombreLabel = new JLabel("NOMBRE: ");
 			cPrecio = new JSpinner(new SpinnerNumberModel(0, 0.00, 99.99, 0.01));
 			cPrecioLabel = new JLabel("PRECIO: ");
-			cCeliaco = new JRadioButton("Sí");
+			cCeliaco = new JRadioButton("Sï¿½");
 			cCeliacoLabel = new JLabel("CELIACO: ");
 			cBoton = new JButton();
-			cCaliente = new JRadioButton("Sí");
+			cCaliente = new JRadioButton("Sï¿½");
 			cCalienteLabel = new JLabel("CALIENTE: ");
 			cTipo = new JComboBox<String>();
 			cTipo.addItem("Pizza");
 			cTipo.addItem("Bocadillo");
 			cTipo.addItem("Empanada");
 			cTipoLabel = new JLabel("TIPO: ");
-			cAñadir = new JButton("AÑADIR");
-			cAñadir.addActionListener(new ActionListener() {
+			cAÃ±adir = new JButton("Aï¿½ADIR");
+			cAÃ±adir.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -259,18 +259,18 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			cPanel.add(cTipoLabel);
 			cPanel.add(cTipo);
 			cPanel.add(cBorrar);
-			cPanel.add(cAñadir);
+			cPanel.add(cAÃ±adir);
 
 			bNombre = new JTextField();
 			bNombreLabel = new JLabel("NOMBRE: ");
 			bPrecio = new JSpinner(new SpinnerNumberModel(0, 0.00, 99.99, 0.01));
 			bPrecioLabel = new JLabel("PRECIO: ");
-			bCeliaco = new JRadioButton("Sí");
+			bCeliaco = new JRadioButton("Sï¿½");
 			bCeliacoLabel = new JLabel("CELIACO: ");
 			bIngredientesPanel = new JPanel(new GridLayout(1, 2));
 			bIngredientes = new JTextField();
 			bIngredientesLabel = new JLabel("INGREDIENTES: ");
-			bIngredientesButon = new JButton("AÑADIR");
+			bIngredientesButon = new JButton("Aï¿½ADIR");
 			ArrayList<String> bLista = new ArrayList<String>();
 			bIngredientesButon.addActionListener(new ActionListener() {
 
@@ -282,10 +282,10 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			});
 			bIngredientesPanel.add(bIngredientes);
 			bIngredientesPanel.add(bIngredientesButon);
-			bSal = new JRadioButton("Sí");
+			bSal = new JRadioButton("Sï¿½");
 			bSalLabel = new JLabel("SAL: ");
-			bAñadir = new JButton("AÑADIR");
-			bAñadir.addActionListener(new ActionListener() {
+			bAÃ±adir = new JButton("Aï¿½ADIR");
+			bAÃ±adir.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -324,13 +324,13 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			bPanel.add(bSalLabel);
 			bPanel.add(bSal);
 			bPanel.add(bBorrar);
-			bPanel.add(bAñadir);
+			bPanel.add(bAÃ±adir);
 
 			pNombre = new JTextField();
 			pNombreLabel = new JLabel("NOMBRE: ");
 			pPrecio = new JSpinner(new SpinnerNumberModel(0, 0.00, 99.99, 0.01));
 			pPrecioLabel = new JLabel("PRECIO: ");
-			pCeliaco = new JRadioButton("Sí");
+			pCeliaco = new JRadioButton("Sï¿½");
 			pCeliacoLabel = new JLabel("CELIACO: ");
 			pBoton = new JButton();
 			pTipo = new JComboBox<String>();
@@ -338,8 +338,8 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			pTipo.addItem("Pastel");
 			pTipo.addItem("Galleta");
 			pTipoLabel = new JLabel("TIPO: ");
-			pAñadir = new JButton("AÑADIR");
-			pAñadir.addActionListener(new ActionListener() {
+			pAÃ±adir = new JButton("Aï¿½ADIR");
+			pAÃ±adir.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -375,7 +375,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			pPanel.add(pTipoLabel);
 			pPanel.add(pTipo);
 			pPanel.add(pBorrar);
-			pPanel.add(pAñadir);
+			pPanel.add(pAÃ±adir);
 
 			izquierdaButton = new JButton("<");
 			opcionLabel = new JLabel("ELECCION");

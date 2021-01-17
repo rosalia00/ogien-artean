@@ -21,9 +21,9 @@ public class EmpleadoTest {
 	}
 	
 	@Test
-	public void testGetContraseña() {
+	public void testGetContraseÃ±a() {
 		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234");
-		assertEquals("1234", e.getContraseña());
+		assertEquals("1234", e.getContraseÃ±a());
 	}
 
 	@Test
@@ -41,16 +41,16 @@ public class EmpleadoTest {
 	}
 	
 	@Test
-	public void testSetContraseña() {
+	public void testSetContraseÃ±a() {
 		Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234");
-		e.setContraseña("4321");
-		assertEquals("4321", e.getContraseña());
+		e.setContraseÃ±a("4321");
+		assertEquals("4321", e.getContraseÃ±a());
 	}
 	
 	@Test
 	 public void testToString() {
 	    Empleado e = new Empleado("Tyler", "de Mier", 00000000, "Bilbao", 000000000, 1000000.0, "peter", "1234"); 
-	    String expected = "Empleado [nomina=" + 1000000.0 + ", usuario=" + "peter" + ", contraseña=" + "1234" + "]"; 
+	    String expected = "Empleado [nomina=" + 1000000.0 + ", usuario=" + "peter" + ", contraseï¿½a=" + "1234" + "]"; 
 	    assertEquals(expected, e.toString());
 	  }
 
