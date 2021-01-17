@@ -25,7 +25,7 @@ public class VentanaLoginCliente extends JFrame {
 	// Contrase�a
 	private JPanel panelContraseña;
 	private JPasswordField contraseña;
-	private JLabel labelContraseña = new JLabel("Contrase�a: ");
+	private JLabel labelContraseña = new JLabel("Contraseña: ");
 
 	// Boton aceptar
 	private JButton aceptar;
@@ -56,7 +56,7 @@ public class VentanaLoginCliente extends JFrame {
 		setLocationRelativeTo(null);
 		setBackground(Color.WHITE);
 
-		// Configuraci�n panel de decoraci�n
+		// Configuración panel de decoraci�n
 		panelDecorativo = new JPanel();
 		panelDecorativo.setLayout(new GridLayout(1, 1));
 		panelDecorativo.setBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0));
@@ -65,7 +65,7 @@ public class VentanaLoginCliente extends JFrame {
 		panelDecorativo.add(labelDecorativo);
 		add(panelDecorativo);
 
-		// Configuraci�n del Panel de Datos
+		// Configuración del Panel de Datos
 		panelDatos = new JPanel();
 		panelDatos.setLayout(new GridLayout(3, 1));
 		panelDatos.setBorder(new LineBorder(Color.LIGHT_GRAY));
@@ -83,7 +83,7 @@ public class VentanaLoginCliente extends JFrame {
 		panelUsuario.setBackground(new Color(149, 194, 197));
 		panelDatos.add(panelUsuario);
 
-		// Configuracion Panel Contrase�a
+		// Configuracion Panel Contraseña
 		panelContraseña = new JPanel();
 		contraseña = new JPasswordField();
 		contraseña.setPreferredSize(new Dimension(100, 25));
@@ -92,9 +92,9 @@ public class VentanaLoginCliente extends JFrame {
 		panelContraseña.setBackground(new Color(149, 194, 197));
 		panelDatos.add(panelContraseña);
 
-		// Configuraci�n Paneles Botones
+		// Configuración Paneles Botones
 		panelBotones = new JPanel();
-		aceptar = new JButton("Iniciar Sesi�n");
+		aceptar = new JButton("Iniciar Sesión");
 		aceptar.setEnabled(false);
 
 		panelBotones.add(aceptar);

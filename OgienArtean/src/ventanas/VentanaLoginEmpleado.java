@@ -33,7 +33,7 @@ public class VentanaLoginEmpleado extends JFrame {
 
 	private JPanel panelContraseña;
 	private JPasswordField contraseña;
-	private JLabel labelContraseña = new JLabel("  Contrase�a: ");
+	private JLabel labelContraseña = new JLabel("  Contraseña: ");
 
 	private JButton aceptar;
 	private JPanel panelBotonera;
@@ -94,7 +94,7 @@ public class VentanaLoginEmpleado extends JFrame {
 		panelDatos.add(panelContraseña);
 
 		panelBotonera = new JPanel();
-		aceptar = new JButton("Iniciar Sesi�n");
+		aceptar = new JButton("Iniciar Sesión");
 		aceptar.setEnabled(false);
 
 		aceptar.addActionListener(new ActionListener() {
