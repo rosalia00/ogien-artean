@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.logging.Logger;
@@ -23,9 +24,11 @@ public class VentanaEmpleadoInicio extends JFrame {
 	JPanel abajo;
 
 	public VentanaEmpleadoInicio(Logger logger, Connection conn, Statement stmt) {
+
+		URL iconURL = getClass().getResource("/administracion.png");
 		// Boton administrar
 		administrar = new JButton();
-		administrar.setIcon(new ImageIcon("imagenes/administracion.png"));
+		administrar.setIcon(new ImageIcon(iconURL));
 		administrar.setContentAreaFilled(false);
 		administrar.setBorderPainted(false);
 		administrar.setFocusPainted(false);
@@ -39,9 +42,10 @@ public class VentanaEmpleadoInicio extends JFrame {
 
 		});
 
+		URL iconURL2 = getClass().getResource("/pedidos.png");
 		// Boton pedidos
 		pedidos = new JButton();
-		pedidos.setIcon(new ImageIcon("imagenes/pedidos.png"));
+		pedidos.setIcon(new ImageIcon(iconURL2));
 		pedidos.setContentAreaFilled(false);
 		pedidos.setBorderPainted(false);
 		pedidos.setFocusPainted(false);
@@ -58,18 +62,20 @@ public class VentanaEmpleadoInicio extends JFrame {
 		abajo.setOpaque(false);
 		abajo.setLayout(new GridLayout(1, 32));
 
+		URL iconURL3 = getClass().getResource("/fondo3.png");
 		// Fondo
-		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
+		setContentPane(new JLabel(new ImageIcon(iconURL3)));
 
-		// Añadir a los panels
+		// AÃ±adir a los panels
 		abajo.add(pedidos);
 		abajo.add(administrar);
 
-		// Añadir a la pagina
+		// AÃ±adir a la pagina
 		add(abajo);
 
+		URL iconURL4 = getClass().getResource("/octocat1.png");
 		// Icono de paginas
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL4));
 
 		// Final
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.awt.event.*;
 
 import java.io.*;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 
@@ -42,11 +43,13 @@ public class VentanaClienteInicio extends JFrame {
 
 	public VentanaClienteInicio(Logger logger, ArrayList<String> tickets, String dni, Connection conn, Statement stmt) {
 
+		URL iconURL1 = getClass().getResource("/panaderia.png");
+
 		panaderia = new JButton();
 		panaderia.setContentAreaFilled(false);
 		panaderia.setBorderPainted(false);
 		panaderia.setFocusPainted(false);
-		panaderia.setIcon(new ImageIcon("imagenes/panaderia.png"));
+		panaderia.setIcon(new ImageIcon(iconURL1));
 		panaderia.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -63,11 +66,13 @@ public class VentanaClienteInicio extends JFrame {
 			}
 		});
 
+		URL iconURL2 = getClass().getResource("/pasteleria.png");
+
 		pasteleria = new JButton();
 		pasteleria.setContentAreaFilled(false);
 		pasteleria.setBorderPainted(false);
 		pasteleria.setFocusPainted(false);
-		pasteleria.setIcon(new ImageIcon("imagenes/pasteleria.png"));
+		pasteleria.setIcon(new ImageIcon(iconURL2));
 		pasteleria.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -83,11 +88,13 @@ public class VentanaClienteInicio extends JFrame {
 			}
 		});
 
+		URL iconURL3 = getClass().getResource("/cocina.png");
+
 		cocina = new JButton();
 		cocina.setContentAreaFilled(false);
 		cocina.setBorderPainted(false);
 		cocina.setFocusPainted(false);
-		cocina.setIcon(new ImageIcon("imagenes/cocina.png"));
+		cocina.setIcon(new ImageIcon(iconURL3));
 		cocina.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -103,11 +110,13 @@ public class VentanaClienteInicio extends JFrame {
 			}
 		});
 
+		URL iconURL4 = getClass().getResource("/carro.png");
+
 		miCarro = new JButton();
 		miCarro.setContentAreaFilled(false);
 		miCarro.setBorderPainted(false);
 		miCarro.setFocusPainted(false);
-		miCarro.setIcon(new ImageIcon("imagenes/carro.png"));
+		miCarro.setIcon(new ImageIcon(iconURL4));
 		miCarro.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -117,11 +126,13 @@ public class VentanaClienteInicio extends JFrame {
 			}
 		});
 
+		URL iconURL5 = getClass().getResource("/perfil.png");
+
 		perfil = new JButton();
 		perfil.setContentAreaFilled(false);
 		perfil.setBorderPainted(false);
 		perfil.setFocusPainted(false);
-		perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
+		perfil.setIcon(new ImageIcon(iconURL5));
 		perfil.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -143,7 +154,9 @@ public class VentanaClienteInicio extends JFrame {
 		abajo.setOpaque(false);
 		abajo.setLayout(new GridLayout(1, 3));
 
-		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
+		URL iconURL6 = getClass().getResource("/fondo3.png");
+
+		setContentPane(new JLabel(new ImageIcon(iconURL6)));
 
 		abajo.add(panaderia);
 		abajo.add(pasteleria);
@@ -156,7 +169,9 @@ public class VentanaClienteInicio extends JFrame {
 		add(centro);
 		add(abajo);
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		URL iconURL7 = getClass().getResource("/octocat1.png");
+
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL7));
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("INICIO");

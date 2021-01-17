@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.logging.Logger;
@@ -25,8 +26,10 @@ public class VentanaMiCarro extends JFrame {
 
 	public VentanaMiCarro(Logger logger, ArrayList<String> tickets, String dni, Connection conn, Statement stmt) {
 
+		URL iconURL1 = getClass().getResource("/carro.png");
+
 		nombre = new JButton();
-		nombre.setIcon(new ImageIcon("imagenes/carro.png"));
+		nombre.setIcon(new ImageIcon(iconURL1));
 		nombre.setContentAreaFilled(false);
 		nombre.setBorderPainted(false);
 		nombre.setFocusPainted(false);
@@ -38,8 +41,10 @@ public class VentanaMiCarro extends JFrame {
 			coso.setText(texto);
 		}
 
+		URL iconURL2 = getClass().getResource("/volver.png");
+
 		volver = new JButton();
-		volver.setIcon(new ImageIcon("imagenes/volver.png"));
+		volver.setIcon(new ImageIcon(iconURL2));
 		volver.setContentAreaFilled(false);
 		volver.setBorderPainted(false);
 		volver.setFocusPainted(false);
@@ -57,8 +62,10 @@ public class VentanaMiCarro extends JFrame {
 			}
 		});
 
+		URL iconURL3 = getClass().getResource("/comprar.png");
+
 		comprar = new JButton();
-		comprar.setIcon(new ImageIcon("imagenes/comprar.png"));
+		comprar.setIcon(new ImageIcon(iconURL3));
 		comprar.setContentAreaFilled(false);
 		comprar.setBorderPainted(false);
 		comprar.setFocusPainted(false);
@@ -74,7 +81,9 @@ public class VentanaMiCarro extends JFrame {
 		abajo = new JPanel();
 		abajo.setOpaque(false);
 
-		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
+		URL iconURL4 = getClass().getResource("/fondo3.png");
+
+		setContentPane(new JLabel(new ImageIcon(iconURL4)));
 
 		abajo.add(volver);
 		abajo.add(comprar);
@@ -82,7 +91,9 @@ public class VentanaMiCarro extends JFrame {
 		add(coso);
 		add(abajo);
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		URL iconURL5 = getClass().getResource("/octocat1.png");
+
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL5));
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("CARRO");

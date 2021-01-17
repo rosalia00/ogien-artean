@@ -9,6 +9,7 @@ import java.util.logging.LogManager;
 import java.util.logging.Level;
 
 import java.io.*;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 
@@ -21,11 +22,13 @@ public class VentanaInicio extends JFrame {
 
 	public VentanaInicio(Logger logger, Connection conn, Statement stmt) {
 
+		URL iconURL4 = getClass().getResource("/cliente.png");
+
 		cliente = new JButton();
 		cliente.setContentAreaFilled(false);
 		cliente.setBorderPainted(false);
 		cliente.setFocusPainted(false);
-		cliente.setIcon(new ImageIcon("imagenes/cliente.png"));
+		cliente.setIcon(new ImageIcon(iconURL4));
 		cliente.addActionListener(new ActionListener() {
 
 			@Override
@@ -36,11 +39,13 @@ public class VentanaInicio extends JFrame {
 			}
 		});
 
+		URL iconURL3 = getClass().getResource("/empleado.png");
+
 		empleado = new JButton();
 		empleado.setContentAreaFilled(false);
 		empleado.setBorderPainted(false);
 		empleado.setFocusPainted(false);
-		empleado.setIcon(new ImageIcon("imagenes/empleado.png"));
+		empleado.setIcon(new ImageIcon(iconURL3));
 		empleado.addActionListener(new ActionListener() {
 
 			@Override
@@ -51,12 +56,16 @@ public class VentanaInicio extends JFrame {
 			}
 		});
 
-		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
+		URL iconURL = getClass().getResource("/fondo3.png");
+
+		setContentPane(new JLabel(new ImageIcon(iconURL)));
 
 		add(cliente);
 		add(empleado);
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		URL iconURL2 = getClass().getResource("/octocat1.png");
+
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL2));
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("INICIO");

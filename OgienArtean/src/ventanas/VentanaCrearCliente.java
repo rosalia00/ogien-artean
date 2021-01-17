@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -128,7 +129,7 @@ public class VentanaCrearCliente extends JFrame {
 		usuarioTexto = new JTextField();
 		usuarioTexto.setPreferredSize(new Dimension(250, 20));
 		usuarioTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		usuarioLabel = new JLabel("USUARIO: *");
+		usuarioLabel = new JLabel("USUARIO: ");
 		usuarioLabel.setPreferredSize(new Dimension(100, 20));
 		usuarioPanel = new JPanel();
 		usuarioPanel.setBackground(Color.WHITE);
@@ -225,7 +226,9 @@ public class VentanaCrearCliente extends JFrame {
 
 		setBackground(Color.WHITE);
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		URL iconURL1 = getClass().getResource("/octocat1.png");
+
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL1));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("REGISTRAR NUEVO CLIENTE");
 		setSize(450, 600);

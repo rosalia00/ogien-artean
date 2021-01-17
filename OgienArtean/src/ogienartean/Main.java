@@ -1,6 +1,7 @@
 package ogienartean;
 
 import java.io.File;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ public class Main {
 	private static Logger logger = Logger.getLogger(Main.class.getName());
 
 	public static void main(String[] args) {
-
+		
 		// LOGGER
 		try {
 			FileHandler fH = new FileHandler("logs/MyLogFile.log", 8096, 1, true);

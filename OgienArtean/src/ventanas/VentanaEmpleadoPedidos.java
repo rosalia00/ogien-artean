@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -24,9 +25,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
-
 public class VentanaEmpleadoPedidos extends JFrame {
-
 
 	// Boton atras
 	JButton atras;
@@ -41,10 +40,11 @@ public class VentanaEmpleadoPedidos extends JFrame {
 	JPanel abajo;
 
 	public VentanaEmpleadoPedidos(Logger logger, Connection conn, Statement stmt) {
-		
+
+		URL iconURL1 = getClass().getResource("/volver.png");
 		// Boton atras
 		atras = new JButton();
-		atras.setIcon(new ImageIcon("imagenes/volver.png"));
+		atras.setIcon(new ImageIcon(iconURL1));
 		atras.setContentAreaFilled(false);
 		atras.setBorderPainted(false);
 		atras.setFocusPainted(false);
@@ -53,7 +53,7 @@ public class VentanaEmpleadoPedidos extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				new VentanaEmpleadoInicio(logger, conn, stmt);
 				dispose();
-				logger.log(Level.INFO, "Ha funcionado el boton atras.");
+				logger.log(Level.INFO, "Ha funcionado el boton volver.");
 			}
 		});
 
@@ -67,20 +67,17 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		centro.setOpaque(false);
 		centro.setSize(new Dimension(500, 300));
 
-		
 		// Creacion Tabla
 		JTable tablaPedidos = new JTable(new DefaultTableModel(new Object[] { "DNI", "PEDIDO" }, 0));
 		tablaPedidos.setPreferredScrollableViewportSize(new Dimension(500, 300));
 		DefaultTableModel model = (DefaultTableModel) tablaPedidos.getModel();
 		tablaPedidos.getColumnModel().getColumn(0).setPreferredWidth(80);
 		tablaPedidos.getColumnModel().getColumn(1).setPreferredWidth(700);
-		String[] nomCol = { "DNI", "PEDIDO"};
+		String[] nomCol = { "DNI", "PEDIDO" };
 		tablaPedidos.getColumn("DNI").setResizable(true);
 		tablaPedidos.getColumn("DNI").setMaxWidth(70);
 		model.addRow(nomCol);
 
-		
-		
 		try {
 
 			ResultSet rs = stmt.executeQuery("Select * from PEDIDO");
@@ -98,7 +95,7 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		tablaPedidos.setEnabled(false);
 
 		// Panel SemiAbajo
@@ -114,8 +111,10 @@ public class VentanaEmpleadoPedidos extends JFrame {
 			}
 		}
 
+		URL iconURL2 = getClass().getResource("/descargar.png");
+
 		JButton botonDescargar = new JButton();
-		botonDescargar.setIcon(new ImageIcon("imagenes/descargar.png"));
+		botonDescargar.setIcon(new ImageIcon(iconURL2));
 		botonDescargar.setContentAreaFilled(false);
 		botonDescargar.setBorderPainted(false);
 		botonDescargar.setFocusPainted(false);
@@ -150,21 +149,24 @@ public class VentanaEmpleadoPedidos extends JFrame {
 		abajo = new JPanel();
 		abajo.setOpaque(false);
 
-		// A�adir a paneles atras
+		// Añadir a paneles atras
 		centro.add(tablaPedidos);
 		abajo.add(atras);
 
+		URL iconURL3 = getClass().getResource("/fondo3.png");
 		// Fondo
-		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
+		setContentPane(new JLabel(new ImageIcon(iconURL3)));
 
-		// A�adir paneles
+		// Añadir paneles
 		add(arriba);
 		add(centro);
 		add(semiabajo);
 		add(abajo);
 
+		URL iconURL4 = getClass().getResource("/octocat1.png");
+
 		// Icono de pagina
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL4));
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("PEDIDOS");

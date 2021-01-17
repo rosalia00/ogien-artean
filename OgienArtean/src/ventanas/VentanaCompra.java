@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -149,8 +150,10 @@ public class VentanaCompra extends JFrame {
 	public VentanaCompra(String s, Logger logger, ArrayList<String> tickets, String dni, Connection conn,
 			Statement stmt) throws Exception {
 
+		URL iconURL1 = getClass().getResource("/carro.png");
+
 		carro = new JButton();
-		carro.setIcon(new ImageIcon("imagenes/carro.png"));
+		carro.setIcon(new ImageIcon(iconURL1));
 		carro.setContentAreaFilled(false);
 		carro.setBorderPainted(false);
 		carro.setFocusPainted(false);
@@ -163,8 +166,10 @@ public class VentanaCompra extends JFrame {
 			}
 		});
 
+		URL iconURL2 = getClass().getResource("/perfil.png");
+
 		perfil = new JButton();
-		perfil.setIcon(new ImageIcon("imagenes/perfil.png"));
+		perfil.setIcon(new ImageIcon(iconURL2));
 		perfil.setContentAreaFilled(false);
 		perfil.setBorderPainted(false);
 		perfil.setFocusPainted(false);
@@ -172,19 +177,22 @@ public class VentanaCompra extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new VentanaPerfil(logger, conn, stmt, dni);
-				dispose();
 				logger.log(Level.INFO, "Ha funcionado el boton perfil.");
 			}
 		});
 
+		URL iconURL3 = getClass().getResource("/comprar.png");
+
 		comprar = new JButton();
-		comprar.setIcon(new ImageIcon("imagenes/comprar.png"));
+		comprar.setIcon(new ImageIcon(iconURL3));
 		comprar.setContentAreaFilled(false);
 		comprar.setBorderPainted(false);
 		comprar.setFocusPainted(false);
 
+		URL iconURL4 = getClass().getResource("/volver.png");
+
 		volver = new JButton();
-		volver.setIcon(new ImageIcon("imagenes/volver.png"));
+		volver.setIcon(new ImageIcon(iconURL4));
 		volver.setContentAreaFilled(false);
 		volver.setBorderPainted(false);
 		volver.setFocusPainted(false);
@@ -479,7 +487,9 @@ public class VentanaCompra extends JFrame {
 			});
 
 		}
-		setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
+		URL iconURL5 = getClass().getResource("/fondo3.png");
+
+		setContentPane(new JLabel(new ImageIcon(iconURL5)));
 
 		abajo.add(volver);
 		abajo.add(comprar);
@@ -493,7 +503,9 @@ public class VentanaCompra extends JFrame {
 		add(centro22);
 		add(abajo);
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		URL iconURL6 = getClass().getResource("/octocat1.png");
+
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL6));
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("COMPRA");

@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.*;
 
 import java.util.logging.Logger;
@@ -59,12 +60,16 @@ public class VentanaLoginEmpleado extends JFrame {
 		setLocationRelativeTo(null);
 		setBackground(Color.WHITE);
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		URL iconURL1 = getClass().getResource("/octocat1.png");
+
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL1));
+
+		URL iconURL2 = getClass().getResource("/octocat.png");
 
 		panelDecorativo = new JPanel();
 		panelDecorativo.setLayout(new GridLayout(1, 1));
 		panelDecorativo.setBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0));
-		labelDecorativo = new JLabel(new ImageIcon("imagenes/octocat.png"));
+		labelDecorativo = new JLabel(new ImageIcon(iconURL2));
 		panelDecorativo.setBackground(Color.WHITE);
 		panelDecorativo.add(labelDecorativo);
 		add(panelDecorativo);
@@ -107,7 +112,7 @@ public class VentanaLoginEmpleado extends JFrame {
 				} else {
 					JOptionPane op = new JOptionPane();
 					op.showMessageDialog(null,
-							"Su usuario o contrase�a no coinciden. Si cree que se trata de un error contacte con el administrador.",
+							"Su usuario o contraseña no coinciden. Si cree que se trata de un error contacte con el administrador.",
 							"ERROR", JOptionPane.ERROR_MESSAGE);
 					logger.log(Level.INFO, "Ha habido un problema.");
 				}

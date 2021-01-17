@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -62,7 +63,7 @@ public class VentanaCrearEmpleado extends JFrame {
 	public VentanaCrearEmpleado(Logger logger, Connection conn, Statement stmt) {
 		nombreTexto = new JTextField();
 		nombreTexto.setPreferredSize(new Dimension(250, 20));
-		nombreLabel = new JLabel("NOMBRE: *");
+		nombreLabel = new JLabel("NOMBRE: ");
 		nombreLabel.setPreferredSize(new Dimension(100, 20));
 		nombrePanel = new JPanel();
 		nombrePanel.setBackground(Color.WHITE);
@@ -70,7 +71,7 @@ public class VentanaCrearEmpleado extends JFrame {
 		apellidoTexto = new JTextField();
 		apellidoTexto.setPreferredSize(new Dimension(250, 20));
 		apellidoTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		apellidoLabel = new JLabel("APELLIDO: *");
+		apellidoLabel = new JLabel("APELLIDO: ");
 		apellidoLabel.setPreferredSize(new Dimension(100, 20));
 		apellidoPanel = new JPanel();
 		apellidoPanel.setBackground(Color.WHITE);
@@ -78,7 +79,7 @@ public class VentanaCrearEmpleado extends JFrame {
 		dniTexto = new JTextField();
 		dniTexto.setPreferredSize(new Dimension(250, 20));
 		dniTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		dniLabel = new JLabel("DNI: *");
+		dniLabel = new JLabel("DNI: ");
 		dniLabel.setPreferredSize(new Dimension(100, 20));
 		dniPanel = new JPanel();
 		dniPanel.setBackground(Color.WHITE);
@@ -102,7 +103,7 @@ public class VentanaCrearEmpleado extends JFrame {
 		nominaTexto = new JTextField();
 		nominaTexto.setPreferredSize(new Dimension(250, 20));
 		nominaTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		nominaLabel = new JLabel("NOMINA: *");
+		nominaLabel = new JLabel("NOMINA: ");
 		nominaLabel.setPreferredSize(new Dimension(100, 20));
 		nominaPanel = new JPanel();
 		nominaPanel.setBackground(Color.WHITE);
@@ -110,7 +111,7 @@ public class VentanaCrearEmpleado extends JFrame {
 		usuarioTexto = new JTextField();
 		usuarioTexto.setPreferredSize(new Dimension(250, 20));
 		usuarioTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		usuarioLabel = new JLabel("USUARIO: *");
+		usuarioLabel = new JLabel("USUARIO: ");
 		usuarioLabel.setPreferredSize(new Dimension(100, 20));
 		usuarioPanel = new JPanel();
 		usuarioPanel.setBackground(Color.WHITE);
@@ -118,7 +119,7 @@ public class VentanaCrearEmpleado extends JFrame {
 		contraseñaTexto = new JTextField();
 		contraseñaTexto.setPreferredSize(new Dimension(250, 20));
 		contraseñaTexto.setBorder(new LineBorder(new Color(115, 115, 115)));
-		contraseñaLabel = new JLabel("CONTRASE�A: *");
+		contraseñaLabel = new JLabel("CONTRASEÑA: ");
 		contraseñaLabel.setPreferredSize(new Dimension(100, 20));
 		contraseñaPanel = new JPanel();
 		contraseñaPanel.setBackground(Color.WHITE);
@@ -202,7 +203,9 @@ public class VentanaCrearEmpleado extends JFrame {
 
 		setBackground(Color.WHITE);
 
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		URL iconURL1 = getClass().getResource("/octocat1.png");
+
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL1));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("REGISTRAR NUEVO EMPLEADO");
 		setSize(450, 600);

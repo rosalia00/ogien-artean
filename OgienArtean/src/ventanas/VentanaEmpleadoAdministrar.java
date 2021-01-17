@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.awt.event.*;
 
 import java.io.*;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -185,13 +186,16 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 				comidas.add(c);
 			}
 
-			setContentPane(new JLabel(new ImageIcon("imagenes/fondo3.png")));
+			URL iconURL1 = getClass().getResource("/fondo3.png");
 
+			setContentPane(new JLabel(new ImageIcon(iconURL1)));
+
+			URL iconURL2 = getClass().getResource("/volver.png");
 			perfil = new JButton();
 			perfil.setContentAreaFilled(false);
 			perfil.setBorderPainted(false);
 			perfil.setFocusPainted(false);
-			perfil.setIcon(new ImageIcon("imagenes/volver.png"));
+			perfil.setIcon(new ImageIcon(iconURL2));
 			perfil.addActionListener(new ActionListener() {
 
 				@Override
@@ -211,17 +215,17 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			cNombreLabel = new JLabel("NOMBRE: ");
 			cPrecio = new JSpinner(new SpinnerNumberModel(0, 0.00, 99.99, 0.01));
 			cPrecioLabel = new JLabel("PRECIO: ");
-			cCeliaco = new JRadioButton("S�");
+			cCeliaco = new JRadioButton("SÍ");
 			cCeliacoLabel = new JLabel("CELIACO: ");
 			cBoton = new JButton();
-			cCaliente = new JRadioButton("S�");
+			cCaliente = new JRadioButton("SÍ");
 			cCalienteLabel = new JLabel("CALIENTE: ");
 			cTipo = new JComboBox<String>();
 			cTipo.addItem("Pizza");
 			cTipo.addItem("Bocadillo");
 			cTipo.addItem("Empanada");
 			cTipoLabel = new JLabel("TIPO: ");
-			cAñadir = new JButton("A�ADIR");
+			cAñadir = new JButton("AÑADIR");
 			cAñadir.addActionListener(new ActionListener() {
 
 				@Override
@@ -265,12 +269,12 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			bNombreLabel = new JLabel("NOMBRE: ");
 			bPrecio = new JSpinner(new SpinnerNumberModel(0, 0.00, 99.99, 0.01));
 			bPrecioLabel = new JLabel("PRECIO: ");
-			bCeliaco = new JRadioButton("S�");
+			bCeliaco = new JRadioButton("SÍ");
 			bCeliacoLabel = new JLabel("CELIACO: ");
 			bIngredientesPanel = new JPanel(new GridLayout(1, 2));
 			bIngredientes = new JTextField();
 			bIngredientesLabel = new JLabel("INGREDIENTES: ");
-			bIngredientesButon = new JButton("A�ADIR");
+			bIngredientesButon = new JButton("AÑADIR");
 			ArrayList<String> bLista = new ArrayList<String>();
 			bIngredientesButon.addActionListener(new ActionListener() {
 
@@ -282,9 +286,9 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			});
 			bIngredientesPanel.add(bIngredientes);
 			bIngredientesPanel.add(bIngredientesButon);
-			bSal = new JRadioButton("S�");
+			bSal = new JRadioButton("SÍ");
 			bSalLabel = new JLabel("SAL: ");
-			bAñadir = new JButton("A�ADIR");
+			bAñadir = new JButton("AÑADIR");
 			bAñadir.addActionListener(new ActionListener() {
 
 				@Override
@@ -330,7 +334,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			pNombreLabel = new JLabel("NOMBRE: ");
 			pPrecio = new JSpinner(new SpinnerNumberModel(0, 0.00, 99.99, 0.01));
 			pPrecioLabel = new JLabel("PRECIO: ");
-			pCeliaco = new JRadioButton("S�");
+			pCeliaco = new JRadioButton("SÍ");
 			pCeliacoLabel = new JLabel("CELIACO: ");
 			pBoton = new JButton();
 			pTipo = new JComboBox<String>();
@@ -338,7 +342,7 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			pTipo.addItem("Pastel");
 			pTipo.addItem("Galleta");
 			pTipoLabel = new JLabel("TIPO: ");
-			pAñadir = new JButton("A�ADIR");
+			pAñadir = new JButton("AÑADIR");
 			pAñadir.addActionListener(new ActionListener() {
 
 				@Override
@@ -572,7 +576,9 @@ public class VentanaEmpleadoAdministrar extends JFrame {
 			add(botones);
 			add(completo);
 
-			setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+			URL iconURL3 = getClass().getResource("/octocat1.png");
+
+			setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL3));
 			this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			setTitle("ADMINISTRACION");
 			setSize(700, 600);

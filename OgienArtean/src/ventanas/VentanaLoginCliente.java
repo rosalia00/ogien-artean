@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.*;
 
 public class VentanaLoginCliente extends JFrame {
@@ -41,12 +42,15 @@ public class VentanaLoginCliente extends JFrame {
 	private static String usuarioEscogido;
 	private String usuarioGuardado;
 	private String contraseñaGuardada;
-	
+
 	private static VentanaClienteInicio vio;
 
 	public VentanaLoginCliente(Logger logger, Connection conn, Statement stmt) {
+
+		URL iconURL1 = getClass().getResource("/octocat1.png");
+
 		// Imagen de icono
-		setIconImage(Toolkit.getDefaultToolkit().getImage("imagenes/octocat1.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(iconURL1));
 
 		// Caracteristicas Ventana
 		setTitle("LOGIN");
@@ -56,11 +60,13 @@ public class VentanaLoginCliente extends JFrame {
 		setLocationRelativeTo(null);
 		setBackground(Color.WHITE);
 
-		// Configuración panel de decoraci�n
+		URL iconURL2 = getClass().getResource("/octocat.png");
+
+		// Configuración panel de decoración
 		panelDecorativo = new JPanel();
 		panelDecorativo.setLayout(new GridLayout(1, 1));
 		panelDecorativo.setBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0));
-		labelDecorativo = new JLabel(new ImageIcon("imagenes/octocat.png"));
+		labelDecorativo = new JLabel(new ImageIcon(iconURL2));
 		panelDecorativo.setBackground(Color.WHITE);
 		panelDecorativo.add(labelDecorativo);
 		add(panelDecorativo);
